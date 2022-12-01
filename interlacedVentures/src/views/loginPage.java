@@ -184,12 +184,6 @@ public class loginPage extends javax.swing.JFrame {
 
     private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
         // TODO add your handling code here:
-        String userName = tfUserName.getText();
-        String password = tfPassword.getText();
-        
-        if(users.containsKey(userName) && users.get(userName).equals(password)){
-            JOptionPane.showMessageDialog(this, "Login Successful");
-        }
     }//GEN-LAST:event_jTextField5ActionPerformed
 
     /**
