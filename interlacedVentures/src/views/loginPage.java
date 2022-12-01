@@ -4,6 +4,9 @@
  */
 package views;
 
+import static interlacedventures.InterlacedVentures.users;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author kcsar
@@ -29,8 +32,8 @@ public class loginPage extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jPasswordField1 = new javax.swing.JPasswordField();
+        tfUserName = new javax.swing.JTextField();
+        tfPassword = new javax.swing.JPasswordField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -44,7 +47,6 @@ public class loginPage extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(153, 102, 255));
 
-        jLabel3.setIcon(new javax.swing.ImageIcon("/Users/trishaguharoy/Downloads/ecosys.png")); // NOI18N
         jLabel3.setMaximumSize(new java.awt.Dimension(50, 60));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -60,18 +62,18 @@ public class loginPage extends javax.swing.JFrame {
             .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 528, Short.MAX_VALUE)
         );
 
-        jTextField1.setBackground(new java.awt.Color(204, 204, 255));
-        jTextField1.setFont(new java.awt.Font("Hiragino Sans", 0, 14)); // NOI18N
-        jTextField1.setText("Username");
-        jTextField1.setDisabledTextColor(new java.awt.Color(51, 51, 51));
+        tfUserName.setBackground(new java.awt.Color(204, 204, 255));
+        tfUserName.setFont(new java.awt.Font("Hiragino Sans", 0, 14)); // NOI18N
+        tfUserName.setText("Username");
+        tfUserName.setDisabledTextColor(new java.awt.Color(51, 51, 51));
 
-        jPasswordField1.setBackground(new java.awt.Color(204, 204, 255));
-        jPasswordField1.setFont(new java.awt.Font("Hiragino Maru Gothic ProN", 0, 18)); // NOI18N
-        jPasswordField1.setText("Paasword");
-        jPasswordField1.setSelectionColor(new java.awt.Color(0, 0, 0));
-        jPasswordField1.addActionListener(new java.awt.event.ActionListener() {
+        tfPassword.setBackground(new java.awt.Color(204, 204, 255));
+        tfPassword.setFont(new java.awt.Font("Hiragino Maru Gothic ProN", 0, 18)); // NOI18N
+        tfPassword.setText("Paasword");
+        tfPassword.setSelectionColor(new java.awt.Color(0, 0, 0));
+        tfPassword.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jPasswordField1ActionPerformed(evt);
+                tfPasswordActionPerformed(evt);
             }
         });
 
@@ -95,6 +97,13 @@ public class loginPage extends javax.swing.JFrame {
             }
         });
 
+        jTextField5.setFont(new java.awt.Font("Hiragino Maru Gothic ProN", 0, 18)); // NOI18N
+        jTextField5.setText("   Login");
+        jTextField5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField5ActionPerformed(evt);
+            }
+        });
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -139,11 +148,11 @@ public class loginPage extends javax.swing.JFrame {
                 .addComponent(jLabel4)
                 .addGap(72, 72, 72)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tfUserName, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(43, 43, 43)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tfPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
                 .addGap(61, 61, 61)
                 .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -172,13 +181,17 @@ public class loginPage extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jPasswordField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField1ActionPerformed
+    private void tfPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfPasswordActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jPasswordField1ActionPerformed
+    }//GEN-LAST:event_tfPasswordActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField5ActionPerformed
 
     /**
      * @param args the command line arguments
