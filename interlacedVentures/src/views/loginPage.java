@@ -12,6 +12,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.sql.Connection;
+import views.dashBoards.freelancerDashboard;
 
 
 /**
@@ -124,22 +125,32 @@ public class loginPage extends javax.swing.JFrame {
 //        }
 
         try{
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
             
             Connection con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/InterlacedVentures?useSSL=false","root","Mh15fj8813@");
             String userName = tfUsername.getText();
             String password = pfPassword.getText();
             
-            Statement stm = con.createStatement();
+            Statement stm1 = con.createStatement();
+            Statement stm2 = con.createStatement();
             
-            String sql = "SELECT * FROM BusinessUsers WHERE Name= '"+userName+"' and Password = '"+password+"'";
-            ResultSet rs = stm.executeQuery(sql);
+            String sqlBU = "SELECT * FROM BusinessUsers WHERE Name= '"+userName+"' and Password = '"+password+"'";
+            ResultSet rsBU = stm1.executeQuery(sqlBU);
             
-            if(rs.next()){
+            String sqlFREE = "SELECT * FROM Freelancers WHERE Name= '"+userName+"' and Password = '"+password+"'";
+            ResultSet rsFREE = stm2.executeQuery(sqlFREE);
+            
+            if(rsBU.next()){
                 dispose();
                 
                 businessUserDashBoard budb = new businessUserDashBoard();
                 budb.show();
+            }
+            else if(rsFREE.next()){
+                dispose();
+                
+                freelancerDashboard fdb = new freelancerDashboard();
+                fdb.show();
             }
             else{
                 JOptionPane.showMessageDialog(this, "Please Enter Correct Details");
