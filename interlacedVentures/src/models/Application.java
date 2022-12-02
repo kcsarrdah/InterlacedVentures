@@ -8,12 +8,6 @@ package models;
  *
  * @author kcsar
  */
-public class freelancer extends person{
-    
-    
-    
-    public freelancer(String firstName, String lastName, int age, String gender, String phoneNumber, String Email) {
-        super(firstName, lastName, age, gender, phoneNumber, Email);
-    }
+public class Application {
     
 }
