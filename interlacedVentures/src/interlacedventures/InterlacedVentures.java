@@ -22,8 +22,8 @@ public class InterlacedVentures {
         System.out.println("test print");
         
         
-        users.put("albert", "1");
-        users.put("alberto","1");
+//        users.put("albert", "1");
+//        users.put("alberto","1");
         
         loginPage lp = new loginPage();
         lp.show();

@@ -4,8 +4,15 @@
  */
 package views;
 
-import static interlacedventures.InterlacedVentures.users;
+//import com.mysql.cj.xdevapi.Statement;
+//import com.sun.jdi.connect.spi.Connection;
 import javax.swing.JOptionPane;
+import views.dashBoards.businessUserDashBoard;
+import java.sql.DriverManager;  
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.sql.Connection;
+
 
 /**
  *
@@ -104,16 +111,45 @@ public class loginPage extends javax.swing.JFrame {
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         // TODO add your handling code here:
-        String userName = tfUsername.getText();
-        String password = pfPassword.getText();
-        
-        
-        if(users.containsKey(userName) && users.get(userName).equals(password)){
-            JOptionPane.showMessageDialog(this, "Login Successful");
-    
+//        String userName = tfUsername.getText();
+//        String password = pfPassword.getText();
+//        
+//        
+//        if(users.containsKey(userName) && users.get(userName).equals(password)){
+//            JOptionPane.showMessageDialog(this, "Login Successful");
+//    
+//        }
+//        else{
+//            JOptionPane.showMessageDialog(this, "Please Enter Correct Details");
+//        }
+
+        try{
+            Class.forName("com.mysql.jdbc.Driver");
+            
+            Connection con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/InterlacedVentures?useSSL=false","root","Mh15fj8813@");
+            String userName = tfUsername.getText();
+            String password = pfPassword.getText();
+            
+            Statement stm = con.createStatement();
+            
+            String sql = "SELECT * FROM BusinessUsers WHERE Name= '"+userName+"' and Password = '"+password+"'";
+            ResultSet rs = stm.executeQuery(sql);
+            
+            if(rs.next()){
+                dispose();
+                
+                businessUserDashBoard budb = new businessUserDashBoard();
+                budb.show();
+            }
+            else{
+                JOptionPane.showMessageDialog(this, "Please Enter Correct Details");
+                tfUsername.setText("");
+                pfPassword.setText("");
+            }
+            con.close();
         }
-        else{
-            JOptionPane.showMessageDialog(this, "Please Enter Correct Details");
+        catch(Exception e){
+            System.out.print(e.getMessage());
         }
     }//GEN-LAST:event_btnLoginActionPerformed
 
