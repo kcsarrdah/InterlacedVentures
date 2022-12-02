@@ -113,7 +113,7 @@ public class loginPage extends javax.swing.JFrame {
     
         }
         else{
-            JOptionPane.showMessageDialog(this, "please enter correct details");
+            JOptionPane.showMessageDialog(this, "Please Enter Correct Details");
         }
     }//GEN-LAST:event_btnLoginActionPerformed
 
