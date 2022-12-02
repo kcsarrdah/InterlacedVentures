@@ -8,6 +8,12 @@ package models;
  *
  * @author kcsar
  */
-public class employee {
+public class employee extends person{
+    
+    public employee(String firstName, String lastName, int age, String gender) {
+        super(firstName, lastName, age, gender);
+    }
+    
+    
     
 }
