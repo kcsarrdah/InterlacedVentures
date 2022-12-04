@@ -4,6 +4,10 @@
  */
 package views.dashBoards;
 
+import views.Orgs.Tech.Cloud;
+import views.Orgs.Tech.Hardware;
+import views.Orgs.Tech.Software;
+
 /**
  *
  * @author kcsar
@@ -43,8 +47,18 @@ public class TechAdminDashboard extends javax.swing.JFrame {
         });
 
         btnCloud.setText("Cloud Department");
+        btnCloud.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCloudActionPerformed(evt);
+            }
+        });
 
         btnSoftware.setText("Software Department");
+        btnSoftware.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSoftwareActionPerformed(evt);
+            }
+        });
 
         bttnLogOut.setText("Log Out");
 
@@ -77,7 +91,7 @@ public class TechAdminDashboard extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(57, Short.MAX_VALUE)
+                .addContainerGap(92, Short.MAX_VALUE)
                 .addComponent(btnHardWare)
                 .addGap(18, 18, 18)
                 .addComponent(btnCloud, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -97,7 +111,24 @@ public class TechAdminDashboard extends javax.swing.JFrame {
 
     private void btnHardWareActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHardWareActionPerformed
         // TODO add your handling code here:
+        this.hide();
+        Hardware hd = new Hardware();
+        hd.show();
     }//GEN-LAST:event_btnHardWareActionPerformed
+
+    private void btnCloudActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloudActionPerformed
+        // TODO add your handling code here:
+        this.hide();
+        Cloud cl = new Cloud();
+        cl.show();
+    }//GEN-LAST:event_btnCloudActionPerformed
+
+    private void btnSoftwareActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSoftwareActionPerformed
+        // TODO add your handling code here:
+        this.hide();
+        Software sd = new Software();
+        sd.show();
+    }//GEN-LAST:event_btnSoftwareActionPerformed
 
     /**
      * @param args the command line arguments
