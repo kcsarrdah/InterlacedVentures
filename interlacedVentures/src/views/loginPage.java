@@ -12,6 +12,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.sql.Connection;
+import views.dashBoards.employeeDashboard;
 import views.dashBoards.freelancerDashboard;
 
 
@@ -133,12 +134,16 @@ public class loginPage extends javax.swing.JFrame {
             
             Statement stm1 = con.createStatement();
             Statement stm2 = con.createStatement();
+            Statement stm3 = con.createStatement();
             
-            String sqlBU = "SELECT * FROM BusinessUsers WHERE Name= '"+userName+"' and Password = '"+password+"'";
+            String sqlBU = "SELECT * FROM BusinessUsers WHERE `First Name`= '"+userName+"' and Password = '"+password+"'";
             ResultSet rsBU = stm1.executeQuery(sqlBU);
             
-            String sqlFREE = "SELECT * FROM Freelancers WHERE Name= '"+userName+"' and Password = '"+password+"'";
+            String sqlFREE = "SELECT * FROM Freelancers WHERE `First Name`= '"+userName+"' and Password = '"+password+"'";
             ResultSet rsFREE = stm2.executeQuery(sqlFREE);
+            
+            String sqlEMP = "SELECT * FROM Employees WHERE Name= '"+userName+"' and Password = '"+password+"'";
+            ResultSet rsEMP = stm3.executeQuery(sqlEMP);
             
             if(rsBU.next()){
                 dispose();
@@ -151,6 +156,12 @@ public class loginPage extends javax.swing.JFrame {
                 
                 freelancerDashboard fdb = new freelancerDashboard();
                 fdb.show();
+            }
+            else if(rsEMP.next()){
+                dispose();
+                
+                employeeDashboard edb = new employeeDashboard();
+                edb.show();
             }
             else{
                 JOptionPane.showMessageDialog(this, "Please Enter Correct Details");
