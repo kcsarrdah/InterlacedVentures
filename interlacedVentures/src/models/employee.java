@@ -17,8 +17,9 @@ public class employee extends person{
     private String education;
     private String skills;
     private String Username;
+    private String password;
 
-    public employee(String Role, int WorkEx, int salary, String LatestWork, String education, String skills, String Username, String firstName, String lastName, int age, String gender, String phoneNumber, String Email) {
+    public employee(String Password, String Role, int WorkEx, int salary, String LatestWork, String education, String skills, String Username, String firstName, String lastName, int age, String gender, String phoneNumber, String Email) {
         super(firstName, lastName, age, gender, phoneNumber, Email);
         this.Role = Role;
         this.WorkEx = WorkEx;
@@ -27,6 +28,15 @@ public class employee extends person{
         this.education = education;
         this.skills = skills;
         this.Username = Username;
+        this.password = password;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getUsername() {

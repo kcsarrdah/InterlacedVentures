@@ -292,6 +292,11 @@ public class freelancerRegistrationForm extends javax.swing.JFrame {
                     .addComponent(jButton3))
                 .addContainerGap(83, Short.MAX_VALUE))
         );
+        jLabel1 = new javax.swing.JLabel();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jLabel1.setText("Freelancer");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

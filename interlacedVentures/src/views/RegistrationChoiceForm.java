@@ -29,32 +29,32 @@ public class RegistrationChoiceForm extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        btnRegFree = new javax.swing.JButton();
+        businessRole = new javax.swing.JButton();
+        empRole = new javax.swing.JButton();
+        freelRole = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setText("              REGISTRATION CHOICE");
 
-        jButton1.setText("BUSINESS ROLE");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        businessRole.setText("BUSINESS ROLE");
+        businessRole.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                businessRoleActionPerformed(evt);
             }
         });
 
-        jButton4.setText("EMPLOYEE'S ROLE");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        empRole.setText("EMPLOYEE'S ROLE");
+        empRole.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                empRoleActionPerformed(evt);
             }
         });
 
-        btnRegFree.setText("FREELANCER");
-        btnRegFree.addActionListener(new java.awt.event.ActionListener() {
+        freelRole.setText("FREELANCER");
+        freelRole.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRegFreeActionPerformed(evt);
+                freelRoleActionPerformed(evt);
             }
         });
 
@@ -69,11 +69,11 @@ public class RegistrationChoiceForm extends javax.swing.JFrame {
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(96, 96, 96)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(businessRole, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(94, 94, 94)
-                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(empRole, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(107, 107, 107)
-                        .addComponent(btnRegFree, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(freelRole, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(107, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -83,29 +83,25 @@ public class RegistrationChoiceForm extends javax.swing.JFrame {
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(104, 104, 104)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnRegFree, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(businessRole, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(empRole, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(freelRole, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(218, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void businessRoleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_businessRoleActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_businessRoleActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void empRoleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_empRoleActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
-
-    private void btnRegFreeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegFreeActionPerformed
+    }//GEN-LAST:event_empRoleActionPerformed
+    private void freelRoleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_freelRoleActionPerformed
         // TODO add your handling code here:
-        this.hide();
-        freelancerRegistrationForm frf = new freelancerRegistrationForm();
-        frf.show();
-    }//GEN-LAST:event_btnRegFreeActionPerformed
+    }//GEN-LAST:event_freelRoleActionPerformed
 
     /**
      * @param args the command line arguments
@@ -146,9 +142,9 @@ public class RegistrationChoiceForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnRegFree;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JButton businessRole;
+    private javax.swing.JButton empRole;
+    private javax.swing.JButton freelRole;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }
