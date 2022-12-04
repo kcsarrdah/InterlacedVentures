@@ -13,12 +13,33 @@ public class person {
     private String lastName;
     private int age;
     private String gender;
-
-    public person(String firstName, String lastName, int age, String gender) {
+    private String phoneNumber;
+    private String Email;
+    
+    public person(String firstName, String lastName, int age, String gender, String phoneNumber, String Email) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.age = age;
         this.gender = gender;
+        this.phoneNumber = phoneNumber;
+        this.Email = Email;
+    }
+
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public String getEmail() {
+        return Email;
+    }
+
+    public void setEmail(String Email) {
+        this.Email = Email;
     }
 
     public String getFirstName() {

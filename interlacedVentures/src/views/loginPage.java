@@ -4,8 +4,17 @@
  */
 package views;
 
-import static interlacedventures.InterlacedVentures.users;
+//import com.mysql.cj.xdevapi.Statement;
+//import com.sun.jdi.connect.spi.Connection;
 import javax.swing.JOptionPane;
+import views.dashBoards.businessUserDashBoard;
+import java.sql.DriverManager;  
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.sql.Connection;
+import views.dashBoards.employeeDashboard;
+import views.dashBoards.freelancerDashboard;
+
 
 /**
  *
@@ -104,16 +113,65 @@ public class loginPage extends javax.swing.JFrame {
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         // TODO add your handling code here:
-        String userName = tfUsername.getText();
-        String password = pfPassword.getText();
-        
-        
-        if(users.containsKey(userName) && users.get(userName).equals(password)){
-            JOptionPane.showMessageDialog(this, "Login Successful");
-    
+//        String userName = tfUsername.getText();
+//        String password = pfPassword.getText();
+//        
+//        
+//        if(users.containsKey(userName) && users.get(userName).equals(password)){
+//            JOptionPane.showMessageDialog(this, "Login Successful");
+//    
+//        }
+//        else{
+//            JOptionPane.showMessageDialog(this, "Please Enter Correct Details");
+//        }
+
+        try{
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            
+            Connection con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/InterlacedVentures?useSSL=false","root","Mh15fj8813@");
+            String userName = tfUsername.getText();
+            String password = pfPassword.getText();
+            
+            Statement stm1 = con.createStatement();
+            Statement stm2 = con.createStatement();
+            Statement stm3 = con.createStatement();
+            
+            String sqlBU = "SELECT * FROM BusinessUsers WHERE `First Name`= '"+userName+"' and Password = '"+password+"'";
+            ResultSet rsBU = stm1.executeQuery(sqlBU);
+            
+            String sqlFREE = "SELECT * FROM Freelancers WHERE `First Name`= '"+userName+"' and Password = '"+password+"'";
+            ResultSet rsFREE = stm2.executeQuery(sqlFREE);
+            
+            String sqlEMP = "SELECT * FROM Employees WHERE Name= '"+userName+"' and Password = '"+password+"'";
+            ResultSet rsEMP = stm3.executeQuery(sqlEMP);
+            
+            if(rsBU.next()){
+                dispose();
+                
+                businessUserDashBoard budb = new businessUserDashBoard();
+                budb.show();
+            }
+            else if(rsFREE.next()){
+                dispose();
+                
+                freelancerDashboard fdb = new freelancerDashboard();
+                fdb.show();
+            }
+            else if(rsEMP.next()){
+                dispose();
+                
+                employeeDashboard edb = new employeeDashboard();
+                edb.show();
+            }
+            else{
+                JOptionPane.showMessageDialog(this, "Please Enter Correct Details");
+                tfUsername.setText("");
+                pfPassword.setText("");
+            }
+            con.close();
         }
-        else{
-            JOptionPane.showMessageDialog(this, "Please Enter Correct Details");
+        catch(Exception e){
+            System.out.print(e.getMessage());
         }
     }//GEN-LAST:event_btnLoginActionPerformed
 
