@@ -50,7 +50,7 @@
                           <Group type="103" groupAlignment="1" attributes="0">
                               <Component id="jButton2" min="-2" max="-2" attributes="0"/>
                               <Group type="103" alignment="1" groupAlignment="0" attributes="0">
-                                  <Component id="jLabel14" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel16" min="-2" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                       <Component id="jLabel3" max="32767" attributes="0"/>
                                       <Component id="lblFName" max="32767" attributes="0"/>
@@ -72,7 +72,6 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="24" pref="24" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="pwdField" max="32767" attributes="0"/>
                                       <Component id="txtFName" alignment="0" max="32767" attributes="0"/>
                                       <Component id="txtUName" alignment="0" max="32767" attributes="0"/>
                                       <Component id="txtAge" alignment="0" max="32767" attributes="0"/>
@@ -80,6 +79,7 @@
                                       <Component id="txtPortfolio" alignment="0" max="32767" attributes="0"/>
                                       <Component id="txtLatestWork" alignment="0" pref="163" max="32767" attributes="0"/>
                                       <Component id="jScrollPane1" max="32767" attributes="0"/>
+                                      <Component id="txtLoc" max="32767" attributes="0"/>
                                   </Group>
                                   <EmptySpace pref="37" max="32767" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
@@ -92,6 +92,7 @@
                                           <Component id="jLabel2" alignment="0" max="32767" attributes="0"/>
                                       </Group>
                                       <Component id="jLabel15" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabel14" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -102,6 +103,7 @@
                                       <Component id="txtWorkExp" max="32767" attributes="0"/>
                                       <Component id="comboEducation" alignment="0" max="32767" attributes="0"/>
                                       <Component id="dateField" max="32767" attributes="0"/>
+                                      <Component id="pwdField" alignment="1" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -172,6 +174,8 @@
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel14" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="pwdField" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel16" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtLoc" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
@@ -423,6 +427,13 @@
           </Properties>
         </Component>
         <Component class="com.toedter.calendar.JDateChooser" name="dateField">
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel16">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="LOCATION"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtLoc">
         </Component>
       </SubComponents>
     </Container>

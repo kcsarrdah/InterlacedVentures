@@ -8,6 +8,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.*;
+import models.freelancer;
 
 /**
  *
@@ -67,6 +68,8 @@ public class freelancerRegistrationForm extends javax.swing.JFrame {
         listSkills = new javax.swing.JList<>();
         jLabel15 = new javax.swing.JLabel();
         dateField = new com.toedter.calendar.JDateChooser();
+        jLabel16 = new javax.swing.JLabel();
+        txtLoc = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -170,6 +173,8 @@ public class freelancerRegistrationForm extends javax.swing.JFrame {
 
         jLabel15.setText("JOINING DATE");
 
+        jLabel16.setText("LOCATION");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -185,7 +190,7 @@ public class freelancerRegistrationForm extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jButton2)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel14)
+                                .addComponent(jLabel16)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(lblFName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -203,14 +208,14 @@ public class freelancerRegistrationForm extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(24, 24, 24)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(pwdField)
                                     .addComponent(txtFName)
                                     .addComponent(txtUName)
                                     .addComponent(txtAge)
                                     .addComponent(txtPhone)
                                     .addComponent(txtPortfolio)
                                     .addComponent(txtLatestWork, javax.swing.GroupLayout.DEFAULT_SIZE, 163, Short.MAX_VALUE)
-                                    .addComponent(jScrollPane1))
+                                    .addComponent(jScrollPane1)
+                                    .addComponent(txtLoc))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -220,7 +225,8 @@ public class freelancerRegistrationForm extends javax.swing.JFrame {
                                         .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                    .addComponent(jLabel15))
+                                    .addComponent(jLabel15)
+                                    .addComponent(jLabel14))
                                 .addGap(32, 32, 32)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(txtLName)
@@ -229,7 +235,8 @@ public class freelancerRegistrationForm extends javax.swing.JFrame {
                                     .addComponent(txtHourlyRate)
                                     .addComponent(txtWorkExp)
                                     .addComponent(comboEducation, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(dateField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
+                                    .addComponent(dateField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(pwdField, javax.swing.GroupLayout.Alignment.TRAILING))))))
                 .addContainerGap(74, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -284,7 +291,9 @@ public class freelancerRegistrationForm extends javax.swing.JFrame {
                         .addGap(30, 30, 30)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel14)
-                            .addComponent(pwdField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(pwdField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel16)
+                            .addComponent(txtLoc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(33, 33, 33)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jButton2)
@@ -318,22 +327,42 @@ public class freelancerRegistrationForm extends javax.swing.JFrame {
 
     private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
         // TODO add your handling code here:
-        try{
-        Class.forName("com.mysql.cj.jdbc.Driver");
-        Connection con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/InterlacedVentures?useSSL=false","root","Mh15fj8813@");
-        String sql = "INSERT INTO Freelancers VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-        PreparedStatement ps = con.prepareStatement(sql);
-        ps.setString(1, txtFName.getText());
-        ps.setString(2, txtLName.getText());
-        ps.setString(3, txtUName.getText());
-        ps.setString(4, pwdField.getText());
-        ps.setString(5, comboGender.getSelectedItem().toString());
-        
-
-        }
-        catch(Exception e){
-            System.out.print(e.getMessage());
-        }
+//        try{
+//        Class.forName("com.mysql.cj.jdbc.Driver");
+//        Connection con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/InterlacedVentures?useSSL=false","root","Mh15fj8813@");
+//        String sql = "INSERT INTO Freelancers VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+//        PreparedStatement ps = con.prepareStatement(sql);
+//        ps.setString(1, txtFName.getText());
+//        ps.setString(2, txtLName.getText());
+//        ps.setString(3, txtUName.getText());
+//        ps.setString(4, pwdField.getText());
+//        ps.setString(5, comboGender.getSelectedItem().toString());
+//        
+//
+//        }
+//        catch(Exception e){
+//            System.out.print(e.getMessage());
+//        }
+        freelancer free = new freelancer(txtLoc.getText(),
+                pwdField.getText(),
+                dateField.getDate(),
+                Integer.parseInt(txtHourlyRate.getText()),
+                txtPortfolio.getText(),
+                Integer.parseInt(txtWorkExp.getText()),
+                txtLatestWork.getText(),
+                comboEducation.getSelectedItem().toString(),
+                listSkills.getSelectedValue(),
+                txtUName.getText(),
+                txtFName.getText(),
+                txtLName.getText(),
+                Integer.parseInt(txtAge.getText()),
+                comboGender.getSelectedItem().toString(),
+                Integer.parseInt(txtPhone.getText()),
+                txtEmail.getText());              
+                
+        FreelancerDirectory.getInstance().addFreelancer(free);
+        users use = new users(Integer.parseInt(txtLoc.getText()),jTextField8.getText(),"HR Admin");
+        users.getInstance().addUser(users);
     }//GEN-LAST:event_btnRegisterActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -393,6 +422,7 @@ public class freelancerRegistrationForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -412,6 +442,7 @@ public class freelancerRegistrationForm extends javax.swing.JFrame {
     private javax.swing.JTextField txtHourlyRate;
     private javax.swing.JTextField txtLName;
     private javax.swing.JTextField txtLatestWork;
+    private javax.swing.JTextField txtLoc;
     private javax.swing.JTextField txtPhone;
     private javax.swing.JTextField txtPortfolio;
     private javax.swing.JTextField txtUName;
