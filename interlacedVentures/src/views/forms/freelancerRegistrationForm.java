@@ -287,7 +287,6 @@ public class freelancerRegistrationForm extends javax.swing.JFrame {
                     .addComponent(btnRegister)
                     .addComponent(jButton3))
                 .addContainerGap(83, Short.MAX_VALUE))
-
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
