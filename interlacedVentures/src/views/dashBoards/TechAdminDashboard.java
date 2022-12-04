@@ -29,7 +29,9 @@ public class TechAdminDashboard extends javax.swing.JFrame {
         btnHardWare = new javax.swing.JButton();
         btnCloud = new javax.swing.JButton();
         btnSoftware = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        bttnLogOut = new javax.swing.JButton();
+        bttnServReq = new javax.swing.JButton();
+        bttnInterReq = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -44,35 +46,49 @@ public class TechAdminDashboard extends javax.swing.JFrame {
 
         btnSoftware.setText("Software Department");
 
-        jButton1.setText("Log Out");
+        bttnLogOut.setText("Log Out");
+
+        bttnServReq.setText("Service Requests");
+
+        bttnInterReq.setText("Interview Requests");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnHardWare)
-                    .addComponent(btnSoftware)
-                    .addComponent(btnCloud))
-                .addContainerGap(270, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addContainerGap(332, Short.MAX_VALUE)
+                .addComponent(bttnLogOut)
                 .addGap(26, 26, 26))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(33, 33, 33)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnHardWare)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(bttnServReq, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(bttnInterReq, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnSoftware, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnCloud, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(78, Short.MAX_VALUE)
+                .addContainerGap(57, Short.MAX_VALUE)
                 .addComponent(btnHardWare)
                 .addGap(18, 18, 18)
-                .addComponent(btnCloud)
+                .addComponent(btnCloud, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(btnSoftware)
-                .addGap(76, 76, 76)
-                .addComponent(jButton1)
+                .addComponent(btnSoftware, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(bttnInterReq)
+                .addGap(17, 17, 17)
+                .addComponent(bttnServReq)
+                .addGap(16, 16, 16)
+                .addComponent(bttnLogOut)
                 .addGap(18, 18, 18))
         );
 
@@ -122,6 +138,8 @@ public class TechAdminDashboard extends javax.swing.JFrame {
     private javax.swing.JButton btnCloud;
     private javax.swing.JButton btnHardWare;
     private javax.swing.JButton btnSoftware;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton bttnInterReq;
+    private javax.swing.JButton bttnLogOut;
+    private javax.swing.JButton bttnServReq;
     // End of variables declaration//GEN-END:variables
 }

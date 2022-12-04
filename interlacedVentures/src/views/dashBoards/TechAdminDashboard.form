@@ -24,32 +24,45 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="btnHardWare" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnSoftware" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnCloud" alignment="0" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace pref="270" max="32767" attributes="0"/>
-          </Group>
-          <Group type="102" alignment="1" attributes="0">
-              <EmptySpace max="32767" attributes="0"/>
-              <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="332" max="32767" attributes="0"/>
+              <Component id="bttnLogOut" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Component id="btnHardWare" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="bttnServReq" min="-2" pref="158" max="-2" attributes="0"/>
+                          <Component id="bttnInterReq" min="-2" pref="158" max="-2" attributes="0"/>
+                          <Component id="btnSoftware" min="-2" pref="158" max="-2" attributes="0"/>
+                          <Component id="btnCloud" min="-2" pref="158" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
-              <EmptySpace pref="78" max="32767" attributes="0"/>
+              <EmptySpace pref="57" max="32767" attributes="0"/>
               <Component id="btnHardWare" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="btnCloud" min="-2" max="-2" attributes="0"/>
+              <Component id="btnCloud" min="-2" pref="23" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="btnSoftware" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="76" max="-2" attributes="0"/>
-              <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+              <Component id="btnSoftware" min="-2" pref="23" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="bttnInterReq" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
+              <Component id="bttnServReq" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
+              <Component id="bttnLogOut" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -74,9 +87,19 @@
         <Property name="text" type="java.lang.String" value="Software Department"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton1">
+    <Component class="javax.swing.JButton" name="bttnLogOut">
       <Properties>
         <Property name="text" type="java.lang.String" value="Log Out"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="bttnServReq">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Service Requests"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="bttnInterReq">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Interview Requests"/>
       </Properties>
     </Component>
   </SubComponents>
