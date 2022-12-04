@@ -15,7 +15,7 @@ public class business {
     private String address;
     private String website;
     private String ownerName;
-    
+    private String password;
 
     public business(String name, String email, String number, String address, String website, String ownerName) {
         this.name = name;

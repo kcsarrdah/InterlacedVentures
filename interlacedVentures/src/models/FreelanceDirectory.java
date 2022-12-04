@@ -28,7 +28,7 @@ public class FreelanceDirectory {
         return freeLancerDir;
     }
     
-    public void addDoctor(freelancer fl){
+    public void addFreelancer(freelancer fl){
         freeLancerDir.add(fl);
         Statement stmt;
         try {
@@ -79,12 +79,12 @@ public class FreelanceDirectory {
                         rs.getString("LatestWorkEx"),
                         rs.getString("Education"),
                         rs.getString("Skills"),
-                        rs.getString("Username")),
-                        rs.getString("FirstName")),
-                        rs.getString("LastName")),
-                        rs.getInt("Age")),
-                        rs.getString("Gender")),
-                        rs.getString("PhoneNumber")),
+                        rs.getString("Username"),
+                        rs.getString("FirstName"),
+                        rs.getString("LastName"),
+                        rs.getInt("Age"),
+                        rs.getString("Gender"),
+                        rs.getString("PhoneNumber"),
                         rs.getString("Email"));
                 
                 freeLancerDir.add(fl);
