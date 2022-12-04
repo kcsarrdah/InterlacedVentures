@@ -54,6 +54,11 @@ public class loginPage extends javax.swing.JFrame {
         });
 
         btnRegister.setText("Register");
+        btnRegister.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegisterActionPerformed(evt);
+            }
+        });
 
         tfUsername.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -136,10 +141,10 @@ public class loginPage extends javax.swing.JFrame {
             Statement stm2 = con.createStatement();
             Statement stm3 = con.createStatement();
             
-            String sqlBU = "SELECT * FROM BusinessUsers WHERE `First Name`= '"+userName+"' and Password = '"+password+"'";
+            String sqlBU = "SELECT * FROM BusinessUsers WHERE Name= '"+userName+"' and Password = '"+password+"'";
             ResultSet rsBU = stm1.executeQuery(sqlBU);
             
-            String sqlFREE = "SELECT * FROM Freelancers WHERE `First Name`= '"+userName+"' and Password = '"+password+"'";
+            String sqlFREE = "SELECT * FROM Freelancers WHERE UserName= '"+userName+"' and Password = '"+password+"'";
             ResultSet rsFREE = stm2.executeQuery(sqlFREE);
             
             String sqlEMP = "SELECT * FROM Employees WHERE Name= '"+userName+"' and Password = '"+password+"'";
@@ -178,6 +183,13 @@ public class loginPage extends javax.swing.JFrame {
     private void tfUsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfUsernameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tfUsernameActionPerformed
+
+    private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
+        // TODO add your handling code here:
+        this.hide();
+        RegistrationChoiceForm rcf = new RegistrationChoiceForm();
+        rcf.show();
+    }//GEN-LAST:event_btnRegisterActionPerformed
 
     /**
      * @param args the command line arguments
