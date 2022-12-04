@@ -4,6 +4,8 @@
  */
 package models;
 
+import java.util.Date;
+
 /**
  *
  * @author kcsar
@@ -13,22 +15,50 @@ public class freelancer extends person{
     private int HourlyRate;
     private String Portfolio;
     private int WorkEx;
-    private int salary;
     private String LatestWork;
     private String education;
     private String skills;
     private String Username;
+    private Date dateOfJoining;
+    private String password;
+    private String location;
 
-    public freelancer(int HourlyRate, String Portfolio, int WorkEx, int salary, String LatestWork, String education, String skills, String Username, String firstName, String lastName, int age, String gender, String phoneNumber, String Email) {
+
+    public freelancer(String location, String password, Date dateOfJoining, int HourlyRate, String Portfolio, int WorkEx, String LatestWork, String education, String skills, String Username, String firstName, String lastName, int age, String gender, String phoneNumber, String Email) {
         super(firstName, lastName, age, gender, phoneNumber, Email);
         this.HourlyRate = HourlyRate;
         this.Portfolio = Portfolio;
         this.WorkEx = WorkEx;
-        this.salary = salary;
         this.LatestWork = LatestWork;
         this.education = education;
         this.skills = skills;
         this.Username = Username;
+        this.dateOfJoining = dateOfJoining;
+        this.password = password;
+        this.location = location;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+    public Date getDateOfJoining() {
+        return dateOfJoining;
+    }
+
+    public void setDateOfJoining(Date dateOfJoining) {
+        this.dateOfJoining = dateOfJoining;
     }
 
     public int getHourlyRate() {
@@ -53,14 +83,6 @@ public class freelancer extends person{
 
     public void setWorkEx(int WorkEx) {
         this.WorkEx = WorkEx;
-    }
-
-    public int getSalary() {
-        return salary;
-    }
-
-    public void setSalary(int salary) {
-        this.salary = salary;
     }
 
     public String getLatestWork() {
