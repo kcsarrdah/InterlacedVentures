@@ -9,5 +9,10 @@ package models;
  * @author kcsar
  */
 public class business {
-    
+    private String name;
+    private String email;
+    private String number;
+    private String address;
+    private String website;
+    private String ownerName;
 }
