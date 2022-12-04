@@ -99,7 +99,6 @@ public class RegistrationChoiceForm extends javax.swing.JFrame {
     private void empRoleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_empRoleActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_empRoleActionPerformed
-
     private void freelRoleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_freelRoleActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_freelRoleActionPerformed
