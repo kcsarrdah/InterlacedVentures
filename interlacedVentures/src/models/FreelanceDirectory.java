@@ -33,7 +33,7 @@ public class FreelanceDirectory {
         Statement stmt;
         try {
             stmt = DatabaseConnectionClass.getInstance().getCon().createStatement();
-            String query1 = "INSERT INTO doctor" + " VALUES(?,?,?,?,?,?,?,?,?,?)";
+            String query1 = "INSERT INTO Freelancers" + " VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
             java.sql.Date sqlDate = new java.sql.Date(fl.getDateOfJoining().getTime());
             PreparedStatement pst = DatabaseConnectionClass.getInstance().getCon().prepareStatement(query1);
             pst.setString(1, fl.getFirstName());
@@ -59,6 +59,7 @@ public class FreelanceDirectory {
             }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null,"Cannot be Inserted");
+            System.out.println(ex);
         }
     }
     
@@ -66,7 +67,7 @@ public class FreelanceDirectory {
         Statement stmt;
         try{
             stmt = DatabaseConnectionClass.getInstance().getCon().createStatement();
-            String str = "Select * from doctor";
+            String str = "SELECT * from Freelancer";
             ResultSet rs = stmt.executeQuery(str);
             while(rs.next()) {
                 freelancer fl = new freelancer(

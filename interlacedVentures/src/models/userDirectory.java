@@ -32,7 +32,7 @@ public class userDirectory {
         Statement stmt;
         try {
             stmt = DatabaseConnectionClass.getInstance().getCon().createStatement();
-            String query1 = "INSERT INTO user_credentials" + " VALUES(?,?,?)";
+            String query1 = "INSERT INTO Users" + " VALUES(?,?,?)";
             PreparedStatement pst = DatabaseConnectionClass.getInstance().getCon().prepareStatement(query1);
             pst.setString(1, user.getUsername());
             pst.setString(2, user.getPassword());
@@ -44,6 +44,8 @@ public class userDirectory {
             }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null,"Cannot be Inserted");
+                        System.out.println(ex);
+
         }
     }
     
