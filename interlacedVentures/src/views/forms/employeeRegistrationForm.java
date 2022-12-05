@@ -8,6 +8,7 @@ import models.EmployeeDirectory;
 import models.employee;
 import models.userDirectory;
 import models.users;
+import views.RegistrationChoiceForm;
 import views.loginPage;
 
 /**
@@ -124,6 +125,11 @@ public class employeeRegistrationForm extends javax.swing.JFrame {
         jLabel29.setText("SKILLS");
 
         jButton1.setText("Back");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jLabel30.setText("DATE OF JOINING");
 
@@ -384,6 +390,13 @@ System.out.println(free.getPassword());
     private void comboRoleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboRoleActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_comboRoleActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        this.hide();
+        RegistrationChoiceForm rcf = new RegistrationChoiceForm();
+        rcf.show();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
