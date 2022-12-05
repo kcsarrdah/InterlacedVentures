@@ -130,7 +130,7 @@ public class TechAdminDashboard extends javax.swing.JFrame {
         this.hide();
         Software sd = new Software();
         String[][] rows = new String[4][EmployeeDirectory.getInstance().getEmployeeDir().size()];
-        String[] columnNames = {"Patient Name","Doctor Name", "Date Of Encounter", "Purpose"};
+        String[] columnNames = {"First Name","Last Name", "Role", "Salary"};
 
         for(int i=0;i<EmployeeDirectory.getInstance().getEmployeeDir().size();i++){
             if(EmployeeDirectory.getInstance().getEmployeeDir().get(i).getOrganisation().equals("Software")) {
