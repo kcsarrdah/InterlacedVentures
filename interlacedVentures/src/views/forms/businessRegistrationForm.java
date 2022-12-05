@@ -4,6 +4,12 @@
  */
 package views.forms;
 
+import models.BusinessUsersDirectory;
+import models.business;
+import models.userDirectory;
+import models.users;
+import views.loginPage;
+
 /**
  *
  * @author trishaguharoy
@@ -26,6 +32,7 @@ public class businessRegistrationForm extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jToggleButton1 = new javax.swing.JToggleButton();
         label_businessForm = new javax.swing.JLabel();
         Labelname = new javax.swing.JLabel();
         LabelEmail = new javax.swing.JLabel();
@@ -34,15 +41,25 @@ public class businessRegistrationForm extends javax.swing.JFrame {
         LabelPhNo = new javax.swing.JLabel();
         txtEmail = new javax.swing.JTextField();
         labelAddress = new javax.swing.JLabel();
-        txtAddress = new javax.swing.JTextField();
+        txtLoc = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        txtWebsite = new javax.swing.JTextField();
+        txtOwner = new javax.swing.JTextField();
+        pwdField = new javax.swing.JPasswordField();
+        btnReg = new javax.swing.JButton();
+
+        jToggleButton1.setText("jToggleButton1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        label_businessForm.setText("      Business Form");
+        label_businessForm.setFont(new java.awt.Font("Helvetica Neue", 1, 24)); // NOI18N
+        label_businessForm.setText("REGISTER YOUR BUSINESS");
 
-        Labelname.setText("    Name:");
+        Labelname.setText("NAME");
 
-        LabelEmail.setText("Email :");
+        LabelEmail.setText("EMAIL");
 
         txtPhNo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -56,7 +73,7 @@ public class businessRegistrationForm extends javax.swing.JFrame {
             }
         });
 
-        LabelPhNo.setText("Phone No. :");
+        LabelPhNo.setText("PHONE NUMBER");
 
         txtEmail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -64,7 +81,22 @@ public class businessRegistrationForm extends javax.swing.JFrame {
             }
         });
 
-        labelAddress.setText("Address :");
+        labelAddress.setText("LOCATION");
+
+        jLabel1.setText("WEBSITE");
+
+        jLabel2.setText("OWNER NAME");
+
+        jLabel3.setText("SET PASSWORD");
+
+        pwdField.setText("jPasswordField1");
+
+        btnReg.setText("REGISTER");
+        btnReg.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -73,44 +105,46 @@ public class businessRegistrationForm extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(194, 194, 194)
-                        .addComponent(label_businessForm, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(112, 112, 112)
+                        .addComponent(label_businessForm, javax.swing.GroupLayout.PREFERRED_SIZE, 341, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(134, 134, 134)
+                        .addGap(50, 50, 50)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(LabelPhNo)
-                                    .addComponent(LabelEmail))
+                                    .addComponent(LabelEmail)
+                                    .addComponent(jLabel3)
+                                    .addComponent(labelAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel2))
+                                .addGap(45, 45, 45)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(40, 40, 40)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(txtAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(txtPhNo, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                    .addComponent(txtPhNo)
+                                    .addComponent(txtEmail)
+                                    .addComponent(txtLoc)
+                                    .addComponent(txtWebsite)
+                                    .addComponent(txtOwner)
+                                    .addComponent(pwdField, javax.swing.GroupLayout.DEFAULT_SIZE, 223, Short.MAX_VALUE)))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(16, 16, 16)
                                 .addComponent(Labelname, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(9, 9, 9)
-                                .addComponent(labelAddress)))))
-                .addContainerGap(186, Short.MAX_VALUE))
+                                .addGap(74, 74, 74)
+                                .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(214, 214, 214)
+                        .addComponent(btnReg)))
+                .addContainerGap(116, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(16, 16, 16)
                 .addComponent(label_businessForm, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Labelname, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(25, 25, 25)
+                .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(LabelEmail)
                     .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -118,11 +152,25 @@ public class businessRegistrationForm extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(LabelPhNo)
                     .addComponent(txtPhNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(36, 36, 36)
+                .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelAddress)
-                    .addComponent(txtAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(277, Short.MAX_VALUE))
+                    .addComponent(txtLoc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(31, 31, 31)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(txtWebsite, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(34, 34, 34)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(txtOwner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(30, 30, 30)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(pwdField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(77, 77, 77)
+                .addComponent(btnReg)
+                .addContainerGap(58, Short.MAX_VALUE))
         );
 
         pack();
@@ -139,6 +187,24 @@ public class businessRegistrationForm extends javax.swing.JFrame {
     private void txtEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtEmailActionPerformed
+
+    private void btnRegActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegActionPerformed
+        // TODO add your handling code here:
+        business bus= new business(pwdField.getText(),
+                txtName.getText(),
+                txtEmail.getText(),
+                txtPhNo.getText(),
+                txtLoc.getText(),
+                txtWebsite.getText(),
+                txtOwner.getText());
+        BusinessUsersDirectory.getInstance().addBusinessUser(bus);
+        users login = new users(txtName.getText(),pwdField.getText(),"Business User");
+        userDirectory.getInstance().addUser(login);
+        
+        this.hide();
+        loginPage lp = new loginPage();
+        lp.show();
+    }//GEN-LAST:event_btnRegActionPerformed
 
     /**
      * @param args the command line arguments
@@ -179,11 +245,19 @@ public class businessRegistrationForm extends javax.swing.JFrame {
     private javax.swing.JLabel LabelEmail;
     private javax.swing.JLabel LabelPhNo;
     private javax.swing.JLabel Labelname;
+    private javax.swing.JButton btnReg;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JLabel labelAddress;
     private javax.swing.JLabel label_businessForm;
-    private javax.swing.JTextField txtAddress;
+    private javax.swing.JPasswordField pwdField;
     private javax.swing.JTextField txtEmail;
+    private javax.swing.JTextField txtLoc;
     private javax.swing.JTextField txtName;
+    private javax.swing.JTextField txtOwner;
     private javax.swing.JTextField txtPhNo;
+    private javax.swing.JTextField txtWebsite;
     // End of variables declaration//GEN-END:variables
 }

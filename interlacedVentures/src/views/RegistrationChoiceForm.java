@@ -4,6 +4,7 @@
  */
 package views;
 
+import views.forms.businessRegistrationForm;
 import views.forms.employeeRegistrationForm;
 import views.forms.freelancerRegistrationForm;
 
@@ -38,6 +39,11 @@ public class RegistrationChoiceForm extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jButton1.setText("BUSINESS USER REGISTRATION");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         btnEmpReg.setText("EMPLOYEE REGISTRATION");
         btnEmpReg.addActionListener(new java.awt.event.ActionListener() {
@@ -128,6 +134,13 @@ public class RegistrationChoiceForm extends javax.swing.JFrame {
         loginPage lp = new loginPage();
         lp.show();
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        this.hide();
+        businessRegistrationForm brf = new businessRegistrationForm();
+        brf.show();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments

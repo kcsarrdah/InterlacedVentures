@@ -76,20 +76,17 @@ public class employeeRegistrationForm extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        txtAge.setText("jTextField4");
-
-        txtPhone.setText("jTextField6");
-
-        txtEmail.setText("txtEmail");
         txtEmail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtEmailActionPerformed(evt);
             }
         });
 
-        txtLatestWork.setText("jTextField9");
-
-        txtWorkExp.setText("jTextField10");
+        txtLatestWork.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtLatestWorkActionPerformed(evt);
+            }
+        });
 
         txtSkills.setText("jTextField11");
 
@@ -101,11 +98,11 @@ public class employeeRegistrationForm extends javax.swing.JFrame {
 
         txtSalary.setText("jTextField15");
 
-        comboGender.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        comboGender.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SELECT ", "FEMALE", "MALE", "TRANSGENDER", "PREFER NOT TO SAY", " " }));
 
         jLabel25.setText("LOCATION");
 
-        comboEducation.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        comboEducation.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "HIGH SCHOOL", "BACHLOR'S", "MASTER'S", "PhD", "DIPLOMA" }));
 
         jLabel26.setText("WORK EXPERIENCE");
 
@@ -139,7 +136,6 @@ public class employeeRegistrationForm extends javax.swing.JFrame {
 
         jLabel33.setText("SET PASSWORD");
 
-        txtFName.setText("jTextField1");
         txtFName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtFNameActionPerformed(evt);
@@ -162,9 +158,6 @@ public class employeeRegistrationForm extends javax.swing.JFrame {
 
         jLabel24.setText("EMAIL");
 
-        txtLName.setText("jTextField2");
-
-        txtUName.setText("jTextField3");
         txtUName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtUNameActionPerformed(evt);
@@ -180,7 +173,7 @@ public class employeeRegistrationForm extends javax.swing.JFrame {
             }
         });
 
-        comboOrg.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Software", "Hardware", "Cloud" }));
+        comboOrg.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Software", "Hardware", "Cloud", " " }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -192,7 +185,7 @@ public class employeeRegistrationForm extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(135, 135, 135)
                         .addComponent(txtWorkExp, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(75, 450, Short.MAX_VALUE))
+                        .addGap(75, 456, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
@@ -236,7 +229,7 @@ public class employeeRegistrationForm extends javax.swing.JFrame {
                                             .addComponent(jLabel22))
                                         .addGap(65, 65, 65)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(txtUName, javax.swing.GroupLayout.DEFAULT_SIZE, 157, Short.MAX_VALUE)
+                                            .addComponent(txtUName)
                                             .addComponent(comboGender, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                                 .addGap(91, 91, 91)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -397,6 +390,10 @@ System.out.println(free.getPassword());
         RegistrationChoiceForm rcf = new RegistrationChoiceForm();
         rcf.show();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void txtLatestWorkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLatestWorkActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtLatestWorkActionPerformed
 
     /**
      * @param args the command line arguments

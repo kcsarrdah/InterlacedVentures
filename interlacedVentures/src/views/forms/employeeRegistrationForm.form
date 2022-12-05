@@ -36,7 +36,7 @@
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace min="-2" pref="135" max="-2" attributes="0"/>
                       <Component id="txtWorkExp" min="-2" pref="157" max="-2" attributes="0"/>
-                      <EmptySpace min="75" pref="450" max="32767" attributes="0"/>
+                      <EmptySpace min="75" pref="456" max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
                       <Group type="103" groupAlignment="1" attributes="0">
@@ -92,7 +92,7 @@
                                       </Group>
                                       <EmptySpace min="-2" pref="65" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="txtUName" pref="157" max="32767" attributes="0"/>
+                                          <Component id="txtUName" max="32767" attributes="0"/>
                                           <Component id="comboGender" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
@@ -230,32 +230,20 @@
   </Layout>
   <SubComponents>
     <Component class="javax.swing.JTextField" name="txtAge">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="jTextField4"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtPhone">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="jTextField6"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtEmail">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="txtEmail"/>
-      </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtEmailActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="txtLatestWork">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="jTextField9"/>
-      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtLatestWorkActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="txtWorkExp">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="jTextField10"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtSkills">
       <Properties>
@@ -275,11 +263,13 @@
     <Component class="javax.swing.JComboBox" name="comboGender">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="4">
-            <StringItem index="0" value="Item 1"/>
-            <StringItem index="1" value="Item 2"/>
-            <StringItem index="2" value="Item 3"/>
-            <StringItem index="3" value="Item 4"/>
+          <StringArray count="6">
+            <StringItem index="0" value="SELECT "/>
+            <StringItem index="1" value="FEMALE"/>
+            <StringItem index="2" value="MALE"/>
+            <StringItem index="3" value="TRANSGENDER"/>
+            <StringItem index="4" value="PREFER NOT TO SAY"/>
+            <StringItem index="5" value=" "/>
           </StringArray>
         </Property>
       </Properties>
@@ -295,11 +285,12 @@
     <Component class="javax.swing.JComboBox" name="comboEducation">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="4">
-            <StringItem index="0" value="Item 1"/>
-            <StringItem index="1" value="Item 2"/>
-            <StringItem index="2" value="Item 3"/>
-            <StringItem index="3" value="Item 4"/>
+          <StringArray count="5">
+            <StringItem index="0" value="HIGH SCHOOL"/>
+            <StringItem index="1" value="BACHLOR&apos;S"/>
+            <StringItem index="2" value="MASTER&apos;S"/>
+            <StringItem index="3" value="PhD"/>
+            <StringItem index="4" value="DIPLOMA"/>
           </StringArray>
         </Property>
       </Properties>
@@ -371,9 +362,6 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtFName">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="jTextField1"/>
-      </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtFNameActionPerformed"/>
       </Events>
@@ -419,14 +407,8 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtLName">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="jTextField2"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtUName">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="jTextField3"/>
-      </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtUNameActionPerformed"/>
       </Events>
@@ -457,10 +439,11 @@
     <Component class="javax.swing.JComboBox" name="comboOrg">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="3">
+          <StringArray count="4">
             <StringItem index="0" value="Software"/>
             <StringItem index="1" value="Hardware"/>
             <StringItem index="2" value="Cloud"/>
+            <StringItem index="3" value=" "/>
           </StringArray>
         </Property>
       </Properties>
