@@ -4,10 +4,90 @@
  */
 package models;
 
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author shreyasisodiya
  */
 public class BusinessUsersDirectory {
+    private static ArrayList<business> businessUsersDir;
+    private static BusinessUsersDirectory mInstance;
     
+        private BusinessUsersDirectory() {
+        this.businessUsersDir = new ArrayList();
+        }
+        
+        public ArrayList<business> getBusinessUsersDir() {
+            return businessUsersDir;
+    }
+    
+    public void addBusinessUser(business bs){
+        businessUsersDir.add(bs);
+        Statement stmt;
+        try {
+            stmt = DatabaseConnectionClass.getInstance().getCon().createStatement();
+            String query1 = "INSERT INTO Employees" + " VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+//            java.sql.Date sqlDate = new java.sql.Date(bs.getDateOfJoining().getTime());
+            PreparedStatement pst = DatabaseConnectionClass.getInstance().getCon().prepareStatement(query1);
+            pst.setString(1, bs.getName());
+            pst.setString(7, bs.getEmail());
+            pst.setString(5, bs.getNumber());
+            pst.setString(4, bs.getAddress());                           pst.setString(3, bs.getWebsite());
+            pst.setString(2, bs.getOwnerName());  
+            pst.setString(6, bs.getPassword());
+
+            int rs = pst.executeUpdate();
+            if(rs>0)
+            {
+                JOptionPane.showMessageDialog(null,"Inserted Successfully!");
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null,"Cannot be Inserted");
+        }
+    }
+    
+    public void getBusinessUserData() {
+        Statement stmt;
+        try{
+            stmt = DatabaseConnectionClass.getInstance().getCon().createStatement();
+            String str = "Select * from Employees";
+            ResultSet rs = stmt.executeQuery(str);
+            while(rs.next()) {
+               business bs = new business(
+                       rs.getString("Password"),
+                        rs.getString("Name"),
+                        rs.getString("Email"),
+                        rs.getString("Number"),
+                        rs.getString("Location"),
+                        rs.getString("Website"),
+                        rs.getString("OwnerName"));
+                
+                businessUsersDir.add(bs);
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null,"Cannot be loaded");
+        }
+    }
+    
+//    public void docData(int stateID) {
+//        for(int j=0;j<doctorDir.size();j++) {
+//            System.out.println("sdj");
+//            DoctorMainFrame doc = new DoctorMainFrame();
+//            if(LoginDirectory.getInstance().getLoginDir().get(j).getStateID() == DoctorDirectory.getInstance().getDoctorDir().get(j).getStateID()) {
+//                doc.getDoc(DoctorDirectory.getInstance().getDoctorDir().get(j));
+//            }
+//        }
+//    }
+    
+    public static BusinessUsersDirectory getInstance() {
+        if(mInstance == null)
+            mInstance = new BusinessUsersDirectory();
+        return mInstance;
+    }
 }
