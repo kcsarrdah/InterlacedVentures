@@ -48,10 +48,11 @@ public class EmployeeDirectory {
             pst.setString(10, emp.getLatestWork());
             pst.setInt(11, emp.getWorkEx());
             pst.setString(12, emp.getRole());
-            pst.setString(13, emp.getLocation());
-            pst.setString(14, emp.getEducation());
-            pst.setString(15, emp.getSkills());
-            pst.setDate(16, sqlDate);
+            pst.setString(13, emp.getOrganisation());
+            pst.setString(14, emp.getLocation());
+            pst.setString(15, emp.getEducation());
+            pst.setString(16, emp.getSkills());
+            pst.setDate(17, sqlDate);
             int rs = pst.executeUpdate();
             if(rs>0)
             {
@@ -62,7 +63,7 @@ public class EmployeeDirectory {
         }
     }
     
-    public void getFreelancerData() {
+    public void getEmployeeData() {
         Statement stmt;
         try{
             stmt = DatabaseConnectionClass.getInstance().getCon().createStatement();
@@ -70,6 +71,7 @@ public class EmployeeDirectory {
             ResultSet rs = stmt.executeQuery(str);
             while(rs.next()) {
                employee emp = new employee(
+                       rs.getString("Organisation"),
                         rs.getString("Location"),
                         rs.getDate("DateOfJoining"),
                         rs.getString("Password"),
