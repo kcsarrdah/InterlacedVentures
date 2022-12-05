@@ -22,12 +22,18 @@ public class InterlacedVentures {
     //public static HashMap<String, String> users = new HashMap<String, String>();
     public static void main(String[] args) {
         
-        Admins[0][0] = "SystemAdmin";
-        Admins[0][1] = "Password";
-        Admins[1][0] = "TechnicalAdmin";
-        Admins[1][1] = "Password";
-        Admins[2][0] = "OperationsAdmin";
-        Admins[2][1] = "Password";        
+        Admins[0][0] = "SA";
+        Admins[0][1] = "password";
+        Admins[1][0] = "TA";
+        Admins[1][1] = "password";
+        Admins[2][0] = "OA";
+        Admins[2][1] = "password";
+        Admins[3][0] = "";
+        Admins[3][1] = "password";
+        Admins[4][0] = "";
+        Admins[4][1] = "password";
+        
+        
         
         
         // TODO code application logic here

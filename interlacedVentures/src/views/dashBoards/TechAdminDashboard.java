@@ -115,6 +115,20 @@ public class TechAdminDashboard extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.hide();
         Hardware hd = new Hardware();
+        String[][] rows = new String[EmployeeDirectory.getInstance().getEmployeeDir().size()][4];
+        String[] columnNames = {"First Name", "Last Name", "Role", "Salary"};
+        int j = 0;
+        for(int i=0; i < EmployeeDirectory.getInstance().getEmployeeDir().size(); i++){
+            if(EmployeeDirectory.getInstance().getEmployeeDir().get(i).getOrganisation().equals("Hardware")) {
+                rows[j][0] = EmployeeDirectory.getInstance().getEmployeeDir().get(i).getFirstName();
+                rows[j][1] = EmployeeDirectory.getInstance().getEmployeeDir().get(i).getLastName();
+                rows[j][2] = EmployeeDirectory.getInstance().getEmployeeDir().get(i).getRole();
+                rows[j][3] = Integer.toString(EmployeeDirectory.getInstance().getEmployeeDir().get(i).getSalary()); 
+                j++;
+            }
+        }
+        DefaultTableModel model = new DefaultTableModel (rows, columnNames);
+        hd.empTable.setModel(model);
         hd.show();
     }//GEN-LAST:event_btnHardWareActionPerformed
 
@@ -122,12 +136,25 @@ public class TechAdminDashboard extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.hide();
         Cloud cl = new Cloud();
+        String[][] rows = new String[EmployeeDirectory.getInstance().getEmployeeDir().size()][4];
+        String[] columnNames = {"First Name", "Last Name", "Role", "Salary"};
+        int j = 0;
+        for(int i=0; i < EmployeeDirectory.getInstance().getEmployeeDir().size(); i++){
+            if(EmployeeDirectory.getInstance().getEmployeeDir().get(i).getOrganisation().equals("Cloud")) {
+                rows[j][0] = EmployeeDirectory.getInstance().getEmployeeDir().get(i).getFirstName();
+                rows[j][1] = EmployeeDirectory.getInstance().getEmployeeDir().get(i).getLastName();
+                rows[j][2] = EmployeeDirectory.getInstance().getEmployeeDir().get(i).getRole();
+                rows[j][3] = Integer.toString(EmployeeDirectory.getInstance().getEmployeeDir().get(i).getSalary()); 
+                j++;
+            }
+        }
+        DefaultTableModel model = new DefaultTableModel (rows, columnNames);
+        cl.empTable.setModel(model);
         cl.show();
     }//GEN-LAST:event_btnCloudActionPerformed
 
     private void btnSoftwareActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSoftwareActionPerformed
         // TODO add your handling code here:
-        System.out.println(EmployeeDirectory.getInstance().getEmployeeDir().size());
         this.hide();
         Software sd = new Software();
         String[][] rows = new String[EmployeeDirectory.getInstance().getEmployeeDir().size()][4];
@@ -144,7 +171,6 @@ public class TechAdminDashboard extends javax.swing.JFrame {
         }
         DefaultTableModel model = new DefaultTableModel (rows, columnNames);
         sd.empTable.setModel(model);
-        
         sd.show();
     }//GEN-LAST:event_btnSoftwareActionPerformed
 
