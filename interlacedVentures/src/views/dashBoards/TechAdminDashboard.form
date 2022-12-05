@@ -98,6 +98,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Service Requests"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bttnServReqActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="bttnInterReq">
       <Properties>

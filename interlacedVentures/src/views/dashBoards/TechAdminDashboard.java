@@ -71,6 +71,11 @@ public class TechAdminDashboard extends javax.swing.JFrame {
         });
 
         bttnServReq.setText("Service Requests");
+        bttnServReq.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bttnServReqActionPerformed(evt);
+            }
+        });
 
         bttnInterReq.setText("Interview Requests");
 
@@ -183,6 +188,11 @@ public class TechAdminDashboard extends javax.swing.JFrame {
         loginPage lp = new loginPage();
         lp.show();
     }//GEN-LAST:event_bttnLogOutActionPerformed
+
+    private void bttnServReqActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttnServReqActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_bttnServReqActionPerformed
 
     /**
      * @param args the command line arguments

@@ -56,6 +56,11 @@ public class businessUserDashBoard extends javax.swing.JFrame {
         });
 
         servicesbusiness.setText("Services");
+        servicesbusiness.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                servicesbusinessActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -124,6 +129,10 @@ public class businessUserDashBoard extends javax.swing.JFrame {
         // TODO add your handling code here:
         
     }//GEN-LAST:event_ordersbusinessActionPerformed
+
+    private void servicesbusinessActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_servicesbusinessActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_servicesbusinessActionPerformed
 
     /**
      * @param args the command line arguments
