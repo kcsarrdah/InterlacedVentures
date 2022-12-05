@@ -131,13 +131,14 @@ public class TechAdminDashboard extends javax.swing.JFrame {
         Software sd = new Software();
         String[][] rows = new String[4][EmployeeDirectory.getInstance().getEmployeeDir().size()];
         String[] columnNames = {"First Name","Last Name", "Role", "Salary"};
-
-        for(int i=0;i<EmployeeDirectory.getInstance().getEmployeeDir().size();i++){
+        int j = 0;
+        for(int i=0; i < EmployeeDirectory.getInstance().getEmployeeDir().size(); i++){
             if(EmployeeDirectory.getInstance().getEmployeeDir().get(i).getOrganisation().equals("Software")) {
-                rows[i][0] = EmployeeDirectory.getInstance().getEmployeeDir().get(i).getFirstName();
-                rows[i][1] = EmployeeDirectory.getInstance().getEmployeeDir().get(i).getLastName();
-                rows[i][2] = EmployeeDirectory.getInstance().getEmployeeDir().get(i).getRole();
-                rows[i][3] = Integer.toString(EmployeeDirectory.getInstance().getEmployeeDir().get(i).getSalary());               
+                rows[j][0] = EmployeeDirectory.getInstance().getEmployeeDir().get(i).getFirstName();
+                rows[j][1] = EmployeeDirectory.getInstance().getEmployeeDir().get(i).getLastName();
+                rows[j][2] = EmployeeDirectory.getInstance().getEmployeeDir().get(i).getRole();
+                rows[j][3] = Integer.toString(EmployeeDirectory.getInstance().getEmployeeDir().get(i).getSalary()); 
+                j++;
             }
         }
         DefaultTableModel model = new DefaultTableModel (rows, columnNames);
