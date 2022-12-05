@@ -4,6 +4,8 @@
  */
 package models;
 
+import java.util.Date;
+
 /**
  *
  * @author kcsar
@@ -18,8 +20,11 @@ public class employee extends person{
     private String skills;
     private String Username;
     private String password;
+    private Date DateOfJoining;
+    private String location;
+    private String Organisation;
 
-    public employee(String Password, String Role, int WorkEx, int salary, String LatestWork, String education, String skills, String Username, String firstName, String lastName, int age, String gender, String phoneNumber, String Email) {
+    public employee(String Organisation, String location, Date DateOfJoining, String Password, String Role, int WorkEx, int salary, String LatestWork, String education, String skills, String Username, String firstName, String lastName, int age, String gender, String phoneNumber, String Email) {
         super(firstName, lastName, age, gender, phoneNumber, Email);
         this.Role = Role;
         this.WorkEx = WorkEx;
@@ -29,6 +34,33 @@ public class employee extends person{
         this.skills = skills;
         this.Username = Username;
         this.password = password;
+        this.DateOfJoining = DateOfJoining;
+        this.location = location;
+        this.Organisation = Organisation;
+    }
+
+    public String getOrganisation() {
+        return Organisation;
+    }
+
+    public void setOrganisation(String Organisation) {
+        this.Organisation = Organisation;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public Date getDateOfJoining() {
+        return DateOfJoining;
+    }
+
+    public void setDateOfJoining(Date DateOfJoining) {
+        this.DateOfJoining = DateOfJoining;
     }
 
     public String getPassword() {

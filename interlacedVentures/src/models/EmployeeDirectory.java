@@ -30,10 +30,11 @@ public class EmployeeDirectory {
     
     public void addEmployee(employee emp){
         employeeDir.add(emp);
+        System.out.println(emp.getPassword());
         Statement stmt;
         try {
             stmt = DatabaseConnectionClass.getInstance().getCon().createStatement();
-            String query1 = "INSERT INTO doctor" + " VALUES(?,?,?,?,?,?,?,?,?,?)";
+            String query1 = "INSERT INTO Employees" + " VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
             java.sql.Date sqlDate = new java.sql.Date(emp.getDateOfJoining().getTime());
             PreparedStatement pst = DatabaseConnectionClass.getInstance().getCon().prepareStatement(query1);
             pst.setString(1, emp.getFirstName());
@@ -42,16 +43,17 @@ public class EmployeeDirectory {
             pst.setString(4, emp.getPassword());
             pst.setInt(5, emp.getAge());
             pst.setString(6, emp.getGender());
-            pst.setInt(7, emp.getHourlyRate());
+            pst.setInt(7, emp.getSalary());
             pst.setString(8, emp.getPhoneNumber());
             pst.setString(9, emp.getEmail());
             pst.setString(10, emp.getLatestWork());
             pst.setInt(11, emp.getWorkEx());
-            pst.setString(12, emp.getPortfolio());
-            pst.setString(13, emp.getLocation());
-            pst.setString(14, emp.getEducation());
-            pst.setString(15, emp.getSkills());
-            pst.setDate(16, sqlDate);
+            pst.setString(12, emp.getRole());
+            pst.setString(13, emp.getOrganisation());
+            pst.setString(14, emp.getLocation());
+            pst.setString(15, emp.getEducation());
+            pst.setString(16, emp.getSkills());
+            pst.setDate(17, sqlDate);
             int rs = pst.executeUpdate();
             if(rs>0)
             {
@@ -62,32 +64,33 @@ public class EmployeeDirectory {
         }
     }
     
-    public void getFreelancerData() {
+    public void getEmployeeData() {
         Statement stmt;
         try{
             stmt = DatabaseConnectionClass.getInstance().getCon().createStatement();
-            String str = "Select * from doctor";
+            String str = "Select * from Employees";
             ResultSet rs = stmt.executeQuery(str);
             while(rs.next()) {
-                freelancer fl = new freelancer(
+               employee emp = new employee(
+                       rs.getString("Organisation"),
                         rs.getString("Location"),
+                        rs.getDate("DateOfJoining"),
                         rs.getString("Password"),
-                        rs.getDate("Date of Joining"),
-                        rs.getInt("HourlyRate"),
-                        rs.getString("Portfolio"),
+                        rs.getString("Role"),
                         rs.getInt("WorkEx"),
+                        rs.getInt("Salary"),
                         rs.getString("LatestWorkEx"),
                         rs.getString("Education"),
                         rs.getString("Skills"),
-                        rs.getString("Username")),
-                        rs.getString("FirstName")),
-                        rs.getString("LastName")),
-                        rs.getInt("Age")),
-                        rs.getString("Gender")),
-                        rs.getString("PhoneNumber")),
+                        rs.getString("Username"),
+                        rs.getString("FirstName"),
+                        rs.getString("LastName"),
+                        rs.getInt("Age"),
+                        rs.getString("Gender"),
+                        rs.getString("PhoneNumber"),
                         rs.getString("Email"));
                 
-                freeLancerDir.add(fl);
+                employeeDir.add(emp);
             }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null,"Cannot be loaded");
@@ -104,10 +107,9 @@ public class EmployeeDirectory {
 //        }
 //    }
     
-    public static FreelanceDirectory getInstance() {
+    public static EmployeeDirectory getInstance() {
         if(mInstance == null)
-            mInstance = new FreelanceDirectory();
-
+            mInstance = new EmployeeDirectory();
         return mInstance;
     }
 }

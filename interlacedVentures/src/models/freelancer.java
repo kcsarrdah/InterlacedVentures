@@ -24,7 +24,9 @@ public class freelancer extends person{
     private String location;
 
 
-    public freelancer(String location, String password, Date dateOfJoining, int HourlyRate, String Portfolio, int WorkEx, String LatestWork, String education, String skills, String Username, String firstName, String lastName, int age, String gender, String phoneNumber, String Email) {
+    public freelancer(String location, String password, Date dateOfJoining, int HourlyRate, String Portfolio, int WorkEx, 
+            String LatestWork, String education, String skills, String Username, 
+            String firstName, String lastName, int age, String gender, String phoneNumber, String Email) {
         super(firstName, lastName, age, gender, phoneNumber, Email);
         this.HourlyRate = HourlyRate;
         this.Portfolio = Portfolio;
