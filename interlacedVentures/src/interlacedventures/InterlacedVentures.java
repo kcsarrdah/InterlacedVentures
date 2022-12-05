@@ -5,6 +5,7 @@
 package interlacedventures;
 
 //import java.util.HashMap;
+import models.BusinessUsersDirectory;
 import models.EmployeeDirectory;
 import models.userDirectory;
 import views.loginPage;
@@ -39,7 +40,7 @@ public class InterlacedVentures {
         // TODO code application logic here
         EmployeeDirectory.getInstance().getEmployeeData();
         userDirectory.getInstance().getUsers();
-//        AppointmentSlotsDirectory.getInstance().getslotsData();
+        BusinessUsersDirectory.getInstance().getBusinessUserData();
 //        HospitalAdminDirectory.getInstance().getHospAdminData();
 //        HospitalDirectory.getInstance().getHospitalData();
 //        AmbulanceDirectory.getInstance().getAmbulance();

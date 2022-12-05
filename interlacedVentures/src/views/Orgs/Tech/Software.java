@@ -13,7 +13,9 @@ import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import models.BusinessUsersDirectory;
 import models.EmployeeDirectory;
+import views.forms.employeeRegistrationForm;
 import views.dashBoards.TechAdminDashboard;
 
 /**
@@ -129,8 +131,38 @@ public class Software extends javax.swing.JFrame {
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void btnViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewActionPerformed
-        // TODO add your handling code here:
-                                                
+     // TODO add your handling code here:
+     this.hide();
+     
+     DefaultTableModel tableModel = (DefaultTableModel) empTable.getModel();
+     String UserName = tableModel.getValueAt(empTable.getSelectedRow(), 2).toString();
+        if(empTable.getSelectedRowCount() == 1){
+            employeeRegistrationForm erf = new employeeRegistrationForm();
+            erf.show();
+            for(int i = 0; i < EmployeeDirectory.getInstance().getEmployeeDir().size(); i++){
+                if(EmployeeDirectory.getInstance().getEmployeeDir().get(i).getUsername().equals(UserName)){
+                    erf.txtFName.setText(EmployeeDirectory.getInstance().getEmployeeDir().get(i).getFirstName());
+                    erf.txtLName.setText(EmployeeDirectory.getInstance().getEmployeeDir().get(i).getLastName());
+                    erf.txtEmail.setText(EmployeeDirectory.getInstance().getEmployeeDir().get(i).getEmail());
+                    erf.pwdField.setText(EmployeeDirectory.getInstance().getEmployeeDir().get(i).getPassword());
+                    erf.txtAge.setText(Integer.toString(EmployeeDirectory.getInstance().getEmployeeDir().get(i).getAge()));
+                    erf.txtUName.setText(EmployeeDirectory.getInstance().getEmployeeDir().get(i).getUsername());
+                    erf.comboGender.setSelectedItem(EmployeeDirectory.getInstance().getEmployeeDir().get(i).getGender());
+                    erf.txtPhone.setText(EmployeeDirectory.getInstance().getEmployeeDir().get(i).getPhoneNumber());
+                    erf.txtLoc.setText(EmployeeDirectory.getInstance().getEmployeeDir().get(i).getLocation());
+                    Format formatter = new SimpleDateFormat("MM/dd/yyyy");
+                    String s = formatter.format(EmployeeDirectory.getInstance().getEmployeeDir().get(i).getDateOfJoining());
+                    erf.comboOrg.setSelectedItem(EmployeeDirectory.getInstance().getEmployeeDir().get(i).getOrganisation());
+                    erf.txtSalary.setText(Integer.toString(EmployeeDirectory.getInstance().getEmployeeDir().get(i).getSalary()));
+                    erf.comboRole.setSelectedItem(EmployeeDirectory.getInstance().getEmployeeDir().get(i).getRole()); 
+                    erf.txtSkills.setText(EmployeeDirectory.getInstance().getEmployeeDir().get(i).getSkills());
+                    erf.txtWorkExp.setText(Integer.toString(EmployeeDirectory.getInstance().getEmployeeDir().get(i).getWorkEx()));
+                    erf.txtLatestWork.setText(EmployeeDirectory.getInstance().getEmployeeDir().get(i).getLatestWork());
+                    erf.txtLatestWork.setText(EmployeeDirectory.getInstance().getEmployeeDir().get(i).getLatestWork());
+                    }
+                }
+            erf.show();
+            }
     // TODO add your handling code here:   
     }//GEN-LAST:event_btnViewActionPerformed
 
