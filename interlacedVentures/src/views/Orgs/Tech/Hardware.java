@@ -4,6 +4,8 @@
  */
 package views.Orgs.Tech;
 
+import views.dashBoards.TechAdminDashboard;
+
 /**
  *
  * @author kcsar
@@ -46,13 +48,12 @@ public class Hardware extends javax.swing.JFrame {
 
         prodTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {"Aurdino Board", "10 capacitors", "2,000"},
+                {null, null, ""},
+                {null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Services and Goods", "Requirements", "Cost (in USD)"
             }
         ));
         jScrollPane2.setViewportView(prodTable);
@@ -97,6 +98,8 @@ public class Hardware extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         this.hide();
+        TechAdminDashboard tad = new TechAdminDashboard();
+        tad.show();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

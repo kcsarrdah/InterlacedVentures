@@ -32,7 +32,7 @@ public class BillsDirectory {
         Statement stmt;
         try {
             stmt = DatabaseConnectionClass.getInstance().getCon().createStatement();
-            String query1 = "INSERT INTO BusinessUsers" + " VALUES(?,?,?,?,?,?,?)";
+            String query1 = "INSERT INTO Bills" + " VALUES(?,?,?,?,?)";
             java.sql.Date sqlDate = new java.sql.Date(bill.getDate().getTime());
             PreparedStatement pst = DatabaseConnectionClass.getInstance().getCon().prepareStatement(query1);
             pst.setString(1, bill.getSevices());
@@ -55,7 +55,7 @@ public class BillsDirectory {
         Statement stmt;
         try{
             stmt = DatabaseConnectionClass.getInstance().getCon().createStatement();
-            String str = "Select * from BusinessUsers";
+            String str = "Select * from Bills";
             ResultSet rs = stmt.executeQuery(str);
             while(rs.next()) {
                bills bill = new bills(
