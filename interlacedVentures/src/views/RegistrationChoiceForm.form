@@ -46,7 +46,7 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="96" max="-2" attributes="0"/>
-                  <Component id="jButton2" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnEmpReg" min="-2" max="-2" attributes="0"/>
                   <EmptySpace pref="107" max="32767" attributes="0"/>
                   <Component id="btnFreeReg" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
@@ -63,7 +63,7 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="117" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jButton2" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnEmpReg" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="btnFreeReg" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="129" max="32767" attributes="0"/>
@@ -79,10 +79,13 @@
             <Property name="text" type="java.lang.String" value="BUSINESS USER REGISTRATION"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton2">
+        <Component class="javax.swing.JButton" name="btnEmpReg">
           <Properties>
             <Property name="text" type="java.lang.String" value="EMPLOYEE REGISTRATION"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEmpRegActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnFreeReg">
           <Properties>

@@ -4,6 +4,7 @@
  */
 package views;
 
+import views.forms.employeeRegistrationForm;
 import views.forms.freelancerRegistrationForm;
 
 /**
@@ -30,14 +31,19 @@ public class RegistrationChoiceForm extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnEmpReg = new javax.swing.JButton();
         btnFreeReg = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jButton1.setText("BUSINESS USER REGISTRATION");
 
-        jButton2.setText("EMPLOYEE REGISTRATION");
+        btnEmpReg.setText("EMPLOYEE REGISTRATION");
+        btnEmpReg.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEmpRegActionPerformed(evt);
+            }
+        });
 
         btnFreeReg.setText("REGISTER FREELACER");
         btnFreeReg.addActionListener(new java.awt.event.ActionListener() {
@@ -52,7 +58,7 @@ public class RegistrationChoiceForm extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(96, 96, 96)
-                .addComponent(jButton2)
+                .addComponent(btnEmpReg)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 107, Short.MAX_VALUE)
                 .addComponent(btnFreeReg)
                 .addGap(59, 59, 59))
@@ -66,7 +72,7 @@ public class RegistrationChoiceForm extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(117, 117, 117)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
+                    .addComponent(btnEmpReg)
                     .addComponent(btnFreeReg))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 129, Short.MAX_VALUE)
                 .addComponent(jButton1)
@@ -97,6 +103,13 @@ public class RegistrationChoiceForm extends javax.swing.JFrame {
         freelancerRegistrationForm frf = new freelancerRegistrationForm();
         frf.show();
     }//GEN-LAST:event_btnFreeRegActionPerformed
+
+    private void btnEmpRegActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEmpRegActionPerformed
+        // TODO add your handling code here:
+        this.hide();
+        employeeRegistrationForm erf = new employeeRegistrationForm();
+        erf.show();
+    }//GEN-LAST:event_btnEmpRegActionPerformed
 
     /**
      * @param args the command line arguments
@@ -134,9 +147,9 @@ public class RegistrationChoiceForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnEmpReg;
     private javax.swing.JButton btnFreeReg;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

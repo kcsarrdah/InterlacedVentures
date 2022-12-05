@@ -53,7 +53,7 @@ public class userDirectory {
         Statement stmt;
         try{
             stmt = DatabaseConnectionClass.getInstance().getCon().createStatement();
-            String str = "Select * from user_credentials";
+            String str = "Select * from Users";
             ResultSet rs = stmt.executeQuery(str);
             while(rs.next()) {
                 users users = new users(rs.getString("UserName"), rs.getString("Password"),rs.getString("Type"));
