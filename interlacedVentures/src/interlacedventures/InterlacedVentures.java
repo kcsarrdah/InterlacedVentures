@@ -5,6 +5,7 @@
 package interlacedventures;
 
 //import java.util.HashMap;
+import models.BillsDirectory;
 import models.BusinessUsersDirectory;
 import models.EmployeeDirectory;
 import models.OrdersDirectory;
@@ -43,10 +44,10 @@ public class InterlacedVentures {
         userDirectory.getInstance().getUsers();
         BusinessUsersDirectory.getInstance().getBusinessUserData();
         OrdersDirectory.getInstance().getOrderData();
+        BillsDirectory.getInstance().getBillData();
 //        HospitalAdminDirectory.getInstance().getHospAdminData();
 //        HospitalDirectory.getInstance().getHospitalData();
 //        AmbulanceDirectory.getInstance().getAmbulance();
-        System.out.println("test print");
         
         
 //        users.put("albert", "1");

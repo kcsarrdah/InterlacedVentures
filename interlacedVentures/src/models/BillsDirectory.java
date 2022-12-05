@@ -51,7 +51,7 @@ public class BillsDirectory {
         }
     }
     
-    public void getBusinessUserData() {
+    public void getBillData() {
         Statement stmt;
         try{
             stmt = DatabaseConnectionClass.getInstance().getCon().createStatement();
