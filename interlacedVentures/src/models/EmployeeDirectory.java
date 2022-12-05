@@ -30,7 +30,6 @@ public class EmployeeDirectory {
     
     public void addEmployee(employee emp){
         employeeDir.add(emp);
-        System.out.println(emp.getPassword());
         Statement stmt;
         try {
             stmt = DatabaseConnectionClass.getInstance().getCon().createStatement();
