@@ -142,23 +142,41 @@ public class Software extends javax.swing.JFrame {
             for(int i = 0; i < EmployeeDirectory.getInstance().getEmployeeDir().size(); i++){
                 if(EmployeeDirectory.getInstance().getEmployeeDir().get(i).getUsername().equals(UserName)){
                     erf.txtFName.setText(EmployeeDirectory.getInstance().getEmployeeDir().get(i).getFirstName());
+                    erf.txtFName.setEditable(false);
                     erf.txtLName.setText(EmployeeDirectory.getInstance().getEmployeeDir().get(i).getLastName());
+                    erf.txtLName.setEditable(false);
                     erf.txtEmail.setText(EmployeeDirectory.getInstance().getEmployeeDir().get(i).getEmail());
+                    erf.txtEmail.setEditable(false);
                     erf.pwdField.setText(EmployeeDirectory.getInstance().getEmployeeDir().get(i).getPassword());
+                    erf.pwdField.setEditable(false);
                     erf.txtAge.setText(Integer.toString(EmployeeDirectory.getInstance().getEmployeeDir().get(i).getAge()));
+                    erf.txtAge.setEditable(false);
                     erf.txtUName.setText(EmployeeDirectory.getInstance().getEmployeeDir().get(i).getUsername());
+                    erf.txtUName.setEditable(false);
                     erf.comboGender.setSelectedItem(EmployeeDirectory.getInstance().getEmployeeDir().get(i).getGender());
+                    erf.comboGender.setEditable(false);
                     erf.txtPhone.setText(EmployeeDirectory.getInstance().getEmployeeDir().get(i).getPhoneNumber());
+                    erf.txtPhone.setEditable(false);
                     erf.txtLoc.setText(EmployeeDirectory.getInstance().getEmployeeDir().get(i).getLocation());
+                    erf.txtLoc.setEditable(false);
                     Format formatter = new SimpleDateFormat("MM/dd/yyyy");
                     String s = formatter.format(EmployeeDirectory.getInstance().getEmployeeDir().get(i).getDateOfJoining());
                     erf.comboOrg.setSelectedItem(EmployeeDirectory.getInstance().getEmployeeDir().get(i).getOrganisation());
+                    erf.comboOrg.setEditable(false);
                     erf.txtSalary.setText(Integer.toString(EmployeeDirectory.getInstance().getEmployeeDir().get(i).getSalary()));
-                    erf.comboRole.setSelectedItem(EmployeeDirectory.getInstance().getEmployeeDir().get(i).getRole()); 
+                    erf.txtSalary.setEditable(false);
+                    erf.comboRole.setSelectedItem(EmployeeDirectory.getInstance().getEmployeeDir().get(i).getRole());
+                    erf.comboRole.setEditable(false);
                     erf.txtSkills.setText(EmployeeDirectory.getInstance().getEmployeeDir().get(i).getSkills());
+                    erf.txtSkills.setEditable(false);
                     erf.txtWorkExp.setText(Integer.toString(EmployeeDirectory.getInstance().getEmployeeDir().get(i).getWorkEx()));
+                    erf.txtWorkExp.setEditable(false);
                     erf.txtLatestWork.setText(EmployeeDirectory.getInstance().getEmployeeDir().get(i).getLatestWork());
-                    erf.txtLatestWork.setText(EmployeeDirectory.getInstance().getEmployeeDir().get(i).getLatestWork());
+                    erf.txtLatestWork.setEditable(false);
+                    //erf.txtLatestWork.setText(EmployeeDirectory.getInstance().getEmployeeDir().get(i).getLatestWork());
+                    
+                    
+                    erf.btnReg.setVisible(false);
                     }
                 }
             erf.show();

@@ -430,7 +430,7 @@ System.out.println(free.getPassword());
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnReg;
+    public javax.swing.JButton btnReg;
     public javax.swing.JComboBox<String> comboEducation;
     public javax.swing.JComboBox<String> comboGender;
     public javax.swing.JComboBox<String> comboOrg;
