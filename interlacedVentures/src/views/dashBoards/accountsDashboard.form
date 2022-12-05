@@ -23,13 +23,111 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <EmptySpace min="0" pref="400" max="32767" attributes="0"/>
+          <Component id="jPanAcctMgr" alignment="1" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <EmptySpace min="0" pref="300" max="32767" attributes="0"/>
+          <Component id="jPanAcctMgr" alignment="1" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
+  <SubComponents>
+    <Container class="javax.swing.JPanel" name="jPanAcctMgr">
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace min="-2" pref="298" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Component id="btnReq" min="-2" pref="143" max="-2" attributes="0"/>
+                      <Component id="btnChckPri" min="-2" pref="143" max="-2" attributes="0"/>
+                      <Component id="btnViewOrder" min="-2" pref="143" max="-2" attributes="0"/>
+                      <Component id="btnViewFund" min="-2" pref="143" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="32767" attributes="0"/>
+              </Group>
+              <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace pref="261" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Component id="btnRegIss" min="-2" pref="125" max="-2" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <Component id="labAccntsMan" min="-2" pref="221" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="127" max="-2" attributes="0"/>
+                          <Component id="btnback" min="-2" pref="125" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="btnback" min="-2" pref="43" max="-2" attributes="0"/>
+                      <Component id="labAccntsMan" min="-2" pref="30" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+                  <Component id="btnViewFund" min="-2" pref="52" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+                  <Component id="btnViewOrder" min="-2" pref="52" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
+                  <Component id="btnChckPri" min="-2" pref="52" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+                  <Component id="btnReq" min="-2" pref="52" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Component id="btnRegIss" min="-2" pref="43" max="-2" attributes="0"/>
+                  <EmptySpace pref="15" max="32767" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+      <SubComponents>
+        <Component class="javax.swing.JLabel" name="labAccntsMan">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="          ACCOUNTS MANAGER"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="btnReq">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="REQUESTS"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="btnViewOrder">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="VIEW ORDER"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnViewOrderActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="btnChckPri">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="CHECK PRICES"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="btnRegIss">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Register Issue"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnRegIssActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="btnViewFund">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="VIEW FUNDS"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="btnback">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Back"/>
+          </Properties>
+        </Component>
+      </SubComponents>
+    </Container>
+  </SubComponents>
 </Form>
