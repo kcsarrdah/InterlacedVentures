@@ -17,13 +17,22 @@ public class business {
     private String ownerName;
     private String password;
 
-    public business(String name, String email, String number, String address, String website, String ownerName) {
+    public business(String Password, String name, String email, String number, String address, String website, String ownerName) {
         this.name = name;
         this.email = email;
         this.number = number;
         this.address = address;
         this.website = website;
         this.ownerName = ownerName;
+        this.password = password;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getName() {
