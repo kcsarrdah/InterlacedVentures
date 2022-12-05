@@ -100,7 +100,12 @@ public class employeeRegistrationForm extends javax.swing.JFrame {
 
         txtSalary.setText("jTextField15");
 
-        comboGender.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        comboGender.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Male ", "Female", "Other" }));
+        comboGender.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboGenderActionPerformed(evt);
+            }
+        });
 
         jLabel25.setText("LOCATION");
 
@@ -385,6 +390,10 @@ System.out.println(free.getPassword());
         // TODO add your handling code here:
     }//GEN-LAST:event_comboRoleActionPerformed
 
+    private void comboGenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboGenderActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comboGenderActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -422,11 +431,11 @@ System.out.println(free.getPassword());
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnReg;
-    private javax.swing.JComboBox<String> comboEducation;
-    private javax.swing.JComboBox<String> comboGender;
-    private javax.swing.JComboBox<String> comboOrg;
-    private javax.swing.JComboBox<String> comboRole;
-    private com.toedter.calendar.JDateChooser dateField;
+    public javax.swing.JComboBox<String> comboEducation;
+    public javax.swing.JComboBox<String> comboGender;
+    public javax.swing.JComboBox<String> comboOrg;
+    public javax.swing.JComboBox<String> comboRole;
+    public com.toedter.calendar.JDateChooser dateField;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel17;
@@ -447,17 +456,17 @@ System.out.println(free.getPassword());
     private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel33;
-    private javax.swing.JPasswordField pwdField;
-    private javax.swing.JTextField txtAge;
-    private javax.swing.JTextField txtEmail;
-    private javax.swing.JTextField txtFName;
-    private javax.swing.JTextField txtLName;
-    private javax.swing.JTextField txtLatestWork;
-    private javax.swing.JTextField txtLoc;
-    private javax.swing.JTextField txtPhone;
-    private javax.swing.JTextField txtSalary;
-    private javax.swing.JTextField txtSkills;
-    private javax.swing.JTextField txtUName;
-    private javax.swing.JTextField txtWorkExp;
+    public javax.swing.JPasswordField pwdField;
+    public javax.swing.JTextField txtAge;
+    public javax.swing.JTextField txtEmail;
+    public javax.swing.JTextField txtFName;
+    public javax.swing.JTextField txtLName;
+    public javax.swing.JTextField txtLatestWork;
+    public javax.swing.JTextField txtLoc;
+    public javax.swing.JTextField txtPhone;
+    public javax.swing.JTextField txtSalary;
+    public javax.swing.JTextField txtSkills;
+    public javax.swing.JTextField txtUName;
+    public javax.swing.JTextField txtWorkExp;
     // End of variables declaration//GEN-END:variables
 }

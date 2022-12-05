@@ -157,15 +157,16 @@ public class TechAdminDashboard extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.hide();
         Software sd = new Software();
-        String[][] rows = new String[EmployeeDirectory.getInstance().getEmployeeDir().size()][4];
-        String[] columnNames = {"First Name", "Last Name", "Role", "Salary"};
+        String[][] rows = new String[EmployeeDirectory.getInstance().getEmployeeDir().size()][5];
+        String[] columnNames = {"First Name", "Last Name", "UserName", "Role", "Salary"};
         int j = 0;
         for(int i=0; i < EmployeeDirectory.getInstance().getEmployeeDir().size(); i++){
             if(EmployeeDirectory.getInstance().getEmployeeDir().get(i).getOrganisation().equals("Software")) {
                 rows[j][0] = EmployeeDirectory.getInstance().getEmployeeDir().get(i).getFirstName();
                 rows[j][1] = EmployeeDirectory.getInstance().getEmployeeDir().get(i).getLastName();
-                rows[j][2] = EmployeeDirectory.getInstance().getEmployeeDir().get(i).getRole();
-                rows[j][3] = Integer.toString(EmployeeDirectory.getInstance().getEmployeeDir().get(i).getSalary()); 
+                rows[j][2] = EmployeeDirectory.getInstance().getEmployeeDir().get(i).getUsername();           
+                rows[j][3] = EmployeeDirectory.getInstance().getEmployeeDir().get(i).getRole();
+                rows[j][4] = Integer.toString(EmployeeDirectory.getInstance().getEmployeeDir().get(i).getSalary()); 
                 j++;
             }
         }
