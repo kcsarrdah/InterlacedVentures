@@ -4,6 +4,8 @@
  */
 package views.dashBoards;
 
+import javax.swing.table.DefaultTableModel;
+import models.EmployeeDirectory;
 import views.Orgs.Tech.Cloud;
 import views.Orgs.Tech.Hardware;
 import views.Orgs.Tech.Software;
@@ -127,6 +129,20 @@ public class TechAdminDashboard extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.hide();
         Software sd = new Software();
+        String[][] rows = new String[4][EmployeeDirectory.getInstance().getEmployeeDir().size()];
+        String[] columnNames = {"Patient Name","Doctor Name", "Date Of Encounter", "Purpose"};
+
+        for(int i=0;i<EmployeeDirectory.getInstance().getEmployeeDir().size();i++){
+            if(EmployeeDirectory.getInstance().getEmployeeDir().get(i).getOrganisation().equals("Software")) {
+                rows[i][0] = EmployeeDirectory.getInstance().getEmployeeDir().get(i).getFirstName();
+                rows[i][1] = EmployeeDirectory.getInstance().getEmployeeDir().get(i).getLastName();
+                rows[i][2] = EmployeeDirectory.getInstance().getEmployeeDir().get(i).getRole();
+                rows[i][3] = Integer.toString(EmployeeDirectory.getInstance().getEmployeeDir().get(i).getSalary());               
+            }
+        }
+        DefaultTableModel model = new DefaultTableModel (rows, columnNames);
+        sd.empTable.setModel(model);
+        
         sd.show();
     }//GEN-LAST:event_btnSoftwareActionPerformed
 
@@ -174,3 +190,9 @@ public class TechAdminDashboard extends javax.swing.JFrame {
     private javax.swing.JButton bttnServReq;
     // End of variables declaration//GEN-END:variables
 }
+
+
+
+        
+        
+        

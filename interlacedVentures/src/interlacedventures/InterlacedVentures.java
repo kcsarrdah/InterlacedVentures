@@ -5,6 +5,8 @@
 package interlacedventures;
 
 //import java.util.HashMap;
+import models.EmployeeDirectory;
+import models.userDirectory;
 import views.loginPage;
 
 /**
@@ -19,6 +21,12 @@ public class InterlacedVentures {
     //public static HashMap<String, String> users = new HashMap<String, String>();
     public static void main(String[] args) {
         // TODO code application logic here
+        EmployeeDirectory.getInstance().getEmployeeData();
+        userDirectory.getInstance().getUsers();
+//        AppointmentSlotsDirectory.getInstance().getslotsData();
+//        HospitalAdminDirectory.getInstance().getHospAdminData();
+//        HospitalDirectory.getInstance().getHospitalData();
+//        AmbulanceDirectory.getInstance().getAmbulance();
         System.out.println("test print");
         
         
