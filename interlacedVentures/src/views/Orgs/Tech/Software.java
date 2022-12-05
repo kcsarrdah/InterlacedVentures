@@ -16,6 +16,7 @@ import javax.swing.table.DefaultTableModel;
 import models.BusinessUsersDirectory;
 import models.EmployeeDirectory;
 import views.forms.employeeRegistrationForm;
+import views.dashBoards.TechAdminDashboard;
 
 /**
  *
@@ -125,6 +126,8 @@ public class Software extends javax.swing.JFrame {
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         // TODO add your handling code here:
         this.hide();
+        TechAdminDashboard tad = new TechAdminDashboard();
+        tad.show();
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void btnViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewActionPerformed

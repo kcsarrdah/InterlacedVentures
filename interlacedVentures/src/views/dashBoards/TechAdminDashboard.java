@@ -9,6 +9,7 @@ import models.EmployeeDirectory;
 import views.Orgs.Tech.Cloud;
 import views.Orgs.Tech.Hardware;
 import views.Orgs.Tech.Software;
+import views.loginPage;
 
 /**
  *
@@ -63,6 +64,11 @@ public class TechAdminDashboard extends javax.swing.JFrame {
         });
 
         bttnLogOut.setText("Log Out");
+        bttnLogOut.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bttnLogOutActionPerformed(evt);
+            }
+        });
 
         bttnServReq.setText("Service Requests");
 
@@ -174,6 +180,13 @@ public class TechAdminDashboard extends javax.swing.JFrame {
         sd.empTable.setModel(model);
         sd.show();
     }//GEN-LAST:event_btnSoftwareActionPerformed
+
+    private void bttnLogOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttnLogOutActionPerformed
+        // TODO add your handling code here:
+        this.hide();
+        loginPage lp = new loginPage();
+        lp.show();
+    }//GEN-LAST:event_bttnLogOutActionPerformed
 
     /**
      * @param args the command line arguments

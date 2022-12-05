@@ -32,15 +32,16 @@ public class BusinessUsersDirectory {
         Statement stmt;
         try {
             stmt = DatabaseConnectionClass.getInstance().getCon().createStatement();
-            String query1 = "INSERT INTO Employees" + " VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+            String query1 = "INSERT INTO BusinessUsers" + " VALUES(?,?,?,?,?,?,?)";
 //            java.sql.Date sqlDate = new java.sql.Date(bs.getDateOfJoining().getTime());
             PreparedStatement pst = DatabaseConnectionClass.getInstance().getCon().prepareStatement(query1);
             pst.setString(1, bs.getName());
-            pst.setString(7, bs.getEmail());
-            pst.setString(5, bs.getNumber());
-            pst.setString(4, bs.getAddress());                           pst.setString(3, bs.getWebsite());
-            pst.setString(2, bs.getOwnerName());  
-            pst.setString(6, bs.getPassword());
+            pst.setString(2, bs.getEmail());
+            pst.setString(3, bs.getNumber());
+            pst.setString(4, bs.getAddress());
+            pst.setString(5, bs.getWebsite());
+            pst.setString(6, bs.getOwnerName());  
+            pst.setString(7, bs.getPassword());
 
             int rs = pst.executeUpdate();
             if(rs>0)
@@ -56,7 +57,7 @@ public class BusinessUsersDirectory {
         Statement stmt;
         try{
             stmt = DatabaseConnectionClass.getInstance().getCon().createStatement();
-            String str = "Select * from Employees";
+            String str = "Select * from BusinessUsers";
             ResultSet rs = stmt.executeQuery(str);
             while(rs.next()) {
                business bs = new business(
