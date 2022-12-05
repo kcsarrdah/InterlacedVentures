@@ -19,15 +19,22 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="113" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="tableSystAdm" min="-2" pref="801" max="-2" attributes="0"/>
                   <Group type="102" attributes="0">
                       <Component id="viewprofSystAdm" min="-2" pref="128" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                       <Component id="registerSystAdm" min="-2" pref="128" max="-2" attributes="0"/>
+                      <EmptySpace min="519" pref="597" max="32767" attributes="0"/>
                   </Group>
-                  <Component id="signout" alignment="1" min="-2" pref="105" max="-2" attributes="0"/>
+                  <Group type="102" alignment="1" attributes="0">
+                      <Component id="signout" min="-2" pref="105" max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="774" max="32767" attributes="0"/>
+                  </Group>
               </Group>
-              <EmptySpace min="0" pref="78" max="32767" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="80" max="-2" attributes="0"/>
+              <Component id="tableSystAdm" min="-2" pref="801" max="-2" attributes="0"/>
+              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -39,9 +46,9 @@
                   <Component id="viewprofSystAdm" alignment="3" min="-2" pref="70" max="-2" attributes="0"/>
                   <Component id="registerSystAdm" alignment="3" min="-2" pref="70" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
               <Component id="tableSystAdm" min="-2" pref="282" max="-2" attributes="0"/>
-              <EmptySpace pref="27" max="32767" attributes="0"/>
+              <EmptySpace pref="31" max="32767" attributes="0"/>
               <Component id="signout" min="-2" pref="37" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
           </Group>

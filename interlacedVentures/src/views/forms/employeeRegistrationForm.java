@@ -174,7 +174,7 @@ public class employeeRegistrationForm extends javax.swing.JFrame {
             }
         });
 
-        comboOrg.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        comboOrg.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Software", "Hardware", "Cloud" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -359,7 +359,7 @@ public class employeeRegistrationForm extends javax.swing.JFrame {
             comboGender.getSelectedItem().toString(),
             txtPhone.getText(),
             txtEmail.getText());
-
+System.out.println(free.getPassword());
         EmployeeDirectory.getInstance().addEmployee(free);
         users login = new users(txtUName.getText(),pwdField.getText(),"Employee");
         userDirectory.getInstance().addUser(login);

@@ -54,6 +54,8 @@ public class EmployeeDirectory {
             pst.setString(15, emp.getEducation());
             pst.setString(16, emp.getSkills());
             pst.setDate(17, sqlDate);
+                                  
+
             int rs = pst.executeUpdate();
             if(rs>0)
             {

@@ -6,12 +6,15 @@ package views;
 
 //import com.mysql.cj.xdevapi.Statement;
 //import com.sun.jdi.connect.spi.Connection;
+import static interlacedventures.InterlacedVentures.Admins;
 import javax.swing.JOptionPane;
 import views.dashBoards.businessUserDashBoard;
 import java.sql.DriverManager;  
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.sql.Connection;
+import views.dashBoards.SystemAdmin;
+import views.dashBoards.TechAdminDashboard;
 import views.dashBoards.employeeDashboard;
 import views.dashBoards.freelancerDashboard;
 
@@ -118,13 +121,27 @@ public class loginPage extends javax.swing.JFrame {
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         // TODO add your handling code here:
+        String userName = tfUsername.getText();
+        String password = pfPassword.getText();
+        System.out.println(userName + password);
+        
+        if(userName.equals(Admins[0][0]) && password.equals(Admins[0][1])){
+            System.out.println("here");
+                SystemAdmin sa = new SystemAdmin();
+                sa.show();
+            }
+        else if(userName.equals(Admins[1][0]) && password.equals(Admins[1][1])){
+            System.out.println("hereee");
+            TechAdminDashboard td = new TechAdminDashboard();
+            td.show();
+            }
 
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
             
             Connection con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/InterlacedVentures?useSSL=false","root","Mh15fj8813@");
-            String userName = tfUsername.getText();
-            String password = pfPassword.getText();
+            
+            
             
             Statement stm1 = con.createStatement();
             Statement stm2 = con.createStatement();
@@ -136,7 +153,7 @@ public class loginPage extends javax.swing.JFrame {
             String sqlFREE = "SELECT * FROM Freelancers WHERE UserName= '"+userName+"' and Password = '"+password+"'";
             ResultSet rsFREE = stm2.executeQuery(sqlFREE);
             
-            String sqlEMP = "SELECT * FROM Employees WHERE UserName= '"+userName+"' and Password = '"+password+"'";
+            String sqlEMP = "SELECT * FROM Users WHERE UserName= '"+userName+"' and Password = '"+password+"'";
             ResultSet rsEMP = stm3.executeQuery(sqlEMP);
             
             if(rsBU.next()){
