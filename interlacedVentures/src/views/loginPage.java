@@ -118,17 +118,6 @@ public class loginPage extends javax.swing.JFrame {
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         // TODO add your handling code here:
-//        String userName = tfUsername.getText();
-//        String password = pfPassword.getText();
-//        
-//        
-//        if(users.containsKey(userName) && users.get(userName).equals(password)){
-//            JOptionPane.showMessageDialog(this, "Login Successful");
-//    
-//        }
-//        else{
-//            JOptionPane.showMessageDialog(this, "Please Enter Correct Details");
-//        }
 
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");

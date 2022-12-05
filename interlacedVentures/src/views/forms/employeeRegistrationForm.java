@@ -8,6 +8,7 @@ import models.EmployeeDirectory;
 import models.employee;
 import models.userDirectory;
 import models.users;
+import views.loginPage;
 
 /**
  *
@@ -362,6 +363,10 @@ public class employeeRegistrationForm extends javax.swing.JFrame {
         EmployeeDirectory.getInstance().addEmployee(free);
         users login = new users(txtUName.getText(),pwdField.getText(),"Employee");
         userDirectory.getInstance().addUser(login);
+        
+        this.hide();
+        loginPage lp = new loginPage();
+        lp.show();
     }//GEN-LAST:event_btnRegActionPerformed
 
     private void txtFNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFNameActionPerformed
