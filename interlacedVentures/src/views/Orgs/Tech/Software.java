@@ -48,13 +48,13 @@ public class Software extends javax.swing.JFrame {
 
         empTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {},
+                {},
+                {},
+                {}
             },
             new String [] {
-                "First Name", "Last Name", "Role", "Salary"
+
             }
         ));
         jScrollPane1.setViewportView(empTable);

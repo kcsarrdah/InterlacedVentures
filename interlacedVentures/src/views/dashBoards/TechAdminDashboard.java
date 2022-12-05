@@ -127,10 +127,11 @@ public class TechAdminDashboard extends javax.swing.JFrame {
 
     private void btnSoftwareActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSoftwareActionPerformed
         // TODO add your handling code here:
+        System.out.println(EmployeeDirectory.getInstance().getEmployeeDir().size());
         this.hide();
         Software sd = new Software();
-        String[][] rows = new String[4][EmployeeDirectory.getInstance().getEmployeeDir().size()];
-        String[] columnNames = {"First Name","Last Name", "Role", "Salary"};
+        String[][] rows = new String[EmployeeDirectory.getInstance().getEmployeeDir().size()][4];
+        String[] columnNames = {"First Name", "Last Name", "Role", "Salary"};
         int j = 0;
         for(int i=0; i < EmployeeDirectory.getInstance().getEmployeeDir().size(); i++){
             if(EmployeeDirectory.getInstance().getEmployeeDir().get(i).getOrganisation().equals("Software")) {
