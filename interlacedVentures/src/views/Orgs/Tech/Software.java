@@ -12,6 +12,7 @@ import java.text.SimpleDateFormat;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import models.BusinessUsersDirectory;
 import models.EmployeeDirectory;
@@ -64,13 +65,20 @@ public class Software extends javax.swing.JFrame {
 
         ServiceTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {"Web Design and UI/UX", "Front-end Developer", "10,000"},
+                {"Video Game", "Game Developer", "20,000"},
+                {"Cyber- security", "Security Engineer", "5,000"},
+                {"Software Developement", "Software Engineer", "20,000"},
+                {"Mobile application", "Mobile Developer", "20,000"},
+                {"Version Control", "DevOps Engineer", "30,000"},
+                {"Data Analysis", "Data Analyst", "8,000"},
+                {"Data Management", "Database Administrator", "9,000"},
+                {"Business Intelligence", "Data Scientist", "12,000"},
+                {"Machine Learning", "Machine Learning Engineer", "13,000"},
+                {null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Services", "Responsible Employees", "Cost (in USD)"
             }
         ));
         jScrollPane2.setViewportView(ServiceTable);
@@ -177,11 +185,12 @@ public class Software extends javax.swing.JFrame {
                     
                     
                     erf.btnReg.setVisible(false);
-                    }
+                  }
                 }
             erf.show();
             }
-    // TODO add your handling code here:   
+
+        // TODO add your handling code here:   
     }//GEN-LAST:event_btnViewActionPerformed
 
     /**

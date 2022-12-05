@@ -4,6 +4,8 @@
  */
 package views.Orgs.Tech;
 
+import views.dashBoards.TechAdminDashboard;
+
 /**
  *
  * @author kcsar
@@ -97,6 +99,8 @@ public class Cloud extends javax.swing.JFrame {
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         // TODO add your handling code here:
         this.hide();
+        TechAdminDashboard tad = new TechAdminDashboard();
+        tad.show();
     }//GEN-LAST:event_btnBackActionPerformed
 
     /**

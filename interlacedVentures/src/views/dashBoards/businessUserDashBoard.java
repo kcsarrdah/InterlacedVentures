@@ -42,6 +42,11 @@ public class businessUserDashBoard extends javax.swing.JFrame {
         billings.setText("Billings");
 
         ordersbusiness.setText("Orders");
+        ordersbusiness.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ordersbusinessActionPerformed(evt);
+            }
+        });
 
         logoutbusi.setText("Log Out");
         logoutbusi.addActionListener(new java.awt.event.ActionListener() {
@@ -114,6 +119,11 @@ public class businessUserDashBoard extends javax.swing.JFrame {
         loginPage lp = new loginPage();
         lp.show();
     }//GEN-LAST:event_logoutbusiActionPerformed
+
+    private void ordersbusinessActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ordersbusinessActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_ordersbusinessActionPerformed
 
     /**
      * @param args the command line arguments
