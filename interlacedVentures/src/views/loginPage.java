@@ -140,14 +140,12 @@ public class loginPage extends javax.swing.JFrame {
             Class.forName("com.mysql.cj.jdbc.Driver");
             
             Connection con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/InterlacedVentures?useSSL=false","root","Mh15fj8813@");
-            
-            
-            
+         
             Statement stm1 = con.createStatement();
             Statement stm2 = con.createStatement();
             Statement stm3 = con.createStatement();
             
-            String sqlBU = "SELECT * FROM BusinessUsers WHERE Name= '"+userName+"' and Password = '"+password+"'";
+            String sqlBU = "SELECT * FROM Users WHERE UserName= '"+userName+"' and Password = '"+password+"'";
             ResultSet rsBU = stm1.executeQuery(sqlBU);
             
             String sqlFREE = "SELECT * FROM Freelancers WHERE UserName= '"+userName+"' and Password = '"+password+"'";
@@ -158,7 +156,7 @@ public class loginPage extends javax.swing.JFrame {
             
             if(rsBU.next()){
                 dispose();
-                
+                //this.hide();
                 businessUserDashBoard budb = new businessUserDashBoard();
                 budb.show();
             }
@@ -170,7 +168,7 @@ public class loginPage extends javax.swing.JFrame {
             }
             else if(rsEMP.next()){
                 dispose();
-                
+                //this.hide();
                 employeeDashboard edb = new employeeDashboard();
                 edb.show();
             }
