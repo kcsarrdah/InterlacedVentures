@@ -121,6 +121,7 @@ public class ServiceDashboard extends javax.swing.JFrame {
 
     private void jcOrgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcOrgActionPerformed
         // TODO add your handling code here:
+        jcService.removeAllItems();
         if(jcOrg.getSelectedItem().toString().equals("Software")){
                 jcService.addItem("Web Design");
                 jcService.addItem("Video Game");
