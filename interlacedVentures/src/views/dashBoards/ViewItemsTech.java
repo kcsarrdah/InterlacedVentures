@@ -4,6 +4,14 @@
  */
 package views.dashBoards;
 
+import java.text.Format;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import javax.swing.table.DefaultTableModel;
+import models.BillsDirectory;
+import models.OrdersDirectory;
+import models.bills;
+
 /**
  *
  * @author shreyasisodiya
@@ -31,6 +39,9 @@ public class ViewItemsTech extends javax.swing.JFrame {
         labelRequest = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblTechReq = new javax.swing.JTable();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        btnView = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -56,6 +67,22 @@ public class ViewItemsTech extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tblTechReq);
 
+        jButton1.setText("Approve");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jButton2.setText("Disapprove");
+
+        btnView.setText("View Details");
+        btnView.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnViewActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -65,9 +92,15 @@ public class ViewItemsTech extends javax.swing.JFrame {
                 .addComponent(labelRequest)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(111, Short.MAX_VALUE)
+                .addContainerGap(77, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(btnView)
+                        .addGap(31, 31, 31)
+                        .addComponent(jButton2)
+                        .addGap(57, 57, 57)
+                        .addComponent(jButton1)
+                        .addGap(36, 36, 36)
                         .addComponent(buttonTableBack)
                         .addGap(74, 74, 74))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
@@ -82,7 +115,11 @@ public class ViewItemsTech extends javax.swing.JFrame {
                 .addGap(26, 26, 26)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 295, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
-                .addComponent(buttonTableBack)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(buttonTableBack)
+                    .addComponent(jButton1)
+                    .addComponent(jButton2)
+                    .addComponent(btnView))
                 .addGap(35, 35, 35))
         );
 
@@ -106,6 +143,40 @@ public class ViewItemsTech extends javax.swing.JFrame {
         TechAdminDashboard tad = new TechAdminDashboard();
         tad.show();
     }//GEN-LAST:event_buttonTableBackActionPerformed
+
+    private void btnViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_btnViewActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        
+        float amt = 0;
+        int rctno = 0;
+        DefaultTableModel tableModel = (DefaultTableModel) tblTechReq.getModel();
+        String service = tableModel.getValueAt(tblTechReq.getSelectedRow(), 2).toString();
+        
+        String name = tblTechReq.getValueAt(tblTechReq.getSelectedRow(), 1).toString();
+        
+        for(int i = 0; i < OrdersDirectory.getInstance().getOrdersDir().size(); i++){
+            if(OrdersDirectory.getInstance().getOrdersDir().get(i).getOrderedBy().equals(name)){
+                amt = OrdersDirectory.getInstance().getOrdersDir().get(i).getAmount();
+                rctno = i;
+                break;
+            }
+        }
+        
+        if(tblTechReq.getSelectedRowCount() == 1){  
+            bills bill = new bills (
+                    new Date(), 
+                    amt, 
+                    service, 
+                    name, 
+                    rctno);
+            BillsDirectory.getInstance().addBill(bill);
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -143,7 +214,10 @@ public class ViewItemsTech extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JButton btnView;
     private javax.swing.JButton buttonTableBack;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     public javax.swing.JLabel labelRequest;

@@ -224,9 +224,7 @@ public class TechAdminDashboard extends javax.swing.JFrame {
                 rows[j][1] = OrdersDirectory.getInstance().getOrdersDir().get(i).getRequestTo();
                 rows[j][2] = OrdersDirectory.getInstance().getOrdersDir().get(i).getService();           
                 j++;
-        
         }
-        
         DefaultTableModel dtm = new DefaultTableModel (rows, columnNames);
         vit.tblTechReq.setModel(dtm);
         vit.show();
