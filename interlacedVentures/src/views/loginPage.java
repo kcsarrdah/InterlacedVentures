@@ -146,7 +146,7 @@ public class loginPage extends javax.swing.JFrame {
             Statement stm2 = con.createStatement();
             Statement stm3 = con.createStatement();
             
-            String sqlBU = "SELECT * FROM Users WHERE Name= '"+userName+"' and Password = '"+password+"'";
+            String sqlBU = "SELECT * FROM Users WHERE UserName= '"+userName+"' and Password = '"+password+"'";
             ResultSet rsBU = stm1.executeQuery(sqlBU);
             
             String sqlFREE = "SELECT * FROM Freelancers WHERE UserName= '"+userName+"' and Password = '"+password+"'";

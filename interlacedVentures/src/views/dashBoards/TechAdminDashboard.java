@@ -89,7 +89,7 @@ public class TechAdminDashboard extends javax.swing.JFrame {
             }
         });
         getContentPane().add(bttnLogOut);
-        bttnLogOut.setBounds(480, 300, 72, 23);
+        bttnLogOut.setBounds(480, 300, 76, 23);
 
         bttnServReq.setBackground(new java.awt.Color(255, 255, 204));
         bttnServReq.setFont(new java.awt.Font("InaiMathi", 1, 14)); // NOI18N
@@ -105,6 +105,11 @@ public class TechAdminDashboard extends javax.swing.JFrame {
         bttnInterReq.setBackground(new java.awt.Color(255, 255, 204));
         bttnInterReq.setFont(new java.awt.Font("InaiMathi", 1, 14)); // NOI18N
         bttnInterReq.setText("Interview Requests");
+        bttnInterReq.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bttnInterReqActionPerformed(evt);
+            }
+        });
         getContentPane().add(bttnInterReq);
         bttnInterReq.setBounds(33, 215, 180, 30);
 
@@ -197,17 +202,41 @@ public class TechAdminDashboard extends javax.swing.JFrame {
         String[] columnNames = {"Order From", "Organisation", "Service Requested"};
         int n = OrdersDirectory.getInstance().getOrdersDir().size();
         String[][] rows = new String[n][3];
+        int j=0;
+        for(int i = 0;  i<n ; i++){
+                rows[j][0] = OrdersDirectory.getInstance().getOrdersDir().get(i).getOrderedBy();
+                rows[j][1] = OrdersDirectory.getInstance().getOrdersDir().get(i).getRequestTo();
+                rows[j][2] = OrdersDirectory.getInstance().getOrdersDir().get(i).getService();           
+                j++;
         
-//        for(int i = 0;  i<n ; i++){
-//            rows[i][0] = addRow(OrdersDirectory.getInstance().getOrdersDir().getOrderedBy());
-//            rows[i][1] = set.getValue().getRequestTo();
-//            rows[i][2] = set.getValue().getService();
-//        }
+        }
         
         DefaultTableModel dtm = new DefaultTableModel (rows, columnNames);
-        
+        vit.tblTechReq.setModel(dtm);
         vit.show();
     }//GEN-LAST:event_bttnServReqActionPerformed
+
+    private void bttnInterReqActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttnInterReqActionPerformed
+        // TODO add your handling code here:
+        this.hide();
+        ViewItemsTech vit = new ViewItemsTech();
+        vit.labelRequest.setText(bttnInterReq.getText());
+        String[] columnNames = {"Order From", "Organisation", "Service Requested"};
+        int n = OrdersDirectory.getInstance().getOrdersDir().size();
+        String[][] rows = new String[n][3];
+        int j=0;
+        for(int i = 0;  i<n ; i++){
+                rows[j][0] = OrdersDirectory.getInstance().getOrdersDir().get(i).getOrderedBy();
+                rows[j][1] = OrdersDirectory.getInstance().getOrdersDir().get(i).getRequestTo();
+                rows[j][2] = OrdersDirectory.getInstance().getOrdersDir().get(i).getService();           
+                j++;
+        
+        }
+        
+        DefaultTableModel dtm = new DefaultTableModel (rows, columnNames);
+        vit.tblTechReq.setModel(dtm);
+        vit.show();
+    }//GEN-LAST:event_bttnInterReqActionPerformed
 
     /**
      * @param args the command line arguments
