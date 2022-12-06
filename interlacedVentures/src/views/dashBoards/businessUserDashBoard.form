@@ -34,7 +34,7 @@
                       <EmptySpace min="-2" pref="82" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
-                      <Component id="businessUser" min="-2" max="-2" attributes="0"/>
+                      <Component id="businessUser" min="-2" pref="118" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>

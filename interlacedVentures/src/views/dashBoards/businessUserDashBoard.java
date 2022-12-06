@@ -99,7 +99,7 @@ public class businessUserDashBoard extends javax.swing.JFrame {
                         .addComponent(ordersbusiness, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(82, 82, 82))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(businessUser)
+                        .addComponent(businessUser, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
@@ -132,6 +132,9 @@ public class businessUserDashBoard extends javax.swing.JFrame {
 
     private void servicesbusinessActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_servicesbusinessActionPerformed
         // TODO add your handling code here:
+        this.hide();
+        ServiceDashboard sd = new ServiceDashboard();
+        sd.show();
     }//GEN-LAST:event_servicesbusinessActionPerformed
 
     /**
