@@ -174,7 +174,7 @@ public class businessUserDashBoard extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton billings;
-    private javax.swing.JLabel businessUser;
+    public javax.swing.JLabel businessUser;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JButton logoutbusi;
     private javax.swing.JButton ordersbusiness;

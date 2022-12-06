@@ -17,7 +17,7 @@ import views.dashBoards.SystemAdmin;
 import views.dashBoards.TechAdminDashboard;
 import views.dashBoards.employeeDashboard;
 import views.dashBoards.freelancerDashboard;
-
+import models.BusinessUsersDirectory;
 
 /**
  *
@@ -123,19 +123,20 @@ public class loginPage extends javax.swing.JFrame {
         // TODO add your handling code here:
         String userName = tfUsername.getText();
         String password = pfPassword.getText();
-        System.out.println(userName + password);
         
         if(userName.equals(Admins[0][0]) && password.equals(Admins[0][1])){
             System.out.println("here");
-                SystemAdmin sa = new SystemAdmin();
-                sa.show();
+            this.hide();
+            SystemAdmin sa = new SystemAdmin();
+            sa.show();
             }
         else if(userName.equals(Admins[1][0]) && password.equals(Admins[1][1])){
             System.out.println("hereee");
+            this.hide();
             TechAdminDashboard td = new TechAdminDashboard();
             td.show();
             }
-
+        else{
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
             
@@ -158,6 +159,13 @@ public class loginPage extends javax.swing.JFrame {
                 dispose();
                 //this.hide();
                 businessUserDashBoard budb = new businessUserDashBoard();
+                String name = "";
+                for(int i = 0; i < BusinessUsersDirectory.getInstance().getBusinessUsersDir().size(); i++){
+                if(BusinessUsersDirectory.getInstance().getBusinessUsersDir().get(i).getName().equals(userName)){
+                        name = BusinessUsersDirectory.getInstance().getBusinessUsersDir().get(i).getName();
+                    }
+                }
+                budb.businessUser.setText(name);
                 budb.show();
             }
             else if(rsFREE.next()){
@@ -181,6 +189,7 @@ public class loginPage extends javax.swing.JFrame {
         }
         catch(Exception e){
             System.out.print(e.getMessage());
+            }
         }
     }//GEN-LAST:event_btnLoginActionPerformed
 
