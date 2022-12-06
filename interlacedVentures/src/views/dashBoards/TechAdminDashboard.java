@@ -113,7 +113,7 @@ public class TechAdminDashboard extends javax.swing.JFrame {
 
         jLabel1.setIcon(new javax.swing.ImageIcon("/Users/trishaguharoy/Downloads/techhhhhh.jpeg")); // NOI18N
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(230, -10, 630, 420);
+        jLabel1.setBounds(240, -40, 630, 420);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

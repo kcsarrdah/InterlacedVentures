@@ -38,12 +38,17 @@ public class accountsDashboard extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanAcctMgr.setBackground(new java.awt.Color(204, 204, 255));
+        jPanAcctMgr.setLayout(null);
 
         labAccntsMan.setFont(new java.awt.Font("Baloo Bhaijaan", 1, 18)); // NOI18N
         labAccntsMan.setText("          ACCOUNTS MANAGER");
+        jPanAcctMgr.add(labAccntsMan);
+        labAccntsMan.setBounds(251, 29, 295, 57);
 
         btnReq.setFont(new java.awt.Font("InaiMathi", 1, 14)); // NOI18N
         btnReq.setText("REQUESTS");
+        jPanAcctMgr.add(btnReq);
+        btnReq.setBounds(298, 380, 143, 52);
 
         btnViewOrder.setFont(new java.awt.Font("InaiMathi", 1, 14)); // NOI18N
         btnViewOrder.setText("VIEW ORDER");
@@ -52,9 +57,13 @@ public class accountsDashboard extends javax.swing.JFrame {
                 btnViewOrderActionPerformed(evt);
             }
         });
+        jPanAcctMgr.add(btnViewOrder);
+        btnViewOrder.setBounds(298, 197, 143, 52);
 
         btnChckPri.setFont(new java.awt.Font("InaiMathi", 1, 14)); // NOI18N
         btnChckPri.setText("CHECK PRICES");
+        jPanAcctMgr.add(btnChckPri);
+        btnChckPri.setBounds(298, 288, 143, 52);
 
         btnRegIss.setText("Register Issue");
         btnRegIss.addActionListener(new java.awt.event.ActionListener() {
@@ -62,53 +71,17 @@ public class accountsDashboard extends javax.swing.JFrame {
                 btnRegIssActionPerformed(evt);
             }
         });
+        jPanAcctMgr.add(btnRegIss);
+        btnRegIss.setBounds(592, 450, 125, 43);
 
         btnViewFund.setFont(new java.awt.Font("InaiMathi", 1, 14)); // NOI18N
         btnViewFund.setText("VIEW FUNDS");
+        jPanAcctMgr.add(btnViewFund);
+        btnViewFund.setBounds(298, 105, 143, 52);
 
         btnback.setText("Back");
-
-        javax.swing.GroupLayout jPanAcctMgrLayout = new javax.swing.GroupLayout(jPanAcctMgr);
-        jPanAcctMgr.setLayout(jPanAcctMgrLayout);
-        jPanAcctMgrLayout.setHorizontalGroup(
-            jPanAcctMgrLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanAcctMgrLayout.createSequentialGroup()
-                .addGap(298, 298, 298)
-                .addGroup(jPanAcctMgrLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnReq, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnChckPri, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnViewOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnViewFund, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanAcctMgrLayout.createSequentialGroup()
-                .addContainerGap(251, Short.MAX_VALUE)
-                .addGroup(jPanAcctMgrLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnRegIss, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanAcctMgrLayout.createSequentialGroup()
-                        .addComponent(labAccntsMan, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(46, 46, 46)
-                        .addComponent(btnback, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(24, 24, 24))
-        );
-        jPanAcctMgrLayout.setVerticalGroup(
-            jPanAcctMgrLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanAcctMgrLayout.createSequentialGroup()
-                .addGap(29, 29, 29)
-                .addGroup(jPanAcctMgrLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnback, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labAccntsMan, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(19, 19, 19)
-                .addComponent(btnViewFund, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40)
-                .addComponent(btnViewOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(39, 39, 39)
-                .addComponent(btnChckPri, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40)
-                .addComponent(btnReq, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnRegIss, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(16, Short.MAX_VALUE))
-        );
+        jPanAcctMgr.add(btnback);
+        btnback.setBounds(592, 29, 125, 43);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
