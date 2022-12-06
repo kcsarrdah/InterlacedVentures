@@ -54,12 +54,12 @@
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
               <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace pref="233" max="32767" attributes="0"/>
+                  <EmptySpace pref="251" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
                       <Component id="btnRegIss" min="-2" pref="125" max="-2" attributes="0"/>
                       <Group type="102" attributes="0">
                           <Component id="labAccntsMan" min="-2" pref="295" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="64" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
                           <Component id="btnback" min="-2" pref="125" max="-2" attributes="0"/>
                       </Group>
                   </Group>
