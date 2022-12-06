@@ -4,6 +4,8 @@
  */
 package views.dashBoards;
 
+import java.util.HashMap;
+
 /**
  *
  * @author kcsar
@@ -29,7 +31,8 @@ public class ServiceDashboard extends javax.swing.JFrame {
         jYearChooser1 = new com.toedter.calendar.JYearChooser();
         jPanel1 = new javax.swing.JPanel();
         jcEnterprise = new javax.swing.JComboBox<>();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        jcOrg = new javax.swing.JComboBox<>();
+        jcService = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -40,7 +43,19 @@ public class ServiceDashboard extends javax.swing.JFrame {
             }
         });
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jcOrg.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jcOrg.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcOrgActionPerformed(evt);
+            }
+        });
+
+        jcService.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jcService.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcServiceActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -50,7 +65,8 @@ public class ServiceDashboard extends javax.swing.JFrame {
                 .addGap(103, 103, 103)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jcEnterprise, 0, 179, Short.MAX_VALUE)
-                    .addComponent(jComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jcOrg, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jcService, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(384, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -59,8 +75,10 @@ public class ServiceDashboard extends javax.swing.JFrame {
                 .addGap(92, 92, 92)
                 .addComponent(jcEnterprise, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(32, 32, 32)
-                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(259, Short.MAX_VALUE))
+                .addComponent(jcOrg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(43, 43, 43)
+                .addComponent(jcService, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(194, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -79,8 +97,57 @@ public class ServiceDashboard extends javax.swing.JFrame {
 
     private void jcEnterpriseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcEnterpriseActionPerformed
         // TODO add your handling code here:
+        jcOrg.removeAllItems();
+        
+        if(jcEnterprise.getSelectedItem().toString().equals("Technology")){
+                jcOrg.addItem("Software");
+                jcOrg.addItem("Cloud");
+                jcOrg.addItem("Hardware");
+            }
+        else if(jcEnterprise.getSelectedItem().toString().equals("Operations")){
+                jcOrg.addItem("Storage");
+                jcOrg.addItem("Transport");
+                jcOrg.addItem("Raw Materials");
+        }
+        else if(jcEnterprise.getSelectedItem().toString().equals("Finances and Legal")){
+                jcOrg.addItem("Consultancy");
+        }
         
     }//GEN-LAST:event_jcEnterpriseActionPerformed
+
+    private void jcServiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcServiceActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jcServiceActionPerformed
+
+    private void jcOrgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcOrgActionPerformed
+        // TODO add your handling code here:
+        if(jcOrg.getSelectedItem().toString().equals("Software")){
+                jcService.addItem("Web Design");
+                jcService.addItem("Video Game");
+                jcService.addItem("Cyber-Security");
+                jcService.addItem("Software Developement");
+                jcService.addItem("Mobile Developement");
+                jcService.addItem("Version Control");
+                jcService.addItem("Data Analysis");
+                jcService.addItem("Data Management");
+                jcService.addItem("Business Intelligence");
+                jcService.addItem("Machine Learning");
+            }
+        else if(jcOrg.getSelectedItem().toString().equals("Hardware")){
+                jcService.addItem("Aurdino UNO");
+                jcService.addItem("BeagleBoard X1");
+                jcService.addItem("featherboards");
+                jcService.addItem("Aurdino naro");
+                jcService.addItem("Seeduino");
+                jcService.addItem("Pocketbeagle");
+        }
+        else if(jcOrg.getSelectedItem().toString().equals("Cloud")){
+                jcService.addItem("Saas");
+                jcService.addItem("PaaS");
+                jcService.addItem("FaaS");
+                jcService.addItem("Servers");
+        }
+    }//GEN-LAST:event_jcOrgActionPerformed
 
     /**
      * @param args the command line arguments
@@ -118,9 +185,10 @@ public class ServiceDashboard extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JPanel jPanel1;
     private com.toedter.calendar.JYearChooser jYearChooser1;
     public javax.swing.JComboBox<String> jcEnterprise;
+    public javax.swing.JComboBox<String> jcOrg;
+    public javax.swing.JComboBox<String> jcService;
     // End of variables declaration//GEN-END:variables
 }
