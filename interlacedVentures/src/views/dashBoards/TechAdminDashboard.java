@@ -54,35 +54,65 @@ public class TechAdminDashboard extends javax.swing.JFrame {
         btnHardWare.setBackground(new java.awt.Color(255, 255, 204));
         btnHardWare.setFont(new java.awt.Font("InaiMathi", 1, 14)); // NOI18N
         btnHardWare.setText("Hardware Department");
+        btnHardWare.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHardWareActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnHardWare);
         btnHardWare.setBounds(33, 92, 180, 30);
 
         btnCloud.setBackground(new java.awt.Color(255, 255, 204));
         btnCloud.setFont(new java.awt.Font("InaiMathi", 1, 14)); // NOI18N
         btnCloud.setText("Cloud Department");
+        btnCloud.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCloudActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnCloud);
         btnCloud.setBounds(33, 133, 180, 30);
 
         btnSoftware.setBackground(new java.awt.Color(255, 255, 204));
         btnSoftware.setFont(new java.awt.Font("InaiMathi", 1, 14)); // NOI18N
         btnSoftware.setText("Software Department");
+        btnSoftware.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSoftwareActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnSoftware);
         btnSoftware.setBounds(33, 174, 180, 30);
 
         bttnLogOut.setBackground(new java.awt.Color(255, 255, 204));
         bttnLogOut.setText("Log Out");
+        bttnLogOut.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bttnLogOutActionPerformed(evt);
+            }
+        });
         jPanel1.add(bttnLogOut);
-        bttnLogOut.setBounds(480, 300, 76, 23);
+        bttnLogOut.setBounds(480, 300, 72, 23);
 
         bttnServReq.setBackground(new java.awt.Color(255, 255, 204));
         bttnServReq.setFont(new java.awt.Font("InaiMathi", 1, 14)); // NOI18N
         bttnServReq.setText("Service Requests");
+        bttnServReq.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bttnServReqActionPerformed(evt);
+            }
+        });
         jPanel1.add(bttnServReq);
         bttnServReq.setBounds(33, 255, 180, 30);
 
         bttnInterReq.setBackground(new java.awt.Color(255, 255, 204));
         bttnInterReq.setFont(new java.awt.Font("InaiMathi", 1, 14)); // NOI18N
         bttnInterReq.setText("Interview Requests");
+        bttnInterReq.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bttnInterReqActionPerformed(evt);
+            }
+        });
         jPanel1.add(bttnInterReq);
         bttnInterReq.setBounds(33, 215, 180, 30);
 
@@ -108,6 +138,103 @@ public class TechAdminDashboard extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnHardWareActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHardWareActionPerformed
+        // TODO add your handling code here:
+        this.hide();
+        Hardware hd = new Hardware();
+        String[][] rows = new String[EmployeeDirectory.getInstance().getEmployeeDir().size()][4];
+        String[] columnNames = {"First Name", "Last Name", "Role", "Salary"};
+        int j = 0;
+        for(int i=0; i < EmployeeDirectory.getInstance().getEmployeeDir().size(); i++){
+            if(EmployeeDirectory.getInstance().getEmployeeDir().get(i).getOrganisation().equals("Hardware")) {
+                rows[j][0] = EmployeeDirectory.getInstance().getEmployeeDir().get(i).getFirstName();
+                rows[j][1] = EmployeeDirectory.getInstance().getEmployeeDir().get(i).getLastName();
+                rows[j][2] = EmployeeDirectory.getInstance().getEmployeeDir().get(i).getRole();
+                rows[j][3] = Integer.toString(EmployeeDirectory.getInstance().getEmployeeDir().get(i).getSalary()); 
+                j++;
+            }
+        }
+        DefaultTableModel model = new DefaultTableModel (rows, columnNames);
+        hd.empTable.setModel(model);
+        hd.show();
+    }//GEN-LAST:event_btnHardWareActionPerformed
+
+    private void btnCloudActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloudActionPerformed
+        // TODO add your handling code here:
+        this.hide();
+        Cloud cl = new Cloud();
+        String[][] rows = new String[EmployeeDirectory.getInstance().getEmployeeDir().size()][4];
+        String[] columnNames = {"First Name", "Last Name", "Role", "Salary"};
+        int j = 0;
+        for(int i=0; i < EmployeeDirectory.getInstance().getEmployeeDir().size(); i++){
+            if(EmployeeDirectory.getInstance().getEmployeeDir().get(i).getOrganisation().equals("Cloud")) {
+                rows[j][0] = EmployeeDirectory.getInstance().getEmployeeDir().get(i).getFirstName();
+                rows[j][1] = EmployeeDirectory.getInstance().getEmployeeDir().get(i).getLastName();
+                rows[j][2] = EmployeeDirectory.getInstance().getEmployeeDir().get(i).getRole();
+                rows[j][3] = Integer.toString(EmployeeDirectory.getInstance().getEmployeeDir().get(i).getSalary()); 
+                j++;
+            }
+        }
+        DefaultTableModel model = new DefaultTableModel (rows, columnNames);
+        cl.empTable.setModel(model);
+        cl.show();
+    }//GEN-LAST:event_btnCloudActionPerformed
+
+    private void btnSoftwareActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSoftwareActionPerformed
+        // TODO add your handling code here:
+        this.hide();
+        Software sd = new Software();
+        String[][] rows = new String[EmployeeDirectory.getInstance().getEmployeeDir().size()][5];
+        String[] columnNames = {"First Name", "Last Name", "UserName", "Role", "Salary"};
+        int j = 0;
+        for(int i=0; i < EmployeeDirectory.getInstance().getEmployeeDir().size(); i++){
+            if(EmployeeDirectory.getInstance().getEmployeeDir().get(i).getOrganisation().equals("Software")) {
+                rows[j][0] = EmployeeDirectory.getInstance().getEmployeeDir().get(i).getFirstName();
+                rows[j][1] = EmployeeDirectory.getInstance().getEmployeeDir().get(i).getLastName();
+                rows[j][2] = EmployeeDirectory.getInstance().getEmployeeDir().get(i).getUsername();           
+                rows[j][3] = EmployeeDirectory.getInstance().getEmployeeDir().get(i).getRole();
+                rows[j][4] = Integer.toString(EmployeeDirectory.getInstance().getEmployeeDir().get(i).getSalary()); 
+                j++;
+            }
+        }
+        DefaultTableModel model = new DefaultTableModel (rows, columnNames);
+        sd.empTable.setModel(model);
+        sd.show();
+    }//GEN-LAST:event_btnSoftwareActionPerformed
+
+    private void bttnLogOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttnLogOutActionPerformed
+        // TODO add your handling code here:
+        this.hide();
+        loginPage lp = new loginPage();
+        lp.show();
+    }//GEN-LAST:event_bttnLogOutActionPerformed
+
+    private void bttnServReqActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttnServReqActionPerformed
+        // TODO add your handling code here:
+        this.hide();
+        ViewItemsTech vit = new ViewItemsTech();
+        vit.labelRequest.setText(bttnServReq.getText());
+        String[] columnNames = {"Order From", "Organisation", "Service Requested"};
+        int n = OrdersDirectory.getInstance().getOrdersDir().size();
+        String[][] rows = new String[n][3];
+        int j=0;
+        for(int i = 0;  i<n ; i++){
+                rows[j][0] = OrdersDirectory.getInstance().getOrdersDir().get(i).getOrderedBy();
+                rows[j][1] = OrdersDirectory.getInstance().getOrdersDir().get(i).getRequestTo();
+                rows[j][2] = OrdersDirectory.getInstance().getOrdersDir().get(i).getService();           
+                j++;
+        
+        }
+        
+        DefaultTableModel dtm = new DefaultTableModel (rows, columnNames);
+        vit.tblTechReq.setModel(dtm);
+        vit.show();
+    }//GEN-LAST:event_bttnServReqActionPerformed
+
+    private void bttnInterReqActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttnInterReqActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bttnInterReqActionPerformed
 
     /**
      * @param args the command line arguments
