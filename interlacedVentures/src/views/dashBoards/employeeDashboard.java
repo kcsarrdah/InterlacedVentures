@@ -26,18 +26,49 @@ public class employeeDashboard extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        JlabelEmpDash = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jButton1 = new javax.swing.JButton();
+        jImageEmp = new javax.swing.JLabel();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(255, 255, 255));
+        getContentPane().setLayout(null);
+
+        JlabelEmpDash.setFont(new java.awt.Font("Baloo Bhaijaan", 1, 24)); // NOI18N
+        JlabelEmpDash.setText("                  EMPLOYEE DASHBOARD");
+        getContentPane().add(JlabelEmpDash);
+        JlabelEmpDash.setBounds(260, 10, 410, 70);
+
+        jTable1.setBackground(new java.awt.Color(255, 255, 204));
+        jTable1.setFont(new java.awt.Font("InaiMathi", 1, 13)); // NOI18N
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "Description", "Work Status", "Requested By"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
+        getContentPane().add(jScrollPane1);
+        jScrollPane1.setBounds(0, 140, 490, 430);
+
+        jButton1.setBackground(new java.awt.Color(255, 255, 204));
+        jButton1.setFont(new java.awt.Font("InaiMathi", 1, 13)); // NOI18N
+        jButton1.setText("LOGOUT");
+        getContentPane().add(jButton1);
+        jButton1.setBounds(760, 510, 78, 30);
+
+        jImageEmp.setBackground(new java.awt.Color(204, 204, 255));
+        jImageEmp.setIcon(new javax.swing.ImageIcon("/Users/trishaguharoy/Downloads/flat-cartoon-office-character-successful-employee-vector-illustration-concept-worker-performs-work-tasks-controls-everything-does-221433198.jpeg")); // NOI18N
+        getContentPane().add(jImageEmp);
+        jImageEmp.setBounds(220, -150, 2410, 1040);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -78,5 +109,10 @@ public class employeeDashboard extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel JlabelEmpDash;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jImageEmp;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }

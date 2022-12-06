@@ -39,81 +39,81 @@ public class TechAdminDashboard extends javax.swing.JFrame {
         bttnLogOut = new javax.swing.JButton();
         bttnServReq = new javax.swing.JButton();
         bttnInterReq = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(204, 204, 255));
+        getContentPane().setLayout(null);
 
+        btnHardWare.setBackground(new java.awt.Color(255, 255, 204));
+        btnHardWare.setFont(new java.awt.Font("InaiMathi", 1, 14)); // NOI18N
         btnHardWare.setText("Hardware Department");
         btnHardWare.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnHardWareActionPerformed(evt);
             }
         });
+        getContentPane().add(btnHardWare);
+        btnHardWare.setBounds(33, 92, 180, 30);
 
+        btnCloud.setBackground(new java.awt.Color(255, 255, 204));
+        btnCloud.setFont(new java.awt.Font("InaiMathi", 1, 14)); // NOI18N
         btnCloud.setText("Cloud Department");
         btnCloud.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCloudActionPerformed(evt);
             }
         });
+        getContentPane().add(btnCloud);
+        btnCloud.setBounds(33, 133, 180, 30);
 
+        btnSoftware.setBackground(new java.awt.Color(255, 255, 204));
+        btnSoftware.setFont(new java.awt.Font("InaiMathi", 1, 14)); // NOI18N
         btnSoftware.setText("Software Department");
         btnSoftware.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSoftwareActionPerformed(evt);
             }
         });
+        getContentPane().add(btnSoftware);
+        btnSoftware.setBounds(33, 174, 180, 30);
 
+        bttnLogOut.setBackground(new java.awt.Color(255, 255, 204));
         bttnLogOut.setText("Log Out");
         bttnLogOut.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bttnLogOutActionPerformed(evt);
             }
         });
+        getContentPane().add(bttnLogOut);
+        bttnLogOut.setBounds(480, 300, 76, 23);
 
+        bttnServReq.setBackground(new java.awt.Color(255, 255, 204));
+        bttnServReq.setFont(new java.awt.Font("InaiMathi", 1, 14)); // NOI18N
         bttnServReq.setText("Service Requests");
         bttnServReq.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bttnServReqActionPerformed(evt);
             }
         });
+        getContentPane().add(bttnServReq);
+        bttnServReq.setBounds(33, 255, 180, 30);
 
+        bttnInterReq.setBackground(new java.awt.Color(255, 255, 204));
+        bttnInterReq.setFont(new java.awt.Font("InaiMathi", 1, 14)); // NOI18N
         bttnInterReq.setText("Interview Requests");
+        getContentPane().add(bttnInterReq);
+        bttnInterReq.setBounds(33, 215, 180, 30);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(332, Short.MAX_VALUE)
-                .addComponent(bttnLogOut)
-                .addGap(26, 26, 26))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(33, 33, 33)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnHardWare, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(bttnServReq, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(bttnInterReq, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnSoftware, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnCloud, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(92, Short.MAX_VALUE)
-                .addComponent(btnHardWare)
-                .addGap(18, 18, 18)
-                .addComponent(btnCloud, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnSoftware, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(bttnInterReq)
-                .addGap(17, 17, 17)
-                .addComponent(bttnServReq)
-                .addGap(16, 16, 16)
-                .addComponent(bttnLogOut)
-                .addGap(18, 18, 18))
-        );
+        jLabel2.setFont(new java.awt.Font("InaiMathi", 1, 14)); // NOI18N
+        jLabel2.setText("TECH ADMIN DASHBOARD");
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(210, 20, 170, 30);
+
+        jLabel1.setIcon(new javax.swing.ImageIcon("/Users/trishaguharoy/Downloads/techhhhhh.jpeg")); // NOI18N
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(230, -10, 630, 420);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -236,6 +236,8 @@ public class TechAdminDashboard extends javax.swing.JFrame {
     private javax.swing.JButton bttnInterReq;
     private javax.swing.JButton bttnLogOut;
     private javax.swing.JButton bttnServReq;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
 }
 
