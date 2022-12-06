@@ -25,16 +25,17 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
               <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="78" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
+                      <EmptySpace min="-2" pref="78" max="-2" attributes="0"/>
                       <Component id="billings" min="-2" pref="155" max="-2" attributes="0"/>
                       <EmptySpace pref="100" max="32767" attributes="0"/>
                       <Component id="ordersbusiness" min="-2" pref="155" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="82" max="-2" attributes="0"/>
                   </Group>
-                  <Group type="102" attributes="0">
-                      <Component id="businessUser" min="-2" pref="118" max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
+                      <Component id="businessUser" min="-2" pref="224" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -44,14 +45,14 @@
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
               <Component id="businessUser" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="110" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="111" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="billings" alignment="3" min="-2" pref="80" max="-2" attributes="0"/>
                   <Component id="ordersbusiness" alignment="3" min="-2" pref="80" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="59" pref="191" max="32767" attributes="0"/>
+              <EmptySpace min="59" pref="178" max="32767" attributes="0"/>
           </Group>
           <Component id="jPanel1" alignment="1" max="32767" attributes="0"/>
       </Group>
@@ -60,6 +61,9 @@
   <SubComponents>
     <Component class="javax.swing.JLabel" name="businessUser">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Helvetica Neue" size="24" style="1"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="BUSINESS USER"/>
       </Properties>
       <AuxValues>

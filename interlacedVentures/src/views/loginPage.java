@@ -146,7 +146,7 @@ public class loginPage extends javax.swing.JFrame {
             Statement stm2 = con.createStatement();
             Statement stm3 = con.createStatement();
             
-            String sqlBU = "SELECT * FROM Users WHERE UserName= '"+userName+"' and Password = '"+password+"'";
+            String sqlBU = "SELECT * FROM Users WHERE Name= '"+userName+"' and Password = '"+password+"'";
             ResultSet rsBU = stm1.executeQuery(sqlBU);
             
             String sqlFREE = "SELECT * FROM Freelancers WHERE UserName= '"+userName+"' and Password = '"+password+"'";
@@ -159,12 +159,15 @@ public class loginPage extends javax.swing.JFrame {
                 dispose();
                 //this.hide();
                 businessUserDashBoard budb = new businessUserDashBoard();
-                String name = "";
+                System.out.println("here");
+                String name = "demo";
+                System.out.println(BusinessUsersDirectory.getInstance().getBusinessUsersDir().size());
                 for(int i = 0; i < BusinessUsersDirectory.getInstance().getBusinessUsersDir().size(); i++){
                 if(BusinessUsersDirectory.getInstance().getBusinessUsersDir().get(i).getName().equals(userName)){
                         name = BusinessUsersDirectory.getInstance().getBusinessUsersDir().get(i).getName();
                     }
                 }
+                System.out.println(name);
                 budb.businessUser.setText(name);
                 budb.show();
             }

@@ -64,7 +64,7 @@ public class BusinessUsersDirectory {
                        rs.getString("Password"),
                         rs.getString("Name"),
                         rs.getString("Email"),
-                        rs.getString("Number"),
+                        rs.getString("PhoneNumber"),
                         rs.getString("Location"),
                         rs.getString("Website"),
                         rs.getString("OwnerName"));
