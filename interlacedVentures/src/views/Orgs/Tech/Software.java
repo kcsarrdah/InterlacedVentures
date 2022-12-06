@@ -149,6 +149,7 @@ public class Software extends javax.swing.JFrame {
             erf.show();
             for(int i = 0; i < EmployeeDirectory.getInstance().getEmployeeDir().size(); i++){
                 if(EmployeeDirectory.getInstance().getEmployeeDir().get(i).getUsername().equals(UserName)){
+                    erf.pwdField.hide();
                     erf.txtFName.setText(EmployeeDirectory.getInstance().getEmployeeDir().get(i).getFirstName());
                     erf.txtFName.setEditable(false);
                     erf.txtLName.setText(EmployeeDirectory.getInstance().getEmployeeDir().get(i).getLastName());
@@ -183,7 +184,7 @@ public class Software extends javax.swing.JFrame {
                     erf.txtLatestWork.setEditable(false);
                     //erf.txtLatestWork.setText(EmployeeDirectory.getInstance().getEmployeeDir().get(i).getLatestWork());
                     
-                    
+                          
                     erf.btnReg.setVisible(false);
                   }
                 }

@@ -6,10 +6,12 @@ package views.dashBoards;
 
 import javax.swing.table.DefaultTableModel;
 import models.EmployeeDirectory;
+import models.OrdersDirectory;
 import views.Orgs.Tech.Cloud;
 import views.Orgs.Tech.Hardware;
 import views.Orgs.Tech.Software;
 import views.loginPage;
+import models.OrdersDirectory;
 
 /**
  *
@@ -189,7 +191,22 @@ public class TechAdminDashboard extends javax.swing.JFrame {
 
     private void bttnServReqActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttnServReqActionPerformed
         // TODO add your handling code here:
+        this.hide();
+        ViewItemsTech vit = new ViewItemsTech();
+        vit.labelRequest.setText(bttnServReq.getText());
+        String[] columnNames = {"Order From", "Organisation", "Service Requested"};
+        int n = OrdersDirectory.getInstance().getOrdersDir().size();
+        String[][] rows = new String[n][3];
         
+//        for(int i = 0;  i<n ; i++){
+//            rows[i][0] = addRow(OrdersDirectory.getInstance().getOrdersDir().getOrderedBy());
+//            rows[i][1] = set.getValue().getRequestTo();
+//            rows[i][2] = set.getValue().getService();
+//        }
+        
+        DefaultTableModel dtm = new DefaultTableModel (rows, columnNames);
+        
+        vit.show();
     }//GEN-LAST:event_bttnServReqActionPerformed
 
     /**
