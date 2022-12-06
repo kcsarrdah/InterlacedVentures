@@ -33,6 +33,7 @@ public class businessRegistrationForm extends javax.swing.JFrame {
     private void initComponents() {
 
         jToggleButton1 = new javax.swing.JToggleButton();
+        jPanel2 = new javax.swing.JPanel();
         label_businessForm = new javax.swing.JLabel();
         Labelname = new javax.swing.JLabel();
         LabelEmail = new javax.swing.JLabel();
@@ -49,142 +50,114 @@ public class businessRegistrationForm extends javax.swing.JFrame {
         txtOwner = new javax.swing.JTextField();
         pwdField = new javax.swing.JPasswordField();
         btnReg = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         jToggleButton1.setText("jToggleButton1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 204));
-        getContentPane().setLayout(null);
+
+        jPanel2.setLayout(null);
 
         label_businessForm.setFont(new java.awt.Font("Baloo Bhaijaan", 1, 24)); // NOI18N
         label_businessForm.setText("REGISTER YOUR BUSINESS");
-        getContentPane().add(label_businessForm);
-        label_businessForm.setBounds(160, 0, 341, 58);
+        jPanel2.add(label_businessForm);
+        label_businessForm.setBounds(180, 50, 380, 60);
 
         Labelname.setBackground(new java.awt.Color(255, 204, 255));
         Labelname.setFont(new java.awt.Font("InaiMathi", 1, 14)); // NOI18N
         Labelname.setText("NAME");
-        getContentPane().add(Labelname);
-        Labelname.setBounds(94, 86, 74, 32);
+        jPanel2.add(Labelname);
+        Labelname.setBounds(160, 160, 74, 32);
 
         LabelEmail.setBackground(new java.awt.Color(255, 204, 255));
         LabelEmail.setFont(new java.awt.Font("InaiMathi", 1, 14)); // NOI18N
         LabelEmail.setText("EMAIL");
-        getContentPane().add(LabelEmail);
-        LabelEmail.setBounds(94, 152, 37, 18);
-
-        txtPhNo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtPhNoActionPerformed(evt);
-            }
-        });
-        getContentPane().add(txtPhNo);
-        txtPhNo.setBounds(239, 201, 223, 23);
+        jPanel2.add(LabelEmail);
+        LabelEmail.setBounds(160, 220, 37, 18);
+        jPanel2.add(txtPhNo);
+        txtPhNo.setBounds(300, 270, 223, 23);
 
         txtName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNameActionPerformed(evt);
             }
         });
-        getContentPane().add(txtName);
-        txtName.setBounds(242, 89, 223, 23);
+        jPanel2.add(txtName);
+        txtName.setBounds(300, 160, 223, 23);
 
         LabelPhNo.setBackground(new java.awt.Color(255, 204, 255));
         LabelPhNo.setFont(new java.awt.Font("InaiMathi", 1, 14)); // NOI18N
         LabelPhNo.setText("PHONE NUMBER");
-        getContentPane().add(LabelPhNo);
-        LabelPhNo.setBounds(94, 205, 100, 18);
-
-        txtEmail.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtEmailActionPerformed(evt);
-            }
-        });
-        getContentPane().add(txtEmail);
-        txtEmail.setBounds(239, 148, 223, 23);
+        jPanel2.add(LabelPhNo);
+        LabelPhNo.setBounds(160, 280, 100, 18);
+        jPanel2.add(txtEmail);
+        txtEmail.setBounds(300, 220, 223, 23);
 
         labelLocation.setBackground(new java.awt.Color(255, 204, 255));
         labelLocation.setFont(new java.awt.Font("InaiMathi", 1, 14)); // NOI18N
         labelLocation.setText("LOCATION");
-        getContentPane().add(labelLocation);
-        labelLocation.setBounds(94, 255, 88, 18);
-        getContentPane().add(txtLoc);
-        txtLoc.setBounds(239, 251, 223, 23);
+        jPanel2.add(labelLocation);
+        labelLocation.setBounds(160, 330, 88, 18);
+        jPanel2.add(txtLoc);
+        txtLoc.setBounds(300, 320, 223, 23);
 
         ownerNameLabel.setBackground(new java.awt.Color(255, 204, 255));
         ownerNameLabel.setFont(new java.awt.Font("InaiMathi", 1, 14)); // NOI18N
         ownerNameLabel.setText("OWNER NAME");
-        getContentPane().add(ownerNameLabel);
-        ownerNameLabel.setBounds(94, 366, 87, 18);
+        jPanel2.add(ownerNameLabel);
+        ownerNameLabel.setBounds(160, 440, 87, 18);
 
         webLabel.setBackground(new java.awt.Color(255, 204, 255));
         webLabel.setFont(new java.awt.Font("InaiMathi", 1, 14)); // NOI18N
         webLabel.setText("WEBSITE");
-        getContentPane().add(webLabel);
-        webLabel.setBounds(94, 309, 88, 18);
+        jPanel2.add(webLabel);
+        webLabel.setBounds(160, 380, 88, 18);
 
         setPasswordLabel.setBackground(new java.awt.Color(255, 204, 255));
         setPasswordLabel.setFont(new java.awt.Font("InaiMathi", 1, 14)); // NOI18N
         setPasswordLabel.setText("SET PASSWORD");
-        getContentPane().add(setPasswordLabel);
-        setPasswordLabel.setBounds(94, 419, 100, 18);
-        getContentPane().add(txtWebsite);
-        txtWebsite.setBounds(239, 305, 223, 23);
-        getContentPane().add(txtOwner);
-        txtOwner.setBounds(239, 362, 223, 23);
+        jPanel2.add(setPasswordLabel);
+        setPasswordLabel.setBounds(160, 490, 100, 18);
+        jPanel2.add(txtWebsite);
+        txtWebsite.setBounds(300, 380, 223, 23);
+        jPanel2.add(txtOwner);
+        txtOwner.setBounds(300, 430, 223, 23);
 
         pwdField.setText("jPasswordField1");
-        getContentPane().add(pwdField);
-        pwdField.setBounds(239, 415, 223, 23);
+        jPanel2.add(pwdField);
+        pwdField.setBounds(300, 490, 223, 23);
 
         btnReg.setFont(new java.awt.Font("InaiMathi", 1, 14)); // NOI18N
         btnReg.setText("REGISTER");
-        btnReg.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRegActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnReg);
-        btnReg.setBounds(239, 512, 91, 24);
+        jPanel2.add(btnReg);
+        btnReg.setBounds(300, 580, 120, 30);
 
-        jLabel1.setBackground(new java.awt.Color(255, 204, 255));
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/views/Images/businessregistraionForm.jpeg"))); // NOI18N
-        getContentPane().add(jLabel1);
-        jLabel1.setBounds(20, 0, 670, 620);
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/views/Images/charming-bearded-business-man-character-cartoon-modern-flat-design-charming-bearded-business-man-character-cartoon-modern-flat-130073628.jpeg"))); // NOI18N
+        jPanel2.add(jLabel2);
+        jLabel2.setBounds(-180, 0, 940, 1300);
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 679, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 638, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtPhNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPhNoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtPhNoActionPerformed
-
     private void txtNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNameActionPerformed
-
-    private void txtEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtEmailActionPerformed
-
-    private void btnRegActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegActionPerformed
-        // TODO add your handling code here:
-        business bus= new business(pwdField.getText(),
-                txtName.getText(),
-                txtEmail.getText(),
-                txtPhNo.getText(),
-                txtLoc.getText(),
-                txtWebsite.getText(),
-                txtOwner.getText());
-        BusinessUsersDirectory.getInstance().addBusinessUser(bus);
-        users login = new users(txtName.getText(),pwdField.getText(),"Business User");
-        userDirectory.getInstance().addUser(login);
-        
-        this.hide();
-        loginPage lp = new loginPage();
-        lp.show();
-    }//GEN-LAST:event_btnRegActionPerformed
 
     /**
      * @param args the command line arguments
@@ -226,7 +199,8 @@ public class businessRegistrationForm extends javax.swing.JFrame {
     private javax.swing.JLabel LabelPhNo;
     private javax.swing.JLabel Labelname;
     private javax.swing.JButton btnReg;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JLabel labelLocation;
     private javax.swing.JLabel label_businessForm;
