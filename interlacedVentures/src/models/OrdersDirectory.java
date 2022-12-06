@@ -62,7 +62,7 @@ public class OrdersDirectory {
             ResultSet rs = stmt.executeQuery(str);
             while(rs.next()) {
                orders order = new orders(
-                       rs.getString("Service"),
+                       rs.getString("Services"),
                        rs.getString("Ordered By"),
                        rs.getString("Requested To"),
                        rs.getString("Status"),   
