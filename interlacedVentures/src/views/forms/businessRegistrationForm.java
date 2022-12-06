@@ -130,6 +130,11 @@ public class businessRegistrationForm extends javax.swing.JFrame {
 
         btnReg.setFont(new java.awt.Font("InaiMathi", 1, 14)); // NOI18N
         btnReg.setText("REGISTER");
+        btnReg.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegActionPerformed(evt);
+            }
+        });
         jPanel2.add(btnReg);
         btnReg.setBounds(300, 580, 120, 30);
 
@@ -158,6 +163,24 @@ public class businessRegistrationForm extends javax.swing.JFrame {
     private void txtNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNameActionPerformed
+
+    private void btnRegActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegActionPerformed
+        // TODO add your handling code here:
+        business bus= new business(pwdField.getText(),
+                txtName.getText(),
+                txtEmail.getText(),
+                txtPhNo.getText(),
+                txtLoc.getText(),
+                txtWebsite.getText(),
+                txtOwner.getText());
+        BusinessUsersDirectory.getInstance().addBusinessUser(bus);
+        users login = new users(txtName.getText(),pwdField.getText(),"Business User");
+        userDirectory.getInstance().addUser(login);
+        
+        this.hide();
+        loginPage lp = new loginPage();
+        lp.show();
+    }//GEN-LAST:event_btnRegActionPerformed
 
     /**
      * @param args the command line arguments
