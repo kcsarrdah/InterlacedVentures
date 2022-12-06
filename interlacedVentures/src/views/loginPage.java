@@ -152,7 +152,7 @@ public class loginPage extends javax.swing.JFrame {
             String sqlFREE = "SELECT * FROM Freelancers WHERE UserName= '"+userName+"' and Password = '"+password+"'";
             ResultSet rsFREE = stm2.executeQuery(sqlFREE);
             
-            String sqlEMP = "SELECT * FROM Users WHERE UserName= '"+userName+"' and Password = '"+password+"'";
+            String sqlEMP = "SELECT * FROM Employees WHERE UserName= '"+userName+"' and Password = '"+password+"'";
             ResultSet rsEMP = stm3.executeQuery(sqlEMP);
             
             if(rsBU.next()){
