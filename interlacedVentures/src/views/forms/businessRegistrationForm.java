@@ -40,138 +40,118 @@ public class businessRegistrationForm extends javax.swing.JFrame {
         txtName = new javax.swing.JTextField();
         LabelPhNo = new javax.swing.JLabel();
         txtEmail = new javax.swing.JTextField();
-        labelAddress = new javax.swing.JLabel();
+        labelLocation = new javax.swing.JLabel();
         txtLoc = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        ownerNameLabel = new javax.swing.JLabel();
+        webLabel = new javax.swing.JLabel();
+        setPasswordLabel = new javax.swing.JLabel();
         txtWebsite = new javax.swing.JTextField();
         txtOwner = new javax.swing.JTextField();
         pwdField = new javax.swing.JPasswordField();
         btnReg = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         jToggleButton1.setText("jToggleButton1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(255, 255, 204));
+        getContentPane().setLayout(null);
 
-        label_businessForm.setFont(new java.awt.Font("Helvetica Neue", 1, 24)); // NOI18N
+        label_businessForm.setFont(new java.awt.Font("Baloo Bhaijaan", 1, 24)); // NOI18N
         label_businessForm.setText("REGISTER YOUR BUSINESS");
+        getContentPane().add(label_businessForm);
+        label_businessForm.setBounds(160, 0, 341, 58);
 
+        Labelname.setBackground(new java.awt.Color(255, 204, 255));
+        Labelname.setFont(new java.awt.Font("InaiMathi", 1, 14)); // NOI18N
         Labelname.setText("NAME");
+        getContentPane().add(Labelname);
+        Labelname.setBounds(94, 86, 74, 32);
 
+        LabelEmail.setBackground(new java.awt.Color(255, 204, 255));
+        LabelEmail.setFont(new java.awt.Font("InaiMathi", 1, 14)); // NOI18N
         LabelEmail.setText("EMAIL");
+        getContentPane().add(LabelEmail);
+        LabelEmail.setBounds(94, 152, 37, 18);
 
         txtPhNo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtPhNoActionPerformed(evt);
             }
         });
+        getContentPane().add(txtPhNo);
+        txtPhNo.setBounds(239, 201, 223, 23);
 
         txtName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNameActionPerformed(evt);
             }
         });
+        getContentPane().add(txtName);
+        txtName.setBounds(242, 89, 223, 23);
 
+        LabelPhNo.setBackground(new java.awt.Color(255, 204, 255));
+        LabelPhNo.setFont(new java.awt.Font("InaiMathi", 1, 14)); // NOI18N
         LabelPhNo.setText("PHONE NUMBER");
+        getContentPane().add(LabelPhNo);
+        LabelPhNo.setBounds(94, 205, 100, 18);
 
         txtEmail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtEmailActionPerformed(evt);
             }
         });
+        getContentPane().add(txtEmail);
+        txtEmail.setBounds(239, 148, 223, 23);
 
-        labelAddress.setText("LOCATION");
+        labelLocation.setBackground(new java.awt.Color(255, 204, 255));
+        labelLocation.setFont(new java.awt.Font("InaiMathi", 1, 14)); // NOI18N
+        labelLocation.setText("LOCATION");
+        getContentPane().add(labelLocation);
+        labelLocation.setBounds(94, 255, 88, 18);
+        getContentPane().add(txtLoc);
+        txtLoc.setBounds(239, 251, 223, 23);
 
-        jLabel1.setText("WEBSITE");
+        ownerNameLabel.setBackground(new java.awt.Color(255, 204, 255));
+        ownerNameLabel.setFont(new java.awt.Font("InaiMathi", 1, 14)); // NOI18N
+        ownerNameLabel.setText("OWNER NAME");
+        getContentPane().add(ownerNameLabel);
+        ownerNameLabel.setBounds(94, 366, 87, 18);
 
-        jLabel2.setText("OWNER NAME");
+        webLabel.setBackground(new java.awt.Color(255, 204, 255));
+        webLabel.setFont(new java.awt.Font("InaiMathi", 1, 14)); // NOI18N
+        webLabel.setText("WEBSITE");
+        getContentPane().add(webLabel);
+        webLabel.setBounds(94, 309, 88, 18);
 
-        jLabel3.setText("SET PASSWORD");
+        setPasswordLabel.setBackground(new java.awt.Color(255, 204, 255));
+        setPasswordLabel.setFont(new java.awt.Font("InaiMathi", 1, 14)); // NOI18N
+        setPasswordLabel.setText("SET PASSWORD");
+        getContentPane().add(setPasswordLabel);
+        setPasswordLabel.setBounds(94, 419, 100, 18);
+        getContentPane().add(txtWebsite);
+        txtWebsite.setBounds(239, 305, 223, 23);
+        getContentPane().add(txtOwner);
+        txtOwner.setBounds(239, 362, 223, 23);
 
         pwdField.setText("jPasswordField1");
+        getContentPane().add(pwdField);
+        pwdField.setBounds(239, 415, 223, 23);
 
+        btnReg.setFont(new java.awt.Font("InaiMathi", 1, 14)); // NOI18N
         btnReg.setText("REGISTER");
         btnReg.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRegActionPerformed(evt);
             }
         });
+        getContentPane().add(btnReg);
+        btnReg.setBounds(239, 512, 91, 24);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(112, 112, 112)
-                        .addComponent(label_businessForm, javax.swing.GroupLayout.PREFERRED_SIZE, 341, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(50, 50, 50)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(LabelPhNo)
-                                    .addComponent(LabelEmail)
-                                    .addComponent(jLabel3)
-                                    .addComponent(labelAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel2))
-                                .addGap(45, 45, 45)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtPhNo)
-                                    .addComponent(txtEmail)
-                                    .addComponent(txtLoc)
-                                    .addComponent(txtWebsite)
-                                    .addComponent(txtOwner)
-                                    .addComponent(pwdField, javax.swing.GroupLayout.DEFAULT_SIZE, 223, Short.MAX_VALUE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(Labelname, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(74, 74, 74)
-                                .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(214, 214, 214)
-                        .addComponent(btnReg)))
-                .addContainerGap(116, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addComponent(label_businessForm, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Labelname, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(LabelEmail)
-                    .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(LabelPhNo)
-                    .addComponent(txtPhNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(27, 27, 27)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelAddress)
-                    .addComponent(txtLoc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(31, 31, 31)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(txtWebsite, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(34, 34, 34)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(txtOwner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(pwdField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(77, 77, 77)
-                .addComponent(btnReg)
-                .addContainerGap(58, Short.MAX_VALUE))
-        );
+        jLabel1.setBackground(new java.awt.Color(255, 204, 255));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/views/Images/businessregistraionForm.jpeg"))); // NOI18N
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(20, 0, 670, 620);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -247,17 +227,18 @@ public class businessRegistrationForm extends javax.swing.JFrame {
     private javax.swing.JLabel Labelname;
     private javax.swing.JButton btnReg;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JToggleButton jToggleButton1;
-    private javax.swing.JLabel labelAddress;
+    private javax.swing.JLabel labelLocation;
     private javax.swing.JLabel label_businessForm;
+    private javax.swing.JLabel ownerNameLabel;
     private javax.swing.JPasswordField pwdField;
+    private javax.swing.JLabel setPasswordLabel;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtLoc;
     private javax.swing.JTextField txtName;
     private javax.swing.JTextField txtOwner;
     private javax.swing.JTextField txtPhNo;
     private javax.swing.JTextField txtWebsite;
+    private javax.swing.JLabel webLabel;
     // End of variables declaration//GEN-END:variables
 }
