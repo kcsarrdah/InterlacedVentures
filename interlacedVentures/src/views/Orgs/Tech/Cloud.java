@@ -48,13 +48,13 @@ public class Cloud extends javax.swing.JFrame {
 
         prodTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {"SaaS", "Cloud Software Engineer", "8,000"},
+                {"PaaS", "Cloud Software Engineer", "10,000"},
+                {"FaaS", "Cloud Consultant", "12,000"},
+                {"Servers", "Server Manager", "14,000"}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Services", "Employee Required", "Cost(in USD)"
             }
         ));
         jScrollPane2.setViewportView(prodTable);

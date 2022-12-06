@@ -48,9 +48,14 @@ public class Hardware extends javax.swing.JFrame {
 
         prodTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"Aurdino Board", "10 capacitors", "2,000"},
-                {null, null, ""},
-                {null, null, null}
+                {"Arduino UNO ", "2KB RAM", "2,000"},
+                {"BeagleBoard X15 ", "2GB RAM", "50"},
+                {"Arduino Nano ", "2KB RAM", "30"},
+                {"Feather boards ", "2KB RAM", "20"},
+                {"Seeduino", "ATmga328P MCU ", "50"},
+                {"Pocketbeagle ", "512MB RAM", "30"},
+                {"NodeMCU v2 ", "128kb RAM", "50"},
+                {"Argon Wifi Development Board ", "4mb RAM", "70"}
             },
             new String [] {
                 "Services and Goods", "Requirements", "Cost (in USD)"
