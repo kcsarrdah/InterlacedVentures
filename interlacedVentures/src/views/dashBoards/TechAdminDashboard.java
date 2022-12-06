@@ -87,7 +87,7 @@ public class TechAdminDashboard extends javax.swing.JFrame {
             }
         });
         getContentPane().add(bttnLogOut);
-        bttnLogOut.setBounds(480, 300, 76, 23);
+        bttnLogOut.setBounds(480, 300, 72, 23);
 
         bttnServReq.setBackground(new java.awt.Color(255, 255, 204));
         bttnServReq.setFont(new java.awt.Font("InaiMathi", 1, 14)); // NOI18N
@@ -110,8 +110,6 @@ public class TechAdminDashboard extends javax.swing.JFrame {
         jLabel2.setText("TECH ADMIN DASHBOARD");
         getContentPane().add(jLabel2);
         jLabel2.setBounds(210, 20, 170, 30);
-
-        jLabel1.setIcon(new javax.swing.ImageIcon("/Users/trishaguharoy/Downloads/techhhhhh.jpeg")); // NOI18N
         getContentPane().add(jLabel1);
         jLabel1.setBounds(230, -10, 630, 420);
 
