@@ -81,7 +81,7 @@ public class businessUserDashBoard extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(servicesbusiness, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(132, 132, 132)
+                .addGap(120, 120, 120)
                 .addComponent(logoutbusi, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18))
         );
@@ -136,6 +136,7 @@ public class businessUserDashBoard extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.hide();
         ServiceDashboard sd = new ServiceDashboard();
+        sd.labelName.setText(this.businessUser.getText());
         sd.show();
     }//GEN-LAST:event_servicesbusinessActionPerformed
 
