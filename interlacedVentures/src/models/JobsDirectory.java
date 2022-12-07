@@ -50,7 +50,7 @@ public class JobsDirectory {
         }
     }
     
-    public void getBusinessUserData() {
+    public void getJobsData() {
         Statement stmt;
         try{
             stmt = DatabaseConnectionClass.getInstance().getCon().createStatement();
