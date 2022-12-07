@@ -103,6 +103,7 @@ public class postAJobFormBusiness extends javax.swing.JFrame {
         jobs job = new jobs(new Date(),"Posted", tstDescription.getText(), jcRole.getSelectedItem().toString());
         JobsDirectory.getInstance().addJob(job);
         JOptionPane.showMessageDialog(this, "Job Posted Successfully! A Freelancer Should Contact You Soon");
+        this.hide();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

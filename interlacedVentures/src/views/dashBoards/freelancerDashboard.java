@@ -4,6 +4,9 @@
  */
 package views.dashBoards;
 
+import models.EmployeeDirectory;
+import models.FreelanceDirectory;
+import views.forms.freelancerRegistrationForm;
 import views.loginPage;
 
 /**
@@ -30,9 +33,9 @@ public class freelancerDashboard extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jButton2 = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
+        labelFreelancer = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        btnViewProf = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
@@ -52,10 +55,10 @@ public class freelancerDashboard extends javax.swing.JFrame {
         jPanel1.add(jButton2);
         jButton2.setBounds(520, 400, 90, 24);
 
-        jLabel2.setFont(new java.awt.Font("Bai Jamjuree", 1, 18)); // NOI18N
-        jLabel2.setText("       FREELANCER");
-        jPanel1.add(jLabel2);
-        jLabel2.setBounds(240, 10, 220, 80);
+        labelFreelancer.setFont(new java.awt.Font("Bai Jamjuree", 1, 18)); // NOI18N
+        labelFreelancer.setText("       FREELANCER");
+        jPanel1.add(labelFreelancer);
+        labelFreelancer.setBounds(240, 10, 220, 80);
 
         jButton1.setBackground(new java.awt.Color(255, 255, 204));
         jButton1.setFont(new java.awt.Font("InaiMathi", 1, 14)); // NOI18N
@@ -68,16 +71,16 @@ public class freelancerDashboard extends javax.swing.JFrame {
         jPanel1.add(jButton1);
         jButton1.setBounds(50, 320, 130, 60);
 
-        jButton3.setBackground(new java.awt.Color(255, 255, 204));
-        jButton3.setFont(new java.awt.Font("InaiMathi", 1, 14)); // NOI18N
-        jButton3.setText("VIEW PROFILE");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        btnViewProf.setBackground(new java.awt.Color(255, 255, 204));
+        btnViewProf.setFont(new java.awt.Font("InaiMathi", 1, 14)); // NOI18N
+        btnViewProf.setText("VIEW PROFILE");
+        btnViewProf.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                btnViewProfActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton3);
-        jButton3.setBounds(50, 210, 130, 60);
+        jPanel1.add(btnViewProf);
+        btnViewProf.setBounds(50, 210, 130, 60);
 
         jButton4.setBackground(new java.awt.Color(255, 255, 204));
         jButton4.setFont(new java.awt.Font("InaiMathi", 1, 14)); // NOI18N
@@ -116,9 +119,52 @@ public class freelancerDashboard extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void btnViewProfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewProfActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+        this.hide();
+        
+//        THERE WILL BE CODE HERE TO TAKE THE FREELANCER TO HIS OWN PROFILE
+        
+        freelancerRegistrationForm frf = new freelancerRegistrationForm();
+        frf.show();
+        String UserName = labelFreelancer.getText();
+        for(int i = 0; i < FreelanceDirectory.getInstance().getFreeLancerDir().size(); i++){
+           if(FreelanceDirectory.getInstance().getFreeLancerDir().get(i).getUsername().equals(UserName)){
+               
+                frf.txtFName.setText(FreelanceDirectory.getInstance().getFreeLancerDir().get(i).getFirstName());      
+                frf.txtFName.setEditable(false);
+                frf.txtLName.setText(FreelanceDirectory.getInstance().getFreeLancerDir().get(i).getLastName()); 
+                frf.txtLName.setEditable(false);
+                frf.txtUName.setText(FreelanceDirectory.getInstance().getFreeLancerDir().get(i).getUsername()); 
+                frf.txtUName.setEditable(false);
+                frf.txtAge.setText(Integer.toString(FreelanceDirectory.getInstance().getFreeLancerDir().get(i).getAge()));
+                frf.txtAge.setEditable(false);
+                frf.comboGender.setSelectedItem(FreelanceDirectory.getInstance().getFreeLancerDir().get(i).getGender());
+                frf.comboGender.setEditable(false);
+                frf.txtPhone.setText(FreelanceDirectory.getInstance().getFreeLancerDir().get(i).getPhoneNumber());
+                frf.txtPhone.setEditable(false);
+                frf.txtLoc.setText(FreelanceDirectory.getInstance().getFreeLancerDir().get(i).getLocation());
+                frf.txtLoc.setEditable(false);
+                frf.txtPortfolio.setText(FreelanceDirectory.getInstance().getFreeLancerDir().get(i).getLocation());
+                frf.txtPortfolio.setEditable(false);
+                frf.txtWorkExp.setText(Integer.toString(FreelanceDirectory.getInstance().getFreeLancerDir().get(i).getWorkEx()));
+                frf.txtWorkExp.setEditable(false);
+                frf.txtLatestWork.setText(FreelanceDirectory.getInstance().getFreeLancerDir().get(i).getLatestWork());
+                frf.txtLatestWork.setEditable(false);
+                frf.comboEducation.setSelectedItem(FreelanceDirectory.getInstance().getFreeLancerDir().get(i).getEducation());
+                frf.comboEducation.setEditable(false);
+                frf.txtSkills.setText(FreelanceDirectory.getInstance().getFreeLancerDir().get(i).getSkills());
+                frf.txtSkills.setEditable(false);
+                frf.txtLoc.setText(FreelanceDirectory.getInstance().getFreeLancerDir().get(i).getLocation());
+                frf.txtLoc.setEditable(false);
+                frf.txtHourlyRate.setText(Integer.toString(FreelanceDirectory.getInstance().getFreeLancerDir().get(i).getHourlyRate()));
+                frf.txtHourlyRate.setEditable(false);
+                frf.pwdField.setText(FreelanceDirectory.getInstance().getFreeLancerDir().get(i).getPassword());
+                frf.pwdField.setEditable(false);
+            }
+        }
+
+    }//GEN-LAST:event_btnViewProfActionPerformed
 
     /**
      * @param args the command line arguments
@@ -156,12 +202,12 @@ public class freelancerDashboard extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnViewProf;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
+    public javax.swing.JLabel labelFreelancer;
     // End of variables declaration//GEN-END:variables
 }

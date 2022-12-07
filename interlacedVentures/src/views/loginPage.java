@@ -18,6 +18,7 @@ import views.dashBoards.TechAdminDashboard;
 import views.dashBoards.employeeDashboard;
 import views.dashBoards.freelancerDashboard;
 import models.BusinessUsersDirectory;
+import models.FreelanceDirectory;
 
 /**
  *
@@ -159,9 +160,10 @@ public class loginPage extends javax.swing.JFrame {
                 dispose();
                 //this.hide();
                 businessUserDashBoard budb = new businessUserDashBoard();
-                System.out.println("here");
+                //System.out.println("here");
                 String name = "demo";
-                System.out.println(BusinessUsersDirectory.getInstance().getBusinessUsersDir().size());
+                //System.out.println(BusinessUsersDirectory.getInstance().getBusinessUsersDir().size());
+                
                 for(int i = 0; i < BusinessUsersDirectory.getInstance().getBusinessUsersDir().size(); i++){
                 if(BusinessUsersDirectory.getInstance().getBusinessUsersDir().get(i).getName().equals(userName)){
                         name = BusinessUsersDirectory.getInstance().getBusinessUsersDir().get(i).getName();
@@ -175,6 +177,15 @@ public class loginPage extends javax.swing.JFrame {
                 dispose();
                 
                 freelancerDashboard fdb = new freelancerDashboard();
+                String name1 = "blah";
+                System.out.println("Size" + FreelanceDirectory.getInstance().getFreeLancerDir().size());
+                
+                for(int i = 0; i < FreelanceDirectory.getInstance().getFreeLancerDir().size(); i++){
+                if(FreelanceDirectory.getInstance().getFreeLancerDir().get(i).getUsername().equals(userName)){
+                        name1 = FreelanceDirectory.getInstance().getFreeLancerDir().get(i).getUsername();
+                    }
+                }
+                fdb.labelFreelancer.setText(name1);
                 fdb.show();
             }
             else if(rsEMP.next()){

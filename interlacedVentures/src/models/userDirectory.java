@@ -56,7 +56,10 @@ public class userDirectory {
             String str = "Select * from Users";
             ResultSet rs = stmt.executeQuery(str);
             while(rs.next()) {
-                users users = new users(rs.getString("UserName"), rs.getString("Password"),rs.getString("Type"));
+                users users = new users(
+                        rs.getString("UserName"),
+                        rs.getString("Password"),
+                        rs.getString("UserType"));
                 userDir.add(users);
             }
         } catch (SQLException ex) {

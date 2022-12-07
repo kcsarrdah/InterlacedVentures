@@ -8,6 +8,7 @@ package interlacedventures;
 import models.BillsDirectory;
 import models.BusinessUsersDirectory;
 import models.EmployeeDirectory;
+import models.FreelanceDirectory;
 import models.OrdersDirectory;
 import models.userDirectory;
 import views.loginPage;
@@ -45,6 +46,7 @@ public class InterlacedVentures {
         BusinessUsersDirectory.getInstance().getBusinessUserData();
         OrdersDirectory.getInstance().getOrderData();
         BillsDirectory.getInstance().getBillData();
+        FreelanceDirectory.getInstance().getFreelancerData();
 //        HospitalAdminDirectory.getInstance().getHospAdminData();
 //        HospitalDirectory.getInstance().getHospitalData();
 //        AmbulanceDirectory.getInstance().getAmbulance();

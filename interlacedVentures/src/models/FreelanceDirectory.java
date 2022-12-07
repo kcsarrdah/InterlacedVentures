@@ -67,20 +67,20 @@ public class FreelanceDirectory {
         Statement stmt;
         try{
             stmt = DatabaseConnectionClass.getInstance().getCon().createStatement();
-            String str = "SELECT * from Freelancer";
+            String str = "SELECT * from Freelancers";
             ResultSet rs = stmt.executeQuery(str);
             while(rs.next()) {
                 freelancer fl = new freelancer(
                         rs.getString("Location"),
                         rs.getString("Password"),
-                        rs.getDate("Date of Joining"),
+                        rs.getDate("DateOfJoining"),
                         rs.getInt("HourlyRate"),
                         rs.getString("Portfolio"),
-                        rs.getInt("WorkEx"),
-                        rs.getString("LatestWorkEx"),
+                        rs.getInt("WorkExperience"),
+                        rs.getString("LatestWork"),
                         rs.getString("Education"),
                         rs.getString("Skills"),
-                        rs.getString("Username"),
+                        rs.getString("UserName"),
                         rs.getString("FirstName"),
                         rs.getString("LastName"),
                         rs.getInt("Age"),
