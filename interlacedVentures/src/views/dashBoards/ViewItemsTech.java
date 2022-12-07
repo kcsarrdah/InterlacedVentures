@@ -156,14 +156,12 @@ public class ViewItemsTech extends javax.swing.JFrame {
         int rctno = 0;
         DefaultTableModel tableModel = (DefaultTableModel) tblTechReq.getModel();
         String service = tableModel.getValueAt(tblTechReq.getSelectedRow(), 2).toString();
-        
         String name = tblTechReq.getValueAt(tblTechReq.getSelectedRow(), 0).toString();
-        System.out.println(OrdersDirectory.getInstance().getOrdersDir().size());
-        System.out.println(name);
         for(int i = 0; i < OrdersDirectory.getInstance().getOrdersDir().size(); i++){
             if(OrdersDirectory.getInstance().getOrdersDir().get(i).getOrderedBy().equals(name)){
                 amt = OrdersDirectory.getInstance().getOrdersDir().get(i).getAmount();
                 rctno = i+2500;
+                OrdersDirectory.getInstance().getOrdersDir().get(i).setStatus("Completed");
                 break;
             }
         }

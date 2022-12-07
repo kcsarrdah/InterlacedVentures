@@ -92,7 +92,7 @@ public class TechAdminDashboard extends javax.swing.JFrame {
             }
         });
         jPanel1.add(bttnLogOut);
-        bttnLogOut.setBounds(480, 300, 72, 23);
+        bttnLogOut.setBounds(463, 293, 90, 30);
 
         bttnServReq.setBackground(new java.awt.Color(255, 255, 204));
         bttnServReq.setFont(new java.awt.Font("InaiMathi", 1, 14)); // NOI18N
@@ -220,10 +220,12 @@ public class TechAdminDashboard extends javax.swing.JFrame {
         String[][] rows = new String[n][3];
         int j=0;
         for(int i = 0;  i<n ; i++){
+            if(!OrdersDirectory.getInstance().getOrdersDir().get(i).getStatus().equals("Completed")){
                 rows[j][0] = OrdersDirectory.getInstance().getOrdersDir().get(i).getOrderedBy();
                 rows[j][1] = OrdersDirectory.getInstance().getOrdersDir().get(i).getRequestTo();
                 rows[j][2] = OrdersDirectory.getInstance().getOrdersDir().get(i).getService();           
                 j++;
+            }
         }
         DefaultTableModel dtm = new DefaultTableModel (rows, columnNames);
         vit.tblTechReq.setModel(dtm);
