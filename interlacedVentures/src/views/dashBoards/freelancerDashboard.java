@@ -182,17 +182,14 @@ public class freelancerDashboard extends javax.swing.JFrame {
         findJobsDashboard fjb = new findJobsDashboard();
         String role = "";
         
-        
-        
-        for(int i=0; i < FreelanceDirectory.getInstance().getFreeLancerDir().size(); i++){
+        for(int i = 0; i < FreelanceDirectory.getInstance().getFreeLancerDir().size(); i++){
             if(FreelanceDirectory.getInstance().getFreeLancerDir().get(i).getFirstName().equals(labelFreelancer.getText())){
-                role = FreelanceDirectory.getInstance().getFreeLancerDir().get(i).getSkills();
+             role = FreelanceDirectory.getInstance().getFreeLancerDir().get(i).getSkills();
             }
         }
-        
-        
-        String[][] rows = new String[EmployeeDirectory.getInstance().getEmployeeDir().size()][3];
+        System.out.println(JobsDirectory.getInstance().getJobsDir().size());
         String[] columnNames = {"Description", "Listed By", "Date of Listing"};
+        String[][] rows = new String[JobsDirectory.getInstance().getJobsDir().size()][3];
         int j = 0;
         for(int i=0; i < JobsDirectory.getInstance().getJobsDir().size(); i++){
             if(JobsDirectory.getInstance().getJobsDir().get(i).getRole().equals(role) && JobsDirectory.getInstance().getJobsDir().get(i).getStatus().equals("Posted")) {
