@@ -119,7 +119,7 @@ public class TechAdminDashboard extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("InaiMathi", 1, 14)); // NOI18N
         jLabel2.setText("TECH ADMIN DASHBOARD");
         jPanel1.add(jLabel2);
-        jLabel2.setBounds(210, 20, 170, 30);
+        jLabel2.setBounds(210, 20, 210, 30);
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/views/Images/techhhhhh.jpeg"))); // NOI18N
         jPanel1.add(jLabel3);

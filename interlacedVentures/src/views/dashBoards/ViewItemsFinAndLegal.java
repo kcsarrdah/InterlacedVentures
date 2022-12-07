@@ -4,8 +4,6 @@
  */
 package views.dashBoards;
 
-import java.text.Format;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.table.DefaultTableModel;
 import models.BillsDirectory;
@@ -14,14 +12,14 @@ import models.bills;
 
 /**
  *
- * @author shreyasisodiya
+ * @author kcsar
  */
-public class ViewItemsTech extends javax.swing.JFrame {
+public class ViewItemsFinAndLegal extends javax.swing.JFrame {
 
     /**
-     * Creates new form ViewItemsTech
+     * Creates new form ViewItemsFinAndLegal
      */
-    public ViewItemsTech() {
+    public ViewItemsFinAndLegal() {
         initComponents();
     }
 
@@ -35,26 +33,17 @@ public class ViewItemsTech extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        buttonTableBack = new javax.swing.JButton();
-        labelRequest = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblTechReq = new javax.swing.JTable();
+        tabelFinReq = new javax.swing.JTable();
+        labelRequest = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        btnView = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        buttonTableBack.setText("BACK");
-        buttonTableBack.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonTableBackActionPerformed(evt);
-            }
-        });
-
-        labelRequest.setText("jLabel1");
-
-        tblTechReq.setModel(new javax.swing.table.DefaultTableModel(
+        tabelFinReq.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
                 {null, null, null},
@@ -62,70 +51,69 @@ public class ViewItemsTech extends javax.swing.JFrame {
                 {null, null, null}
             },
             new String [] {
-                "Ordered By", "Organisation", "Service"
+                "ORDERED BY", "ORGANISATION", "SERVICE"
             }
         ));
-        jScrollPane1.setViewportView(tblTechReq);
+        jScrollPane1.setViewportView(tabelFinReq);
 
-        jButton1.setText("Approve");
+        labelRequest.setText("jLabel1");
+
+        jButton1.setText("BACK");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Disapprove");
+        jButton2.setText("APPROVE");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
 
-        btnView.setText("View Details");
-        btnView.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnViewActionPerformed(evt);
-            }
-        });
+        jButton3.setText("DISAPPROVE");
+
+        jButton4.setText("VIEW DETAILS");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(257, 257, 257)
-                .addComponent(labelRequest)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(77, Short.MAX_VALUE)
+                .addGap(63, 63, 63)
+                .addComponent(jButton4)
+                .addGap(68, 68, 68)
+                .addComponent(jButton3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 92, Short.MAX_VALUE)
+                .addComponent(jButton2)
+                .addGap(110, 110, 110)
+                .addComponent(jButton1)
+                .addGap(95, 95, 95))
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(btnView)
-                        .addGap(31, 31, 31)
-                        .addComponent(jButton2)
-                        .addGap(57, 57, 57)
-                        .addComponent(jButton1)
-                        .addGap(36, 36, 36)
-                        .addComponent(buttonTableBack)
-                        .addGap(74, 74, 74))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(124, 124, 124))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(142, 142, 142)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(362, 362, 362)
+                        .addComponent(labelRequest, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(25, 25, 25)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(42, 42, 42)
                 .addComponent(labelRequest)
-                .addGap(26, 26, 26)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 295, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
+                .addGap(48, 48, 48)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 381, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(buttonTableBack)
                     .addComponent(jButton1)
                     .addComponent(jButton2)
-                    .addComponent(btnView))
-                .addGap(35, 35, 35))
+                    .addComponent(jButton3)
+                    .addComponent(jButton4))
+                .addGap(43, 43, 43))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -142,26 +130,20 @@ public class ViewItemsTech extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void buttonTableBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonTableBackActionPerformed
-        // TODO add your handling code here:
-        this.hide();
-        TechAdminDashboard tad = new TechAdminDashboard();
-        tad.show();
-    }//GEN-LAST:event_buttonTableBackActionPerformed
-
-    private void btnViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewActionPerformed
-        // TODO add your handling code here:
-        
-    }//GEN-LAST:event_btnViewActionPerformed
-
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        
+        this.hide();
+        FinAndLegalDashBoard fldb = new FinAndLegalDashBoard();
+        fldb.show();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
         float amt = 0;
         int rctno = 0;
-        DefaultTableModel tableModel = (DefaultTableModel) tblTechReq.getModel();
-        String service = tableModel.getValueAt(tblTechReq.getSelectedRow(), 2).toString();
-        String name = tblTechReq.getValueAt(tblTechReq.getSelectedRow(), 0).toString();
+        DefaultTableModel tableModel = (DefaultTableModel) tabelFinReq.getModel();
+        String service = tableModel.getValueAt(tabelFinReq.getSelectedRow(), 2).toString();
+        String name = tabelFinReq.getValueAt(tabelFinReq.getSelectedRow(), 0).toString();
         for(int i = 0; i < OrdersDirectory.getInstance().getOrdersDir().size(); i++){
             if(OrdersDirectory.getInstance().getOrdersDir().get(i).getOrderedBy().equals(name)){
                 amt = OrdersDirectory.getInstance().getOrdersDir().get(i).getAmount();
@@ -171,7 +153,7 @@ public class ViewItemsTech extends javax.swing.JFrame {
             }
         }
         
-        if(tblTechReq.getSelectedRowCount() == 1){  
+        if(tabelFinReq.getSelectedRowCount() == 1){  
             bills bill = new bills (
                     new Date(), 
                     amt, 
@@ -180,10 +162,6 @@ public class ViewItemsTech extends javax.swing.JFrame {
                     rctno);
             BillsDirectory.getInstance().addBill(bill);
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
@@ -203,32 +181,32 @@ public class ViewItemsTech extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ViewItemsTech.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewItemsFinAndLegal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ViewItemsTech.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewItemsFinAndLegal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ViewItemsTech.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewItemsFinAndLegal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ViewItemsTech.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewItemsFinAndLegal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ViewItemsTech().setVisible(true);
+                new ViewItemsFinAndLegal().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JButton btnView;
-    private javax.swing.JButton buttonTableBack;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     public javax.swing.JLabel labelRequest;
-    public javax.swing.JTable tblTechReq;
+    public javax.swing.JTable tabelFinReq;
     // End of variables declaration//GEN-END:variables
 }
