@@ -4,7 +4,9 @@
  */
 package views.Freelancer;
 
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import models.JobsDirectory;
 
 /**
  *
@@ -117,9 +119,18 @@ public class findJobsDashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        // TODO add your handling code here: get selected job and update status to applied
         
-        
+     DefaultTableModel tableModel = (DefaultTableModel) jobsTable.getModel();
+     String Name = tableModel.getValueAt(jobsTable.getSelectedRow(), 1).toString();
+        if(jobsTable.getSelectedRowCount() == 1){
+            for(int i = 0; i < JobsDirectory.getInstance().getJobsDir().size(); i++){
+                if(JobsDirectory.getInstance().getJobsDir().get(i).getListedBy().equals(Name)){
+                    JobsDirectory.getInstance().getJobsDir().get(i).setStatus("Applied");
+                    JOptionPane.showMessageDialog(this, "Applied Successfully");
+                }
+            }
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

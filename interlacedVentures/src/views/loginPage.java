@@ -157,11 +157,9 @@ public class loginPage extends javax.swing.JFrame {
                         this.hide();
                         freelancerDashboard fdb = new freelancerDashboard();
                         String name1 = "";
-                        System.out.println("Size" + FreelanceDirectory.getInstance().getFreeLancerDir().size());
-                
                         for(int j = 0; j < FreelanceDirectory.getInstance().getFreeLancerDir().size(); j++){
                         if(FreelanceDirectory.getInstance().getFreeLancerDir().get(j).getUsername().equals(userName)){
-                        name1 = FreelanceDirectory.getInstance().getFreeLancerDir().get(j).getUsername();
+                        name1 = FreelanceDirectory.getInstance().getFreeLancerDir().get(j).getFirstName();
                         }
                     }
                         fdb.labelFreelancer.setText(name1);
