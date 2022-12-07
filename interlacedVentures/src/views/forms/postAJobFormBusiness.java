@@ -5,6 +5,8 @@
 package views.forms;
 
 import java.util.Date;
+import javax.swing.JOptionPane;
+import models.JobsDirectory;
 import models.jobs;
 
 /**
@@ -99,6 +101,8 @@ public class postAJobFormBusiness extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         jobs job = new jobs(new Date(),"Posted", tstDescription.getText(), jcRole.getSelectedItem().toString());
+        JobsDirectory.getInstance().addJob(job);
+        JOptionPane.showMessageDialog(this, "Job Posted Successfully! A Freelancer Should Contact You Soon");
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
