@@ -72,6 +72,28 @@ public class JobsDirectory {
         }
     }
     
+    public void updateJob(jobs job,int i) {
+        jobsDir.set(i,job);
+        Statement stmt;
+        try {
+            stmt = DatabaseConnectionClass.getInstance().getCon().createStatement();
+            String query1 = "Update Jobs" + " set Status=? where Description=?";
+            PreparedStatement pst = DatabaseConnectionClass.getInstance().getCon().prepareStatement(query1);
+            pst.setString(1, job.getStatus());
+            pst.setString(2, job.getDescription());
+            int rs = pst.executeUpdate();
+            if(rs>0)
+            {
+                JOptionPane.showMessageDialog(null,"Inserted Successfully!");
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex);
+            JOptionPane.showMessageDialog(null,"Cannot be Inserted");
+        }
+    }
+
+
+
 //    public void docData(int stateID) {
 //        for(int j=0;j<doctorDir.size();j++) {
 //            System.out.println("sdj");
