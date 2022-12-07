@@ -9,6 +9,7 @@ import models.BillsDirectory;
 import models.BusinessUsersDirectory;
 import models.EmployeeDirectory;
 import models.FreelanceDirectory;
+import models.JobsDirectory;
 import models.OrdersDirectory;
 import models.userDirectory;
 import views.loginPage;
@@ -27,15 +28,15 @@ public class InterlacedVentures {
     public static void main(String[] args) {
         
         Admins[0][0] = "SA";
-        Admins[0][1] = "password";
+        Admins[0][1] = "123";
         Admins[1][0] = "TA";
-        Admins[1][1] = "password";
+        Admins[1][1] = "123";
         Admins[2][0] = "OA";
-        Admins[2][1] = "password";
-        Admins[3][0] = "";
-        Admins[3][1] = "password";
+        Admins[2][1] = "123";
+        Admins[3][0] = "SA";
+        Admins[3][1] = "123";
         Admins[4][0] = "";
-        Admins[4][1] = "password";
+        Admins[4][1] = "123";
         
         
         
@@ -47,6 +48,7 @@ public class InterlacedVentures {
         OrdersDirectory.getInstance().getOrderData();
         BillsDirectory.getInstance().getBillData();
         FreelanceDirectory.getInstance().getFreelancerData();
+        JobsDirectory.getInstance().getJobsData();
 //        HospitalAdminDirectory.getInstance().getHospAdminData();
 //        HospitalDirectory.getInstance().getHospitalData();
 //        AmbulanceDirectory.getInstance().getAmbulance();

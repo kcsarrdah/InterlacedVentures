@@ -128,6 +128,7 @@ public class freelancerDashboard extends javax.swing.JFrame {
         freelancerRegistrationForm frf = new freelancerRegistrationForm();
         frf.show();
         String UserName = labelFreelancer.getText();
+        
         for(int i = 0; i < FreelanceDirectory.getInstance().getFreeLancerDir().size(); i++){
            if(FreelanceDirectory.getInstance().getFreeLancerDir().get(i).getUsername().equals(UserName)){
                
