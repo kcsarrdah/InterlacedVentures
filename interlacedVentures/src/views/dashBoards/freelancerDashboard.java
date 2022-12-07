@@ -195,7 +195,7 @@ public class freelancerDashboard extends javax.swing.JFrame {
         String[] columnNames = {"Description", "Listed By", "Date of Listing"};
         int j = 0;
         for(int i=0; i < JobsDirectory.getInstance().getJobsDir().size(); i++){
-            if(JobsDirectory.getInstance().getJobsDir().get(i).getRole().equals(role)) {
+            if(JobsDirectory.getInstance().getJobsDir().get(i).getRole().equals(role) && JobsDirectory.getInstance().getJobsDir().get(i).getStatus().equals("Posted")) {
                 rows[j][0] = JobsDirectory.getInstance().getJobsDir().get(i).getDescription();
                 rows[j][1] = JobsDirectory.getInstance().getJobsDir().get(i).getListedBy();
                 SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
