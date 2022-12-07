@@ -4,6 +4,8 @@
  */
 package views.dashBoards;
 
+import java.text.Format;
+import java.text.SimpleDateFormat;
 import javax.swing.table.DefaultTableModel;
 import models.BillsDirectory;
 import models.bills;
@@ -143,7 +145,9 @@ public class businessUserDashBoard extends javax.swing.JFrame {
                 rows[j][2] = Integer.toString(BillsDirectory.getInstance().getBillsDir().get(i).getReceiptNo());     
                 rows[j][3] = Float.toString(BillsDirectory.getInstance().getBillsDir().get(i).getAmount()); 
                 //rows[j][4] = BillsDirectory.getInstance().getBillsDir().get(i).BillsDirectory.sqlDate;     
-
+                Format formatter = new SimpleDateFormat("yyyy-MM-dd");
+                String s = formatter.format(BillsDirectory.getInstance().getBillsDir().get(i).getDate());
+                rows[j][4] = s;
                 j++;      
         }
         
