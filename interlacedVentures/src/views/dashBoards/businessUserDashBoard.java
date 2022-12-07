@@ -142,7 +142,7 @@ public class businessUserDashBoard extends javax.swing.JFrame {
                 rows[j][1] = BillsDirectory.getInstance().getBillsDir().get(i).getOrgName();
                 rows[j][2] = Integer.toString(BillsDirectory.getInstance().getBillsDir().get(i).getReceiptNo());     
                 rows[j][3] = Float.toString(BillsDirectory.getInstance().getBillsDir().get(i).getAmount()); 
-                rows[j][4] = BillsDirectory.getInstance().getBillsDir().get(i).BillsDirectory.sqlDate;     
+                //rows[j][4] = BillsDirectory.getInstance().getBillsDir().get(i).BillsDirectory.sqlDate;     
 
                 j++;      
         }
