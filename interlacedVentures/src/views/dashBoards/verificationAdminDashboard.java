@@ -33,70 +33,104 @@ public class verificationAdminDashboard extends javax.swing.JFrame {
         veriFreelan = new javax.swing.JButton();
         veriEmployers = new javax.swing.JButton();
         verifAdmin = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(235, 234, 234));
 
+        jBackPage.setBackground(new java.awt.Color(255, 255, 255));
+
+        backButton.setBackground(new java.awt.Color(255, 255, 248));
+        backButton.setFont(new java.awt.Font("InaiMathi", 1, 14)); // NOI18N
         backButton.setText("BACK");
+        backButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        backButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backButtonActionPerformed(evt);
+            }
+        });
 
+        regisIssue.setBackground(new java.awt.Color(255, 255, 248));
+        regisIssue.setFont(new java.awt.Font("Kailasa", 1, 14)); // NOI18N
         regisIssue.setText("Register Issue");
+        regisIssue.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         regisIssue.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 regisIssueActionPerformed(evt);
             }
         });
 
+        veriBusin.setBackground(new java.awt.Color(242, 240, 240));
+        veriBusin.setFont(new java.awt.Font("InaiMathi", 1, 18)); // NOI18N
         veriBusin.setText("Verify Businesses");
+        veriBusin.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
+        veriFreelan.setBackground(new java.awt.Color(242, 240, 240));
+        veriFreelan.setFont(new java.awt.Font("InaiMathi", 1, 18)); // NOI18N
         veriFreelan.setText("Verify Freelancers");
+        veriFreelan.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         veriFreelan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 veriFreelanActionPerformed(evt);
             }
         });
 
+        veriEmployers.setBackground(new java.awt.Color(242, 240, 240));
+        veriEmployers.setFont(new java.awt.Font("InaiMathi", 1, 18)); // NOI18N
         veriEmployers.setText("Verify Employers");
+        veriEmployers.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
+        verifAdmin.setFont(new java.awt.Font("Bai Jamjuree", 1, 36)); // NOI18N
         verifAdmin.setText("         VERIFIER");
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/views/Images/accmanager.jpeg"))); // NOI18N
 
         javax.swing.GroupLayout jBackPageLayout = new javax.swing.GroupLayout(jBackPage);
         jBackPage.setLayout(jBackPageLayout);
         jBackPageLayout.setHorizontalGroup(
             jBackPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jBackPageLayout.createSequentialGroup()
-                .addGap(188, 188, 188)
-                .addComponent(regisIssue)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(regisIssue, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(64, 64, 64)
                 .addComponent(backButton, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(68, 68, 68))
+                .addGap(86, 86, 86))
             .addGroup(jBackPageLayout.createSequentialGroup()
-                .addGap(90, 90, 90)
-                .addComponent(veriEmployers, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(118, 118, 118)
+                .addGap(328, 328, 328)
+                .addComponent(verifAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(357, 399, Short.MAX_VALUE))
+            .addGroup(jBackPageLayout.createSequentialGroup()
+                .addGap(180, 180, 180)
                 .addGroup(jBackPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jBackPageLayout.createSequentialGroup()
-                        .addComponent(verifAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(302, Short.MAX_VALUE))
-                    .addGroup(jBackPageLayout.createSequentialGroup()
-                        .addComponent(veriBusin, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(veriFreelan)
-                        .addGap(76, 76, 76))))
+                    .addComponent(veriFreelan, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(veriEmployers, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(veriBusin, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(97, 97, 97)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jBackPageLayout.setVerticalGroup(
             jBackPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jBackPageLayout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addComponent(verifAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(125, 125, 125)
-                .addGroup(jBackPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(veriBusin, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(veriFreelan, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(veriEmployers, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 169, Short.MAX_VALUE)
-                .addGroup(jBackPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(regisIssue, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(backButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30))
+                .addGap(16, 16, 16)
+                .addComponent(verifAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jBackPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jBackPageLayout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addComponent(veriEmployers, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(68, 68, 68)
+                        .addComponent(veriFreelan, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(68, 68, 68)
+                        .addComponent(veriBusin, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jBackPageLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 130, Short.MAX_VALUE)
+                        .addGroup(jBackPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(backButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(regisIssue, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(43, 43, 43))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -120,6 +154,10 @@ public class verificationAdminDashboard extends javax.swing.JFrame {
     private void regisIssueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regisIssueActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_regisIssueActionPerformed
+
+    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_backButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -159,6 +197,7 @@ public class verificationAdminDashboard extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backButton;
     private javax.swing.JPanel jBackPage;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JButton regisIssue;
     private javax.swing.JButton veriBusin;
     private javax.swing.JButton veriEmployers;
