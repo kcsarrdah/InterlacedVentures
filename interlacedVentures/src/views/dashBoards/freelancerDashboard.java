@@ -4,8 +4,12 @@
  */
 package views.dashBoards;
 
+import java.text.SimpleDateFormat;
+import javax.swing.table.DefaultTableModel;
 import models.EmployeeDirectory;
 import models.FreelanceDirectory;
+import models.JobsDirectory;
+import views.Freelancer.findJobsDashboard;
 import views.forms.freelancerRegistrationForm;
 import views.loginPage;
 
@@ -85,6 +89,11 @@ public class freelancerDashboard extends javax.swing.JFrame {
         jButton4.setBackground(new java.awt.Color(255, 255, 204));
         jButton4.setFont(new java.awt.Font("InaiMathi", 1, 14)); // NOI18N
         jButton4.setText("FIND JOBS");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jButton4);
         jButton4.setBounds(50, 100, 130, 60);
 
@@ -154,8 +163,8 @@ public class freelancerDashboard extends javax.swing.JFrame {
                 frf.txtLatestWork.setEditable(false);
                 frf.comboEducation.setSelectedItem(FreelanceDirectory.getInstance().getFreeLancerDir().get(i).getEducation());
                 frf.comboEducation.setEditable(false);
-                frf.txtSkills.setText(FreelanceDirectory.getInstance().getFreeLancerDir().get(i).getSkills());
-                frf.txtSkills.setEditable(false);
+                frf.jcSkills.setSelectedItem(FreelanceDirectory.getInstance().getFreeLancerDir().get(i).getSkills());
+                frf.jcSkills.setEditable(false);
                 frf.txtLoc.setText(FreelanceDirectory.getInstance().getFreeLancerDir().get(i).getLocation());
                 frf.txtLoc.setEditable(false);
                 frf.txtHourlyRate.setText(Integer.toString(FreelanceDirectory.getInstance().getFreeLancerDir().get(i).getHourlyRate()));
@@ -166,6 +175,39 @@ public class freelancerDashboard extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_btnViewProfActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here
+        
+        findJobsDashboard fjb = new findJobsDashboard();
+        String role = "";
+        
+        
+        
+        for(int i=0; i < FreelanceDirectory.getInstance().getFreeLancerDir().size(); i++){
+            if(FreelanceDirectory.getInstance().getFreeLancerDir().get(i).getFirstName().equals(labelFreelancer.getText())){
+                role = FreelanceDirectory.getInstance().getFreeLancerDir().get(i).getSkills();
+            }
+        }
+        
+        
+        String[][] rows = new String[EmployeeDirectory.getInstance().getEmployeeDir().size()][3];
+        String[] columnNames = {"Description", "Listed By", "Date of Listing"};
+        int j = 0;
+        for(int i=0; i < JobsDirectory.getInstance().getJobsDir().size(); i++){
+            if(JobsDirectory.getInstance().getJobsDir().get(i).getRole().equals(role)) {
+                rows[j][0] = JobsDirectory.getInstance().getJobsDir().get(i).getDescription();
+                rows[j][1] = JobsDirectory.getInstance().getJobsDir().get(i).getListedBy();
+                SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+                String s = formatter.format(JobsDirectory.getInstance().getJobsDir().get(i).getDateOfListing());
+                rows[j][2] = s;
+                j++;
+            }
+        }
+        DefaultTableModel model = new DefaultTableModel (rows, columnNames);
+        fjb.jobsTable.setModel(model);
+        fjb.show();
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments

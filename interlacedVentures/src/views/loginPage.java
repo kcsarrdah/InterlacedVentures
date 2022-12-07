@@ -145,9 +145,6 @@ public class loginPage extends javax.swing.JFrame {
             
             checkPassword = password.equals(userDirectory.getInstance().getUserDir().get(i).getPassword());
             
-            System.out.println(userDirectory.getInstance().getUserDir().get(i).getPassword());
-            System.out.println(userDirectory.getInstance().getUserDir().get(i).getUsername());
-            
             if((userDirectory.getInstance().getUserDir().get(i).getUsername().equals(userName)) && checkPassword) {
                 try{
                     if(userDirectory.getInstance().getUserDir().get(i).getType().equals("Employee")) {
