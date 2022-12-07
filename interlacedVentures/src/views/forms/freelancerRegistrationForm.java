@@ -405,9 +405,9 @@ public class freelancerRegistrationForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnReg;
-    private javax.swing.JComboBox<String> comboEducation;
-    private javax.swing.JComboBox<String> comboGender;
+    public javax.swing.JButton btnReg;
+    public javax.swing.JComboBox<String> comboEducation;
+    public javax.swing.JComboBox<String> comboGender;
     private com.toedter.calendar.JDateChooser dateField;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel17;
@@ -427,18 +427,18 @@ public class freelancerRegistrationForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel33;
-    private javax.swing.JPasswordField pwdField;
-    private javax.swing.JTextField txtAge;
-    private javax.swing.JTextField txtEmail;
-    private javax.swing.JTextField txtFName;
-    private javax.swing.JTextField txtHourlyRate;
-    private javax.swing.JTextField txtLName;
-    private javax.swing.JTextField txtLatestWork;
-    private javax.swing.JTextField txtLoc;
-    private javax.swing.JTextField txtPhone;
-    private javax.swing.JTextField txtPortfolio;
-    private javax.swing.JTextField txtSkills;
-    private javax.swing.JTextField txtUName;
-    private javax.swing.JTextField txtWorkExp;
+    public javax.swing.JPasswordField pwdField;
+    public javax.swing.JTextField txtAge;
+    public javax.swing.JTextField txtEmail;
+    public javax.swing.JTextField txtFName;
+    public javax.swing.JTextField txtHourlyRate;
+    public javax.swing.JTextField txtLName;
+    public javax.swing.JTextField txtLatestWork;
+    public javax.swing.JTextField txtLoc;
+    public javax.swing.JTextField txtPhone;
+    public javax.swing.JTextField txtPortfolio;
+    public javax.swing.JTextField txtSkills;
+    public javax.swing.JTextField txtUName;
+    public javax.swing.JTextField txtWorkExp;
     // End of variables declaration//GEN-END:variables
 }

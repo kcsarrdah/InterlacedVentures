@@ -18,6 +18,8 @@ import views.dashBoards.TechAdminDashboard;
 import views.dashBoards.employeeDashboard;
 import views.dashBoards.freelancerDashboard;
 import models.BusinessUsersDirectory;
+import models.FreelanceDirectory;
+import models.userDirectory;
 
 /**
  *
@@ -121,6 +123,7 @@ public class loginPage extends javax.swing.JFrame {
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         // TODO add your handling code here:
+        
         String userName = tfUsername.getText();
         String password = pfPassword.getText();
         
@@ -129,69 +132,73 @@ public class loginPage extends javax.swing.JFrame {
             this.hide();
             SystemAdmin sa = new SystemAdmin();
             sa.show();
-            }
+        }
         else if(userName.equals(Admins[1][0]) && password.equals(Admins[1][1])){
             System.out.println("hereee");
             this.hide();
             TechAdminDashboard td = new TechAdminDashboard();
             td.show();
-            }
-        else{
-        try{
-            Class.forName("com.mysql.cj.jdbc.Driver");
+        }
+        
+        boolean checkPassword;
+        for(int i=0;i<userDirectory.getInstance().getUserDir().size();i++) {
             
-            Connection con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/InterlacedVentures?useSSL=false","root","Mh15fj8813@");
-         
-            Statement stm1 = con.createStatement();
-            Statement stm2 = con.createStatement();
-            Statement stm3 = con.createStatement();
+            checkPassword = password.equals(userDirectory.getInstance().getUserDir().get(i).getPassword());
             
-            String sqlBU = "SELECT * FROM Users WHERE UserName= '"+userName+"' and Password = '"+password+"'";
-            ResultSet rsBU = stm1.executeQuery(sqlBU);
+            System.out.println(userDirectory.getInstance().getUserDir().get(i).getPassword());
+            System.out.println(userDirectory.getInstance().getUserDir().get(i).getUsername());
             
-            String sqlFREE = "SELECT * FROM Freelancers WHERE UserName= '"+userName+"' and Password = '"+password+"'";
-            ResultSet rsFREE = stm2.executeQuery(sqlFREE);
-            
-            String sqlEMP = "SELECT * FROM Employees WHERE UserName= '"+userName+"' and Password = '"+password+"'";
-            ResultSet rsEMP = stm3.executeQuery(sqlEMP);
-            
-            if(rsBU.next()){
-                dispose();
-                //this.hide();
-                businessUserDashBoard budb = new businessUserDashBoard();
-                System.out.println("here");
+            if((userDirectory.getInstance().getUserDir().get(i).getUsername().equals(userName)) && checkPassword) {
+                try{
+                    if(userDirectory.getInstance().getUserDir().get(i).getType().equals("Employee")) {
+                        this.hide();
+                        employeeDashboard edb = new employeeDashboard();
+                        edb.show();
+                    }
+                    
+                    else if(userDirectory.getInstance().getUserDir().get(i).getType().equals("Freelancer")) {
+                        this.hide();
+                        freelancerDashboard fdb = new freelancerDashboard();
+                        String name1 = "";
+                        System.out.println("Size" + FreelanceDirectory.getInstance().getFreeLancerDir().size());
+                
+                        for(int j = 0; j < FreelanceDirectory.getInstance().getFreeLancerDir().size(); j++){
+                        if(FreelanceDirectory.getInstance().getFreeLancerDir().get(j).getUsername().equals(userName)){
+                        name1 = FreelanceDirectory.getInstance().getFreeLancerDir().get(j).getUsername();
+                        }
+                    }
+                        fdb.labelFreelancer.setText(name1);
+                        fdb.show();
+                        
+                   }
+                    
+                    else if(userDirectory.getInstance().getUserDir().get(i).getType().equals("Business User")) {
+                        this.hide();
+                        businessUserDashBoard budb = new businessUserDashBoard();
+                //System.out.println("here");
                 String name = "demo";
-                System.out.println(BusinessUsersDirectory.getInstance().getBusinessUsersDir().size());
-                for(int i = 0; i < BusinessUsersDirectory.getInstance().getBusinessUsersDir().size(); i++){
-                if(BusinessUsersDirectory.getInstance().getBusinessUsersDir().get(i).getName().equals(userName)){
-                        name = BusinessUsersDirectory.getInstance().getBusinessUsersDir().get(i).getName();
+                //System.out.println(BusinessUsersDirectory.getInstance().getBusinessUsersDir().size());
+                
+                for(int j = 0; j < BusinessUsersDirectory.getInstance().getBusinessUsersDir().size(); j++){
+                if(BusinessUsersDirectory.getInstance().getBusinessUsersDir().get(j).getName().equals(userName)){
+                        name = BusinessUsersDirectory.getInstance().getBusinessUsersDir().get(j).getName();
                     }
                 }
                 System.out.println(name);
                 budb.businessUser.setText(name);
                 budb.show();
-            }
-            else if(rsFREE.next()){
-                dispose();
-                
-                freelancerDashboard fdb = new freelancerDashboard();
-                fdb.show();
-            }
-            else if(rsEMP.next()){
-                dispose();
-                //this.hide();
-                employeeDashboard edb = new employeeDashboard();
-                edb.show();
-            }
-            else{
+                    }
+                    
+                 else{
                 JOptionPane.showMessageDialog(this, "Please Enter Correct Details");
                 tfUsername.setText("");
                 pfPassword.setText("");
-            }
-            con.close();
-        }
-        catch(Exception e){
-            System.out.print(e.getMessage());
+                
+                }
+                }//end of try
+                catch(Exception e) {
+                    System.out.println(e);
+                }
             }
         }
     }//GEN-LAST:event_btnLoginActionPerformed

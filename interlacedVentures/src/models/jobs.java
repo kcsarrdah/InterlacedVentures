@@ -15,12 +15,23 @@ public class jobs {
     private String role;
     private String status;
     private Date dateOfListing;
+    private String listedBy;
     
-    public jobs(Date dateOfListing, String status, String Description, String role) {
+    public jobs(String listedBy, Date dateOfListing, String status, String Description, String role) {
         this.Description = Description;
         this.role = role;
         this.status = status;
         this.dateOfListing = dateOfListing;
+        this.listedBy = listedBy;
+        
+    }
+
+    public String getListedBy() {
+        return listedBy;
+    }
+
+    public void setListedBy(String listedBy) {
+        this.listedBy = listedBy;
     }
     
     public Date getDateOfListing() {

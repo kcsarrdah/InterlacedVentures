@@ -127,7 +127,29 @@ public class businessUserDashBoard extends javax.swing.JFrame {
 
     private void ordersbusinessActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ordersbusinessActionPerformed
         // TODO add your handling code here:
+        this.hide();
+        ViewItemsBusinessUser vibu = new ViewItemsBusinessUser();
+        vibu.labelBUItem.setText("YOUR ORDERS");
+        String[] columnNames = {"Services", "Amount", "Details", "Date", "Status"};
+        int n = OrdersDirectory.getInstance().getOrdersDir().size();
+        String[][] rows = new String[n][5];
+        int j=0;
+        for(int i = 0;  i<n ; i++){
+                rows[j][0] = OrdersDirectory.getInstance().getOrdersDir().get(i).getService();
+                rows[j][1] = Float.toString(OrdersDirectory.getInstance().getOrdersDir().get(i).getAmount());
+                rows[j][2] = OrdersDirectory.getInstance().getOrdersDir().get(i).getDetails();
+                
+                Format formatter = new SimpleDateFormat("yyyy-MM-dd");
+                String s = formatter.format(BillsDirectory.getInstance().getBillsDir().get(i).getDate());
+                rows[j][3] = s;
+                rows[j][4] = OrdersDirectory.getInstance().getOrdersDir().get(i).getStatus();
+                
+                j++;      
+        }
         
+        DefaultTableModel dtm = new DefaultTableModel (rows, columnNames);
+        vibu.tableBills.setModel(dtm);
+        vibu.show();
     }//GEN-LAST:event_ordersbusinessActionPerformed
 
     private void billingsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_billingsActionPerformed
