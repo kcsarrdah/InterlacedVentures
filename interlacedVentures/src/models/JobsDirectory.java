@@ -32,7 +32,7 @@ public class JobsDirectory {
         Statement stmt;
         try {
             stmt = DatabaseConnectionClass.getInstance().getCon().createStatement();
-            String query1 = "INSERT INTO Jobs" + " VALUES(?,?,?,?,?)";
+            String query1 = "INSERT INTO Jobs" + " VALUES(?,?,?,?,?,?)";
             java.sql.Date sqlDate = new java.sql.Date(job.getDateOfListing().getTime());
             PreparedStatement pst = DatabaseConnectionClass.getInstance().getCon().prepareStatement(query1);
             pst.setString(1, job.getDescription());
@@ -40,6 +40,7 @@ public class JobsDirectory {
             pst.setString(3, job.getStatus());
             pst.setDate(4, sqlDate);
             pst.setString(5, job.getListedBy());
+            pst.setString(6, job.getAppliedBy());
 
             int rs = pst.executeUpdate();
             if(rs>0)
@@ -59,6 +60,7 @@ public class JobsDirectory {
             ResultSet rs = stmt.executeQuery(str);
             while(rs.next()) {
                jobs job = new jobs(
+                       rs.getString("Applied By"),
                        rs.getString("Posted By"),
                        rs.getDate("DateOfPosting"),
                        rs.getString("Status"),
@@ -77,10 +79,11 @@ public class JobsDirectory {
         Statement stmt;
         try {
             stmt = DatabaseConnectionClass.getInstance().getCon().createStatement();
-            String query1 = "Update Jobs" + " set Status=? where Description=?";
+            String query1 = "Update Jobs" + " set Status=?,`Applied By`=? where Description=?";
             PreparedStatement pst = DatabaseConnectionClass.getInstance().getCon().prepareStatement(query1);
             pst.setString(1, job.getStatus());
-            pst.setString(2, job.getDescription());
+            pst.setString(2,job.getAppliedBy());
+            pst.setString(3, job.getDescription());
             int rs = pst.executeUpdate();
             if(rs>0)
             {

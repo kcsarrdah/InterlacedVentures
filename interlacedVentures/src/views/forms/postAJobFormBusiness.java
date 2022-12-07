@@ -108,7 +108,7 @@ public class postAJobFormBusiness extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        jobs job = new jobs(lbName.getText(), new Date(),"Posted", tstDescription.getText(), jcRole.getSelectedItem().toString());
+        jobs job = new jobs("", lbName.getText(), new Date(),"Posted", tstDescription.getText(), jcRole.getSelectedItem().toString());
         JobsDirectory.getInstance().addJob(job);
         JOptionPane.showMessageDialog(this, "Job Posted Successfully! A Freelancer Should Contact You Soon");
         this.hide();

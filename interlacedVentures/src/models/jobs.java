@@ -16,16 +16,26 @@ public class jobs {
     private String status;
     private Date dateOfListing;
     private String listedBy;
+    private String appliedBy;
+
     
-    public jobs(String listedBy, Date dateOfListing, String status, String Description, String role) {
+    public jobs(String appliedBy, String listedBy, Date dateOfListing, String status, String Description, String role) {
         this.Description = Description;
         this.role = role;
         this.status = status;
         this.dateOfListing = dateOfListing;
         this.listedBy = listedBy;
-        
+        this.appliedBy = appliedBy;
+    }
+    
+    public String getAppliedBy() {
+        return appliedBy;
     }
 
+    public void setAppliedBy(String appliedBy) {
+        this.appliedBy = appliedBy;
+    }
+    
     public String getListedBy() {
         return listedBy;
     }

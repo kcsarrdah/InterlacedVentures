@@ -202,7 +202,7 @@ public class freelancerDashboard extends javax.swing.JFrame {
             }
         }
         DefaultTableModel model = new DefaultTableModel (rows, columnNames);
-        
+        fjb.labelName.setText(labelFreelancer.getText());
         fjb.jobsTable.setModel(model);
         fjb.show();
     }//GEN-LAST:event_jButton4ActionPerformed
