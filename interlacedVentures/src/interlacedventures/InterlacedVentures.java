@@ -31,9 +31,9 @@ public class InterlacedVentures {
         Admins[0][1] = "123";
         Admins[1][0] = "TA";
         Admins[1][1] = "123";
-        Admins[2][0] = "OA";
+        Admins[2][0] = "FA";
         Admins[2][1] = "123";
-        Admins[3][0] = "SA";
+        Admins[3][0] = "OA";
         Admins[3][1] = "123";
         Admins[4][0] = "";
         Admins[4][1] = "123";

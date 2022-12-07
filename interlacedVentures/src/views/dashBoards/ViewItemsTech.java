@@ -150,8 +150,7 @@ public class ViewItemsTech extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonTableBackActionPerformed
 
     private void btnViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewActionPerformed
-        // TODO add your handling code here:
-        
+        // TODO add your handling code here:   
     }//GEN-LAST:event_btnViewActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed

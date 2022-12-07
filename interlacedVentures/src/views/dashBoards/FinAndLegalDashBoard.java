@@ -5,7 +5,9 @@
 package views.dashBoards;
 
 import javax.swing.table.DefaultTableModel;
+import models.EmployeeDirectory;
 import models.OrdersDirectory;
+import views.Orgs.FinanceAndLegal.Consultancy;
 import views.loginPage;
 
 /**
@@ -32,17 +34,17 @@ public class FinAndLegalDashBoard extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        bttnInterReq = new javax.swing.JButton();
         bttnServReq = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        btnConsultancy = new javax.swing.JButton();
+        btnLogOut = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setText("FINANCES AND LEGAL ADMIN DASHBOARD");
 
-        jButton1.setText("VIEW EMPLOYEES");
+        bttnInterReq.setText("INTERVIEW REQUESTS");
 
         bttnServReq.setText("SERVICE REQUESTS");
         bttnServReq.addActionListener(new java.awt.event.ActionListener() {
@@ -51,17 +53,17 @@ public class FinAndLegalDashBoard extends javax.swing.JFrame {
             }
         });
 
-        jButton3.setText("CONSULTING DEPARTMENT'");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        btnConsultancy.setText("CONSULTING DEPARTMENT'");
+        btnConsultancy.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                btnConsultancyActionPerformed(evt);
             }
         });
 
-        jButton4.setText("LOG OUT");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        btnLogOut.setText("LOG OUT");
+        btnLogOut.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                btnLogOutActionPerformed(evt);
             }
         });
 
@@ -77,14 +79,14 @@ public class FinAndLegalDashBoard extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(117, 117, 117)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(bttnInterReq, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(bttnServReq, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                                .addComponent(btnConsultancy, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                 .addContainerGap(54, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jButton4)
+                .addComponent(btnLogOut)
                 .addGap(78, 78, 78))
         );
         jPanel1Layout.setVerticalGroup(
@@ -92,14 +94,14 @@ public class FinAndLegalDashBoard extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(34, 34, 34)
                 .addComponent(jLabel1)
-                .addGap(77, 77, 77)
-                .addComponent(jButton3)
-                .addGap(100, 100, 100)
+                .addGap(74, 74, 74)
+                .addComponent(btnConsultancy)
+                .addGap(71, 71, 71)
                 .addComponent(bttnServReq)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 100, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(28, 28, 28)
-                .addComponent(jButton4)
+                .addGap(78, 78, 78)
+                .addComponent(bttnInterReq)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 82, Short.MAX_VALUE)
+                .addComponent(btnLogOut)
                 .addGap(31, 31, 31))
         );
 
@@ -139,16 +141,34 @@ public class FinAndLegalDashBoard extends javax.swing.JFrame {
         vifl.show();
     }//GEN-LAST:event_bttnServReqActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void btnLogOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogOutActionPerformed
         // TODO add your handling code here:
         this.hide();
         loginPage lp = new loginPage();
         lp.show();
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_btnLogOutActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void btnConsultancyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultancyActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+        this.hide();
+        Consultancy c = new Consultancy();
+        String[][] rows = new String[EmployeeDirectory.getInstance().getEmployeeDir().size()][5];
+        String[] columnNames = {"First Name", "Last Name", "UserName", "Role", "Salary"};
+        int j = 0;
+        for(int i=0; i < EmployeeDirectory.getInstance().getEmployeeDir().size(); i++){
+            if(EmployeeDirectory.getInstance().getEmployeeDir().get(i).getOrganisation().equals("Software")) {
+                rows[j][0] = EmployeeDirectory.getInstance().getEmployeeDir().get(i).getFirstName();
+                rows[j][1] = EmployeeDirectory.getInstance().getEmployeeDir().get(i).getLastName();
+                rows[j][2] = EmployeeDirectory.getInstance().getEmployeeDir().get(i).getUsername();           
+                rows[j][3] = EmployeeDirectory.getInstance().getEmployeeDir().get(i).getRole();
+                rows[j][4] = Integer.toString(EmployeeDirectory.getInstance().getEmployeeDir().get(i).getSalary()); 
+                j++;
+            }
+        }
+        DefaultTableModel model = new DefaultTableModel (rows, columnNames);
+        c.tblConEmp.setModel(model);
+        c.show();
+    }//GEN-LAST:event_btnConsultancyActionPerformed
 
     /**
      * @param args the command line arguments
@@ -186,10 +206,10 @@ public class FinAndLegalDashBoard extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnConsultancy;
+    private javax.swing.JButton btnLogOut;
+    private javax.swing.JButton bttnInterReq;
     private javax.swing.JButton bttnServReq;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables

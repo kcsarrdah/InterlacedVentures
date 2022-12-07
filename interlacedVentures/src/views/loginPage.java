@@ -20,6 +20,7 @@ import views.dashBoards.freelancerDashboard;
 import models.BusinessUsersDirectory;
 import models.FreelanceDirectory;
 import models.userDirectory;
+import views.dashBoards.FinAndLegalDashBoard;
 
 /**
  *
@@ -138,6 +139,12 @@ public class loginPage extends javax.swing.JFrame {
             this.hide();
             TechAdminDashboard td = new TechAdminDashboard();
             td.show();
+        }
+        else if(userName.equals(Admins[2][0]) && password.equals(Admins[2][1])){
+            System.out.println("hereee");
+            this.hide();
+            FinAndLegalDashBoard fldb = new FinAndLegalDashBoard();
+            fldb.show();
         }
         
         boolean checkPassword;
