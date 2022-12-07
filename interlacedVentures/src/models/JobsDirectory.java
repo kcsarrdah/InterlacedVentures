@@ -32,13 +32,14 @@ public class JobsDirectory {
         Statement stmt;
         try {
             stmt = DatabaseConnectionClass.getInstance().getCon().createStatement();
-            String query1 = "INSERT INTO Jobs" + " VALUES(?,?,?,?)";
+            String query1 = "INSERT INTO Jobs" + " VALUES(?,?,?,?,?)";
             java.sql.Date sqlDate = new java.sql.Date(job.getDateOfListing().getTime());
             PreparedStatement pst = DatabaseConnectionClass.getInstance().getCon().prepareStatement(query1);
             pst.setString(1, job.getDescription());
             pst.setString(2, job.getRole());
             pst.setString(3, job.getStatus());
             pst.setDate(4, sqlDate);
+            pst.setString(5, job.getListedBy());
 
             int rs = pst.executeUpdate();
             if(rs>0)
@@ -58,6 +59,7 @@ public class JobsDirectory {
             ResultSet rs = stmt.executeQuery(str);
             while(rs.next()) {
                jobs job = new jobs(
+                       rs.getString("Posted By"),
                        rs.getDate("DateOfPosting"),
                        rs.getString("Status"),
                        rs.getString("Description"),

@@ -255,6 +255,7 @@ public class ServiceDashboard extends javax.swing.JFrame {
     private void btnHFLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHFLActionPerformed
         // TODO add your handling code here:
         postAJobFormBusiness pj = new postAJobFormBusiness();
+        pj.lbName.setText(labelName.getText());
         pj.show();
     }//GEN-LAST:event_btnHFLActionPerformed
 
