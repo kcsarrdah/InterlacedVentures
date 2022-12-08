@@ -8,6 +8,7 @@ import java.text.Format;
 import java.text.SimpleDateFormat;
 import javax.swing.table.DefaultTableModel;
 import models.BillsDirectory;
+import models.JobsDirectory;
 import models.bills;
 import models.OrdersDirectory;
 import views.loginPage;
@@ -130,22 +131,35 @@ public class businessUserDashBoard extends javax.swing.JFrame {
         this.hide();
         ViewItemsBusinessUser vibu = new ViewItemsBusinessUser();
         vibu.labelBUItem.setText("YOUR ORDERS");
-        String[] columnNames = {"Services", "Amount", "Details", "Date", "Status"};
-        int n = OrdersDirectory.getInstance().getOrdersDir().size();
-        String[][] rows = new String[n][5];
+        String[] columnNames = {"Services", "Organisation Involved", "Date", "Status"};
+        
+        int n = OrdersDirectory.getInstance().getOrdersDir().size() + JobsDirectory.getInstance().getJobsDir().size();
+        String[][] rows = new String[n][4];
         int j=0;
-        for(int i = 0;  i<n ; i++){
+        for(int i = 0;  i< OrdersDirectory.getInstance().getOrdersDir().size(); i++){
+            if(OrdersDirectory.getInstance().getOrdersDir().get(i).getOrderedBy().equals(businessUser.getText())){
                 rows[j][0] = OrdersDirectory.getInstance().getOrdersDir().get(i).getService();
-                rows[j][1] = Float.toString(OrdersDirectory.getInstance().getOrdersDir().get(i).getAmount());
-                rows[j][2] = OrdersDirectory.getInstance().getOrdersDir().get(i).getDetails();
-                
+                rows[j][1] = OrdersDirectory.getInstance().getOrdersDir().get(i).getRequestTo();
                 Format formatter = new SimpleDateFormat("yyyy-MM-dd");
                 String s = formatter.format(BillsDirectory.getInstance().getBillsDir().get(i).getDate());
-                rows[j][3] = s;
-                rows[j][4] = OrdersDirectory.getInstance().getOrdersDir().get(i).getStatus();
-                
-                j++;      
+                rows[j][2] = s;               
+                rows[j][3] = OrdersDirectory.getInstance().getOrdersDir().get(i).getStatus();
+                j++; 
+            }     
         }
+        j = 0;
+        for(int i = 0;  i< JobsDirectory.getInstance().getJobsDir().size(); i++){
+            if(JobsDirectory.getInstance().getJobsDir().get(i).getListedBy().equals(businessUser.getText())){
+                rows[j][0] = JobsDirectory.getInstance().getJobsDir().get(i).getRole();
+                rows[j][1] = JobsDirectory.getInstance().getJobsDir().get(i).getAppliedBy();
+                Format formatter = new SimpleDateFormat("yyyy-MM-dd");
+                String s = formatter.format(JobsDirectory.getInstance().getJobsDir().get(i).getDateOfListing());
+                rows[j][2] = s;             
+                rows[j][3] = JobsDirectory.getInstance().getJobsDir().get(i).getStatus();
+                j++; 
+            }     
+        }
+        
         
         DefaultTableModel dtm = new DefaultTableModel (rows, columnNames);
         vibu.tableBills.setModel(dtm);
