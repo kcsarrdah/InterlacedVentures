@@ -51,7 +51,7 @@ public class complainsDirectory {
         }
     }
     
-    public void getJobsData() {
+    public void getComplainsData() {
         Statement stmt;
         try{
             stmt = DatabaseConnectionClass.getInstance().getCon().createStatement();

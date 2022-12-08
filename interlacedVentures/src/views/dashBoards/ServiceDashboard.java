@@ -11,6 +11,7 @@ import javax.swing.JOptionPane;
 import javax.swing.table.TableModel;
 import models.OrdersDirectory;
 import models.orders;
+import views.forms.FileComplainForm;
 import views.forms.postAJobFormBusiness;
 
 /**
@@ -120,6 +121,11 @@ public class ServiceDashboard extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tblUpdates);
 
         btnComplain.setText("File A Complain");
+        btnComplain.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnComplainActionPerformed(evt);
+            }
+        });
 
         jButton1.setText("Back");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -318,6 +324,13 @@ public class ServiceDashboard extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.hide();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void btnComplainActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnComplainActionPerformed
+        // TODO add your handling code here:
+        FileComplainForm fcf = new FileComplainForm();
+        fcf.labelName.setText(labelName.getText());
+        fcf.show();
+    }//GEN-LAST:event_btnComplainActionPerformed
 
     /**
      * @param args the command line arguments

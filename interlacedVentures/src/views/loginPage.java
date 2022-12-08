@@ -13,14 +13,21 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.sql.Connection;
+import java.text.Format;
+import java.text.SimpleDateFormat;
+import javax.swing.table.DefaultTableModel;
 import views.dashBoards.SystemAdmin;
 import views.dashBoards.TechAdminDashboard;
 import views.dashBoards.employeeDashboard;
 import views.dashBoards.freelancerDashboard;
 import models.BusinessUsersDirectory;
 import models.FreelanceDirectory;
+import models.JobsDirectory;
+import models.OrdersDirectory;
+import models.complainsDirectory;
 import models.userDirectory;
 import views.dashBoards.FinAndLegalDashBoard;
+import views.dashBoards.customerSalesRepDashboard;
 
 /**
  *
@@ -154,6 +161,34 @@ public class loginPage extends javax.swing.JFrame {
             FinAndLegalDashBoard fldb = new FinAndLegalDashBoard();
             fldb.show();
         }
+        
+        
+        
+        else if(userName.equals(Admins[4][0]) && password.equals(Admins[4][1])){
+        this.hide();
+        customerSalesRepDashboard fldb = new customerSalesRepDashboard();
+        String[] columnNames = {"Objection", "From", "Against", "Date", "Status"};
+        int n = complainsDirectory.getInstance().getComplainsDir().size();
+        String[][] rows = new String[n][5];
+        int j=0;
+        for(int i = 0;  i< n; i++){
+                rows[j][0] = complainsDirectory.getInstance().getComplainsDir().get(i).getDescription();
+                rows[j][1] = complainsDirectory.getInstance().getComplainsDir().get(i).getFrom();
+                rows[j][2] = complainsDirectory.getInstance().getComplainsDir().get(i).getAgainst();
+                Format formatter = new SimpleDateFormat("yyyy-MM-dd");
+                String s = formatter.format(complainsDirectory.getInstance().getComplainsDir().get(i).getDate());
+                rows[j][3] = s;               
+                rows[j][4] = complainsDirectory.getInstance().getComplainsDir().get(i).getStatus();
+                j++; 
+                 
+        }
+        DefaultTableModel dtm = new DefaultTableModel (rows, columnNames);
+        fldb.tableComplains.setModel(dtm);
+        fldb.show();
+           
+        }
+          
+        
         
         boolean checkPassword;
         for(int i=0;i<userDirectory.getInstance().getUserDir().size();i++) {

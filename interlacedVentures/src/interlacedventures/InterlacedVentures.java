@@ -11,6 +11,7 @@ import models.EmployeeDirectory;
 import models.FreelanceDirectory;
 import models.JobsDirectory;
 import models.OrdersDirectory;
+import models.complainsDirectory;
 import models.userDirectory;
 import views.loginPage;
 
@@ -35,7 +36,7 @@ public class InterlacedVentures {
         Admins[2][1] = "123";
         Admins[3][0] = "OA";
         Admins[3][1] = "123";
-        Admins[4][0] = "";
+        Admins[4][0] = "CSR";
         Admins[4][1] = "123";
         
         
@@ -49,6 +50,7 @@ public class InterlacedVentures {
         BillsDirectory.getInstance().getBillData();
         FreelanceDirectory.getInstance().getFreelancerData();
         JobsDirectory.getInstance().getJobsData();
+        complainsDirectory.getInstance().getComplainsData();
 //        HospitalAdminDirectory.getInstance().getHospAdminData();
 //        HospitalDirectory.getInstance().getHospitalData();
 //        AmbulanceDirectory.getInstance().getAmbulance();
