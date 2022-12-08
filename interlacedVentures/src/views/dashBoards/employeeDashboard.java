@@ -4,6 +4,8 @@
  */
 package views.dashBoards;
 
+import views.loginPage;
+
 /**
  *
  * @author kcsar
@@ -34,12 +36,9 @@ public class employeeDashboard extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
-        getContentPane().setLayout(null);
 
         JlabelEmpDash.setFont(new java.awt.Font("Baloo Bhaijaan", 1, 24)); // NOI18N
         JlabelEmpDash.setText("                  EMPLOYEE DASHBOARD");
-        getContentPane().add(JlabelEmpDash);
-        JlabelEmpDash.setBounds(260, 10, 410, 70);
 
         jTable1.setBackground(new java.awt.Color(255, 255, 204));
         jTable1.setFont(new java.awt.Font("InaiMathi", 1, 13)); // NOI18N
@@ -56,19 +55,40 @@ public class employeeDashboard extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(0, 140, 490, 430);
-
         jButton1.setBackground(new java.awt.Color(255, 255, 204));
         jButton1.setFont(new java.awt.Font("InaiMathi", 1, 13)); // NOI18N
         jButton1.setText("LOGOUT");
-        getContentPane().add(jButton1);
-        jButton1.setBounds(760, 510, 78, 30);
 
         jImageEmp.setBackground(new java.awt.Color(204, 204, 255));
-        jImageEmp.setIcon(new javax.swing.ImageIcon("/Users/trishaguharoy/Downloads/flat-cartoon-office-character-successful-employee-vector-illustration-concept-worker-performs-work-tasks-controls-everything-does-221433198.jpeg")); // NOI18N
-        getContentPane().add(jImageEmp);
-        jImageEmp.setBounds(220, -150, 2410, 1040);
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 490, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(270, 270, 270)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(260, 260, 260)
+                .addComponent(JlabelEmpDash))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(220, 220, 220)
+                .addComponent(jImageEmp, javax.swing.GroupLayout.PREFERRED_SIZE, 2410, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(290, 290, 290)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 430, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(660, 660, 660)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(160, 160, 160)
+                .addComponent(JlabelEmpDash, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(jImageEmp, javax.swing.GroupLayout.PREFERRED_SIZE, 1040, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
