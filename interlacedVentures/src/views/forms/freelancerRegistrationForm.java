@@ -8,11 +8,17 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.*;
+import java.text.Format;
+import java.text.SimpleDateFormat;
+import javax.swing.table.DefaultTableModel;
 import models.freelancer;
 import models.users;
 import models.FreelanceDirectory;
+import models.JobsDirectory;
+import models.OrdersDirectory;
 import models.userDirectory;
 import views.RegistrationChoiceForm;
+import views.dashBoards.ViewItemsBusinessUser;
 
 
 /**
@@ -70,7 +76,7 @@ public class freelancerRegistrationForm extends javax.swing.JFrame {
         btnReg = new javax.swing.JButton();
         pwdField = new javax.swing.JPasswordField();
         dateField = new com.toedter.calendar.JDateChooser();
-        jButton1 = new javax.swing.JButton();
+        btnBack = new javax.swing.JButton();
         jcSkills = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -156,10 +162,10 @@ public class freelancerRegistrationForm extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("Back");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnBack.setText("Back");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnBackActionPerformed(evt);
             }
         });
 
@@ -193,7 +199,7 @@ public class freelancerRegistrationForm extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton1))
+                                .addComponent(btnBack))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(88, 88, 88)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -323,7 +329,7 @@ public class freelancerRegistrationForm extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnReg)
-                    .addComponent(jButton1))
+                    .addComponent(btnBack))
                 .addGap(27, 27, 27))
         );
 
@@ -366,15 +372,58 @@ public class freelancerRegistrationForm extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtLocActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         // TODO add your handling code here:
+        
+        
+        if(txtLatestWork.getText().length() > 1){
+        this.hide();
+        ViewItemsBusinessUser vibu = new ViewItemsBusinessUser();
+        vibu.labelBUItem.setText("YOUR ORDERS");
+        String[] columnNames = {"Services", "Organisation Involved", "Date", "Status"};
+        int n = OrdersDirectory.getInstance().getOrdersDir().size() + JobsDirectory.getInstance().getJobsDir().size();
+        String[][] rows = new String[n][4];
+        int j=0;
+        for(int i = 0;  i< OrdersDirectory.getInstance().getOrdersDir().size(); i++){
+            if(OrdersDirectory.getInstance().getOrdersDir().get(i).getOrderedBy().equals(txtLatestWork.getText())){
+                rows[j][0] = OrdersDirectory.getInstance().getOrdersDir().get(i).getService();
+                rows[j][1] = OrdersDirectory.getInstance().getOrdersDir().get(i).getRequestTo();
+                Format formatter = new SimpleDateFormat("yyyy-MM-dd");
+                String s = formatter.format(OrdersDirectory.getInstance().getOrdersDir().get(i).getDate());
+                rows[j][2] = s;               
+                rows[j][3] = OrdersDirectory.getInstance().getOrdersDir().get(i).getStatus();
+                j++; 
+            }     
+        }
+        j = 0;
+        for(int i = 0; i< JobsDirectory.getInstance().getJobsDir().size(); i++){
+            if(JobsDirectory.getInstance().getJobsDir().get(i).getListedBy().equals(txtLatestWork.getText())){
+                rows[j][0] = JobsDirectory.getInstance().getJobsDir().get(i).getRole();
+                rows[j][1] = JobsDirectory.getInstance().getJobsDir().get(i).getAppliedBy();
+                Format formatter = new SimpleDateFormat("yyyy-MM-dd");
+                String s = formatter.format(JobsDirectory.getInstance().getJobsDir().get(i).getDateOfListing());
+                rows[j][2] = s;             
+                rows[j][3] = JobsDirectory.getInstance().getJobsDir().get(i).getStatus();
+                j++; 
+            }     
+        }
+        
+        DefaultTableModel dtm = new DefaultTableModel (rows, columnNames);
+        vibu.tableBills.setModel(dtm);
+        
+        vibu.labelName.setText(txtLatestWork.getText());
+        
+        vibu.show();
+        
+        }
+        
+        
+        else{
         this.hide();
         RegistrationChoiceForm rcf = new RegistrationChoiceForm();
         rcf.show();
-        
-        if(){
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnBackActionPerformed
 
     private void txtWorkExpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtWorkExpActionPerformed
         // TODO add your handling code here:
@@ -424,11 +473,11 @@ public class freelancerRegistrationForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JButton btnBack;
     public javax.swing.JButton btnReg;
     public javax.swing.JComboBox<String> comboEducation;
     public javax.swing.JComboBox<String> comboGender;
-    private com.toedter.calendar.JDateChooser dateField;
-    private javax.swing.JButton jButton1;
+    public com.toedter.calendar.JDateChooser dateField;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel20;

@@ -42,6 +42,8 @@ public class ViewItemsBusinessUser extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         labelName = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
+        btnAccept = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -84,29 +86,43 @@ public class ViewItemsBusinessUser extends javax.swing.JFrame {
             }
         });
 
+        btnAccept.setText("Accept");
+        btnAccept.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAcceptActionPerformed(evt);
+            }
+        });
+
+        jButton4.setText("Reject");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(65, 65, 65)
-                .addComponent(jButton2)
-                .addGap(74, 74, 74)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap()
+                .addComponent(btnAccept, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(78, 78, 78)
                 .addComponent(jButton1)
-                .addGap(53, 53, 53))
+                .addGap(14, 14, 14))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(95, 95, 95)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(170, 170, 170)
                         .addComponent(labelBUItem, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(labelName, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(113, Short.MAX_VALUE))
+                        .addComponent(labelName, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jButton2))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(94, 94, 94)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(114, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -115,13 +131,20 @@ public class ViewItemsBusinessUser extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelBUItem)
                     .addComponent(labelName, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(33, 33, 33)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
-                    .addComponent(jButton1)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                .addComponent(jButton2)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButton1)
+                            .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnAccept, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(19, 19, 19)
+                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(29, 29, 29))
         );
 
@@ -155,12 +178,14 @@ public class ViewItemsBusinessUser extends javax.swing.JFrame {
         
         DefaultTableModel tableModel = (DefaultTableModel) tableBills.getModel();
         String Name = tableModel.getValueAt(tableBills.getSelectedRow(), 1).toString();
-        
+        String x = labelName.getText();
         
         if(tableBills.getSelectedRowCount() == 1){
             freelancerRegistrationForm erf = new freelancerRegistrationForm();
+            
             erf.tfName.setText(Name);
             erf.show();
+            
             for(int i = 0; i < FreelanceDirectory.getInstance().getFreeLancerDir().size(); i++){
                 if(FreelanceDirectory.getInstance().getFreeLancerDir().get(i).getFirstName().equals(Name)){
                     erf.pwdField.hide();
@@ -190,8 +215,10 @@ public class ViewItemsBusinessUser extends javax.swing.JFrame {
                     erf.txtLoc.setText(FreelanceDirectory.getInstance().getFreeLancerDir().get(i).getLocation());
                     erf.txtLoc.setEditable(false);
                     
-                    Format formatter = new SimpleDateFormat("MM/dd/yyyy");
-                    String s = formatter.format(FreelanceDirectory.getInstance().getFreeLancerDir().get(i).getDateOfJoining());
+//                    Format formatter = new SimpleDateFormat("MM/dd/yyyy");
+//                    String s = formatter.format(FreelanceDirectory.getInstance().getFreeLancerDir().get(i).getDateOfJoining());
+                    
+                    erf.dateField.setDate(FreelanceDirectory.getInstance().getFreeLancerDir().get(i).getDateOfJoining());
                     
                     erf.txtHourlyRate.setText(Integer.toString(FreelanceDirectory.getInstance().getFreeLancerDir().get(i).getHourlyRate()));
                     erf.txtHourlyRate.setEditable(false);
@@ -210,7 +237,8 @@ public class ViewItemsBusinessUser extends javax.swing.JFrame {
                     erf.txtLatestWork.setText(FreelanceDirectory.getInstance().getFreeLancerDir().get(i).getLatestWork());
                     erf.txtLatestWork.setEditable(false);
                     
-                    //erf.txtLatestWork.setText(EmployeeDirectory.getInstance().getEmployeeDir().get(i).getLatestWork());
+                    erf.txtLatestWork.setText(x);
+                    erf.txtLatestWork.setVisible(false);
                     
                           
                     erf.btnReg.setVisible(false);
@@ -219,6 +247,16 @@ public class ViewItemsBusinessUser extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void btnAcceptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAcceptActionPerformed
+        // TODO add your handling code here:
+        DefaultTableModel tableModel = (DefaultTableModel) tableBills.getModel();
+        String Name = tableModel.getValueAt(tableBills.getSelectedRow(), 1).toString();
+        String x = labelName.getText();
+        
+        if(tableBills.getSelectedRowCount() == 1){
+        }
+    }//GEN-LAST:event_btnAcceptActionPerformed
 
     /**
      * @param args the command line arguments
@@ -256,9 +294,11 @@ public class ViewItemsBusinessUser extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JButton btnAccept;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     public javax.swing.JLabel labelBUItem;
