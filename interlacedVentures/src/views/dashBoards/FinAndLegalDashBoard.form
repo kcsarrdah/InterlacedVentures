@@ -46,12 +46,10 @@
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="117" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="bttnInterReq" min="-2" pref="182" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="bttnServReq" max="32767" attributes="0"/>
-                                  <Component id="btnConsultancy" max="32767" attributes="0"/>
-                              </Group>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="bttnServReq" max="32767" attributes="0"/>
+                              <Component id="btnConsultancy" max="32767" attributes="0"/>
+                              <Component id="bttnInterReq" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>

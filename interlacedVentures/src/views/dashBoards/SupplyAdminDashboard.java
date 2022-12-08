@@ -42,6 +42,11 @@ public class SupplyAdminDashboard extends javax.swing.JFrame {
         regIssueSuppAdmi.setText("Register Issue");
 
         inventorySuppAdm.setText("Inventory");
+        inventorySuppAdm.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                inventorySuppAdmActionPerformed(evt);
+            }
+        });
 
         placeOrderSupAdm.setText("Place Order");
 
@@ -101,6 +106,10 @@ public class SupplyAdminDashboard extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void inventorySuppAdmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inventorySuppAdmActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_inventorySuppAdmActionPerformed
 
     /**
      * @param args the command line arguments
