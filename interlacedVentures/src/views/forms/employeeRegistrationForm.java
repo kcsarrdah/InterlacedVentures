@@ -299,7 +299,7 @@ public class employeeRegistrationForm extends javax.swing.JFrame {
                                                     .addComponent(jLabel23)))
                                             .addGroup(layout.createSequentialGroup()
                                                 .addGap(61, 61, 61)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                     .addComponent(jLabel19)
                                                     .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
@@ -426,7 +426,8 @@ public class employeeRegistrationForm extends javax.swing.JFrame {
         }
         else
         {
-        employee free = new employee(comboOrg.getSelectedItem().toString(),
+        employee free = new employee(
+            comboOrg.getSelectedItem().toString(),
             txtLoc.getText(),
             dateField.getDate(),
             pwdField.getText(),
@@ -443,9 +444,11 @@ public class employeeRegistrationForm extends javax.swing.JFrame {
             comboGender.getSelectedItem().toString(),
             txtPhone.getText(),
             txtEmail.getText());
-            System.out.println(free.getPassword());
+            
         EmployeeDirectory.getInstance().addEmployee(free);
+        
         users login = new users(txtUName.getText(),pwdField.getText(),"Employee");
+        
         userDirectory.getInstance().addUser(login);
         
         this.hide();
@@ -477,8 +480,15 @@ public class employeeRegistrationForm extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         this.hide();
-        TechAdminDashboard tad = new TechAdminDashboard();
-        tad.show();
+        
+        if(btnEdit.isVisible()){
+           TechAdminDashboard tad = new TechAdminDashboard();
+           tad.show(); 
+        }
+        else{
+            loginPage lp = new loginPage();
+            lp.show();
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void btnRemoveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoveActionPerformed

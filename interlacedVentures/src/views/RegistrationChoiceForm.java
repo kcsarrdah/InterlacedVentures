@@ -125,6 +125,7 @@ public class RegistrationChoiceForm extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.hide();
         employeeRegistrationForm erf = new employeeRegistrationForm();
+        erf.txtSalary.setText("0");
         erf.jLabel32.hide();
         erf.txtSalary.hide();
         erf.btnEdit.hide();
