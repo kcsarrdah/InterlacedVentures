@@ -131,8 +131,7 @@ public class businessUserDashBoard extends javax.swing.JFrame {
         this.hide();
         ViewItemsBusinessUser vibu = new ViewItemsBusinessUser();
         vibu.labelBUItem.setText("YOUR ORDERS");
-        String[] columnNames = {"Services", "Organisation Involved", "Date", "Status"};
-        
+    String[] columnNames = {"Services", "Organisation Involved", "Date", "Status"};
         int n = OrdersDirectory.getInstance().getOrdersDir().size() + JobsDirectory.getInstance().getJobsDir().size();
         String[][] rows = new String[n][4];
         int j=0;
@@ -141,14 +140,14 @@ public class businessUserDashBoard extends javax.swing.JFrame {
                 rows[j][0] = OrdersDirectory.getInstance().getOrdersDir().get(i).getService();
                 rows[j][1] = OrdersDirectory.getInstance().getOrdersDir().get(i).getRequestTo();
                 Format formatter = new SimpleDateFormat("yyyy-MM-dd");
-                String s = formatter.format(BillsDirectory.getInstance().getBillsDir().get(i).getDate());
+                String s = formatter.format(OrdersDirectory.getInstance().getOrdersDir().get(i).getDate());
                 rows[j][2] = s;               
                 rows[j][3] = OrdersDirectory.getInstance().getOrdersDir().get(i).getStatus();
                 j++; 
             }     
         }
         j = 0;
-        for(int i = 0;  i< JobsDirectory.getInstance().getJobsDir().size(); i++){
+        for(int i = 0; i< JobsDirectory.getInstance().getJobsDir().size(); i++){
             if(JobsDirectory.getInstance().getJobsDir().get(i).getListedBy().equals(businessUser.getText())){
                 rows[j][0] = JobsDirectory.getInstance().getJobsDir().get(i).getRole();
                 rows[j][1] = JobsDirectory.getInstance().getJobsDir().get(i).getAppliedBy();
@@ -160,15 +159,14 @@ public class businessUserDashBoard extends javax.swing.JFrame {
             }     
         }
         
-        
         DefaultTableModel dtm = new DefaultTableModel (rows, columnNames);
         vibu.tableBills.setModel(dtm);
+        vibu.labelName.setText(businessUser.getText());
         vibu.show();
     }//GEN-LAST:event_ordersbusinessActionPerformed
 
     private void billingsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_billingsActionPerformed
         // TODO add your handling code here:
-        this.hide();
         ViewItemsBusinessUser vibu = new ViewItemsBusinessUser();
         vibu.labelBUItem.setText("YOUR BILL");
         String[] columnNames = {"Services", "Organisation", "Receipt No.", "Amount", "Date"};
@@ -194,7 +192,6 @@ public class businessUserDashBoard extends javax.swing.JFrame {
 
     private void servicesbusinessActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_servicesbusinessActionPerformed
         // TODO add your handling code here:
-        this.hide();
         ServiceDashboard sd = new ServiceDashboard();
         sd.labelName.setText(this.businessUser.getText());
         sd.show();
