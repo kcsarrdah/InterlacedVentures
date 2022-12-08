@@ -257,12 +257,16 @@ public class ViewItemsBusinessUser extends javax.swing.JFrame {
         String Name = tableModel.getValueAt(tableBills.getSelectedRow(), 1).toString();
         String x = labelName.getText();
         String Service = tableModel.getValueAt(tableBills.getSelectedRow(), 0).toString();
+        String description = tableModel.getValueAt(tableBills.getSelectedRow(), 4).toString();
         
         int recietNo = 0;
         
         if(tableBills.getSelectedRowCount() == 1){
             for(int i = 0; i < JobsDirectory.getInstance().getJobsDir().size(); i++){
-                if(JobsDirectory.getInstance().getJobsDir().get(i).getAppliedBy().equals(Name)){
+                if(JobsDirectory.getInstance().getJobsDir().get(i).getAppliedBy().equals(Name) 
+                        && JobsDirectory.getInstance().getJobsDir().get(i).getStatus().equals("Applied") 
+                        && JobsDirectory.getInstance().getJobsDir().get(i).getDescription().equals(description)){
+                    recietNo += (i + 2300);
                     jobs job = new jobs(
                             Name,
                             JobsDirectory.getInstance().getJobsDir().get(i).getListedBy(),
@@ -278,7 +282,6 @@ public class ViewItemsBusinessUser extends javax.swing.JFrame {
                     for(int j = 0; j < FreelanceDirectory.getInstance().getFreeLancerDir().size(); j++){
                         if(FreelanceDirectory.getInstance().getFreeLancerDir().get(j).getFirstName().equals(Name)){
                             amount = FreelanceDirectory.getInstance().getFreeLancerDir().get(j).getHourlyRate();
-                            recietNo = j + 2300;
                             break;
                         } 
                     }

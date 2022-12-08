@@ -131,9 +131,9 @@ public class businessUserDashBoard extends javax.swing.JFrame {
         this.hide();
         ViewItemsBusinessUser vibu = new ViewItemsBusinessUser();
         vibu.labelBUItem.setText("YOUR ORDERS");
-    String[] columnNames = {"Services", "Organisation Involved", "Date", "Status"};
+    String[] columnNames = {"Services", "Organisation Involved", "Date", "Status", "Description"};
         int n = OrdersDirectory.getInstance().getOrdersDir().size() + JobsDirectory.getInstance().getJobsDir().size();
-        String[][] rows = new String[n][4];
+        String[][] rows = new String[n][5];
         int j=0;
         for(int i = 0;  i< OrdersDirectory.getInstance().getOrdersDir().size(); i++){
             if(OrdersDirectory.getInstance().getOrdersDir().get(i).getOrderedBy().equals(businessUser.getText())){
@@ -143,6 +143,7 @@ public class businessUserDashBoard extends javax.swing.JFrame {
                 String s = formatter.format(OrdersDirectory.getInstance().getOrdersDir().get(i).getDate());
                 rows[j][2] = s;               
                 rows[j][3] = OrdersDirectory.getInstance().getOrdersDir().get(i).getStatus();
+                rows[j][4] = OrdersDirectory.getInstance().getOrdersDir().get(i).getDetails();
                 j++; 
             }     
         }
@@ -155,6 +156,7 @@ public class businessUserDashBoard extends javax.swing.JFrame {
                 String s = formatter.format(JobsDirectory.getInstance().getJobsDir().get(i).getDateOfListing());
                 rows[j][2] = s;             
                 rows[j][3] = JobsDirectory.getInstance().getJobsDir().get(i).getStatus();
+                rows[j][4] = JobsDirectory.getInstance().getJobsDir().get(i).getDescription();
                 j++; 
             }     
         }
