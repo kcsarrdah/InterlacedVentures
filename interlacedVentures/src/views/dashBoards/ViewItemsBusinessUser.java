@@ -6,9 +6,15 @@ package views.dashBoards;
 
 import java.text.Format;
 import java.text.SimpleDateFormat;
+import java.util.Date;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import models.BillsDirectory;
 import models.EmployeeDirectory;
 import models.FreelanceDirectory;
+import models.JobsDirectory;
+import models.bills;
+import models.jobs;
 import views.forms.employeeRegistrationForm;
 import views.forms.freelancerRegistrationForm;
 
@@ -164,13 +170,10 @@ public class ViewItemsBusinessUser extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        
-        if(labelBUItem.getText().equals("YOUR ORDERS")){
         this.hide();
         businessUserDashBoard budb = new businessUserDashBoard();
         budb.businessUser.setText(labelName.getText());
         budb.show();
-        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -253,8 +256,38 @@ public class ViewItemsBusinessUser extends javax.swing.JFrame {
         DefaultTableModel tableModel = (DefaultTableModel) tableBills.getModel();
         String Name = tableModel.getValueAt(tableBills.getSelectedRow(), 1).toString();
         String x = labelName.getText();
+        String Service = tableModel.getValueAt(tableBills.getSelectedRow(), 0).toString();
+        
+        int recietNo = 0;
         
         if(tableBills.getSelectedRowCount() == 1){
+            for(int i = 0; i < JobsDirectory.getInstance().getJobsDir().size(); i++){
+                if(JobsDirectory.getInstance().getJobsDir().get(i).getAppliedBy().equals(Name)){
+                    jobs job = new jobs(
+                            Name,
+                            JobsDirectory.getInstance().getJobsDir().get(i).getListedBy(),
+                            JobsDirectory.getInstance().getJobsDir().get(i).getDateOfListing(),
+                            "Closed",
+                            JobsDirectory.getInstance().getJobsDir().get(i).getDescription(),
+                            JobsDirectory.getInstance().getJobsDir().get(i).getRole());
+                    JobsDirectory.getInstance().updateJob(job, i);
+                    System.out.println(JobsDirectory.getInstance().getJobsDir().get(i).getStatus());
+                    JOptionPane.showMessageDialog(this, "Candidate Selected");
+                    
+                    float amount = 0; 
+                    for(int j = 0; j < FreelanceDirectory.getInstance().getFreeLancerDir().size(); j++){
+                        if(FreelanceDirectory.getInstance().getFreeLancerDir().get(j).getFirstName().equals(Name)){
+                            amount = FreelanceDirectory.getInstance().getFreeLancerDir().get(j).getHourlyRate();
+                            recietNo = j + 2300;
+                            break;
+                        } 
+                    }
+                    
+                    bills bill = new bills(new Date(), amount, Service, Name,recietNo);
+                    BillsDirectory.getInstance().addBill(bill);
+               
+                }
+            }
         }
     }//GEN-LAST:event_btnAcceptActionPerformed
 

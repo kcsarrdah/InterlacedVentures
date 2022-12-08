@@ -148,7 +148,7 @@ public class businessUserDashBoard extends javax.swing.JFrame {
         }
         j = 0;
         for(int i = 0; i< JobsDirectory.getInstance().getJobsDir().size(); i++){
-            if(JobsDirectory.getInstance().getJobsDir().get(i).getListedBy().equals(businessUser.getText())){
+            if(JobsDirectory.getInstance().getJobsDir().get(i).getListedBy().equals(businessUser.getText()) &&  !JobsDirectory.getInstance().getJobsDir().get(i).getStatus().equals("Closed")){
                 rows[j][0] = JobsDirectory.getInstance().getJobsDir().get(i).getRole();
                 rows[j][1] = JobsDirectory.getInstance().getJobsDir().get(i).getAppliedBy();
                 Format formatter = new SimpleDateFormat("yyyy-MM-dd");
@@ -168,6 +168,7 @@ public class businessUserDashBoard extends javax.swing.JFrame {
     private void billingsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_billingsActionPerformed
         // TODO add your handling code here:
         ViewItemsBusinessUser vibu = new ViewItemsBusinessUser();
+        vibu.labelName.setText(businessUser.getText());
         vibu.labelBUItem.setText("YOUR BILL");
         String[] columnNames = {"Services", "Organisation", "Receipt No.", "Amount", "Date"};
         int n = BillsDirectory.getInstance().getBillsDir().size();
