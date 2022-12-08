@@ -10,6 +10,7 @@ import models.EmployeeDirectory;
 import models.FreelanceDirectory;
 import models.JobsDirectory;
 import views.Freelancer.findJobsDashboard;
+import views.Freelancer.viewJobsFreelancer;
 import views.forms.freelancerRegistrationForm;
 import views.loginPage;
 
@@ -126,20 +127,41 @@ public class freelancerDashboard extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        viewJobsFreelancer fjb = new viewJobsFreelancer();
+        String[] columnNames = {"Description", "Bill Date", "Company", "Service"};
+        String[][] rows = new String[JobsDirectory.getInstance().getJobsDir().size()][4];
+        int j = 0;
+        for(int i=0; i < JobsDirectory.getInstance().getJobsDir().size(); i++){
+            if(JobsDirectory.getInstance().getJobsDir().get(i).getAppliedBy().equals(labelFreelancer.getText()) && JobsDirectory.getInstance().getJobsDir().get(i).getStatus().equals("Closed")) {
+                rows[j][0] = JobsDirectory.getInstance().getJobsDir().get(i).getDescription();
+                SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+                String s = formatter.format(JobsDirectory.getInstance().getJobsDir().get(i).getDateOfListing());
+                rows[j][1] = s;
+                rows[j][2] = JobsDirectory.getInstance().getJobsDir().get(i).getListedBy();
+                rows[j][3] = JobsDirectory.getInstance().getJobsDir().get(i).getRole();
+                j++;
+            }
+        }
+        DefaultTableModel model = new DefaultTableModel (rows, columnNames);
+        fjb.lblName.setText(labelFreelancer.getText());
+        fjb.jTable1.setModel(model);
+        fjb.show();
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void btnViewProfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewProfActionPerformed
         // TODO add your handling code here:
         this.hide();
         
+        
 //        THERE WILL BE CODE HERE TO TAKE THE FREELANCER TO HIS OWN PROFILE
         
         freelancerRegistrationForm frf = new freelancerRegistrationForm();
-        frf.show();
+        
         String UserName = labelFreelancer.getText();
         
         for(int i = 0; i < FreelanceDirectory.getInstance().getFreeLancerDir().size(); i++){
-           if(FreelanceDirectory.getInstance().getFreeLancerDir().get(i).getUsername().equals(UserName)){
+           if(FreelanceDirectory.getInstance().getFreeLancerDir().get(i).getFirstName().equals(UserName)){
                
                 frf.txtFName.setText(FreelanceDirectory.getInstance().getFreeLancerDir().get(i).getFirstName());      
                 frf.txtFName.setEditable(false);
@@ -155,6 +177,8 @@ public class freelancerDashboard extends javax.swing.JFrame {
                 frf.txtPhone.setEditable(false);
                 frf.txtLoc.setText(FreelanceDirectory.getInstance().getFreeLancerDir().get(i).getLocation());
                 frf.txtLoc.setEditable(false);
+                frf.txtEmail.setText(FreelanceDirectory.getInstance().getFreeLancerDir().get(i).getEmail());
+                frf.txtEmail.setEditable(false);        
                 frf.txtPortfolio.setText(FreelanceDirectory.getInstance().getFreeLancerDir().get(i).getLocation());
                 frf.txtPortfolio.setEditable(false);
                 frf.txtWorkExp.setText(Integer.toString(FreelanceDirectory.getInstance().getFreeLancerDir().get(i).getWorkEx()));
@@ -171,6 +195,9 @@ public class freelancerDashboard extends javax.swing.JFrame {
                 frf.txtHourlyRate.setEditable(false);
                 frf.pwdField.setText(FreelanceDirectory.getInstance().getFreeLancerDir().get(i).getPassword());
                 frf.pwdField.setEditable(false);
+                frf.btnReg.setVisible(false);
+                frf.jlTemp.setText("db");
+                frf.show();
             }
         }
 
