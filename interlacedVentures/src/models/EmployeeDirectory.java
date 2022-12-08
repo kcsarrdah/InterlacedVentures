@@ -36,6 +36,7 @@ public class EmployeeDirectory {
             String query1 = "INSERT INTO Employees" + " VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
             java.sql.Date sqlDate = new java.sql.Date(emp.getDateOfJoining().getTime());
             PreparedStatement pst = DatabaseConnectionClass.getInstance().getCon().prepareStatement(query1);
+            
             pst.setString(1, emp.getFirstName());
             pst.setString(2, emp.getLastName());  
             pst.setString(3, emp.getUsername());
@@ -62,6 +63,7 @@ public class EmployeeDirectory {
             }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null,"Cannot be Inserted");
+            System.out.println(ex);
         }
     }
     

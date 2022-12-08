@@ -78,7 +78,7 @@ public class employeeRegistrationForm extends javax.swing.JFrame {
         btnRemove = new javax.swing.JButton();
         btnEdit = new javax.swing.JButton();
         btnSave = new javax.swing.JButton();
-        jPasswordField1 = new javax.swing.JPasswordField();
+        pwdField = new javax.swing.JPasswordField();
 
         jLabel1.setText("jLabel1");
 
@@ -224,9 +224,9 @@ public class employeeRegistrationForm extends javax.swing.JFrame {
             }
         });
 
-        jPasswordField1.addActionListener(new java.awt.event.ActionListener() {
+        pwdField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jPasswordField1ActionPerformed(evt);
+                pwdFieldActionPerformed(evt);
             }
         });
 
@@ -244,14 +244,11 @@ public class employeeRegistrationForm extends javax.swing.JFrame {
                                     .addComponent(jLabel32)
                                     .addComponent(jLabel33))
                                 .addGap(39, 39, 39)
-                                .addComponent(btnEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 91, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel26)
-                                    .addComponent(jLabel28)
-                                    .addComponent(jLabel30))
-                                .addGap(0, 0, Short.MAX_VALUE)))
+                                .addComponent(btnEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel26)
+                            .addComponent(jLabel28)
+                            .addComponent(jLabel30))
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel31)
                             .addComponent(jLabel29)
@@ -292,7 +289,7 @@ public class employeeRegistrationForm extends javax.swing.JFrame {
                                             .addComponent(comboEducation, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(dateField, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(txtSalary, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(pwdField, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(txtFName, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addGroup(layout.createSequentialGroup()
@@ -302,7 +299,7 @@ public class employeeRegistrationForm extends javax.swing.JFrame {
                                                     .addComponent(jLabel23)))
                                             .addGroup(layout.createSequentialGroup()
                                                 .addGap(61, 61, 61)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                     .addComponent(jLabel19)
                                                     .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
@@ -384,7 +381,7 @@ public class employeeRegistrationForm extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel33)
-                    .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(pwdField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(43, 43, 43)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnReg)
@@ -429,7 +426,8 @@ public class employeeRegistrationForm extends javax.swing.JFrame {
         }
         else
         {
-        employee free = new employee(comboOrg.getSelectedItem().toString(),
+        employee free = new employee(
+            comboOrg.getSelectedItem().toString(),
             txtLoc.getText(),
             dateField.getDate(),
             pwdField.getText(),
@@ -446,9 +444,11 @@ public class employeeRegistrationForm extends javax.swing.JFrame {
             comboGender.getSelectedItem().toString(),
             txtPhone.getText(),
             txtEmail.getText());
-            System.out.println(free.getPassword());
+            
         EmployeeDirectory.getInstance().addEmployee(free);
+        
         users login = new users(txtUName.getText(),pwdField.getText(),"Employee");
+        
         userDirectory.getInstance().addUser(login);
         
         this.hide();
@@ -480,8 +480,15 @@ public class employeeRegistrationForm extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         this.hide();
-        TechAdminDashboard tad = new TechAdminDashboard();
-        tad.show();
+        
+        if(btnEdit.isVisible()){
+           TechAdminDashboard tad = new TechAdminDashboard();
+           tad.show(); 
+        }
+        else{
+            loginPage lp = new loginPage();
+            lp.show();
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void btnRemoveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoveActionPerformed
@@ -571,9 +578,9 @@ public class employeeRegistrationForm extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txtWorkExpKeyPressed
 
-    private void jPasswordField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField1ActionPerformed
+    private void pwdFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pwdFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jPasswordField1ActionPerformed
+    }//GEN-LAST:event_pwdFieldActionPerformed
 
     /**
      * @param args the command line arguments
@@ -640,7 +647,7 @@ public class employeeRegistrationForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel31;
     public javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel33;
-    private javax.swing.JPasswordField jPasswordField1;
+    public javax.swing.JPasswordField pwdField;
     public javax.swing.JTextField txtAge;
     public javax.swing.JTextField txtEmail;
     public javax.swing.JTextField txtFName;

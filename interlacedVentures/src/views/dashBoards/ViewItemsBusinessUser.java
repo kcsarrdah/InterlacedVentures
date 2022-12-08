@@ -129,7 +129,6 @@ public class ViewItemsBusinessUser extends javax.swing.JFrame {
         budb.businessUser.setText(labelName.getText());
         budb.show();
         }
-
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
