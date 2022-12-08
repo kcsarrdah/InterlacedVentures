@@ -4,6 +4,14 @@
  */
 package views.dashBoards;
 
+import java.text.Format;
+import java.text.SimpleDateFormat;
+import javax.swing.table.DefaultTableModel;
+import models.EmployeeDirectory;
+import models.FreelanceDirectory;
+import views.forms.employeeRegistrationForm;
+import views.forms.freelancerRegistrationForm;
+
 /**
  *
  * @author shreyasisodiya
@@ -33,6 +41,7 @@ public class ViewItemsBusinessUser extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         labelName = new javax.swing.JLabel();
+        jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -68,6 +77,13 @@ public class ViewItemsBusinessUser extends javax.swing.JFrame {
 
         labelName.setText("Name");
 
+        jButton3.setText("View");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -75,6 +91,8 @@ public class ViewItemsBusinessUser extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(65, 65, 65)
                 .addComponent(jButton2)
+                .addGap(74, 74, 74)
+                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton1)
                 .addGap(53, 53, 53))
@@ -102,7 +120,8 @@ public class ViewItemsBusinessUser extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2)
-                    .addComponent(jButton1))
+                    .addComponent(jButton1)
+                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(29, 29, 29))
         );
 
@@ -130,6 +149,76 @@ public class ViewItemsBusinessUser extends javax.swing.JFrame {
         budb.show();
         }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        
+        DefaultTableModel tableModel = (DefaultTableModel) tableBills.getModel();
+        String Name = tableModel.getValueAt(tableBills.getSelectedRow(), 1).toString();
+        
+        
+        if(tableBills.getSelectedRowCount() == 1){
+            freelancerRegistrationForm erf = new freelancerRegistrationForm();
+            erf.tfName.setText(Name);
+            erf.show();
+            for(int i = 0; i < FreelanceDirectory.getInstance().getFreeLancerDir().size(); i++){
+                if(FreelanceDirectory.getInstance().getFreeLancerDir().get(i).getFirstName().equals(Name)){
+                    erf.pwdField.hide();
+                    erf.txtFName.setText(FreelanceDirectory.getInstance().getFreeLancerDir().get(i).getFirstName());
+                    erf.txtFName.setEditable(false);
+                    erf.txtLName.setText(FreelanceDirectory.getInstance().getFreeLancerDir().get(i).getLastName());
+                    erf.txtLName.setEditable(false);
+                    
+                    erf.txtEmail.setText(FreelanceDirectory.getInstance().getFreeLancerDir().get(i).getEmail());
+                    erf.txtEmail.setEditable(false);
+                    
+                    erf.pwdField.setText(FreelanceDirectory.getInstance().getFreeLancerDir().get(i).getPassword());
+                    erf.pwdField.hide(); //setEditable(false);
+                    
+                    erf.txtAge.setText(Integer.toString(FreelanceDirectory.getInstance().getFreeLancerDir().get(i).getAge()));
+                    erf.txtAge.setEditable(false);
+                    
+                    erf.txtUName.setText(FreelanceDirectory.getInstance().getFreeLancerDir().get(i).getUsername());
+                    erf.txtUName.setEditable(false);
+                    
+                    erf.comboGender.setSelectedItem(FreelanceDirectory.getInstance().getFreeLancerDir().get(i).getGender());
+                    erf.comboGender.setEditable(false);
+                    
+                    erf.txtPhone.setText(FreelanceDirectory.getInstance().getFreeLancerDir().get(i).getPhoneNumber());
+                    erf.txtPhone.setEditable(false);
+                    
+                    erf.txtLoc.setText(FreelanceDirectory.getInstance().getFreeLancerDir().get(i).getLocation());
+                    erf.txtLoc.setEditable(false);
+                    
+                    Format formatter = new SimpleDateFormat("MM/dd/yyyy");
+                    String s = formatter.format(FreelanceDirectory.getInstance().getFreeLancerDir().get(i).getDateOfJoining());
+                    
+                    erf.txtHourlyRate.setText(Integer.toString(FreelanceDirectory.getInstance().getFreeLancerDir().get(i).getHourlyRate()));
+                    erf.txtHourlyRate.setEditable(false);
+                    
+//                    erf.comboRole.setSelectedItem(FreelanceDirectory.getInstance().getFreeLancerDir().get(i).getRole());
+//                    erf.comboRole.setEditable(false);
+                    erf.jcSkills.setSelectedItem(FreelanceDirectory.getInstance().getFreeLancerDir().get(i).getSkills());
+                    erf.jcSkills.setEditable(false);
+                    
+                    erf.comboEducation.setSelectedItem(FreelanceDirectory.getInstance().getFreeLancerDir().get(i).getEducation());
+                    erf.comboEducation.setEditable(false);
+                    
+                    erf.txtWorkExp.setText(Integer.toString(FreelanceDirectory.getInstance().getFreeLancerDir().get(i).getWorkEx()));
+                    erf.txtWorkExp.setEditable(false);
+                    
+                    erf.txtLatestWork.setText(FreelanceDirectory.getInstance().getFreeLancerDir().get(i).getLatestWork());
+                    erf.txtLatestWork.setEditable(false);
+                    
+                    //erf.txtLatestWork.setText(EmployeeDirectory.getInstance().getEmployeeDir().get(i).getLatestWork());
+                    
+                          
+                    erf.btnReg.setVisible(false);
+                  }
+                }
+        }
+        
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -169,6 +258,7 @@ public class ViewItemsBusinessUser extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     public javax.swing.JLabel labelBUItem;
