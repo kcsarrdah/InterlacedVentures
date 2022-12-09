@@ -286,7 +286,7 @@ public class ViewItemsBusinessUser extends javax.swing.JFrame {
                         } 
                     }
                     
-                    bills bill = new bills(new Date(), amount, Service, Name,recietNo);
+                    bills bill = new bills(labelName.getText(), new Date(), amount, Service, Name,recietNo);
                     BillsDirectory.getInstance().addBill(bill);
                
                 }

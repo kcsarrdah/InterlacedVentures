@@ -32,7 +32,7 @@ public class BillsDirectory {
         Statement stmt;
         try {
             stmt = DatabaseConnectionClass.getInstance().getCon().createStatement();
-            String query1 = "INSERT INTO Bills" + " VALUES(?,?,?,?,?)";
+            String query1 = "INSERT INTO Bills" + " VALUES(?,?,?,?,?,?)";
             java.sql.Date sqlDate = new java.sql.Date(bill.getDate().getTime());
             PreparedStatement pst = DatabaseConnectionClass.getInstance().getCon().prepareStatement(query1);
             pst.setString(1, bill.getSevices());
@@ -40,6 +40,7 @@ public class BillsDirectory {
             pst.setInt(3, bill.getReceiptNo());
             pst.setFloat(4, bill.getAmount());  
             pst.setDate(5, sqlDate);
+            pst.setString(6, bill.getBillFor());
 
             int rs = pst.executeUpdate();
             if(rs>0)
@@ -59,6 +60,7 @@ public class BillsDirectory {
             ResultSet rs = stmt.executeQuery(str);
             while(rs.next()) {
                bills bill = new bills(
+                       rs.getString("Billed For"),
                         rs.getDate("Date"),
                         rs.getFloat("Amount"),
                         rs.getString("Services"),

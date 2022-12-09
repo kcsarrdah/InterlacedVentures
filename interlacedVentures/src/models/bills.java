@@ -16,13 +16,23 @@ public class bills {
     private String Sevices;
     private String OrgName;
     private int ReceiptNo;
+    private String billFor;
 
-    public bills(Date date, float Amount, String Sevices, String OrgName, int ReceiptNo) {
+    public bills(String billFor, Date date, float Amount, String Sevices, String OrgName, int ReceiptNo) {
         this.date = date;
         this.Amount = Amount;
         this.Sevices = Sevices;
         this.OrgName = OrgName;
         this.ReceiptNo = ReceiptNo;
+        this.billFor = billFor;
+    }
+
+    public String getBillFor() {
+        return billFor;
+    }
+
+    public void setBillFor(String billFor) {
+        this.billFor = billFor;
     }
 
     public Date getDate() {

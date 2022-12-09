@@ -5,7 +5,10 @@
 package views.forms;
 
 import java.util.Date;
+import java.util.HashMap;
 import javax.swing.JOptionPane;
+import models.BillsDirectory;
+import models.OrdersDirectory;
 import models.complains;
 import models.complainsDirectory;
 
@@ -36,9 +39,10 @@ public class FileComplainForm extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jcDept = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
-        labelName = new javax.swing.JLabel();
+        labelFromName = new javax.swing.JLabel();
         jcService = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
 
@@ -46,15 +50,22 @@ public class FileComplainForm extends javax.swing.JFrame {
 
         jLabel1.setText("Description");
 
-        jcDept.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jcDept.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " " }));
+        jcDept.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcDeptActionPerformed(evt);
+            }
+        });
 
         jLabel2.setText("Department Against");
 
-        labelName.setText("Name");
+        labelFromName.setText("Name");
 
         jcService.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        jLabel3.setText("Service");
+        jLabel3.setText("Against (Specifics)");
+
+        jLabel4.setText("Complain Form ");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -62,15 +73,19 @@ public class FileComplainForm extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(22, 22, 22)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelFromName, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(62, 62, 62)
+                        .addGap(37, 37, 37)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(143, 143, 143)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jcDept, 0, 85, Short.MAX_VALUE)
-                            .addComponent(jcService, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addComponent(labelName, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(249, Short.MAX_VALUE))
+                            .addComponent(jcDept, 0, 147, Short.MAX_VALUE)
+                            .addComponent(jcService, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap(87, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addGap(22, 22, 22)
@@ -85,9 +100,11 @@ public class FileComplainForm extends javax.swing.JFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addComponent(labelName, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(70, 70, 70)
+                .addGap(17, 17, 17)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelFromName, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(71, 71, 71)
                 .addComponent(jcDept, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(31, 31, 31)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -144,10 +161,42 @@ public class FileComplainForm extends javax.swing.JFrame {
         // TODO add your handling code here:
         
         
-        complains complain = new complains(tfDescription.getText(), jcDept.getSelectedItem().toString(), "Filed", labelName.getText(), jcService.getSelectedItem().toString(), new Date());
+        complains complain = new complains(tfDescription.getText(), jcDept.getSelectedItem().toString(), "Filed", labelFromName.getText(), jcService.getSelectedItem().toString(), new Date());
         complainsDirectory.getInstance().addComplain(complain);
         JOptionPane.showMessageDialog(this, "Sorry for the troubles, Your complain has been registered with us, an we will try to resolve it at our earliest");
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jcDeptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcDeptActionPerformed
+        // TODO add your handling code here:
+        String BusinesName = labelFromName.getText();
+        if(jcDept.getSelectedItem().toString().equals("Orders")){
+            for(int i = 0; i < OrdersDirectory.getInstance().getOrdersDir().size(); i++){
+                if(OrdersDirectory.getInstance().getOrdersDir().get(i).getOrderedBy().equals(BusinesName)){
+                jcService.removeAllItems();
+                jcService.addItem(OrdersDirectory.getInstance().getOrdersDir().get(i).getDetails());
+                }
+                
+                else if(jcDept.getSelectedItem().toString().equals("Bills")){
+                    for(int j = 0; j < BillsDirectory.getInstance().getBillsDir().size(); j++){
+                        
+                        if(BillsDirectory.getInstance().getBillsDir().get(j).getOrgName().equals(BusinesName)){
+                            jcService.removeAllItems();
+                            jcService.addItem(Integer.toString(BillsDirectory.getInstance().getBillsDir().get(j).getReceiptNo()));
+                   
+                        }
+                    }
+                }
+                
+                else if(true){
+                    
+                }
+            }
+        }
+        
+        else if(jcDept.getSelectedItem().toString().equals("Employee")){
+           
+        }
+    }//GEN-LAST:event_jcDeptActionPerformed
 
     /**
      * @param args the command line arguments
@@ -190,10 +239,11 @@ public class FileComplainForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     public javax.swing.JComboBox<String> jcDept;
     public javax.swing.JComboBox<String> jcService;
-    public javax.swing.JLabel labelName;
+    public javax.swing.JLabel labelFromName;
     public javax.swing.JTextField tfDescription;
     // End of variables declaration//GEN-END:variables
 }

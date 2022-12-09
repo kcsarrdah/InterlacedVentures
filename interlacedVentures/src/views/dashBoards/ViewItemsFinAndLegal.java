@@ -155,6 +155,7 @@ public class ViewItemsFinAndLegal extends javax.swing.JFrame {
         
         if(tabelFinReq.getSelectedRowCount() == 1){  
             bills bill = new bills (
+                    name,
                     new Date(), 
                     amt, 
                     service, 

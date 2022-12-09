@@ -195,9 +195,9 @@ public class ServiceDashboard extends javax.swing.JFrame {
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(tfDetails, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnComplain)
-                            .addComponent(jButton1))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton1)
+                            .addComponent(btnComplain, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnHFL, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -328,7 +328,11 @@ public class ServiceDashboard extends javax.swing.JFrame {
     private void btnComplainActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnComplainActionPerformed
         // TODO add your handling code here:
         FileComplainForm fcf = new FileComplainForm();
-        fcf.labelName.setText(labelName.getText());
+        fcf.labelFromName.setText(labelName.getText());
+        
+        fcf.jcDept.addItem("Orders");
+        fcf.jcDept.addItem("Bills");
+        fcf.jcDept.addItem("FreeLancers");
         fcf.show();
     }//GEN-LAST:event_btnComplainActionPerformed
 

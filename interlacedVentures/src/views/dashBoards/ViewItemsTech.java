@@ -172,6 +172,7 @@ public class ViewItemsTech extends javax.swing.JFrame {
         
         if(tblTechReq.getSelectedRowCount() == 1){  
             bills bill = new bills (
+                    name,
                     new Date(), 
                     amt, 
                     service, 
