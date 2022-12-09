@@ -2,7 +2,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package models;
+package views.dashBoards;
+
+import java.util.Date;
+import javax.swing.table.DefaultTableModel;
+import models.BillsDirectory;
+import models.OrdersDirectory;
+import models.bills;
 
 /**
  *
@@ -30,10 +36,10 @@ public class ViewItemsOperation extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         tblOpReq = new javax.swing.JTable();
         lblReqOp = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        btnBack = new javax.swing.JButton();
+        btnDisapprove = new javax.swing.JButton();
+        btnApprove = new javax.swing.JButton();
+        btnDetails = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -52,13 +58,23 @@ public class ViewItemsOperation extends javax.swing.JFrame {
 
         lblReqOp.setText("jLabel1");
 
-        jButton1.setText("BACK");
+        btnBack.setText("BACK");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
 
-        jButton2.setText("DISAPPROVE");
+        btnDisapprove.setText("DISAPPROVE");
 
-        jButton3.setText("APPROVE");
+        btnApprove.setText("APPROVE");
+        btnApprove.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnApproveActionPerformed(evt);
+            }
+        });
 
-        jButton4.setText("VIEW DETAILS");
+        btnDetails.setText("VIEW DETAILS");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -66,13 +82,13 @@ public class ViewItemsOperation extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(73, 73, 73)
-                .addComponent(jButton4)
+                .addComponent(btnDetails)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
-                .addComponent(jButton3)
-                .addGap(40, 40, 40)
-                .addComponent(jButton2)
-                .addGap(79, 79, 79)
-                .addComponent(jButton1)
+                .addComponent(btnApprove)
+                .addGap(62, 62, 62)
+                .addComponent(btnDisapprove)
+                .addGap(57, 57, 57)
+                .addComponent(btnBack)
                 .addGap(70, 70, 70))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(296, 296, 296)
@@ -92,10 +108,10 @@ public class ViewItemsOperation extends javax.swing.JFrame {
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3)
-                    .addComponent(jButton4))
+                    .addComponent(btnBack)
+                    .addComponent(btnDisapprove)
+                    .addComponent(btnApprove)
+                    .addComponent(btnDetails))
                 .addGap(23, 23, 23))
         );
 
@@ -112,6 +128,41 @@ public class ViewItemsOperation extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        // TODO add your handling code here:
+        this.hide();
+        OperationsAdminDashboard oadb = new OperationsAdminDashboard();
+        oadb.show();
+    }//GEN-LAST:event_btnBackActionPerformed
+
+    private void btnApproveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnApproveActionPerformed
+        // TODO add your handling code here:
+        float amt = 0;
+        int rctno = 0;
+        DefaultTableModel tableModel = (DefaultTableModel) tblOpReq.getModel();
+        String service = tableModel.getValueAt(tblOpReq.getSelectedRow(), 2).toString();
+        String name = tblOpReq.getValueAt(tblOpReq.getSelectedRow(), 0).toString();
+        for(int i = 0; i < OrdersDirectory.getInstance().getOrdersDir().size(); i++){
+            if(OrdersDirectory.getInstance().getOrdersDir().get(i).getOrderedBy().equals(name)){
+                amt = OrdersDirectory.getInstance().getOrdersDir().get(i).getAmount();
+                rctno = i+2500;
+                OrdersDirectory.getInstance().getOrdersDir().get(i).setStatus("Completed");
+                break;
+            }
+        }
+        
+        if(tblOpReq.getSelectedRowCount() == 1){  
+            bills bill = new bills (
+                    name,
+                    new Date(), 
+                    amt, 
+                    service, 
+                    name, 
+                    rctno);
+            BillsDirectory.getInstance().addBill(bill);
+        }                                
+    }//GEN-LAST:event_btnApproveActionPerformed
 
     /**
      * @param args the command line arguments
@@ -149,13 +200,13 @@ public class ViewItemsOperation extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JButton btnApprove;
+    private javax.swing.JButton btnBack;
+    private javax.swing.JButton btnDetails;
+    private javax.swing.JButton btnDisapprove;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JLabel lblReqOp;
-    private javax.swing.JTable tblOpReq;
+    public javax.swing.JLabel lblReqOp;
+    public javax.swing.JTable tblOpReq;
     // End of variables declaration//GEN-END:variables
 }
