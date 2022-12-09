@@ -8,6 +8,7 @@ import java.util.Date;
 import java.util.HashMap;
 import javax.swing.JOptionPane;
 import models.BillsDirectory;
+import models.FreelanceDirectory;
 import models.OrdersDirectory;
 import models.complains;
 import models.complainsDirectory;
@@ -130,6 +131,11 @@ public class FileComplainForm extends javax.swing.JFrame {
         });
 
         jButton2.setText("Back");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -169,34 +175,39 @@ public class FileComplainForm extends javax.swing.JFrame {
     private void jcDeptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcDeptActionPerformed
         // TODO add your handling code here:
         String BusinesName = labelFromName.getText();
+        
         if(jcDept.getSelectedItem().toString().equals("Orders")){
+            jcService.removeAllItems();
             for(int i = 0; i < OrdersDirectory.getInstance().getOrdersDir().size(); i++){
                 if(OrdersDirectory.getInstance().getOrdersDir().get(i).getOrderedBy().equals(BusinesName)){
-                jcService.removeAllItems();
                 jcService.addItem(OrdersDirectory.getInstance().getOrdersDir().get(i).getDetails());
                 }
+            }
+        }
                 
-                else if(jcDept.getSelectedItem().toString().equals("Bills")){
-                    for(int j = 0; j < BillsDirectory.getInstance().getBillsDir().size(); j++){
-                        
-                        if(BillsDirectory.getInstance().getBillsDir().get(j).getOrgName().equals(BusinesName)){
-                            jcService.removeAllItems();
-                            jcService.addItem(Integer.toString(BillsDirectory.getInstance().getBillsDir().get(j).getReceiptNo()));
-                   
+        else if(jcDept.getSelectedItem().toString().equals("Bills")){
+            jcService.removeAllItems();
+            for(int j = 0; j < BillsDirectory.getInstance().getBillsDir().size(); j++){
+                //System.out.println(BillsDirectory.getInstance().getBillsDir().get(j).getBillFor());
+                if(BillsDirectory.getInstance().getBillsDir().get(j).getBillFor().equals(BusinesName)){
+                        jcService.addItem(Integer.toString(BillsDirectory.getInstance().getBillsDir().get(j).getReceiptNo()));
                         }
                     }
                 }
                 
-                else if(true){
-                    
-                }
+        else if(jcDept.getSelectedItem().toString().equals("FreeLancers")){
+            jcService.removeAllItems();
+            for(int i = 0; i < FreelanceDirectory.getInstance().getFreeLancerDir().size(); i++){
+                jcService.addItem((FreelanceDirectory.getInstance().getFreeLancerDir().get(i).getFirstName()));
             }
         }
         
-        else if(jcDept.getSelectedItem().toString().equals("Employee")){
-           
-        }
     }//GEN-LAST:event_jcDeptActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        this.hide();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments

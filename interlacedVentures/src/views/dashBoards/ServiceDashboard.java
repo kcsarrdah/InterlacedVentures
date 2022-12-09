@@ -329,7 +329,6 @@ public class ServiceDashboard extends javax.swing.JFrame {
         // TODO add your handling code here:
         FileComplainForm fcf = new FileComplainForm();
         fcf.labelFromName.setText(labelName.getText());
-        
         fcf.jcDept.addItem("Orders");
         fcf.jcDept.addItem("Bills");
         fcf.jcDept.addItem("FreeLancers");

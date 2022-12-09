@@ -65,8 +65,7 @@ public class BillsDirectory {
                         rs.getFloat("Amount"),
                         rs.getString("Services"),
                         rs.getString("OrgName"),
-                       rs.getInt("Receipt Number"));
-                
+                       rs.getInt("Receipt Number"));       
                 billsDir.add(bill);
             }
         } catch (SQLException ex) {
