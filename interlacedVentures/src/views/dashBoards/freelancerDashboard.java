@@ -152,8 +152,6 @@ public class freelancerDashboard extends javax.swing.JFrame {
     private void btnViewProfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewProfActionPerformed
         // TODO add your handling code here:
         this.hide();
-        
-        
 //        THERE WILL BE CODE HERE TO TAKE THE FREELANCER TO HIS OWN PROFILE
         
         freelancerRegistrationForm frf = new freelancerRegistrationForm();

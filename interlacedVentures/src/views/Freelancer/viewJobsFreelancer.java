@@ -113,6 +113,7 @@ public class viewJobsFreelancer extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.hide();
         freelancerDashboard fdb = new freelancerDashboard();
+        fdb.labelFreelancer.setText(lblName.getText());
         fdb.show();
     }//GEN-LAST:event_btnBackActionPerformed
 

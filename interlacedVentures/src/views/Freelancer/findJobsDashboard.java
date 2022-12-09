@@ -127,7 +127,7 @@ public class findJobsDashboard extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
     // TODO add your handling code here: get selected job and update status to applied
-    String name = labelName.getText();
+     String name = labelName.getText();
      DefaultTableModel tableModel = (DefaultTableModel) jobsTable.getModel();
      String desc = tableModel.getValueAt(jobsTable.getSelectedRow(), 0).toString();
         if(jobsTable.getSelectedRowCount() == 1){
