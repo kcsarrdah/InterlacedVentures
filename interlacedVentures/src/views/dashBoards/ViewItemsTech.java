@@ -9,8 +9,10 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.table.DefaultTableModel;
 import models.BillsDirectory;
+import models.EmployeeDirectory;
 import models.OrdersDirectory;
 import models.bills;
+import models.orders;
 
 /**
  *
@@ -67,7 +69,7 @@ public class ViewItemsTech extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tblTechReq);
 
-        jButton1.setText("Approve");
+        jButton1.setText("Assign To Employee");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -97,7 +99,7 @@ public class ViewItemsTech extends javax.swing.JFrame {
                 .addComponent(labelRequest)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(77, Short.MAX_VALUE)
+                .addContainerGap(7, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(btnView)
@@ -161,25 +163,45 @@ public class ViewItemsTech extends javax.swing.JFrame {
         DefaultTableModel tableModel = (DefaultTableModel) tblTechReq.getModel();
         String service = tableModel.getValueAt(tblTechReq.getSelectedRow(), 2).toString();
         String name = tblTechReq.getValueAt(tblTechReq.getSelectedRow(), 0).toString();
+        
+        //for loop to find the relevant selected order in tfrom the given table.
         for(int i = 0; i < OrdersDirectory.getInstance().getOrdersDir().size(); i++){
+            
             if(OrdersDirectory.getInstance().getOrdersDir().get(i).getOrderedBy().equals(name)){
                 amt = OrdersDirectory.getInstance().getOrdersDir().get(i).getAmount();
                 rctno = i+2500;
-                OrdersDirectory.getInstance().getOrdersDir().get(i).setStatus("Completed");
+                
+                //for loop to find a relevant employee and add him on the job order object is updated here.
+                for(int j = 0;  j < EmployeeDirectory.getInstance().getEmployeeDir().size(); j++){
+                    if(EmployeeDirectory.getInstance().getEmployeeDir().get(i).getRole().equals("Software")){
+                        orders order = new orders(
+                                EmployeeDirectory.getInstance().getEmployeeDir().get(j).getFirstName(),
+                                OrdersDirectory.getInstance().getOrdersDir().get(i).getService(),
+                                OrdersDirectory.getInstance().getOrdersDir().get(i).getOrderedBy(),
+                                OrdersDirectory.getInstance().getOrdersDir().get(i).getRequestTo(),
+                                "Assigned",
+                                OrdersDirectory.getInstance().getOrdersDir().get(i).getDate(),
+                                OrdersDirectory.getInstance().getOrdersDir().get(i).getAmount(),
+                                OrdersDirectory.getInstance().getOrdersDir().get(i).getDetails()
+                        );
+                        OrdersDirectory.getInstance().updateOrder(order, i);
+                        break;
+                    }
+                }
                 break;
             }
         }
         
-        if(tblTechReq.getSelectedRowCount() == 1){  
-            bills bill = new bills (
-                    name,
-                    new Date(), 
-                    amt, 
-                    service, 
-                    name, 
-                    rctno);
-            BillsDirectory.getInstance().addBill(bill);
-        }
+//        if(tblTechReq.getSelectedRowCount() == 1){  
+//            bills bill = new bills (
+//                    name,
+//                    new Date(), 
+//                    amt, 
+//                    service, 
+//                    name, 
+//                    rctno);
+//            BillsDirectory.getInstance().addBill(bill);
+//        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed

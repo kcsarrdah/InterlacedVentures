@@ -21,12 +21,14 @@ import views.dashBoards.TechAdminDashboard;
 import views.dashBoards.employeeDashboard;
 import views.dashBoards.freelancerDashboard;
 import models.BusinessUsersDirectory;
+import models.EmployeeDirectory;
 import models.FreelanceDirectory;
 import models.JobsDirectory;
 import models.OrdersDirectory;
 import models.complainsDirectory;
 import models.userDirectory;
 import views.dashBoards.FinAndLegalDashBoard;
+import views.dashBoards.OperationsAdminDashboard;
 import views.dashBoards.customerSalesRepDashboard;
 
 /**
@@ -155,10 +157,20 @@ public class loginPage extends javax.swing.JFrame {
             TechAdminDashboard td = new TechAdminDashboard();
             td.show();
         }
+        
+        
+        
         else if(userName.equals(Admins[2][0]) && password.equals(Admins[2][1])){
             System.out.println("hereee");
             this.hide();
             FinAndLegalDashBoard fldb = new FinAndLegalDashBoard();
+            fldb.show();
+        }
+        
+        else if(userName.equals(Admins[3][0]) && password.equals(Admins[3][1])){
+            System.out.println("hereee");
+            this.hide();
+            OperationsAdminDashboard fldb = new OperationsAdminDashboard();
             fldb.show();
         }
         
@@ -200,6 +212,32 @@ public class loginPage extends javax.swing.JFrame {
                     if(userDirectory.getInstance().getUserDir().get(i).getType().equals("Employee")) {
                         this.hide();
                         employeeDashboard edb = new employeeDashboard();
+                        String empName = "";
+                        
+                        //for loop to get employee name
+                        for(int j = 0; j < EmployeeDirectory.getInstance().getEmployeeDir().size(); j++){
+                            if(EmployeeDirectory.getInstance().getEmployeeDir().get(j).getUsername().equals(userName)){
+                                empName = EmployeeDirectory.getInstance().getEmployeeDir().get(j).getFirstName();
+                            }
+                        }
+                        
+                        //for loop to populate table
+                                String[] columnNames = {"Description", "Date of Posting"};
+                                int n = OrdersDirectory.getInstance().getOrdersDir().size();
+                                String[][] rows = new String[n][2];
+                                int j=0;
+                                for(int k = 0;  k < n ; k++){
+                                    if(OrdersDirectory.getInstance().getOrdersDir().get(k).getAssignedTo().equals(empName)){
+                                    rows[j][0] = OrdersDirectory.getInstance().getOrdersDir().get(k).getDetails();
+                                    Format formatter = new SimpleDateFormat("yyyy-MM-dd");
+                                    String s = formatter.format(OrdersDirectory.getInstance().getOrdersDir().get(k).getDate());
+                                    rows[j][1] = s;         
+                                    j++;
+                                    }
+                                }
+                                DefaultTableModel dtm = new DefaultTableModel (rows, columnNames);
+                                edb.WorkTable.setModel(dtm);
+                        
                         edb.show();
                     }
                     

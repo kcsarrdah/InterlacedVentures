@@ -32,7 +32,7 @@ public class OrdersDirectory {
         Statement stmt;
         try {
             stmt = DatabaseConnectionClass.getInstance().getCon().createStatement();
-            String query1 = "INSERT INTO Orders" + " VALUES(?,?,?,?,?,?,?)";
+            String query1 = "INSERT INTO Orders" + " VALUES(?,?,?,?,?,?,?,?)";
             java.sql.Date sqlDate = new java.sql.Date(od.getDate().getTime());
             PreparedStatement pst = DatabaseConnectionClass.getInstance().getCon().prepareStatement(query1);
             pst.setString(1, od.getService());
@@ -42,6 +42,7 @@ public class OrdersDirectory {
             pst.setFloat(5, od.getAmount());
             pst.setString(6, od.getDetails());
             pst.setDate(7, sqlDate);
+            pst.setString(8, od.getAssignedTo());
                                   
 
             int rs = pst.executeUpdate();
@@ -62,6 +63,7 @@ public class OrdersDirectory {
             ResultSet rs = stmt.executeQuery(str);
             while(rs.next()) {
                orders order = new orders(
+                       rs.getString("Assigned To"),
                        rs.getString("Services"),
                        rs.getString("Ordered By"),
                        rs.getString("Requested To"),
@@ -76,6 +78,26 @@ public class OrdersDirectory {
             }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null,"Cannot be loaded");
+        }
+    }
+    public void updateOrder(orders order,int i) {
+        ordersDir.set(i,order);
+        Statement stmt;
+        try {
+            stmt = DatabaseConnectionClass.getInstance().getCon().createStatement();
+            String query1 = "Update Orders" + " set Status=?,`Assigned To`=? where Details=?";
+            PreparedStatement pst = DatabaseConnectionClass.getInstance().getCon().prepareStatement(query1);
+            pst.setString(1, order.getStatus());
+            pst.setString(2,order.getAssignedTo());
+            pst.setString(3, order.getDetails());
+            int rs = pst.executeUpdate();
+            if(rs>0)
+            {
+                JOptionPane.showMessageDialog(null,"Inserted Successfully!");
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex);
+            JOptionPane.showMessageDialog(null,"Cannot be Inserted");
         }
     }
     

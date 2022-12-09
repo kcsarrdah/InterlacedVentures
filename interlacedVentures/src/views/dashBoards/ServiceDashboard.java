@@ -307,7 +307,7 @@ public class ServiceDashboard extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        orders order = new orders(jcService.getSelectedItem().toString(), this.labelName.getText(), this.jcOrg.getSelectedItem().toString(),"Placed", new Date(), Float.parseFloat(this.tfPrice.getText()), this.tfDetails.getText());
+        orders order = new orders("", jcService.getSelectedItem().toString(), this.labelName.getText(), this.jcOrg.getSelectedItem().toString(),"Placed", new Date(), Float.parseFloat(this.tfPrice.getText()), this.tfDetails.getText());
         OrdersDirectory.getInstance().addOrder(order);
         JOptionPane.showMessageDialog(this, "Order Placed Successfully!");
     }//GEN-LAST:event_jButton2ActionPerformed

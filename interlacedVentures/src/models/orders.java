@@ -18,8 +18,10 @@ public class orders{
     private Date Date;
     private float Amount;
     private String Details;
-    
-    public orders(String Service, String OrderedBy, String RequestTo, String Status, Date Date, float Amount, String Details) {
+    private String assignedTo;
+
+
+    public orders(String assignedTo, String Service, String OrderedBy, String RequestTo, String Status, Date Date, float Amount, String Details) {
         this.Service = Service;
         this.OrderedBy = OrderedBy;
         this.RequestTo = RequestTo;
@@ -27,8 +29,17 @@ public class orders{
         this.Date = Date;
         this.Amount = Amount;
         this.Details = Details;
+        this.assignedTo = assignedTo;
     }
 
+    public String getAssignedTo() {
+        return assignedTo;
+    }
+
+    public void setAssignedTo(String assignedTo) {
+        this.assignedTo = assignedTo;
+    }
+    
     public String getService() {
         return Service;
     }
