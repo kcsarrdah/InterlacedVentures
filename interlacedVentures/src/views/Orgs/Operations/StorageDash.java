@@ -4,6 +4,8 @@
  */
 package views.Orgs.Operations;
 
+import views.dashBoards.OperationsAdminDashboard;
+
 /**
  *
  * @author kcsar
@@ -36,13 +38,13 @@ public class StorageDash extends javax.swing.JFrame {
 
         tblStorage.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"Lockers", "20", "", "200"},
-                {"WareHouse", "50", null, "500"},
-                {"Cold Storage", "100", null, "1000"},
-                {"Fragile Items Storage", "150", null, "1500"}
+                {"Lockers", "20", "200", "200"},
+                {"WareHouse", "50", "500", "500"},
+                {"Cold Storage", "100", "500", "1000"},
+                {"Fragile Items Storage", "150", "700", "1500"}
             },
             new String [] {
-                "Type", "Hourly Rate(in USD)", "Availability", "Price(in USD)"
+                "Type", "Hourly Rate(in USD)", "Quantity", "Price(in USD)"
             }
         ));
         jScrollPane1.setViewportView(tblStorage);
@@ -50,6 +52,11 @@ public class StorageDash extends javax.swing.JFrame {
         jButton1.setText("ADD LOCKER");
 
         jButton2.setText("BACK");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -90,6 +97,13 @@ public class StorageDash extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        this.hide();
+        OperationsAdminDashboard oad = new OperationsAdminDashboard();
+        oad.show();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments

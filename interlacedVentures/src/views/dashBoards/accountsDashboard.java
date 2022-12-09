@@ -4,6 +4,9 @@
  */
 package views.dashBoards;
 
+import views.forms.FileComplainForm;
+import views.loginPage;
+
 /**
  *
  * @author kcsar
@@ -47,6 +50,11 @@ public class accountsDashboard extends javax.swing.JFrame {
 
         btnReq.setFont(new java.awt.Font("InaiMathi", 1, 14)); // NOI18N
         btnReq.setText("REQUESTS");
+        btnReq.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnReqActionPerformed(evt);
+            }
+        });
         jPanAcctMgr.add(btnReq);
         btnReq.setBounds(298, 380, 143, 52);
 
@@ -80,6 +88,11 @@ public class accountsDashboard extends javax.swing.JFrame {
         btnViewFund.setBounds(298, 105, 143, 52);
 
         btnback.setText("Back");
+        btnback.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnbackActionPerformed(evt);
+            }
+        });
         jPanAcctMgr.add(btnback);
         btnback.setBounds(592, 29, 125, 43);
 
@@ -99,12 +112,28 @@ public class accountsDashboard extends javax.swing.JFrame {
 
     private void btnViewOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewOrderActionPerformed
         // TODO add your handling code here:
-        
+        this.hide();
+        loginPage lp = new loginPage();
+        lp.show();
     }//GEN-LAST:event_btnViewOrderActionPerformed
 
     private void btnRegIssActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegIssActionPerformed
         // TODO add your handling code here:
+        FileComplainForm fcf = new FileComplainForm();
+        fcf.labelFromName.setText(labAccntsMan.getText());
+        fcf.jcDept.addItem("Orders");
+        fcf.jcDept.addItem("Bills");
+        fcf.jcDept.addItem("FreeLancers");
+        fcf.show();
     }//GEN-LAST:event_btnRegIssActionPerformed
+
+    private void btnReqActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReqActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnReqActionPerformed
+
+    private void btnbackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnbackActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnbackActionPerformed
 
     /**
      * @param args the command line arguments
