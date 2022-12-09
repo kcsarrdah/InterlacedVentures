@@ -158,51 +158,39 @@ public class ViewItemsTech extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         
-        float amt = 0;
-        int rctno = 0;
         DefaultTableModel tableModel = (DefaultTableModel) tblTechReq.getModel();
-        String service = tableModel.getValueAt(tblTechReq.getSelectedRow(), 2).toString();
+        String role = tableModel.getValueAt(tblTechReq.getSelectedRow(), 2).toString();
+        System.out.println(role);
         String name = tblTechReq.getValueAt(tblTechReq.getSelectedRow(), 0).toString();
+        String Desc = tblTechReq.getValueAt(tblTechReq.getSelectedRow(), 4).toString();
         
-        //for loop to find the relevant selected order in tfrom the given table.
-        for(int i = 0; i < OrdersDirectory.getInstance().getOrdersDir().size(); i++){
-            
-            if(OrdersDirectory.getInstance().getOrdersDir().get(i).getOrderedBy().equals(name)){
-                amt = OrdersDirectory.getInstance().getOrdersDir().get(i).getAmount();
-                rctno = i+2500;
-                
+          for(int i = 0; i < OrdersDirectory.getInstance().getOrdersDir().size(); i++){
+            if(OrdersDirectory.getInstance().getOrdersDir().get(i).getDetails().equals(Desc))
                 //for loop to find a relevant employee and add him on the job order object is updated here.
                 for(int j = 0;  j < EmployeeDirectory.getInstance().getEmployeeDir().size(); j++){
-                    if(EmployeeDirectory.getInstance().getEmployeeDir().get(i).getRole().equals("Software")){
+                    
+                    if(EmployeeDirectory.getInstance().getEmployeeDir().get(j).getRole().equals(role)){
                         orders order = new orders(
+                                role,
                                 EmployeeDirectory.getInstance().getEmployeeDir().get(j).getFirstName(),
-                                OrdersDirectory.getInstance().getOrdersDir().get(i).getService(),
-                                OrdersDirectory.getInstance().getOrdersDir().get(i).getOrderedBy(),
-                                OrdersDirectory.getInstance().getOrdersDir().get(i).getRequestTo(),
+                                tblTechReq.getValueAt(tblTechReq.getSelectedRow(), 3).toString(),
+                                name,
+                                tblTechReq.getValueAt(tblTechReq.getSelectedRow(), 1).toString(),
                                 "Assigned",
-                                OrdersDirectory.getInstance().getOrdersDir().get(i).getDate(),
+                                new Date(), 
                                 OrdersDirectory.getInstance().getOrdersDir().get(i).getAmount(),
-                                OrdersDirectory.getInstance().getOrdersDir().get(i).getDetails()
+                                Desc
                         );
                         OrdersDirectory.getInstance().updateOrder(order, i);
-                        tableModel.removeRow(tblTechReq.getSelectedRow());
-                        break;
+
                     }
+                        
+                        //tableModel.removeRow(tblTechReq.getSelectedRow());
+                
                 }
-                break;
             }
-        }
         
-//        if(tblTechReq.getSelectedRowCount() == 1){  
-//            bills bill = new bills (
-//                    name,
-//                    new Date(), 
-//                    amt, 
-//                    service, 
-//                    name, 
-//                    rctno);
-//            BillsDirectory.getInstance().addBill(bill);
-//        }
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed

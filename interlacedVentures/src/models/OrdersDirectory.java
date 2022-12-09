@@ -32,7 +32,7 @@ public class OrdersDirectory {
         Statement stmt;
         try {
             stmt = DatabaseConnectionClass.getInstance().getCon().createStatement();
-            String query1 = "INSERT INTO Orders" + " VALUES(?,?,?,?,?,?,?,?)";
+            String query1 = "INSERT INTO Orders" + " VALUES(?,?,?,?,?,?,?,?,?)";
             java.sql.Date sqlDate = new java.sql.Date(od.getDate().getTime());
             PreparedStatement pst = DatabaseConnectionClass.getInstance().getCon().prepareStatement(query1);
             pst.setString(1, od.getService());
@@ -43,6 +43,7 @@ public class OrdersDirectory {
             pst.setString(6, od.getDetails());
             pst.setDate(7, sqlDate);
             pst.setString(8, od.getAssignedTo());
+            pst.setString(9, od.getRole());
                                   
 
             int rs = pst.executeUpdate();
@@ -63,6 +64,7 @@ public class OrdersDirectory {
             ResultSet rs = stmt.executeQuery(str);
             while(rs.next()) {
                orders order = new orders(
+                       rs.getString("Role"),
                        rs.getString("Assigned To"),
                        rs.getString("Services"),
                        rs.getString("Ordered By"),

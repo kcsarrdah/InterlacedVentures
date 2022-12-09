@@ -228,7 +228,7 @@ public class loginPage extends javax.swing.JFrame {
                                 String[][] rows = new String[n][2];
                                 int j=0;
                                 for(int k = 0;  k < n ; k++){
-                                    if(OrdersDirectory.getInstance().getOrdersDir().get(k).getAssignedTo().equals(empName)){
+                                    if(OrdersDirectory.getInstance().getOrdersDir().get(k).getAssignedTo().equals(empName) && !OrdersDirectory.getInstance().getOrdersDir().get(k).getStatus().equals("Completed")){
                                     rows[j][0] = OrdersDirectory.getInstance().getOrdersDir().get(k).getDetails();
                                     Format formatter = new SimpleDateFormat("yyyy-MM-dd");
                                     String s = formatter.format(OrdersDirectory.getInstance().getOrdersDir().get(k).getDate());

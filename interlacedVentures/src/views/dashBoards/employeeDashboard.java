@@ -4,6 +4,14 @@
  */
 package views.dashBoards;
 
+import java.util.Date;
+import javax.swing.table.DefaultTableModel;
+import models.BillsDirectory;
+import models.EmployeeDirectory;
+import models.OrdersDirectory;
+import models.bills;
+import models.orders;
+
 /**
  *
  * @author shreyasisodiya
@@ -51,6 +59,11 @@ public class employeeDashboard extends javax.swing.JFrame {
         jScrollPane1.setViewportView(WorkTable);
 
         jButton1.setText("Mark as Completed");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Register a Complain");
 
@@ -132,6 +145,51 @@ public class employeeDashboard extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        float amt = 0;
+        int rctno = 0;
+        DefaultTableModel tableModel = (DefaultTableModel) WorkTable.getModel();
+        String description = tableModel.getValueAt(WorkTable.getSelectedRow(), 0).toString();
+        
+        //for loop to find the relevant selected order in tfrom the given table.
+        for(int i = 0; i < OrdersDirectory.getInstance().getOrdersDir().size(); i++){
+            
+            if(OrdersDirectory.getInstance().getOrdersDir().get(i).getDetails().equals(description)){
+                String name = OrdersDirectory.getInstance().getOrdersDir().get(i).getRequestTo();
+                amt = OrdersDirectory.getInstance().getOrdersDir().get(i).getAmount();
+                rctno = i+2500;
+                
+                //for loop to find a relevant employee and add him on the job order object is updated here.
+                        orders order = new orders(
+                                OrdersDirectory.getInstance().getOrdersDir().get(i).getRole(),
+                                OrdersDirectory.getInstance().getOrdersDir().get(i).getAssignedTo(),
+                                OrdersDirectory.getInstance().getOrdersDir().get(i).getService(),
+                                OrdersDirectory.getInstance().getOrdersDir().get(i).getOrderedBy(),
+                                OrdersDirectory.getInstance().getOrdersDir().get(i).getRequestTo(),
+                                "Completed",
+                                OrdersDirectory.getInstance().getOrdersDir().get(i).getDate(),
+                                OrdersDirectory.getInstance().getOrdersDir().get(i).getAmount(),
+                                OrdersDirectory.getInstance().getOrdersDir().get(i).getDetails()
+                        );
+                        OrdersDirectory.getInstance().updateOrder(order, i);
+                        tableModel.removeRow(WorkTable.getSelectedRow());
+                        
+                        bills bill = new bills (
+                    name,
+                    new Date(), 
+                    amt, 
+                    OrdersDirectory.getInstance().getOrdersDir().get(i).getService(), 
+                    name, 
+                    rctno);
+                    BillsDirectory.getInstance().addBill(bill);
+                break;
+            }
+        }
+        
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments

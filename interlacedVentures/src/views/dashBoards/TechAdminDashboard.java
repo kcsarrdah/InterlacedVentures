@@ -215,15 +215,17 @@ public class TechAdminDashboard extends javax.swing.JFrame {
         this.hide();
         ViewItemsTech vit = new ViewItemsTech();
         vit.labelRequest.setText(bttnServReq.getText());
-        String[] columnNames = {"Order From", "Organisation", "Service Requested"};
+        String[] columnNames = {"Order From", "Enterprise", "Organisation", "Service Requested", "Details"};
         int n = OrdersDirectory.getInstance().getOrdersDir().size();
-        String[][] rows = new String[n][3];
+        String[][] rows = new String[n][5];
         int j=0;
-        for(int i = 0;  i<n ; i++){
+        for(int i = 0;  i < n ; i++){
             if(!OrdersDirectory.getInstance().getOrdersDir().get(i).getStatus().equals("Completed") && OrdersDirectory.getInstance().getOrdersDir().get(i).getRequestTo().equals("Technology")){
                 rows[j][0] = OrdersDirectory.getInstance().getOrdersDir().get(i).getOrderedBy();
                 rows[j][1] = OrdersDirectory.getInstance().getOrdersDir().get(i).getRequestTo();
-                rows[j][2] = OrdersDirectory.getInstance().getOrdersDir().get(i).getService();           
+                rows[j][2] = OrdersDirectory.getInstance().getOrdersDir().get(i).getRole();
+                rows[j][3] = OrdersDirectory.getInstance().getOrdersDir().get(i).getService();
+                rows[j][4] = OrdersDirectory.getInstance().getOrdersDir().get(i).getDetails();
                 j++;
             }
         }

@@ -19,9 +19,10 @@ public class orders{
     private float Amount;
     private String Details;
     private String assignedTo;
+    private String role;
 
 
-    public orders(String assignedTo, String Service, String OrderedBy, String RequestTo, String Status, Date Date, float Amount, String Details) {
+    public orders(String role, String assignedTo, String Service, String OrderedBy, String RequestTo, String Status, Date Date, float Amount, String Details) {
         this.Service = Service;
         this.OrderedBy = OrderedBy;
         this.RequestTo = RequestTo;
@@ -30,6 +31,15 @@ public class orders{
         this.Amount = Amount;
         this.Details = Details;
         this.assignedTo = assignedTo;
+        this.role = role;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 
     public String getAssignedTo() {
