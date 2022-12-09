@@ -52,12 +52,10 @@
                   <EmptySpace min="-2" pref="88" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Component id="btnService" max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="btnRawMat" max="32767" attributes="0"/>
-                          <Component id="btnTransport" alignment="0" max="32767" attributes="0"/>
-                          <Component id="btnStorage" alignment="0" max="32767" attributes="0"/>
-                          <Component id="btnInterview" max="32767" attributes="0"/>
-                      </Group>
+                      <Component id="btnRawMat" max="32767" attributes="0"/>
+                      <Component id="btnTransport" alignment="0" max="32767" attributes="0"/>
+                      <Component id="btnStorage" alignment="0" max="32767" attributes="0"/>
+                      <Component id="btnInterview" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
               </Group>
@@ -114,11 +112,17 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="TRANSPORT DEPARTMENT"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnTransportActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnRawMat">
           <Properties>
             <Property name="text" type="java.lang.String" value="RAW MATERIAL DEPARTMENT"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnRawMatActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnInterview">
           <Properties>
@@ -129,6 +133,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="SERVICE REQUESTS"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnServiceActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

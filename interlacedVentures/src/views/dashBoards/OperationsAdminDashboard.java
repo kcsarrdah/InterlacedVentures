@@ -5,9 +5,12 @@
 package views.dashBoards;
 
 import javax.swing.table.DefaultTableModel;
+import models.OrdersDirectory;
 import models.StorageDirectory;
+import views.Orgs.Operations.RawMatDash;
 
 import views.Orgs.Operations.StorageDash;
+import views.Orgs.Operations.TransportDash;
 
 import views.loginPage;
 
@@ -62,12 +65,27 @@ public class OperationsAdminDashboard extends javax.swing.JFrame {
         });
 
         btnTransport.setText("TRANSPORT DEPARTMENT");
+        btnTransport.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTransportActionPerformed(evt);
+            }
+        });
 
         btnRawMat.setText("RAW MATERIAL DEPARTMENT");
+        btnRawMat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRawMatActionPerformed(evt);
+            }
+        });
 
         btnInterview.setText("INTERVIEW REQUESTS");
 
         btnService.setText("SERVICE REQUESTS");
+        btnService.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnServiceActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -85,11 +103,10 @@ public class OperationsAdminDashboard extends javax.swing.JFrame {
                 .addGap(88, 88, 88)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnService, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(btnRawMat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnTransport, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnStorage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnInterview, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(btnRawMat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnTransport, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnStorage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnInterview, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -135,8 +152,46 @@ public class OperationsAdminDashboard extends javax.swing.JFrame {
 
     private void btnStorageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStorageActionPerformed
         // TODO add your handling code here:
-        
+        this.hide();
+        StorageDash sd = new StorageDash();
+        sd.show();
     }//GEN-LAST:event_btnStorageActionPerformed
+
+    private void btnServiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnServiceActionPerformed
+        // TODO add your handling code here:
+        this.hide();
+        ViewItemsOperation vio = new ViewItemsOperation();
+        vio.lblReqOp.setText(btnService.getText());
+        String[] columnNames = {"Order From", "Organisation", "Service Requested"};
+        int n = OrdersDirectory.getInstance().getOrdersDir().size();
+        String[][] rows = new String[n][3];
+        int j=0;
+        for(int i = 0;  i<n ; i++){
+            if(!OrdersDirectory.getInstance().getOrdersDir().get(i).getStatus().equals("Completed")){
+                rows[j][0] = OrdersDirectory.getInstance().getOrdersDir().get(i).getOrderedBy();
+                rows[j][1] = OrdersDirectory.getInstance().getOrdersDir().get(i).getRequestTo();
+                rows[j][2] = OrdersDirectory.getInstance().getOrdersDir().get(i).getService();           
+                j++;
+            }
+        }
+        DefaultTableModel dtm = new DefaultTableModel (rows, columnNames);
+        vio.tblOpReq.setModel(dtm);
+        vio.show();
+    }//GEN-LAST:event_btnServiceActionPerformed
+
+    private void btnTransportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTransportActionPerformed
+        // TODO add your handling code here:
+        this.hide();
+        TransportDash td = new TransportDash();
+        td.show();
+    }//GEN-LAST:event_btnTransportActionPerformed
+
+    private void btnRawMatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRawMatActionPerformed
+        // TODO add your handling code here:
+        this.hide();
+        RawMatDash rmd = new RawMatDash();
+        rmd.show();
+    }//GEN-LAST:event_btnRawMatActionPerformed
 
     /**
      * @param args the command line arguments
