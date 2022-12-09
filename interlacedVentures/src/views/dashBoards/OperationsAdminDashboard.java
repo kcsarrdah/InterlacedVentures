@@ -167,7 +167,7 @@ public class OperationsAdminDashboard extends javax.swing.JFrame {
         String[][] rows = new String[n][3];
         int j=0;
         for(int i = 0;  i<n ; i++){
-            if(!OrdersDirectory.getInstance().getOrdersDir().get(i).getStatus().equals("Completed")){
+            if(!OrdersDirectory.getInstance().getOrdersDir().get(i).getStatus().equals("Completed") && OrdersDirectory.getInstance().getOrdersDir().get(i).getRequestTo().equals("Operations")){
                 rows[j][0] = OrdersDirectory.getInstance().getOrdersDir().get(i).getOrderedBy();
                 rows[j][1] = OrdersDirectory.getInstance().getOrdersDir().get(i).getRequestTo();
                 rows[j][2] = OrdersDirectory.getInstance().getOrdersDir().get(i).getService();           

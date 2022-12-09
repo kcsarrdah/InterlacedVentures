@@ -20,6 +20,7 @@ import models.userDirectory;
 import views.RegistrationChoiceForm;
 import views.dashBoards.ViewItemsBusinessUser;
 import views.dashBoards.freelancerDashboard;
+import views.loginPage;
 
 
 /**
@@ -397,6 +398,9 @@ public class freelancerRegistrationForm extends javax.swing.JFrame {
         FreelanceDirectory.getInstance().addFreelancer(free);
         users login = new users(txtUName.getText(),pwdField.getText(),"Freelancer");
         userDirectory.getInstance().addUser(login);
+        this.hide();
+        loginPage lp = new loginPage();
+        lp.show();
     }//GEN-LAST:event_btnRegActionPerformed
 
     private void txtLocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLocActionPerformed
@@ -425,7 +429,7 @@ public class freelancerRegistrationForm extends javax.swing.JFrame {
         String[][] rows = new String[n][4];
         int j=0;
         for(int i = 0;  i< OrdersDirectory.getInstance().getOrdersDir().size(); i++){
-            if(OrdersDirectory.getInstance().getOrdersDir().get(i).getOrderedBy().equals(txtLatestWork.getText())){
+            if(OrdersDirectory.getInstance().getOrdersDir().get(i).getOrderedBy().equals(txtLatestWork.getText()) && !OrdersDirectory.getInstance().getOrdersDir().get(i).getStatus().equals("Closed")){
                 rows[j][0] = OrdersDirectory.getInstance().getOrdersDir().get(i).getService();
                 rows[j][1] = OrdersDirectory.getInstance().getOrdersDir().get(i).getRequestTo();
                 Format formatter = new SimpleDateFormat("yyyy-MM-dd");

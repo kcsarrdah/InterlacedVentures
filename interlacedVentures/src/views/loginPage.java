@@ -203,6 +203,7 @@ public class loginPage extends javax.swing.JFrame {
         
         
         boolean checkPassword;
+        
         for(int i=0;i<userDirectory.getInstance().getUserDir().size();i++) {
             
             checkPassword = password.equals(userDirectory.getInstance().getUserDir().get(i).getPassword());
@@ -241,7 +242,7 @@ public class loginPage extends javax.swing.JFrame {
                         edb.show();
                     }
                     
-                    else if(userDirectory.getInstance().getUserDir().get(i).getType().equals("Freelancer")) {
+                else if(userDirectory.getInstance().getUserDir().get(i).getType().equals("Freelancer")) {
                         this.hide();
                         freelancerDashboard fdb = new freelancerDashboard();
                         String name1 = "";
@@ -255,7 +256,7 @@ public class loginPage extends javax.swing.JFrame {
                         
                    }
                     
-                    else if(userDirectory.getInstance().getUserDir().get(i).getType().equals("Business User")) {
+                else if(userDirectory.getInstance().getUserDir().get(i).getType().equals("Business User")) {
                         this.hide();
                         businessUserDashBoard budb = new businessUserDashBoard();
                 //System.out.println("here");
@@ -267,22 +268,22 @@ public class loginPage extends javax.swing.JFrame {
                         name = BusinessUsersDirectory.getInstance().getBusinessUsersDir().get(j).getName();
                     }
                 }
-                System.out.println(name);
+                //System.out.println(name);
                 budb.businessUser.setText(name);
                 budb.show();
-                    }
-                    
-                 else{
-                JOptionPane.showMessageDialog(this, "Please Enter Correct Details");
-                tfUsername.setText("");
-                pfPassword.setText("");
-                
                 }
+                    
                 }//end of try
                 catch(Exception e) {
                     System.out.println(e);
                 }
             }
+//            else{
+//                    JOptionPane.showMessageDialog(this, "Please Enter Correct Details");
+//                    tfUsername.setText("");
+//                    pfPassword.setText("");
+//                    break;
+//                        }
         }
     }//GEN-LAST:event_btnLoginActionPerformed
 

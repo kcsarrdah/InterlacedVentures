@@ -185,6 +185,7 @@ public class ViewItemsTech extends javax.swing.JFrame {
                                 OrdersDirectory.getInstance().getOrdersDir().get(i).getDetails()
                         );
                         OrdersDirectory.getInstance().updateOrder(order, i);
+                        tableModel.removeRow(tblTechReq.getSelectedRow());
                         break;
                     }
                 }
