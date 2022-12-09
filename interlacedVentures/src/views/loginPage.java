@@ -220,6 +220,7 @@ public class loginPage extends javax.swing.JFrame {
                                 empName = EmployeeDirectory.getInstance().getEmployeeDir().get(j).getFirstName();
                             }
                         }
+                        edb.lblEmpName.setText(empName);
                         
                         //for loop to populate table
                                 String[] columnNames = {"Description", "Date of Posting"};

@@ -123,6 +123,7 @@ public class RegistrationChoiceForm extends javax.swing.JFrame {
 
     private void btnEmpRegActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEmpRegActionPerformed
         // TODO add your handling code here:
+        
         this.hide();
         employeeRegistrationForm erf = new employeeRegistrationForm();
         erf.txtSalary.setText("0");
