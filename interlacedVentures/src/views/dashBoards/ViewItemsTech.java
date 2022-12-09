@@ -195,6 +195,35 @@ public class ViewItemsTech extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+        
+        
+        DefaultTableModel tableModel = (DefaultTableModel) tblTechReq.getModel();
+        String description = tableModel.getValueAt(tblTechReq.getSelectedRow(), 4).toString();
+        
+        //for loop to find the relevant selected order in tfrom the given table.
+        for(int i = 0; i < OrdersDirectory.getInstance().getOrdersDir().size(); i++){
+            
+            if(OrdersDirectory.getInstance().getOrdersDir().get(i).getDetails().equals(description)){
+                String name = OrdersDirectory.getInstance().getOrdersDir().get(i).getRequestTo();
+                
+                //for loop to find a relevant employee and add him on the job order object is updated here.
+                        orders order = new orders(
+                                OrdersDirectory.getInstance().getOrdersDir().get(i).getRole(),
+                                OrdersDirectory.getInstance().getOrdersDir().get(i).getAssignedTo(),
+                                OrdersDirectory.getInstance().getOrdersDir().get(i).getService(),
+                                OrdersDirectory.getInstance().getOrdersDir().get(i).getOrderedBy(),
+                                OrdersDirectory.getInstance().getOrdersDir().get(i).getRequestTo(),
+                                "Rejected",
+                                OrdersDirectory.getInstance().getOrdersDir().get(i).getDate(),
+                                OrdersDirectory.getInstance().getOrdersDir().get(i).getAmount(),
+                                OrdersDirectory.getInstance().getOrdersDir().get(i).getDetails()
+                        );
+                        OrdersDirectory.getInstance().updateOrder(order, i);
+                        tableModel.removeRow(tblTechReq.getSelectedRow());
+                break;
+            }
+        }
+        
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
