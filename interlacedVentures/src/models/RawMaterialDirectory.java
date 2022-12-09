@@ -13,34 +13,31 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author shreyasisodiya
+ * @author kcsar
  */
-public class StorageDirectory {
-    private static ArrayList<Storage> storageDir;
-    private static StorageDirectory mInstance;
+public class RawMaterialDirectory {
+    private static ArrayList<RawMaterial> rawMaterialDir;
+    private static RawMaterialDirectory mInstance;
     
-    private StorageDirectory() {
-        this.storageDir = new ArrayList();
+    private RawMaterialDirectory() {
+        this.rawMaterialDir = new ArrayList();
         }
         
-        public ArrayList<Storage> getStorageDir() {
-            return storageDir;
+        public ArrayList<RawMaterial> getRawMaterialDir() {
+            return rawMaterialDir;
     }
     
-    public void addStorage(Storage storage){
-        storageDir.add(storage);
+    public void addRawMaterial(RawMaterial rawMaterial){
+        rawMaterialDir.add(rawMaterial);
         Statement stmt;
         try {
             stmt = DatabaseConnectionClass.getInstance().getCon().createStatement();
-            String query1 = "INSERT INTO Storage" + " VALUES(?,?,?,?,?,?)";
-            java.sql.Date sqlDate = new java.sql.Date(storage.getDateOfAvailability().getTime());
+            String query1 = "INSERT INTO RawMaterial" + " VALUES(?,?,?)";
+            //java.sql.Date sqlDate = new java.sql.Date(rawMaterial.getDateOfAvailability().getTime());
             PreparedStatement pst = DatabaseConnectionClass.getInstance().getCon().prepareStatement(query1);
-            pst.setString(1, storage.getType());
-            pst.setFloat(2, storage.getRate());
-            pst.setBoolean(3, storage.isAvailability());
-            pst.setDate(4, sqlDate);
-            pst.setString(5, storage.getRentedBy());
-            pst.setFloat(6, storage.getPrice());
+            pst.setString(1, rawMaterial.getType());
+            pst.setInt(2, rawMaterial.getQuantity());
+            pst.setFloat(3, rawMaterial.getPrice());
 
             int rs = pst.executeUpdate();
             if(rs>0)
@@ -52,34 +49,31 @@ public class StorageDirectory {
         }
     }
     
-    public void getStorageData() {
+    public void getRawMaterialData() {
         Statement stmt;
         try{
             stmt = DatabaseConnectionClass.getInstance().getCon().createStatement();
-            String str = "Select * from Storage";
+            String str = "Select * from RawMaterial";
             ResultSet rs = stmt.executeQuery(str);
             while(rs.next()) {
-               Storage storage = new Storage(
+               RawMaterial rawMaterial = new RawMaterial(
                        rs.getString("Type"),
-                       rs.getFloat("Rate"),
-                       rs.getBoolean("Availability"),
-                       rs.getString("RentedBy"),
-                       rs.getFloat("Price"),
-                       rs.getDate("DateOfAvailability"));
-                
-                storageDir.add(storage);
+                       rs.getInt("Quantity"),
+                       rs.getFloat("Price"));
+               
+                rawMaterialDir.add(rawMaterial);
             }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null,"Cannot be loaded");
         }
     }
     
-//    public void updateStorage(Storage storage,int i) {
-//        storageDir.set(i,storage);
+//    public void updaterawMaterial(RawMaterial rawMaterial,int i) {
+//        rawMaterialDir.set(i,rawMaterial);
 //        Statement stmt;
 //        try {
 //            stmt = DatabaseConnectionClass.getInstance().getCon().createStatement();
-//            String query1 = "Update Storage" + " set Availability=?,`Rate`=? where Description=?";
+//            String query1 = "Update RawMaterial" + " set Availability=?,`Rate`=? where Description=?";
 //            PreparedStatement pst = DatabaseConnectionClass.getInstance().getCon().prepareStatement(query1);
 //            pst.setString(1, storage.getStatus());
 //            pst.setString(2,storage.getAppliedBy());
@@ -95,9 +89,9 @@ public class StorageDirectory {
 //        }
 //    }
     
-    public static StorageDirectory getInstance() {
+    public static RawMaterialDirectory getInstance() {
         if(mInstance == null)
-            mInstance = new StorageDirectory();
+            mInstance = new RawMaterialDirectory();
         return mInstance;
     }
 }
