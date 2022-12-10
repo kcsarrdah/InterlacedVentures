@@ -33,23 +33,26 @@ public class StorageDash extends javax.swing.JFrame {
         tblStorage = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         tblStorage.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"Lockers", "20", "200", "200"},
-                {"WareHouse", "50", "500", "500"},
-                {"Cold Storage", "100", "500", "1000"},
-                {"Fragile Items Storage", "150", "700", "1500"}
+
             },
             new String [] {
-                "Type", "Hourly Rate(in USD)", "Quantity", "Price(in USD)"
+
             }
         ));
         jScrollPane1.setViewportView(tblStorage);
 
         jButton1.setText("ADD LOCKER");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("BACK");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -57,6 +60,8 @@ public class StorageDash extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
+
+        jButton3.setText("Remove");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -67,7 +72,9 @@ public class StorageDash extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jButton1)
-                        .addGap(323, 323, 323)
+                        .addGap(32, 32, 32)
+                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(198, 198, 198)
                         .addComponent(jButton2))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 507, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(52, 52, 52))
@@ -80,7 +87,8 @@ public class StorageDash extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(jButton2)
+                    .addComponent(jButton3))
                 .addGap(18, 18, 18))
         );
 
@@ -104,6 +112,30 @@ public class StorageDash extends javax.swing.JFrame {
         OperationsAdminDashboard oad = new OperationsAdminDashboard();
         oad.show();
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        AddItemsPopUp ap = new AddItemsPopUp();
+        
+        ap.jLabel2.setText("Storage Space");
+        
+        ap.jComboBox1.removeAllItems();
+        ap.jComboBox2.removeAllItems();
+        
+        ap.jComboBox1.addItem("Locker");
+        ap.jComboBox1.addItem("WareHouse");
+        ap.jComboBox1.addItem("ColdStorage");
+        ap.jComboBox1.addItem("Fragile Storage");
+        
+        ap.jComboBox2.addItem("Small");
+        ap.jComboBox2.addItem("Medium");
+        ap.jComboBox2.addItem("Large");
+        
+        
+        ap.jComboBox3.hide();
+        
+        ap.show();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -143,6 +175,7 @@ public class StorageDash extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     public javax.swing.JTable tblStorage;

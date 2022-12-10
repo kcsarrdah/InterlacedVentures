@@ -5,12 +5,15 @@
 package views.dashBoards;
 
 import javax.swing.table.DefaultTableModel;
+import models.EmployeeDirectory;
 import models.OrdersDirectory;
 import models.StorageDirectory;
+import models.TransportDirectory;
 import views.Orgs.Operations.RawMatDash;
 
 import views.Orgs.Operations.StorageDash;
 import views.Orgs.Operations.TransportDash;
+import views.Orgs.Tech.Software;
 
 import views.loginPage;
 
@@ -154,6 +157,21 @@ public class OperationsAdminDashboard extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.hide();
         StorageDash sd = new StorageDash();
+        
+        String[][] rows = new String[StorageDirectory.getInstance().getStorageDir().size()][4];
+        String[] columnNames = {"Type", "Price", "availability", "Rented By"};
+        int j = 0;
+        for(int i=0; i < StorageDirectory.getInstance().getStorageDir().size(); i++){
+                rows[j][0] = StorageDirectory.getInstance().getStorageDir().get(i).getType();
+                rows[j][1] = Float.toString((StorageDirectory.getInstance().getStorageDir().get(i).getPrice()));
+                rows[j][2] = Boolean.toString(StorageDirectory.getInstance().getStorageDir().get(i).isAvailability());           
+                rows[j][3] = StorageDirectory.getInstance().getStorageDir().get(i).getRentedBy();
+                j++;
+            
+        }
+        DefaultTableModel model = new DefaultTableModel (rows, columnNames);
+        sd.tblStorage.setModel(model);
+        
         sd.show();
     }//GEN-LAST:event_btnStorageActionPerformed
 
@@ -183,6 +201,21 @@ public class OperationsAdminDashboard extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.hide();
         TransportDash td = new TransportDash();
+        String[][] rows = new String[TransportDirectory.getInstance().getTransportDir().size()][4];
+        String[] columnNames = {"Type", "Price", "availability", "Rented By"};
+        int j = 0;
+        for(int i=0; i < TransportDirectory.getInstance().getTransportDir().size(); i++){
+                rows[j][0] = TransportDirectory.getInstance().getTransportDir().get(i).getType();
+                rows[j][1] = Float.toString((TransportDirectory.getInstance().getTransportDir().get(i).getPrice()));
+                rows[j][2] = Boolean.toString(TransportDirectory.getInstance().getTransportDir().get(i).isAvailability());           
+                rows[j][3] = TransportDirectory.getInstance().getTransportDir().get(i).getRentedBy();
+                j++;
+            
+        }
+        DefaultTableModel model = new DefaultTableModel (rows, columnNames);
+        td.tblTransport.setModel(model);
+        
+        
         td.show();
     }//GEN-LAST:event_btnTransportActionPerformed
 
