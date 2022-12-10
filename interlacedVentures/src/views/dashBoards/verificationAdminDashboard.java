@@ -4,6 +4,8 @@
  */
 package views.dashBoards;
 
+import views.loginPage;
+
 /**
  *
  * @author kcsar
@@ -157,6 +159,9 @@ public class verificationAdminDashboard extends javax.swing.JFrame {
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
         // TODO add your handling code here:
+        this.hide();
+        loginPage lp = new loginPage();
+        lp.show();
     }//GEN-LAST:event_backButtonActionPerformed
 
     /**
