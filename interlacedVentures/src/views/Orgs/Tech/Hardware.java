@@ -4,7 +4,12 @@
  */
 package views.Orgs.Tech;
 
+import java.text.Format;
+import java.text.SimpleDateFormat;
+import javax.swing.table.DefaultTableModel;
+import models.EmployeeDirectory;
 import views.dashBoards.TechAdminDashboard;
+import views.forms.employeeRegistrationForm;
 
 /**
  *
@@ -33,6 +38,7 @@ public class Hardware extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         prodTable = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
+        btnView = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -70,6 +76,13 @@ public class Hardware extends javax.swing.JFrame {
             }
         });
 
+        btnView.setText("View");
+        btnView.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnViewActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -81,7 +94,9 @@ public class Hardware extends javax.swing.JFrame {
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 318, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(21, 21, 21))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(20, 20, 20)
+                .addComponent(btnView)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton1)
                 .addContainerGap())
         );
@@ -93,7 +108,9 @@ public class Hardware extends javax.swing.JFrame {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 337, Short.MAX_VALUE)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(btnView))
                 .addContainerGap())
         );
 
@@ -106,6 +123,62 @@ public class Hardware extends javax.swing.JFrame {
         TechAdminDashboard tad = new TechAdminDashboard();
         tad.show();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void btnViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewActionPerformed
+        // TODO add your handling code here:
+        this.hide();
+     
+     DefaultTableModel tableModel = (DefaultTableModel) empTable.getModel();
+     String UserName = tableModel.getValueAt(empTable.getSelectedRow(), 2).toString();
+        if(empTable.getSelectedRowCount() == 1){
+            employeeRegistrationForm erf = new employeeRegistrationForm();
+            erf.show();
+            for(int i = 0; i < EmployeeDirectory.getInstance().getEmployeeDir().size(); i++){
+                if(EmployeeDirectory.getInstance().getEmployeeDir().get(i).getUsername().equals(UserName)){
+                    erf.pwdField.hide();
+                    erf.txtFName.setText(EmployeeDirectory.getInstance().getEmployeeDir().get(i).getFirstName());
+                    erf.txtFName.setEditable(false);
+                    erf.txtLName.setText(EmployeeDirectory.getInstance().getEmployeeDir().get(i).getLastName());
+                    erf.txtLName.setEditable(false);
+                    erf.txtEmail.setText(EmployeeDirectory.getInstance().getEmployeeDir().get(i).getEmail());
+                    erf.txtEmail.setEditable(false);
+                    erf.pwdField.setText(EmployeeDirectory.getInstance().getEmployeeDir().get(i).getPassword());
+                    erf.pwdField.setEditable(false);
+                    erf.txtAge.setText(Integer.toString(EmployeeDirectory.getInstance().getEmployeeDir().get(i).getAge()));
+                    erf.txtAge.setEditable(false);
+                    erf.txtUName.setText(EmployeeDirectory.getInstance().getEmployeeDir().get(i).getUsername());
+                    erf.txtUName.setEditable(false);
+                    erf.comboGender.setSelectedItem(EmployeeDirectory.getInstance().getEmployeeDir().get(i).getGender());
+                    erf.comboGender.setEditable(false);
+                    erf.txtPhone.setText(EmployeeDirectory.getInstance().getEmployeeDir().get(i).getPhoneNumber());
+                    erf.txtPhone.setEditable(false);
+                    erf.txtLoc.setText(EmployeeDirectory.getInstance().getEmployeeDir().get(i).getLocation());
+                    erf.txtLoc.setEditable(false);
+                    Format formatter = new SimpleDateFormat("MM/dd/yyyy");
+                    String s = formatter.format(EmployeeDirectory.getInstance().getEmployeeDir().get(i).getDateOfJoining());
+                    erf.comboOrg.setSelectedItem(EmployeeDirectory.getInstance().getEmployeeDir().get(i).getOrganisation());
+                    erf.comboOrg.setEditable(false);
+                    erf.txtSalary.setText(Integer.toString(EmployeeDirectory.getInstance().getEmployeeDir().get(i).getSalary()));
+                    erf.txtSalary.setEditable(false);
+                    erf.comboRole.setSelectedItem(EmployeeDirectory.getInstance().getEmployeeDir().get(i).getRole());
+                    erf.comboRole.setEditable(false);
+                    erf.txtSkills.setText(EmployeeDirectory.getInstance().getEmployeeDir().get(i).getSkills());
+                    erf.txtSkills.setEditable(false);
+                    erf.txtWorkExp.setText(Integer.toString(EmployeeDirectory.getInstance().getEmployeeDir().get(i).getWorkEx()));
+                    erf.txtWorkExp.setEditable(false);
+                    erf.txtLatestWork.setText(EmployeeDirectory.getInstance().getEmployeeDir().get(i).getLatestWork());
+                    erf.txtLatestWork.setEditable(false);
+                    //erf.txtLatestWork.setText(EmployeeDirectory.getInstance().getEmployeeDir().get(i).getLatestWork());
+                    
+                          
+                    erf.btnReg.setVisible(false);
+                  }
+                }
+            erf.show();
+            }
+
+     
+    }//GEN-LAST:event_btnViewActionPerformed
 
     /**
      * @param args the command line arguments
@@ -143,6 +216,7 @@ public class Hardware extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnView;
     public javax.swing.JTable empTable;
     private javax.swing.JButton jButton1;
     private javax.swing.JScrollPane jScrollPane1;
