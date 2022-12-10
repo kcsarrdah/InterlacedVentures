@@ -213,14 +213,17 @@ public class loginPage extends javax.swing.JFrame {
                         this.hide();
                         employeeDashboard edb = new employeeDashboard();
                         String empName = "";
+                        String role = "";
                         
                         //for loop to get employee name
                         for(int j = 0; j < EmployeeDirectory.getInstance().getEmployeeDir().size(); j++){
                             if(EmployeeDirectory.getInstance().getEmployeeDir().get(j).getUsername().equals(userName)){
                                 empName = EmployeeDirectory.getInstance().getEmployeeDir().get(j).getFirstName();
+                                role = EmployeeDirectory.getInstance().getEmployeeDir().get(j).getRole();
                             }
                         }
                         edb.lblEmpName.setText(empName);
+                        edb.labelRole.setText(role);
                         
                         //for loop to populate table
                                 String[] columnNames = {"Description", "Date of Posting"};

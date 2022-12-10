@@ -11,6 +11,7 @@ import models.EmployeeDirectory;
 import models.OrdersDirectory;
 import models.bills;
 import models.orders;
+import views.forms.employeeRegistrationForm;
 import views.loginPage;
 
 /**
@@ -43,7 +44,7 @@ public class employeeDashboard extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         lblEmpName = new javax.swing.JLabel();
-        jButton4 = new javax.swing.JButton();
+        btnViewProf = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         labelRole = new javax.swing.JLabel();
 
@@ -79,7 +80,12 @@ public class employeeDashboard extends javax.swing.JFrame {
 
         lblEmpName.setText("Name");
 
-        jButton4.setText("View Profile");
+        btnViewProf.setText("View Profile");
+        btnViewProf.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnViewProfActionPerformed(evt);
+            }
+        });
 
         jLabel2.setText("Role");
 
@@ -95,7 +101,7 @@ public class employeeDashboard extends javax.swing.JFrame {
                         .addGap(23, 23, 23)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblEmpName, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(btnViewProf, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -134,7 +140,7 @@ public class employeeDashboard extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton3)
-                    .addComponent(jButton4))
+                    .addComponent(btnViewProf))
                 .addGap(21, 21, 21))
         );
 
@@ -204,6 +210,56 @@ public class employeeDashboard extends javax.swing.JFrame {
         lp.show();
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    private void btnViewProfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewProfActionPerformed
+        // TODO add your handling code here:
+        this.hide();
+        employeeRegistrationForm erf = new employeeRegistrationForm();
+        
+        String UserName = lblEmpName.getText();
+        
+        for(int i = 0; i < EmployeeDirectory.getInstance().getEmployeeDir().size(); i++){
+           if(EmployeeDirectory.getInstance().getEmployeeDir().get(i).getFirstName().equals(UserName)){
+               
+                erf.txtFName.setText(EmployeeDirectory.getInstance().getEmployeeDir().get(i).getFirstName());      
+                erf.txtFName.setEditable(false);
+                erf.txtLName.setText(EmployeeDirectory.getInstance().getEmployeeDir().get(i).getLastName()); 
+                erf.txtLName.setEditable(false);
+                erf.txtUName.setText(EmployeeDirectory.getInstance().getEmployeeDir().get(i).getUsername()); 
+                erf.txtUName.setEditable(false);
+                erf.txtAge.setText(Integer.toString(EmployeeDirectory.getInstance().getEmployeeDir().get(i).getAge()));
+                erf.txtAge.setEditable(false);
+                erf.comboGender.setSelectedItem(EmployeeDirectory.getInstance().getEmployeeDir().get(i).getGender());
+                erf.comboGender.setEditable(false);
+                erf.txtPhone.setText(EmployeeDirectory.getInstance().getEmployeeDir().get(i).getPhoneNumber());
+                erf.txtPhone.setEditable(false);
+                erf.txtLoc.setText(EmployeeDirectory.getInstance().getEmployeeDir().get(i).getLocation());
+                erf.txtLoc.setEditable(false);
+                erf.txtEmail.setText(EmployeeDirectory.getInstance().getEmployeeDir().get(i).getEmail());
+                erf.txtEmail.setEditable(false);        
+                erf.comboRole.setSelectedItem(EmployeeDirectory.getInstance().getEmployeeDir().get(i).getRole());
+                erf.comboRole.setEditable(false);
+                erf.txtWorkExp.setText(Integer.toString(EmployeeDirectory.getInstance().getEmployeeDir().get(i).getWorkEx()));
+                erf.txtWorkExp.setEditable(false);
+                erf.txtLatestWork.setText(EmployeeDirectory.getInstance().getEmployeeDir().get(i).getLatestWork());
+                erf.txtLatestWork.setEditable(false);
+                erf.comboEducation.setSelectedItem(EmployeeDirectory.getInstance().getEmployeeDir().get(i).getEducation());
+                erf.comboEducation.setEditable(false);
+                erf.comboOrg.setSelectedItem(EmployeeDirectory.getInstance().getEmployeeDir().get(i).getOrganisation());
+                erf.comboOrg.setEditable(false);
+                erf.txtSkills.setText(EmployeeDirectory.getInstance().getEmployeeDir().get(i).getSkills());
+                erf.txtSkills.setEditable(false);
+                erf.txtLoc.setText(EmployeeDirectory.getInstance().getEmployeeDir().get(i).getLocation());
+                erf.txtLoc.setEditable(false);
+               
+                erf.pwdField.setText(EmployeeDirectory.getInstance().getEmployeeDir().get(i).getPassword());
+                erf.pwdField.setEditable(false);
+                erf.btnReg.setVisible(false);
+                
+                        erf.show();
+            }
+        }
+    }//GEN-LAST:event_btnViewProfActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -241,10 +297,10 @@ public class employeeDashboard extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JTable WorkTable;
+    private javax.swing.JButton btnViewProf;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
