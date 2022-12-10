@@ -201,15 +201,17 @@ public class OperationsAdminDashboard extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.hide();
         TransportDash td = new TransportDash();
-        String[][] rows = new String[TransportDirectory.getInstance().getTransportDir().size()][5];
-        String[] columnNames = {"Type", "Price", "Vehicle Number", "Availability", "Rented By"};
+        String[][] rows = new String[TransportDirectory.getInstance().getTransportDir().size()][7];
+        String[] columnNames = {"Type", "Model", "Category", "Price", "Vehicle Number", "Availability", "Rented By"};
         int j = 0;
         for(int i=0; i < TransportDirectory.getInstance().getTransportDir().size(); i++){
                 rows[j][0] = TransportDirectory.getInstance().getTransportDir().get(i).getType();
-                rows[j][1] = Float.toString((TransportDirectory.getInstance().getTransportDir().get(i).getPrice()));
-                rows[j][2] = TransportDirectory.getInstance().getTransportDir().get(i).getVehicleNumber();
-                rows[j][3] = Boolean.toString(TransportDirectory.getInstance().getTransportDir().get(i).isAvailability());           
-                rows[j][4] = TransportDirectory.getInstance().getTransportDir().get(i).getRentedBy();
+                rows[j][1] = TransportDirectory.getInstance().getTransportDir().get(i).getModel();
+                rows[j][2] = TransportDirectory.getInstance().getTransportDir().get(i).getCategory();
+                rows[j][3] = Float.toString((TransportDirectory.getInstance().getTransportDir().get(i).getPrice()));
+                rows[j][4] = TransportDirectory.getInstance().getTransportDir().get(i).getVehicleNumber();
+                rows[j][5] = Boolean.toString(TransportDirectory.getInstance().getTransportDir().get(i).isAvailability());           
+                rows[j][6] = TransportDirectory.getInstance().getTransportDir().get(i).getRentedBy();
                 j++;
             
         }

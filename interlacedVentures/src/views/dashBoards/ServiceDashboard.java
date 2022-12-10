@@ -10,8 +10,11 @@ import java.util.HashMap;
 import javax.swing.JComboBox;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
+import models.EmployeeDirectory;
 import models.OrdersDirectory;
+import models.StorageDirectory;
 import models.orders;
 import views.forms.FileComplainForm;
 import views.forms.postAJobFormBusiness;
@@ -52,12 +55,14 @@ public class ServiceDashboard extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         tfDetails = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tblUpdates = new javax.swing.JTable();
         btnComplain = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         btnFile = new javax.swing.JButton();
         txtFile = new javax.swing.JTextField();
+        pnlTableDisplay = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblDisplay = new javax.swing.JTable();
+        btnView = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -113,19 +118,6 @@ public class ServiceDashboard extends javax.swing.JFrame {
 
         jLabel2.setText("Details");
 
-        tblUpdates.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
-            },
-            new String [] {
-                "Job Description", "Date Posted", "Contacted By"
-            }
-        ));
-        jScrollPane1.setViewportView(tblUpdates);
-
         btnComplain.setText("File A Complain");
         btnComplain.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -147,7 +139,42 @@ public class ServiceDashboard extends javax.swing.JFrame {
             }
         });
 
-        txtFile.setText("jTextField1");
+        tblDisplay.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "Job Description", "Date Posted", "Contacted By"
+            }
+        ));
+        jScrollPane1.setViewportView(tblDisplay);
+
+        javax.swing.GroupLayout pnlTableDisplayLayout = new javax.swing.GroupLayout(pnlTableDisplay);
+        pnlTableDisplay.setLayout(pnlTableDisplayLayout);
+        pnlTableDisplayLayout.setHorizontalGroup(
+            pnlTableDisplayLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlTableDisplayLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 432, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        pnlTableDisplayLayout.setVerticalGroup(
+            pnlTableDisplayLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlTableDisplayLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
+        btnView.setText("View ");
+        btnView.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnViewActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -156,38 +183,41 @@ public class ServiceDashboard extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(48, 48, 48)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(labelName, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(tfDetails, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(jcService, javax.swing.GroupLayout.Alignment.LEADING, 0, 179, Short.MAX_VALUE)
-                        .addComponent(jcOrg, javax.swing.GroupLayout.Alignment.LEADING, 0, 179, Short.MAX_VALUE)
-                        .addComponent(jcEnterprise, javax.swing.GroupLayout.Alignment.LEADING, 0, 179, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(27, 27, 27)
-                            .addComponent(tfPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 90, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 432, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(39, 39, 39))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(57, 57, 57)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btnHFL, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 186, Short.MAX_VALUE)
-                            .addComponent(btnComplain, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addContainerGap())
+                        .addComponent(btnView)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(btnFile)
-                        .addGap(42, 42, 42)
-                        .addComponent(txtFile, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(labelName, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(tfDetails, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(jcService, javax.swing.GroupLayout.Alignment.LEADING, 0, 179, Short.MAX_VALUE)
+                                .addComponent(jcOrg, javax.swing.GroupLayout.Alignment.LEADING, 0, 179, Short.MAX_VALUE)
+                                .addComponent(jcEnterprise, javax.swing.GroupLayout.Alignment.LEADING, 0, 179, Short.MAX_VALUE)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(27, 27, 27)
+                                    .addComponent(tfPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 111, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(btnFile)
+                                .addGap(42, 42, 42)
+                                .addComponent(txtFile, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE)
+                                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addGap(57, 57, 57)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(btnHFL, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 186, Short.MAX_VALUE)
+                                        .addComponent(btnComplain, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addComponent(pnlTableDisplay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -198,15 +228,21 @@ public class ServiceDashboard extends javax.swing.JFrame {
                         .addComponent(labelName, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(28, 28, 28)
                         .addComponent(jcEnterprise, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(16, 16, 16)
-                .addComponent(jcOrg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(39, 39, 39)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jcService, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnFile)
-                    .addComponent(txtFile, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
+                    .addComponent(pnlTableDisplay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(78, 78, 78)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnFile)
+                            .addComponent(txtFile, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(1, 1, 1)
+                        .addComponent(jcOrg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(41, 41, 41)
+                        .addComponent(jcService, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addComponent(btnView, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tfPrice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -253,6 +289,9 @@ public class ServiceDashboard extends javax.swing.JFrame {
                 jcOrg.addItem("Storage");
                 jcOrg.addItem("Transport");
                 jcOrg.addItem("Raw Materials");
+                
+                pnlTableDisplay.show();
+                btnView.show();
         }
         else if(jcEnterprise.getSelectedItem().toString().equals("Finances and Legal")){
                 jcOrg.addItem("Consultancy");
@@ -262,6 +301,8 @@ public class ServiceDashboard extends javax.swing.JFrame {
 
     private void jcServiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcServiceActionPerformed
         // TODO add your handling code here:
+        
+        
     }//GEN-LAST:event_jcServiceActionPerformed
 
     private void jcOrgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcOrgActionPerformed
@@ -382,6 +423,73 @@ public class ServiceDashboard extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnFileActionPerformed
 
+    private void btnViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewActionPerformed
+        // TODO add your handling code here:
+        
+        if(jcService.getSelectedItem().toString().equals("Lockers")){
+        String[][] rows = new String[StorageDirectory.getInstance().getStorageDir().size()][2];
+        String[] columnNames = {"Type", "Rate"};
+        int j = 0;
+        
+        for(int i=0; i < StorageDirectory.getInstance().getStorageDir().size(); i++){
+            if(StorageDirectory.getInstance().getStorageDir().get(i).isAvailability() && StorageDirectory.getInstance().getStorageDir().get(i).getType().equals("Locker")) {
+                rows[j][0] = StorageDirectory.getInstance().getStorageDir().get(i).getType();
+                rows[j][1] = Float.toString(StorageDirectory.getInstance().getStorageDir().get(i).getRate()); 
+                j++;
+            }
+        }
+        DefaultTableModel model = new DefaultTableModel (rows, columnNames);
+        tblDisplay.setModel(model);
+        }
+        
+        else if(jcService.getSelectedItem().toString().equals("WareHouse")){
+        String[][] rows = new String[StorageDirectory.getInstance().getStorageDir().size()][2];
+        String[] columnNames = {"Type", "Rate"};
+        int j = 0;
+        for(int i=0; i < StorageDirectory.getInstance().getStorageDir().size(); i++){
+            if(StorageDirectory.getInstance().getStorageDir().get(i).isAvailability() && StorageDirectory.getInstance().getStorageDir().get(i).getType().equals("WareHouse")) {
+                rows[j][0] = StorageDirectory.getInstance().getStorageDir().get(i).getType();
+                rows[j][1] = Float.toString(StorageDirectory.getInstance().getStorageDir().get(i).getRate()); 
+                j++;
+            }
+        }
+        DefaultTableModel model = new DefaultTableModel (rows, columnNames);
+        tblDisplay.setModel(model);
+        }
+        
+        
+        else if(jcService.getSelectedItem().toString().equals("Cold Storage")){
+        String[][] rows = new String[StorageDirectory.getInstance().getStorageDir().size()][3];
+        String[] columnNames = {"Type", "Size", "Rate"};
+        int j = 0;
+        for(int i=0; i < StorageDirectory.getInstance().getStorageDir().size(); i++){
+            if(StorageDirectory.getInstance().getStorageDir().get(i).isAvailability() && StorageDirectory.getInstance().getStorageDir().get(i).getType().equals("ColdStorage")) {
+                rows[j][0] = StorageDirectory.getInstance().getStorageDir().get(i).getType();
+                rows[j][1] = StorageDirectory.getInstance().getStorageDir().get(i).getSize();; 
+                rows[j][2] = Float.toString(StorageDirectory.getInstance().getStorageDir().get(i).getRate()); 
+                j++;
+            }
+        }
+        DefaultTableModel model = new DefaultTableModel (rows, columnNames);
+        tblDisplay.setModel(model);
+        }
+        
+        else if(jcService.getSelectedItem().toString().equals("Fragile Items Storage")){
+        String[][] rows = new String[StorageDirectory.getInstance().getStorageDir().size()][2];
+        String[] columnNames = {"Type", "Rate"};
+        int j = 0;
+        for(int i=0; i < StorageDirectory.getInstance().getStorageDir().size(); i++){
+            if(StorageDirectory.getInstance().getStorageDir().get(i).isAvailability() && StorageDirectory.getInstance().getStorageDir().get(i).getType().equals("Fragile Storage")) {
+                rows[j][0] = StorageDirectory.getInstance().getStorageDir().get(i).getType();
+                rows[j][1] = Float.toString(StorageDirectory.getInstance().getStorageDir().get(i).getRate()); 
+                j++;
+            }
+        }
+        DefaultTableModel model = new DefaultTableModel (rows, columnNames);
+        tblDisplay.setModel(model);
+        }
+    }//GEN-LAST:event_btnViewActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -419,8 +527,9 @@ public class ServiceDashboard extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnComplain;
-    private javax.swing.JButton btnFile;
+    public javax.swing.JButton btnFile;
     public javax.swing.JButton btnHFL;
+    public javax.swing.JButton btnView;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
@@ -432,10 +541,11 @@ public class ServiceDashboard extends javax.swing.JFrame {
     public javax.swing.JComboBox<String> jcOrg;
     public javax.swing.JComboBox<String> jcService;
     public javax.swing.JLabel labelName;
-    private javax.swing.JTable tblUpdates;
+    public javax.swing.JPanel pnlTableDisplay;
+    public javax.swing.JTable tblDisplay;
     public javax.swing.JTextField tfDetails;
     public javax.swing.JTextField tfPrice;
-    private javax.swing.JTextField txtFile;
+    public javax.swing.JTextField txtFile;
     // End of variables declaration//GEN-END:variables
 }
 

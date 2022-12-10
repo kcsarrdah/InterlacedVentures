@@ -17,14 +17,24 @@ public class Storage {
     private String rentedBy;
     private float price;
     private Date dateOfAvailability;
+    private String Size;
 
-    public Storage(String type, float rate, boolean availability, String rentedBy, float price, Date dateOfAvailability) {
+    public String getSize() {
+        return Size;
+    }
+
+    public void setSize(String Size) {
+        this.Size = Size;
+    }
+
+    public Storage(String Size, String type, float rate, boolean availability, String rentedBy, float price, Date dateOfAvailability) {
         this.type = type;
         this.rate = rate;
         this.availability = availability;
         this.rentedBy = rentedBy;
         this.price = price;
         this.dateOfAvailability = dateOfAvailability;
+        this.Size = Size;
     }
     
 

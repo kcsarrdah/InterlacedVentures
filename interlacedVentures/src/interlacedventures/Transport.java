@@ -18,8 +18,13 @@ public class Transport {
     private float price;
     private Date dateOfAvailability;
     private String vehicleNumber;
+    private String Category;
+    private String Model;
+    private String carClass;
+    
 
-    public Transport(String type, float rate, boolean availability, String rentedBy, float price, Date dateOfAvailability, String vehicleNumber) {
+
+    public Transport(String carClass, String Category, String Model,String type, float rate, boolean availability, String rentedBy, float price, Date dateOfAvailability, String vehicleNumber) {
         this.type = type;
         this.rate = rate;
         this.availability = availability;
@@ -27,6 +32,33 @@ public class Transport {
         this.price = price;
         this.dateOfAvailability = dateOfAvailability;
         this.vehicleNumber = vehicleNumber;
+        this.Category = Category;
+        this.Model = Model;
+        this.carClass = carClass;
+    }
+
+    public String getCarClass() {
+        return carClass;
+    }
+
+    public void setCarClass(String carClass) {
+        this.carClass = carClass;
+    }
+    
+    public String getCategory() {
+        return Category;
+    }
+
+    public void setCategory(String Category) {
+        this.Category = Category;
+    }
+
+    public String getModel() {
+        return Model;
+    }
+
+    public void setModel(String Model) {
+        this.Model = Model;
     }
 
     public String getType() {

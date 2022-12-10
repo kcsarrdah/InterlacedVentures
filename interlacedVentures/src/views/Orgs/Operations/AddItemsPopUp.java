@@ -131,12 +131,19 @@ public class AddItemsPopUp extends javax.swing.JFrame {
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         // TODO add your handling code here:
-        if(jComboBox1.getSelectedItem().toString().equals("Personal")){
+        if(jComboBox1.getSelectedItem().toString().equals("Cars")){
             jComboBox2.removeAllItems();
             jComboBox2.addItem("Sedan");
             jComboBox2.addItem("SUV");
             jComboBox2.addItem("HatchBack");
         }
+        else if(jComboBox1.getSelectedItem().toString().equals("Trucks")){
+            jComboBox2.removeAllItems();
+            jComboBox2.addItem("Box truck");
+            jComboBox2.addItem("Cab over");
+            jComboBox2.addItem("Chassis cab");
+        }
+        
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -152,27 +159,32 @@ public class AddItemsPopUp extends javax.swing.JFrame {
         if(jLabel2.getText().equals("Storage Space")){
             if(jComboBox2.getSelectedItem().toString().equals("Small")){
                 Storage storage = new Storage(
+                        jComboBox2.getSelectedItem().toString(),
                     jComboBox1.getSelectedItem().toString(),
                     120,
                     true,
                     "",
                     120,
-                    new Date());
+                    new Date()
+                        );
                 StorageDirectory.getInstance().addStorage(storage);
             }
             else if(jComboBox2.getSelectedItem().toString().equals("Medium")){
                 Storage storage = new Storage(
+                    jComboBox2.getSelectedItem().toString(),
                     jComboBox1.getSelectedItem().toString(),
                     200,
                     true,
                     "",
                     200,
-                    new Date());
+                    new Date()
+                );
                 StorageDirectory.getInstance().addStorage(storage);
             }
             
             else if(jComboBox2.getSelectedItem().toString().equals("Large")){
                 Storage storage = new Storage(
+                    jComboBox2.getSelectedItem().toString(),
                     jComboBox1.getSelectedItem().toString(),
                     250,
                     true,
@@ -188,6 +200,9 @@ public class AddItemsPopUp extends javax.swing.JFrame {
                 String number = Integer.toString(no);
                 Transport transport = new Transport(
                         jComboBox1.getSelectedItem().toString(),
+                        jComboBox2.getSelectedItem().toString(),
+                        jComboBox3.getSelectedItem().toString(),
+                        jComboBox1.getSelectedItem().toString(),
                         3000,
                         true,
                         "",
@@ -201,7 +216,8 @@ public class AddItemsPopUp extends javax.swing.JFrame {
 
     private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
         // TODO add your handling code here:
-        if(jComboBox2.getSelectedItem().equals("Sedan")){
+        if(jComboBox1.getSelectedItem().toString().equals("Cars")){
+            if(jComboBox2.getSelectedItem().equals("Sedan")){
             jComboBox3.addItem("Nissan Versa");
             jComboBox3.addItem("Kia Rio");
             jComboBox3.addItem("Honda Civic");
@@ -217,8 +233,32 @@ public class AddItemsPopUp extends javax.swing.JFrame {
             jComboBox3.addItem("Toyota Prius");
             jComboBox3.addItem("Ford Focus");
             jComboBox3.addItem("Honda Fit");
+            }
         }
         
+        else if(jComboBox1.getSelectedItem().toString().equals("Trucks")){
+            
+            if(jComboBox2.getSelectedItem().equals("Box truck")){
+                jComboBox3.addItem("Ford E-350 Super Duty");
+                jComboBox3.addItem("Ram 4500 Chassis Cab");
+                jComboBox3.addItem("Chevrolet Express 2500 Cutaway");
+            }
+        
+            else if(jComboBox2.getSelectedItem().equals("Cab over")){
+                jComboBox3.addItem("Freightliner Argosy");
+            }
+        
+            else if(jComboBox2.getSelectedItem().equals("Chassis cab")){
+                jComboBox3.addItem("Ford F-450 XLT");
+                jComboBox3.addItem("Ford F-600");
+            }
+        }
+        
+        
+        
+
+        
+
         
     }//GEN-LAST:event_jComboBox2ActionPerformed
 

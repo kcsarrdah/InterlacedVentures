@@ -33,7 +33,7 @@ public class TransportDirectory {
         Statement stmt;
         try {
             stmt = DatabaseConnectionClass.getInstance().getCon().createStatement();
-            String query1 = "INSERT INTO Transport" + " VALUES(?,?,?,?,?,?,?)";
+            String query1 = "INSERT INTO Transport" + " VALUES(?,?,?,?,?,?,?,?,?,?)";
             java.sql.Date sqlDate = new java.sql.Date(transport.getDateOfAvailability().getTime());
             PreparedStatement pst = DatabaseConnectionClass.getInstance().getCon().prepareStatement(query1);
             pst.setString(1, transport.getType());
@@ -43,6 +43,9 @@ public class TransportDirectory {
             pst.setString(5, transport.getRentedBy());
             pst.setFloat(6, transport.getPrice());
             pst.setString(7,transport.getVehicleNumber());
+            pst.setString(8, transport.getCategory());
+            pst.setString(9, transport.getModel());
+            pst.setString(10, transport.getCarClass());
 
             int rs = pst.executeUpdate();
             if(rs>0)
@@ -62,6 +65,9 @@ public class TransportDirectory {
             ResultSet rs = stmt.executeQuery(str);
             while(rs.next()) {
                Transport transport = new Transport(
+                       rs.getString("carClass"),
+                       rs.getString("Category"),
+                       rs.getString("Model"),
                        rs.getString("Type"),
                        rs.getFloat("Rate"),
                        rs.getBoolean("Availability"),
@@ -78,7 +84,7 @@ public class TransportDirectory {
         }
     }
     
-    //    public void updateTransport(Transport transport,int i) {
+//        public void updateTransport(Transport transport,int i) {
 //        stransportDir.set(i,transport);
 //        Statement stmt;
 //        try {
