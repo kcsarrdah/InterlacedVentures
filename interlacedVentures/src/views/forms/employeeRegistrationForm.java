@@ -499,8 +499,7 @@ public class employeeRegistrationForm extends javax.swing.JFrame {
         // TODO add your handling code here:    
                     this.txtFName.setEditable(true);                  
                     this.txtLName.setEditable(true);                  
-                    this.txtEmail.setEditable(true);
-                    this.txtUName.setEditable(true);                  
+                    this.txtEmail.setEditable(true);                  
                     this.comboGender.setEditable(true);
                     this.txtPhone.setEditable(true);
                     this.txtLoc.setEditable(true);
@@ -510,6 +509,36 @@ public class employeeRegistrationForm extends javax.swing.JFrame {
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         // TODO add your handling code here:
+        
+        String UName = txtUName.getText();
+        
+        
+                 employee free = new employee(
+            comboOrg.getSelectedItem().toString(),
+            txtLoc.getText(),
+            dateField.getDate(),
+            pwdField.getText(),
+            comboRole.getSelectedItem().toString(),
+            Integer.parseInt(txtWorkExp.getText()),
+            Integer.parseInt(txtSalary.getText()),
+            txtLatestWork.getText(),
+            comboEducation.getSelectedItem().toString(),
+            txtSkills.getText(),
+            txtUName.getText(),
+            txtFName.getText(),
+            txtLName.getText(),
+            Integer.parseInt(txtAge.getText()),
+            comboGender.getSelectedItem().toString(),
+            txtPhone.getText(),
+            txtEmail.getText());
+                 
+        for(int i = 0; i < EmployeeDirectory.getInstance().getEmployeeDir().size(); i++){
+        if(EmployeeDirectory.getInstance().getEmployeeDir().get(i).getUsername().equals(UName)){
+            EmployeeDirectory.getInstance().updateEmployee(free, i);
+            JOptionPane.showMessageDialog(this, "Information Updated");
+            }
+        }
+        
         
     }//GEN-LAST:event_btnSaveActionPerformed
 

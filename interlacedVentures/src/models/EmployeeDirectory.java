@@ -100,6 +100,40 @@ public class EmployeeDirectory {
         }
     }
     
+    public void updateEmployee(employee emp,int i) {
+        employeeDir.set(i,emp);
+        Statement stmt;
+        try {
+            stmt = DatabaseConnectionClass.getInstance().getCon().createStatement();
+            String query1 = "Update Employees " + "set LastName=?,FirstName=?,Email=?,Gender=?,PhoneNumber=?,Location=?,Salary=? where UserName=?";
+            PreparedStatement pst = DatabaseConnectionClass.getInstance().getCon().prepareStatement(query1);
+            pst.setString(1, emp.getLastName());
+            
+            pst.setString(2,emp.getFirstName());
+            
+            pst.setString(3, emp.getEmail());
+            
+            pst.setString(4, emp.getGender());
+            
+            pst.setString(5, emp.getPhoneNumber());
+            
+            pst.setString(6, emp.getLocation());
+            
+            pst.setInt(7,emp.getSalary());
+            
+            pst.setString(8, emp.getUsername());
+            
+            int rs = pst.executeUpdate();
+            if(rs>0)
+            {
+                JOptionPane.showMessageDialog(null,"Inserted Successfully!");
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex);
+            JOptionPane.showMessageDialog(null,"Cannot be Inserted");
+        }
+    }
+    
 //    public void docData(int stateID) {
 //        for(int j=0;j<doctorDir.size();j++) {
 //            System.out.println("sdj");

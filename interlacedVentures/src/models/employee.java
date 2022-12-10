@@ -24,7 +24,24 @@ public class employee extends person{
     private String location;
     private String Organisation;
 
-    public employee(String Organisation, String location, Date DateOfJoining, String Password, String Role, int WorkEx, int salary, String LatestWork, String education, String skills, String Username, String firstName, String lastName, int age, String gender, String phoneNumber, String Email) {
+    public employee(
+            String Organisation, 
+            String location, 
+            Date DateOfJoining, 
+            String Password, 
+            String Role, 
+            int WorkEx, 
+            int salary, 
+            String LatestWork, 
+            String education, 
+            String skills, 
+            String Username, 
+            String firstName, 
+            String lastName, 
+            int age, 
+            String gender, 
+            String phoneNumber, 
+            String Email) {
         super(firstName, lastName, age, gender, phoneNumber, Email);
         this.Role = Role;
         this.WorkEx = WorkEx;
