@@ -74,6 +74,7 @@ public class TransportDirectory {
             }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null,"Cannot be loaded");
+            System.out.println(ex);
         }
     }
     

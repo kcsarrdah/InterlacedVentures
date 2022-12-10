@@ -120,8 +120,8 @@ public class TransportDash extends javax.swing.JFrame {
         
         ap.jLabel2.setText("Transport Facility");
         
-        ap.jComboBox1.removeAllItems();
-        ap.jComboBox2.removeAllItems();
+        //ap.jComboBox1.removeAllItems();
+        //ap.jComboBox2.removeAllItems();
         
         ap.jComboBox1.addItem("Personal");
         ap.jComboBox1.addItem("Items");

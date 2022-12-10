@@ -119,8 +119,8 @@ public class StorageDash extends javax.swing.JFrame {
         
         ap.jLabel2.setText("Storage Space");
         
-        ap.jComboBox1.removeAllItems();
-        ap.jComboBox2.removeAllItems();
+        //ap.jComboBox1.removeAllItems();
+        //ap.jComboBox2.removeAllItems();
         
         ap.jComboBox1.addItem("Locker");
         ap.jComboBox1.addItem("WareHouse");

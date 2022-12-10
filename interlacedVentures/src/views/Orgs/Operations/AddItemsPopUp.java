@@ -8,6 +8,7 @@ import interlacedventures.Transport;
 import java.util.Date;
 import models.Storage;
 import models.StorageDirectory;
+import models.TransportDirectory;
 
 /**
  *
@@ -42,21 +43,17 @@ public class AddItemsPopUp extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox1ActionPerformed(evt);
             }
         });
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jComboBox2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox2ActionPerformed(evt);
             }
         });
-
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel1.setText("Add ");
 
@@ -184,8 +181,9 @@ public class AddItemsPopUp extends javax.swing.JFrame {
                     new Date());
                 StorageDirectory.getInstance().addStorage(storage);
             }
-            
-            else if(jLabel2.getText().equals("Transport Facility")){
+        }
+        else if(jLabel2.getText().equals("Transport Facility")){
+                
                 int no = (int)Math.floor(Math.random()*(99999 - 10000 + 1) + 10000);
                 String number = Integer.toString(no);
                 Transport transport = new Transport(
@@ -196,10 +194,9 @@ public class AddItemsPopUp extends javax.swing.JFrame {
                         300,
                         new Date(),
                         number);
+                TransportDirectory.getInstance().addTransport(transport);
                 
             }
-            
-        }
     }//GEN-LAST:event_btnAddActionPerformed
 
     private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
@@ -209,11 +206,13 @@ public class AddItemsPopUp extends javax.swing.JFrame {
             jComboBox3.addItem("Kia Rio");
             jComboBox3.addItem("Honda Civic");
         }
+        
         else if(jComboBox2.getSelectedItem().equals("SUV")){
             jComboBox3.addItem("Toyota Highlander");
             jComboBox3.addItem("Lexus RX 350");
             jComboBox3.addItem("Ford Escape");
         }
+        
         else if(jComboBox2.getSelectedItem().equals("HatchBack")){
             jComboBox3.addItem("Toyota Prius");
             jComboBox3.addItem("Ford Focus");
