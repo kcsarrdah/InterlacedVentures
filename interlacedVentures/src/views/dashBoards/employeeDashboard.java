@@ -11,6 +11,7 @@ import models.EmployeeDirectory;
 import models.OrdersDirectory;
 import models.bills;
 import models.orders;
+import views.forms.FileComplainForm;
 import views.forms.employeeRegistrationForm;
 import views.loginPage;
 
@@ -68,6 +69,11 @@ public class employeeDashboard extends javax.swing.JFrame {
         });
 
         jButton2.setText("Register a Complain");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Log Out");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -259,6 +265,16 @@ public class employeeDashboard extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_btnViewProfActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        FileComplainForm fcf = new FileComplainForm();
+        fcf.labelFromName.setText(lblEmpName.getText());
+        fcf.jcDept.addItem("Orders");
+        fcf.jcDept.addItem("Bills");
+        fcf.jcDept.addItem("FreeLancers");
+        fcf.show();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
