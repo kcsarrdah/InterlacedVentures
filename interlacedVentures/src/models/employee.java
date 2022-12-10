@@ -23,6 +23,10 @@ public class employee extends person{
     private Date DateOfJoining;
     private String location;
     private String Organisation;
+    private String imagePath;
+    private String resPath;
+    private String idPath;
+
 
     public employee(
             String Organisation, 
@@ -41,7 +45,10 @@ public class employee extends person{
             int age, 
             String gender, 
             String phoneNumber, 
-            String Email) {
+            String Email,
+            String imagePath,
+            String resPath,
+            String idPath) {
         super(firstName, lastName, age, gender, phoneNumber, Email);
         this.Role = Role;
         this.WorkEx = WorkEx;
@@ -54,6 +61,33 @@ public class employee extends person{
         this.DateOfJoining = DateOfJoining;
         this.location = location;
         this.Organisation = Organisation;
+        this.imagePath = imagePath;
+        this.resPath = resPath;
+        this.idPath = idPath;
+    }
+
+    public String getImagePath() {
+        return imagePath;
+    }
+
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
+    }
+
+    public String getResPath() {
+        return resPath;
+    }
+
+    public void setResPath(String resPath) {
+        this.resPath = resPath;
+    }
+
+    public String getIdPath() {
+        return idPath;
+    }
+
+    public void setIdPath(String idPath) {
+        this.idPath = idPath;
     }
 
     public String getOrganisation() {

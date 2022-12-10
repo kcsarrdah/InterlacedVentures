@@ -33,7 +33,7 @@ public class EmployeeDirectory {
         Statement stmt;
         try {
             stmt = DatabaseConnectionClass.getInstance().getCon().createStatement();
-            String query1 = "INSERT INTO Employees" + " VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+            String query1 = "INSERT INTO Employees" + " VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
             java.sql.Date sqlDate = new java.sql.Date(emp.getDateOfJoining().getTime());
             PreparedStatement pst = DatabaseConnectionClass.getInstance().getCon().prepareStatement(query1);
             
@@ -54,6 +54,9 @@ public class EmployeeDirectory {
             pst.setString(15, emp.getEducation());
             pst.setString(16, emp.getSkills());
             pst.setDate(17, sqlDate);
+            pst.setString(18, emp.getImagePath());
+            pst.setString(19, emp.getResPath());
+            pst.setString(20, emp.getIdPath());
                                   
 
             int rs = pst.executeUpdate();
@@ -91,7 +94,10 @@ public class EmployeeDirectory {
                         rs.getInt("Age"),
                         rs.getString("Gender"),
                         rs.getString("PhoneNumber"),
-                        rs.getString("Email"));
+                        rs.getString("Email"),
+                       rs.getString("Image"),
+                        rs.getString("Resume"),
+                        rs.getString("ID"));
                 
                 employeeDir.add(emp);
             }

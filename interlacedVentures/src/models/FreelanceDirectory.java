@@ -102,7 +102,6 @@ public class FreelanceDirectory {
         }
     }
     
-    
         public void updateFreelancer(freelancer fl,int i) {
         freeLancerDir.set(i,fl);
         Statement stmt;
