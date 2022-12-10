@@ -9,6 +9,7 @@ import javax.swing.table.DefaultTableModel;
 import models.BillsDirectory;
 import models.OrdersDirectory;
 import models.bills;
+import models.orders;
 
 /**
  *
@@ -66,6 +67,11 @@ public class ViewItemsOperation extends javax.swing.JFrame {
         });
 
         btnDisapprove.setText("DISAPPROVE");
+        btnDisapprove.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDisapproveActionPerformed(evt);
+            }
+        });
 
         btnApprove.setText("APPROVE");
         btnApprove.addActionListener(new java.awt.event.ActionListener() {
@@ -163,6 +169,36 @@ public class ViewItemsOperation extends javax.swing.JFrame {
             BillsDirectory.getInstance().addBill(bill);
         }                                
     }//GEN-LAST:event_btnApproveActionPerformed
+
+    private void btnDisapproveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDisapproveActionPerformed
+        // TODO add your handling code here:
+        DefaultTableModel tableModel = (DefaultTableModel) tblOpReq.getModel();
+        String description = tableModel.getValueAt(tblOpReq.getSelectedRow(), 4).toString();
+        
+        //for loop to find the relevant selected order in tfrom the given table.
+        for(int i = 0; i < OrdersDirectory.getInstance().getOrdersDir().size(); i++){
+            
+            if(OrdersDirectory.getInstance().getOrdersDir().get(i).getDetails().equals(description)){
+                String name = OrdersDirectory.getInstance().getOrdersDir().get(i).getRequestTo();
+                
+                //for loop to find a relevant employee and add him on the job order object is updated here.
+                        orders order = new orders(
+                                OrdersDirectory.getInstance().getOrdersDir().get(i).getRole(),
+                                OrdersDirectory.getInstance().getOrdersDir().get(i).getAssignedTo(),
+                                OrdersDirectory.getInstance().getOrdersDir().get(i).getService(),
+                                OrdersDirectory.getInstance().getOrdersDir().get(i).getOrderedBy(),
+                                OrdersDirectory.getInstance().getOrdersDir().get(i).getRequestTo(),
+                                "Rejected",
+                                OrdersDirectory.getInstance().getOrdersDir().get(i).getDate(),
+                                OrdersDirectory.getInstance().getOrdersDir().get(i).getAmount(),
+                                OrdersDirectory.getInstance().getOrdersDir().get(i).getDetails()
+                        );
+                        OrdersDirectory.getInstance().updateOrder(order, i);
+                        tableModel.removeRow(tblOpReq.getSelectedRow());
+                break;
+            }
+        }
+    }//GEN-LAST:event_btnDisapproveActionPerformed
 
     /**
      * @param args the command line arguments
