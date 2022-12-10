@@ -95,6 +95,42 @@ public class FreelanceDirectory {
         }
     }
     
+    
+        public void updateFreelancer(freelancer fl,int i) {
+        freeLancerDir.set(i,fl);
+        Statement stmt;
+        try {
+            stmt = DatabaseConnectionClass.getInstance().getCon().createStatement();
+            String query1 = "Update Freelancers " + "set LastName=?,FirstName=?,Email=?,Gender=?,PhoneNumber=?,Location=?,HourlyRate=? where UserName=?";
+            PreparedStatement pst = DatabaseConnectionClass.getInstance().getCon().prepareStatement(query1);
+            pst.setString(1, fl.getLastName());
+            
+            pst.setString(2,fl.getFirstName());
+            
+            pst.setString(3, fl.getEmail());
+            
+            pst.setString(4, fl.getGender());
+            
+            pst.setString(5, fl.getPhoneNumber());
+            
+            pst.setString(6, fl.getLocation());
+            
+            pst.setInt(7,fl.getHourlyRate());
+            
+            pst.setString(8, fl.getUsername());
+            
+            int rs = pst.executeUpdate();
+            if(rs>0)
+            {
+                JOptionPane.showMessageDialog(null,"Inserted Successfully!");
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex);
+            JOptionPane.showMessageDialog(null,"Cannot be Inserted");
+        }
+    }
+
+    
 //    public void docData(int stateID) {
 //        for(int j=0;j<doctorDir.size();j++) {
 //            System.out.println("sdj");

@@ -10,6 +10,7 @@ import java.sql.PreparedStatement;
 import java.sql.*;
 import java.text.Format;
 import java.text.SimpleDateFormat;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import models.freelancer;
 import models.users;
@@ -484,8 +485,7 @@ public class freelancerRegistrationForm extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.txtFName.setEditable(true);                  
                     this.txtLName.setEditable(true);                  
-                    this.txtEmail.setEditable(true);
-                    this.txtUName.setEditable(true);                  
+                    this.txtEmail.setEditable(true);               
                     this.comboGender.setEditable(true);
                     this.txtPhone.setEditable(true);
                     this.txtLoc.setEditable(true);
@@ -495,6 +495,35 @@ public class freelancerRegistrationForm extends javax.swing.JFrame {
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         // TODO add your handling code here:
+        String UName = txtUName.getText();
+        
+        
+         freelancer free = new freelancer(
+                 txtLoc.getText(),
+                pwdField.getText(),
+                dateField.getDate(),
+                Integer.parseInt(txtHourlyRate.getText()),
+                txtPortfolio.getText(),
+                Integer.parseInt(txtWorkExp.getText()),
+                txtLatestWork.getText(),
+                comboEducation.getSelectedItem().toString(),
+                jcSkills.getSelectedItem().toString(),
+                txtUName.getText(),
+                txtFName.getText(),
+                txtLName.getText(),
+                Integer.parseInt(txtAge.getText()),
+                comboGender.getSelectedItem().toString(),
+                txtPhone.getText(),
+                txtEmail.getText());
+        for(int i = 0; i < FreelanceDirectory.getInstance().getFreeLancerDir().size(); i++){
+        if(FreelanceDirectory.getInstance().getFreeLancerDir().get(i).getUsername().equals(UName)){
+            FreelanceDirectory.getInstance().updateFreelancer(free, i);
+            JOptionPane.showMessageDialog(this, "Information Updated");
+            }
+        }
+        this.hide();
+        
+        
         
     }//GEN-LAST:event_btnSaveActionPerformed
 
