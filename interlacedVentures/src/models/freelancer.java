@@ -22,11 +22,14 @@ public class freelancer extends person{
     private Date dateOfJoining;
     private String password;
     private String location;
-
+    private String imagePath;
+    private String resPath;
+    private String idPath;
 
     public freelancer(String location, String password, Date dateOfJoining, int HourlyRate, String Portfolio, int WorkEx, 
             String LatestWork, String education, String skills, String Username, 
-            String firstName, String lastName, int age, String gender, String phoneNumber, String Email) {
+            String firstName, String lastName, int age, String gender, String phoneNumber, String Email, String imagePath,
+            String resPath, String idPath) {
         super(firstName, lastName, age, gender, phoneNumber, Email);
         this.HourlyRate = HourlyRate;
         this.Portfolio = Portfolio;
@@ -38,8 +41,35 @@ public class freelancer extends person{
         this.dateOfJoining = dateOfJoining;
         this.password = password;
         this.location = location;
+        this.imagePath = imagePath;
+        this.resPath = resPath;
+        this.idPath = idPath;
     }
 
+    public String getResPath() {
+        return resPath;
+    }
+
+    public void setResPath(String resPath) {
+        this.resPath = resPath;
+    }
+
+    public String getIdPath() {
+        return idPath;
+    }
+
+    public void setIdPath(String idPath) {
+        this.idPath = idPath;
+    }
+    
+    public String getImagePath() {
+        return imagePath;
+    }
+
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
+    }
+    
     public String getLocation() {
         return location;
     }

@@ -33,7 +33,7 @@ public class FreelanceDirectory {
         Statement stmt;
         try {
             stmt = DatabaseConnectionClass.getInstance().getCon().createStatement();
-            String query1 = "INSERT INTO Freelancers" + " VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+            String query1 = "INSERT INTO Freelancers" + " VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
             java.sql.Date sqlDate = new java.sql.Date(fl.getDateOfJoining().getTime());
             PreparedStatement pst = DatabaseConnectionClass.getInstance().getCon().prepareStatement(query1);
             pst.setString(1, fl.getFirstName());
@@ -52,6 +52,10 @@ public class FreelanceDirectory {
             pst.setString(14, fl.getEducation());
             pst.setString(15, fl.getSkills());
             pst.setDate(16, sqlDate);
+            pst.setString(17, fl.getImagePath());
+            pst.setString(18, fl.getResPath());
+            pst.setString(19, fl.getIdPath());
+            
             int rs = pst.executeUpdate();
             if(rs>0)
             {
@@ -86,7 +90,10 @@ public class FreelanceDirectory {
                         rs.getInt("Age"),
                         rs.getString("Gender"),
                         rs.getString("PhoneNumber"),
-                        rs.getString("Email"));
+                        rs.getString("Email"),
+                        rs.getString("Image"),
+                        rs.getString("Resume"),
+                        rs.getString("ID"));
                 
                 freeLancerDir.add(fl);
             }

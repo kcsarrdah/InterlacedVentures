@@ -16,11 +16,9 @@ public class business {
     private String website;
     private String ownerName;
     private String password;
-    private String filePath;
     private String licensePath;
 
-    public business(String Password, String name, String email, String number, String address, String website, String ownerName, 
-            String filePath, String licensePath) {
+    public business(String Password, String name, String email, String number, String address, String website, String ownerName, String licensePath) {
         this.name = name;
         this.email = email;
         this.number = number;
@@ -28,7 +26,6 @@ public class business {
         this.website = website;
         this.ownerName = ownerName;
         this.password = password;
-        this.filePath = filePath;
         this.licensePath = licensePath;
     }
 
@@ -86,14 +83,6 @@ public class business {
 
     public void setOwnerName(String ownerName) {
         this.ownerName = ownerName;
-    }
-
-    public String getFilePath() {
-        return filePath;
-    }
-
-    public void setFilePath(String filePath) {
-        this.filePath = filePath;
     }
 
     public String getLicensePath() {

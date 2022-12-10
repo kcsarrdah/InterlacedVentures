@@ -119,9 +119,9 @@ public class Consultancy extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(34, 34, 34)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton1)
-                            .addComponent(jButton2))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton2)
+                            .addComponent(jButton1))
                         .addGap(44, 44, 44))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -208,7 +208,7 @@ public class Consultancy extends javax.swing.JFrame {
         // TODO add your handling code here:
         
         DefaultTableModel tableModel = (DefaultTableModel) tableRequests.getModel();
-        String role = tableModel.getValueAt(tableRequests.getSelectedRow(), 2).toString();
+        String role = tableModel.getValueAt(tableRequests.getSelectedRow(), 3).toString();
         
         String name = tableRequests.getValueAt(tableRequests.getSelectedRow(), 0).toString();
         String Desc = tableRequests.getValueAt(tableRequests.getSelectedRow(), 4).toString();

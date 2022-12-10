@@ -32,7 +32,7 @@ public class BusinessUsersDirectory {
         Statement stmt;
         try {
             stmt = DatabaseConnectionClass.getInstance().getCon().createStatement();
-            String query1 = "INSERT INTO BusinessUsers" + " VALUES(?,?,?,?,?,?,?,?,?)";
+            String query1 = "INSERT INTO BusinessUsers" + " VALUES(?,?,?,?,?,?,?,?)";
 //            java.sql.Date sqlDate = new java.sql.Date(bs.getDateOfJoining().getTime());
             PreparedStatement pst = DatabaseConnectionClass.getInstance().getCon().prepareStatement(query1);
             pst.setString(1, bs.getName());
@@ -42,8 +42,7 @@ public class BusinessUsersDirectory {
             pst.setString(5, bs.getWebsite());
             pst.setString(6, bs.getOwnerName());  
             pst.setString(7, bs.getPassword());
-            pst.setString(8, bs.getFilePath());
-            pst.setString(9, bs.getLicensePath());
+            pst.setString(8, bs.getLicensePath());
 
             int rs = pst.executeUpdate();
             if(rs>0)
@@ -70,7 +69,6 @@ public class BusinessUsersDirectory {
                         rs.getString("Location"),
                         rs.getString("Website"),
                         rs.getString("OwnerName"),
-                        rs.getString("FilePath"),
                         rs.getString("LicensePath"));
                 businessUsersDir.add(bs);
             }

@@ -155,7 +155,7 @@ public class FinAndLegalDashBoard extends javax.swing.JFrame {
         String[] columnNames = {"First Name", "Last Name", "UserName", "Role", "Salary"};
         int j = 0;
         for(int i=0; i < EmployeeDirectory.getInstance().getEmployeeDir().size(); i++){
-            if(EmployeeDirectory.getInstance().getEmployeeDir().get(i).getOrganisation().equals("CA")) {
+            if(EmployeeDirectory.getInstance().getEmployeeDir().get(i).getOrganisation().equals("Consultancy")) {
                 rows[j][0] = EmployeeDirectory.getInstance().getEmployeeDir().get(i).getFirstName();
                 rows[j][1] = EmployeeDirectory.getInstance().getEmployeeDir().get(i).getLastName();
                 rows[j][2] = EmployeeDirectory.getInstance().getEmployeeDir().get(i).getUsername();           
@@ -166,16 +166,14 @@ public class FinAndLegalDashBoard extends javax.swing.JFrame {
         }
         DefaultTableModel model = new DefaultTableModel (rows, columnNames);
         c.tblConEmp.setModel(model);
-        c.show();
-        
-        
+       
         
         String[] colNames = {"Order From", "Enterprise", "Organisation", "Service Requested", "Details"};
         int n = OrdersDirectory.getInstance().getOrdersDir().size();
         String[][] rws = new String[n][5];
         int k=0;
         for(int i = 0;  i < n ; i++){
-            if(!OrdersDirectory.getInstance().getOrdersDir().get(i).getStatus().equals("Completed") && OrdersDirectory.getInstance().getOrdersDir().get(i).getRequestTo().equals("Operations")){
+            if(!OrdersDirectory.getInstance().getOrdersDir().get(i).getStatus().equals("Completed") && OrdersDirectory.getInstance().getOrdersDir().get(i).getRequestTo().equals("Finances and Legal")){
                 rws[k][0] = OrdersDirectory.getInstance().getOrdersDir().get(i).getOrderedBy();
                 rws[k][1] = OrdersDirectory.getInstance().getOrdersDir().get(i).getRequestTo();
                 rws[k][2] = OrdersDirectory.getInstance().getOrdersDir().get(i).getRole();
@@ -185,6 +183,8 @@ public class FinAndLegalDashBoard extends javax.swing.JFrame {
             }
         }
         DefaultTableModel dtm = new DefaultTableModel (rws, colNames);
+        c.tableRequests.setModel(dtm);
+        c.show();
     }//GEN-LAST:event_btnConsultancyActionPerformed
 
     /**

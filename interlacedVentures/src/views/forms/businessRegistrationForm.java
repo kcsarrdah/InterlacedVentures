@@ -50,7 +50,8 @@ public class businessRegistrationForm extends javax.swing.JFrame {
         txtOwner = new javax.swing.JTextField();
         pwdField = new javax.swing.JPasswordField();
         btnReg = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
+        txtLicense = new javax.swing.JLabel();
+        jTextField2 = new javax.swing.JTextField();
 
         jToggleButton1.setText("jToggleButton1");
 
@@ -138,9 +139,13 @@ public class businessRegistrationForm extends javax.swing.JFrame {
         jPanel2.add(btnReg);
         btnReg.setBounds(300, 580, 120, 30);
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/views/Images/charming-bearded-business-man-character-cartoon-modern-flat-design-charming-bearded-business-man-character-cartoon-modern-flat-130073628.jpeg"))); // NOI18N
-        jPanel2.add(jLabel2);
-        jLabel2.setBounds(-180, 0, 940, 1300);
+        txtLicense.setIcon(new javax.swing.ImageIcon(getClass().getResource("/views/Images/charming-bearded-business-man-character-cartoon-modern-flat-design-charming-bearded-business-man-character-cartoon-modern-flat-130073628.jpeg"))); // NOI18N
+        jPanel2.add(txtLicense);
+        txtLicense.setBounds(-180, 0, 950, 1300);
+
+        jTextField2.setText("jTextField2");
+        jPanel2.add(jTextField2);
+        jTextField2.setBounds(340, 540, 78, 23);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -172,7 +177,9 @@ public class businessRegistrationForm extends javax.swing.JFrame {
                 txtPhNo.getText(),
                 txtLoc.getText(),
                 txtWebsite.getText(),
-                txtOwner.getText());
+                txtOwner.getText(),
+                txtLicense.getText());
+                
         BusinessUsersDirectory.getInstance().addBusinessUser(bus);
         users login = new users(txtName.getText(),pwdField.getText(),"Business User");
         userDirectory.getInstance().addUser(login);
@@ -222,8 +229,8 @@ public class businessRegistrationForm extends javax.swing.JFrame {
     private javax.swing.JLabel LabelPhNo;
     private javax.swing.JLabel Labelname;
     private javax.swing.JButton btnReg;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JTextField jTextField2;
     private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JLabel labelLocation;
     private javax.swing.JLabel label_businessForm;
@@ -231,6 +238,7 @@ public class businessRegistrationForm extends javax.swing.JFrame {
     private javax.swing.JPasswordField pwdField;
     private javax.swing.JLabel setPasswordLabel;
     private javax.swing.JTextField txtEmail;
+    private javax.swing.JLabel txtLicense;
     private javax.swing.JTextField txtLoc;
     private javax.swing.JTextField txtName;
     private javax.swing.JTextField txtOwner;
