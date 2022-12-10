@@ -6,8 +6,11 @@ package views.Orgs.FinanceAndLegal;
 
 import java.text.Format;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.swing.table.DefaultTableModel;
 import models.EmployeeDirectory;
+import models.OrdersDirectory;
+import models.orders;
 import views.dashBoards.FinAndLegalDashBoard;
 import views.forms.employeeRegistrationForm;
 
@@ -38,6 +41,9 @@ public class Consultancy extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblConEmp = new javax.swing.JTable();
         jButton2 = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tableRequests = new javax.swing.JTable();
+        btnAssignToEmp = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -68,32 +74,59 @@ public class Consultancy extends javax.swing.JFrame {
             }
         });
 
+        tableRequests.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+
+            }
+        ));
+        jScrollPane2.setViewportView(tableRequests);
+
+        btnAssignToEmp.setText("Assign to a CA");
+        btnAssignToEmp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAssignToEmpActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(43, 43, 43)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(17, 17, 17)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 368, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButton2)
+                        .addComponent(btnAssignToEmp)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1)
-                        .addGap(100, 100, 100))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 348, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(327, Short.MAX_VALUE))))
+                        .addComponent(jButton1))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(49, 49, 49))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(106, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 357, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(54, 54, 54)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
-                .addGap(44, 44, 44))
+                .addContainerGap(150, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 407, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(34, 34, 34)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButton1)
+                            .addComponent(jButton2))
+                        .addGap(44, 44, 44))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnAssignToEmp)
+                        .addGap(36, 36, 36))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -171,6 +204,42 @@ public class Consultancy extends javax.swing.JFrame {
             }
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void btnAssignToEmpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignToEmpActionPerformed
+        // TODO add your handling code here:
+        
+        DefaultTableModel tableModel = (DefaultTableModel) tableRequests.getModel();
+        String role = tableModel.getValueAt(tableRequests.getSelectedRow(), 2).toString();
+        
+        String name = tableRequests.getValueAt(tableRequests.getSelectedRow(), 0).toString();
+        String Desc = tableRequests.getValueAt(tableRequests.getSelectedRow(), 4).toString();
+        
+          for(int i = 0; i < OrdersDirectory.getInstance().getOrdersDir().size(); i++){
+            if(OrdersDirectory.getInstance().getOrdersDir().get(i).getDetails().equals(Desc))
+                //for loop to find a relevant employee and add him on the job order object is updated here.
+                for(int j = 0;  j < EmployeeDirectory.getInstance().getEmployeeDir().size(); j++){
+                    
+                    if(EmployeeDirectory.getInstance().getEmployeeDir().get(j).getRole().equals(role)){
+                        orders order = new orders(
+                                role,
+                                EmployeeDirectory.getInstance().getEmployeeDir().get(j).getFirstName(),
+                                tableRequests.getValueAt(tableRequests.getSelectedRow(), 3).toString(),
+                                name,
+                                tableRequests.getValueAt(tableRequests.getSelectedRow(), 1).toString(),
+                                "Scheduled",
+                                new Date(), 
+                                OrdersDirectory.getInstance().getOrdersDir().get(i).getAmount(),
+                                Desc
+                        );
+                        OrdersDirectory.getInstance().updateOrder(order, i);
+                        tableModel.removeRow(tableRequests.getSelectedRow());
+                    }
+                        
+                        
+                
+                }
+            }
+    }//GEN-LAST:event_btnAssignToEmpActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -207,10 +276,13 @@ public class Consultancy extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JButton btnAssignToEmp;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    public javax.swing.JTable tableRequests;
     public javax.swing.JTable tblConEmp;
     // End of variables declaration//GEN-END:variables
 }
