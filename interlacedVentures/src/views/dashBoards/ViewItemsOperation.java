@@ -9,6 +9,7 @@ import java.util.Date;
 import javax.swing.table.DefaultTableModel;
 import models.BillsDirectory;
 import models.OrdersDirectory;
+import models.RentalOrder;
 import models.RentalOrderDirectory;
 import models.Storage;
 import models.StorageDirectory;
@@ -151,13 +152,19 @@ public class ViewItemsOperation extends javax.swing.JFrame {
         // TODO add your handling code here:
         float amt = 0;
         int rctno = 0;
+       
         DefaultTableModel tableModel = (DefaultTableModel) tblOpReq.getModel();
+        String orderID = tableModel.getValueAt(tblOpReq.getSelectedRow(), 6).toString();
+        System.out.println(orderID);
         String id = tableModel.getValueAt(tblOpReq.getSelectedRow(), 4).toString();
         String service = tblOpReq.getValueAt(tblOpReq.getSelectedRow(), 2).toString();
         
         if(id.length() == 6){
+            System.out.println("1");
             for(int i = 0; i < StorageDirectory.getInstance().getStorageDir().size(); i++){
+                System.out.println("2");
                 if(StorageDirectory.getInstance().getStorageDir().get(i).getStorageID() == Integer.parseInt(id)){
+                    System.out.println("3");
                     amt = StorageDirectory.getInstance().getStorageDir().get(i).getRate();
                     
                     Storage storage = new Storage(
@@ -172,10 +179,31 @@ public class ViewItemsOperation extends javax.swing.JFrame {
                     );
                     
                     StorageDirectory.getInstance().updateStorage(storage, i);
+                    
+                    for(int k = 0; k < RentalOrderDirectory.getInstance().getRentalOrdersDir().size(); k++){
+                        System.out.println("4");
+                        if(RentalOrderDirectory.getInstance().getRentalOrdersDir().get(k).getOrderID().equals(orderID)){
+                            System.out.println("5");
+                            RentalOrder Ro = new RentalOrder(
+                                    orderID,
+                                    RentalOrderDirectory.getInstance().getRentalOrdersDir().get(k).getOrderID(),
+                                    RentalOrderDirectory.getInstance().getRentalOrdersDir().get(k).getRequestTo(),
+                                    RentalOrderDirectory.getInstance().getRentalOrdersDir().get(k).getItem(),
+                                    new Date(),
+                                    RentalOrderDirectory.getInstance().getRentalOrdersDir().get(k).getItemId(),
+                                    "Completed",
+                                    RentalOrderDirectory.getInstance().getRentalOrdersDir().get(k).getAmount()
+                            );
+                            
+                            RentalOrderDirectory.getInstance().updateRentalOrder(Ro, k);
+                            
+                        }
+                    }
                     break;
                 }
             } 
         }
+        
         else if(id.length() == 5){
             for(int i = 0; i < TransportDirectory.getInstance().getTransportDir().size(); i++){
                 if(TransportDirectory.getInstance().getTransportDir().get(i).getVehicleNumber().equals(id)){
@@ -197,14 +225,30 @@ public class ViewItemsOperation extends javax.swing.JFrame {
                     );
                     
                     TransportDirectory.getInstance().updateTransport(transport, i);
+                    
+                    for(int k = 0; k < RentalOrderDirectory.getInstance().getRentalOrdersDir().size(); i++){
+                        if(RentalOrderDirectory.getInstance().getRentalOrdersDir().get(k).getOrderID().equals(orderID)){
+                            RentalOrder Ro = new RentalOrder(
+                                    orderID,
+                                    RentalOrderDirectory.getInstance().getRentalOrdersDir().get(k).getOrderID(),
+                                    RentalOrderDirectory.getInstance().getRentalOrdersDir().get(k).getRequestTo(),
+                                    RentalOrderDirectory.getInstance().getRentalOrdersDir().get(k).getItem(),
+                                    new Date(),
+                                    RentalOrderDirectory.getInstance().getRentalOrdersDir().get(k).getItemId(),
+                                    "Completed",
+                                    RentalOrderDirectory.getInstance().getRentalOrdersDir().get(k).getAmount()
+                            );
+                            
+                            RentalOrderDirectory.getInstance().updateRentalOrder(Ro, k);
+                            
+                        }
+                    }
+                    
                     break;
                     }
                 }
-            }
-        
-        
-        
-        if(tblOpReq.getSelectedRowCount() == 1){  
+            } 
+            
             bills bill = new bills (
                     tableModel.getValueAt(tblOpReq.getSelectedRow(), 5).toString(),
                     new Date(), 
@@ -213,7 +257,7 @@ public class ViewItemsOperation extends javax.swing.JFrame {
                     "Opreations", 
                     rctno);
             BillsDirectory.getInstance().addBill(bill);
-        }                                
+                                        
     }//GEN-LAST:event_btnApproveActionPerformed
 
     private void btnDisapproveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDisapproveActionPerformed

@@ -95,7 +95,7 @@ public class TransportDirectory {
             pst.setString(2, transport.getRentedBy());
             pst.setString(3,transport.getVehicleNumber());
             int rs = pst.executeUpdate();
-            if(rs>0)
+            if(rs > 0)
             {
                 JOptionPane.showMessageDialog(null,"Inserted Successfully!");
             }
