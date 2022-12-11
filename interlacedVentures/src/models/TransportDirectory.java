@@ -84,26 +84,26 @@ public class TransportDirectory {
         }
     }
     
-//        public void updateTransport(Transport transport,int i) {
-//        stransportDir.set(i,transport);
-//        Statement stmt;
-//        try {
-//            stmt = DatabaseConnectionClass.getInstance().getCon().createStatement();
-//            String query1 = "Update Transport" + " set Availability=?,`Rate`=? where Description=?";
-//            PreparedStatement pst = DatabaseConnectionClass.getInstance().getCon().prepareStatement(query1);
-//            pst.setString(1, storage.getStatus());
-//            pst.setString(2,storage.getAppliedBy());
-//            pst.setString(3, storage.getDescription());
-//            int rs = pst.executeUpdate();
-//            if(rs>0)
-//            {
-//                JOptionPane.showMessageDialog(null,"Inserted Successfully!");
-//            }
-//        } catch (SQLException ex) {
-//            System.out.println(ex);
-//            JOptionPane.showMessageDialog(null,"Cannot be Inserted");
-//        }
-//    }
+        public void updateTransport(Transport transport,int i) {
+        transportDir.set(i,transport);
+        Statement stmt;
+        try {
+            stmt = DatabaseConnectionClass.getInstance().getCon().createStatement();
+            String query1 = "Update Transport" + " set Availability=?,RentedBy=? where VehicleNumber=?";
+            PreparedStatement pst = DatabaseConnectionClass.getInstance().getCon().prepareStatement(query1);
+            pst.setBoolean(1, transport.isAvailability());
+            pst.setString(2, transport.getRentedBy());
+            pst.setString(3,transport.getVehicleNumber());
+            int rs = pst.executeUpdate();
+            if(rs>0)
+            {
+                JOptionPane.showMessageDialog(null,"Inserted Successfully!");
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex);
+            JOptionPane.showMessageDialog(null,"Cannot be Inserted");
+        }
+    }
     
         public static TransportDirectory getInstance() {
         if(mInstance == null)

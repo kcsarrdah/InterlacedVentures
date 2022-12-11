@@ -24,7 +24,7 @@ public class Transport {
     
 
 
-    public Transport(String carClass, String Category, String Model,String type, float rate, boolean availability, String rentedBy, float price, Date dateOfAvailability, String vehicleNumber) {
+    public Transport(String carClass, String Category, String Model, String type, float rate, boolean availability, String rentedBy, float price, Date dateOfAvailability, String vehicleNumber) {
         this.type = type;
         this.rate = rate;
         this.availability = availability;

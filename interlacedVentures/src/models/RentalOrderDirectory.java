@@ -73,7 +73,7 @@ public class RentalOrderDirectory {
                 RentalOrderDir.add(ro);
             }
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null,"Cannot be loaded");
+            JOptionPane.showMessageDialog(null,"Cannot Be Loaded");
         }
     }
     

@@ -4,10 +4,15 @@
  */
 package views.dashBoards;
 
+import interlacedventures.Transport;
 import java.util.Date;
 import javax.swing.table.DefaultTableModel;
 import models.BillsDirectory;
 import models.OrdersDirectory;
+import models.RentalOrderDirectory;
+import models.Storage;
+import models.StorageDirectory;
+import models.TransportDirectory;
 import models.bills;
 import models.orders;
 
@@ -147,24 +152,65 @@ public class ViewItemsOperation extends javax.swing.JFrame {
         float amt = 0;
         int rctno = 0;
         DefaultTableModel tableModel = (DefaultTableModel) tblOpReq.getModel();
-        String service = tableModel.getValueAt(tblOpReq.getSelectedRow(), 2).toString();
-        String name = tblOpReq.getValueAt(tblOpReq.getSelectedRow(), 0).toString();
-        for(int i = 0; i < OrdersDirectory.getInstance().getOrdersDir().size(); i++){
-            if(OrdersDirectory.getInstance().getOrdersDir().get(i).getOrderedBy().equals(name)){
-                amt = OrdersDirectory.getInstance().getOrdersDir().get(i).getAmount();
-                rctno = i+2500;
-                OrdersDirectory.getInstance().getOrdersDir().get(i).setStatus("Completed");
-                break;
-            }
+        String id = tableModel.getValueAt(tblOpReq.getSelectedRow(), 4).toString();
+        String service = tblOpReq.getValueAt(tblOpReq.getSelectedRow(), 2).toString();
+        
+        if(id.length() == 6){
+            for(int i = 0; i < StorageDirectory.getInstance().getStorageDir().size(); i++){
+                if(StorageDirectory.getInstance().getStorageDir().get(i).getStorageID() == Integer.parseInt(id)){
+                    amt = StorageDirectory.getInstance().getStorageDir().get(i).getRate();
+                    
+                    Storage storage = new Storage(
+                            Integer.parseInt(id),
+                            StorageDirectory.getInstance().getStorageDir().get(i).getSize(),
+                            StorageDirectory.getInstance().getStorageDir().get(i).getType(),
+                            StorageDirectory.getInstance().getStorageDir().get(i).getRate(),
+                            false,
+                            tableModel.getValueAt(tblOpReq.getSelectedRow(), 5).toString(),
+                            StorageDirectory.getInstance().getStorageDir().get(i).getPrice(),
+                            new Date()
+                    );
+                    
+                    StorageDirectory.getInstance().updateStorage(storage, i);
+                    break;
+                }
+            } 
         }
+        else if(id.length() == 5){
+            for(int i = 0; i < TransportDirectory.getInstance().getTransportDir().size(); i++){
+                if(TransportDirectory.getInstance().getTransportDir().get(i).getVehicleNumber().equals(id)){
+                    amt = TransportDirectory.getInstance().getTransportDir().get(i).getRate();
+                    rctno = i+2500;
+                    
+                    
+                    Transport transport = new Transport(
+                        TransportDirectory.getInstance().getTransportDir().get(i).getCarClass(),
+                            TransportDirectory.getInstance().getTransportDir().get(i).getCategory(),
+                            TransportDirectory.getInstance().getTransportDir().get(i).getModel(),
+                            TransportDirectory.getInstance().getTransportDir().get(i).getType(),
+                            TransportDirectory.getInstance().getTransportDir().get(i).getRate(),
+                            false,
+                            tableModel.getValueAt(tblOpReq.getSelectedRow(), 5).toString(),
+                            TransportDirectory.getInstance().getTransportDir().get(i).getPrice(),
+                            new Date(),
+                            id
+                    );
+                    
+                    TransportDirectory.getInstance().updateTransport(transport, i);
+                    break;
+                    }
+                }
+            }
+        
+        
         
         if(tblOpReq.getSelectedRowCount() == 1){  
             bills bill = new bills (
-                    name,
+                    tableModel.getValueAt(tblOpReq.getSelectedRow(), 5).toString(),
                     new Date(), 
                     amt, 
                     service, 
-                    name, 
+                    "Opreations", 
                     rctno);
             BillsDirectory.getInstance().addBill(bill);
         }                                
