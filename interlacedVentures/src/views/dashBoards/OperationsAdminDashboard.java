@@ -7,6 +7,7 @@ package views.dashBoards;
 import javax.swing.table.DefaultTableModel;
 import models.EmployeeDirectory;
 import models.OrdersDirectory;
+import models.RentalOrderDirectory;
 import models.StorageDirectory;
 import models.TransportDirectory;
 import views.Orgs.Operations.RawMatDash;
@@ -181,18 +182,23 @@ public class OperationsAdminDashboard extends javax.swing.JFrame {
         this.hide();
         ViewItemsOperation vio = new ViewItemsOperation();
         vio.lblReqOp.setText(btnService.getText());
-        String[] columnNames = {"Order From", "Organisation", "Service Requested"};
-        int n = OrdersDirectory.getInstance().getOrdersDir().size();
-        String[][] rows = new String[n][3];
+        String[] columnNames = {"Order From", "Organisation", "Service Requested", "Status", "ItemId"};
+        int n = OrdersDirectory.getInstance().getOrdersDir().size() + RentalOrderDirectory.getInstance().getRentalOrdersDir().size();
+        String[][] rows = new String[n][5];
         int j=0;
-        for(int i = 0;  i<n ; i++){
-            if(!OrdersDirectory.getInstance().getOrdersDir().get(i).getStatus().equals("Completed") && OrdersDirectory.getInstance().getOrdersDir().get(i).getRequestTo().equals("Operations")){
-                rows[j][0] = OrdersDirectory.getInstance().getOrdersDir().get(i).getOrderedBy();
-                rows[j][1] = OrdersDirectory.getInstance().getOrdersDir().get(i).getRequestTo();
-                rows[j][2] = OrdersDirectory.getInstance().getOrdersDir().get(i).getService();           
+        
+        for(int i = 0; i < RentalOrderDirectory.getInstance().getRentalOrdersDir().size(); i++){
+            if(!RentalOrderDirectory.getInstance().getRentalOrdersDir().get(i).getStatus().equals("Completed") && RentalOrderDirectory.getInstance().getRentalOrdersDir().get(i).getRequestTo().equals("Operations")){
+                rows[j][0] = RentalOrderDirectory.getInstance().getRentalOrdersDir().get(i).getOrderedBy();
+                rows[j][1] = RentalOrderDirectory.getInstance().getRentalOrdersDir().get(i).getRequestTo();
+                rows[j][2] = RentalOrderDirectory.getInstance().getRentalOrdersDir().get(i).getItem();
+                rows[j][3] = RentalOrderDirectory.getInstance().getRentalOrdersDir().get(i).getStatus();
+                rows[j][4] = Integer.toString(RentalOrderDirectory.getInstance().getRentalOrdersDir().get(i).getItemId());                
                 j++;
             }
         }
+        
+        
         DefaultTableModel dtm = new DefaultTableModel (rows, columnNames);
         vio.tblOpReq.setModel(dtm);
         vio.show();
@@ -218,8 +224,6 @@ public class OperationsAdminDashboard extends javax.swing.JFrame {
         }
         DefaultTableModel model = new DefaultTableModel (rows, columnNames);
         td.tblTransport.setModel(model);
-        
-        
         td.show();
     }//GEN-LAST:event_btnTransportActionPerformed
 

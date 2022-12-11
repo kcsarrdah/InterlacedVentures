@@ -11,6 +11,7 @@ import models.EmployeeDirectory;
 import models.FreelanceDirectory;
 import models.JobsDirectory;
 import models.OrdersDirectory;
+import models.RentalOrderDirectory;
 import models.StorageDirectory;
 import models.TransportDirectory;
 import models.complainsDirectory;
@@ -55,6 +56,7 @@ public class InterlacedVentures {
         complainsDirectory.getInstance().getComplainsData();
         StorageDirectory.getInstance().getStorageData();
         TransportDirectory.getInstance().getTransportData();
+        RentalOrderDirectory.getInstance().getRentalOrdersData();
 //        HospitalAdminDirectory.getInstance().getHospAdminData();
 //        HospitalDirectory.getInstance().getHospitalData();
 //        AmbulanceDirectory.getInstance().getAmbulance();

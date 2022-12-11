@@ -15,6 +15,7 @@ import javax.swing.table.TableModel;
 import models.EmployeeDirectory;
 import models.OrdersDirectory;
 import models.RentalOrder;
+import models.RentalOrderDirectory;
 import models.StorageDirectory;
 import models.TransportDirectory;
 import models.orders;
@@ -593,25 +594,48 @@ public class ServiceDashboard extends javax.swing.JFrame {
 
     private void btnRentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRentActionPerformed
         // TODO add your handling code here:
-//        if(jcOrg.getSelectedItem().toString().equals("Storage")){
-//            DefaultTableModel tableModel = (DefaultTableModel) tblDisplay.getModel();
-//            String id = tableModel.getValueAt(tblDisplay.getSelectedRow(), 2).toString();
-//            //int ItemID  = Integer.parseInt(id);
-//            
-//            for(int i = 0; i < StorageDirectory.getInstance().getStorageDir().size(); i++){
-//                
-//                
-//                if(StorageDirectory.getInstance().getStorageDir().get(i).getStorageID()){
-//                    
-//                }
-//            }
-//            
-//            
-// 
-//            RentalOrder ro = new RentalOrder(
-//                    
-//            );
-//        }
+        if(jcOrg.getSelectedItem().toString().equals("Storage")){
+            DefaultTableModel tableModel = (DefaultTableModel) tblDisplay.getModel();
+            String id = tableModel.getValueAt(tblDisplay.getSelectedRow(), 2).toString();
+            int ItemID  = Integer.parseInt(id);
+            
+            for(int i = 0; i < StorageDirectory.getInstance().getStorageDir().size(); i++){ 
+                if(StorageDirectory.getInstance().getStorageDir().get(i).getStorageID() == ItemID){
+                       RentalOrder ro = new RentalOrder(
+                               labelName.getText(),
+                               "Operations",
+                               jcService.getSelectedItem().toString(),
+                               new Date(),
+                               ItemID,
+                               "Requested",
+                               0);
+                       
+                       RentalOrderDirectory.getInstance().addRentalOrder(ro);
+                       break;
+                }
+            }
+        }
+        else if(jcOrg.getSelectedItem().toString().equals("Transport")){
+            DefaultTableModel tableModel = (DefaultTableModel) tblDisplay.getModel();
+            String id = tableModel.getValueAt(tblDisplay.getSelectedRow(), 1).toString();
+            int ItemID  = Integer.parseInt(id);
+            
+            for(int i = 0; i < TransportDirectory.getInstance().getTransportDir().size(); i++){ 
+                if(TransportDirectory.getInstance().getTransportDir().get(i).getVehicleNumber().equals(id)){
+                       RentalOrder ro = new RentalOrder(
+                               labelName.getText(),
+                               "Operations",
+                               jcService.getSelectedItem().toString(),
+                               new Date(),
+                               ItemID,
+                               "Requested",
+                               0);
+                       
+                       RentalOrderDirectory.getInstance().addRentalOrder(ro);
+                       break;
+                }
+            }
+        }
         
         
 
