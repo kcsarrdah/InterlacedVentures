@@ -13,7 +13,26 @@ import java.util.Date;
 public class ApplicationFreelancer extends freelancer {
     private String appStatus;
 
-    public ApplicationFreelancer(String location, String password, Date dateOfJoining, int HourlyRate, String Portfolio, int WorkEx, String LatestWork, String education, String skills, String Username, String firstName, String lastName, int age, String gender, String phoneNumber, String Email, String imagePath, String resPath, String idPath) {
+    public ApplicationFreelancer(String location, 
+            String password, 
+            Date dateOfJoining, 
+            int HourlyRate, 
+            String Portfolio,
+            int WorkEx, 
+            String LatestWork, 
+            String education,
+            String skills, 
+            String Username, 
+            String firstName, 
+            String lastName, 
+            int age, 
+            String gender, 
+            String phoneNumber,
+            String Email, 
+            String imagePath, 
+            String resPath, 
+            String idPath, 
+            String appStatus) {
         super(location, password, dateOfJoining, HourlyRate, Portfolio, WorkEx, LatestWork, education, skills, Username, firstName, lastName, age, gender, phoneNumber, Email, imagePath, resPath, idPath);
     }
 

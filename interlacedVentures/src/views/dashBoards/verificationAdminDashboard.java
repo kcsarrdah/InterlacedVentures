@@ -5,6 +5,8 @@
 package views.dashBoards;
 
 import javax.swing.table.DefaultTableModel;
+import models.ApplicationDirectory;
+import models.ApplicationFreelancerDirectory;
 import models.StorageDirectory;
 import views.loginPage;
 
@@ -152,19 +154,19 @@ public class verificationAdminDashboard extends javax.swing.JFrame {
         ViewItemsVerificationAdminForm vf = new ViewItemsVerificationAdminForm();
         vf.lblName.setText("FreeLancers");
         
-        String[][] rows = new String[StorageDirectory.getInstance().getStorageDir().size()][6];
+        String[][] rows = new String[ApplicationFreelancerDirectory.getInstance().getApplicationFreelancerDir().size()][6];
         String[] columnNames = {"UserName", "FirstName", "LastName", "Skill", "Resume", "ID"};
         int j = 0;
-//        for(int i=0; i < ApplicatioFreelancerDirectory.getInstance().getFreelancerAppDir().size(); i++){
-//                rows[j][0] = ApplicatioFreelancerDirectory.getInstance().getStorageDir().get(i).getUsername();
-//                rows[j][1] = ApplicatioFreelancerDirectory.getInstance().getStorageDir().get(i).getFirstName();
-//                rows[j][2] = ApplicatioFreelancerDirectory.getInstance().getStorageDir().get(i).getLastName());
-//                rows[j][3] = ApplicatioFreelancerDirectory.getInstance().getStorageDir().get(i).getSkill();           
-//                rows[j][4] = ApplicatioFreelancerDirectory.getInstance().getStorageDir().get(i).getPathResume();
-//                rows[j][5] = ApplicatioFreelancerDirectory.getInstance().getStorageDir().get(i).getPathID();
-//                j++;
-//            
-//        }
+        for(int i=0; i < ApplicationFreelancerDirectory.getInstance().getApplicationFreelancerDir().size(); i++){
+                rows[j][0] = ApplicationFreelancerDirectory.getInstance().getApplicationFreelancerDir().get(i).getUsername();
+                rows[j][1] = ApplicationFreelancerDirectory.getInstance().getApplicationFreelancerDir().get(i).getFirstName();
+                rows[j][2] = ApplicationFreelancerDirectory.getInstance().getApplicationFreelancerDir().get(i).getLastName();
+                rows[j][3] = ApplicationFreelancerDirectory.getInstance().getApplicationFreelancerDir().get(i).getSkills();           
+                rows[j][4] = ApplicationFreelancerDirectory.getInstance().getApplicationFreelancerDir().get(i).getResPath();
+                rows[j][5] = ApplicationFreelancerDirectory.getInstance().getApplicationFreelancerDir().get(i).getIdPath();
+                j++;
+            
+        }
         DefaultTableModel model = new DefaultTableModel (rows, columnNames);
         vf.tblDisplay.setModel(model);
         
@@ -184,19 +186,19 @@ public class verificationAdminDashboard extends javax.swing.JFrame {
         ViewItemsVerificationAdminForm vf = new ViewItemsVerificationAdminForm();
         vf.lblName.setText("Employee");
         
-        String[][] rows = new String[StorageDirectory.getInstance().getStorageDir().size()][6];
+        String[][] rows = new String[ApplicationDirectory.getInstance().getApplicationDir().size()][6];
         String[] columnNames = {"UserName", "FirstName", "LastName", "Skill", "Resume", "ID"};
         int j = 0;
-//        for(int i=0; i < ApplicatioFreelancerDirectory.getInstance().getFreelancerAppDir().size(); i++){
-//                rows[j][0] = ApplicatioFreelancerDirectory.getInstance().getStorageDir().get(i).getUsername();
-//                rows[j][1] = ApplicatioFreelancerDirectory.getInstance().getStorageDir().get(i).getFirstName();
-//                rows[j][2] = ApplicatioFreelancerDirectory.getInstance().getStorageDir().get(i).getLastName());
-//                rows[j][3] = ApplicatioFreelancerDirectory.getInstance().getStorageDir().get(i).getSkill();           
-//                rows[j][4] = ApplicatioFreelancerDirectory.getInstance().getStorageDir().get(i).getPathResume();
-//                rows[j][5] = ApplicatioFreelancerDirectory.getInstance().getStorageDir().get(i).getPathID();
-//                j++;
-//            
-//        }
+        for(int i=0; i < ApplicationDirectory.getInstance().getApplicationDir().size(); i++){
+                rows[j][0] = ApplicationDirectory.getInstance().getApplicationDir().get(i).getUsername();
+                rows[j][1] = ApplicationDirectory.getInstance().getApplicationDir().get(i).getFirstName();
+                rows[j][2] = ApplicationDirectory.getInstance().getApplicationDir().get(i).getLastName();
+                rows[j][3] = ApplicationDirectory.getInstance().getApplicationDir().get(i).getSkills();           
+                rows[j][4] = ApplicationDirectory.getInstance().getApplicationDir().get(i).getResPath();
+                rows[j][5] = ApplicationDirectory.getInstance().getApplicationDir().get(i).getIdPath();
+                j++;
+            
+        }
         DefaultTableModel model = new DefaultTableModel (rows, columnNames);
         vf.tblDisplay.setModel(model);
         
