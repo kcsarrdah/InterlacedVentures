@@ -58,7 +58,7 @@ public class ViewItemsFinAndLegal extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tabelFinReq);
 
-        labelRequest.setText("jLabel1");
+        labelRequest.setText("Name");
 
         jButton1.setText("BACK");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
