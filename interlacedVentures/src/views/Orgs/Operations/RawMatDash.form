@@ -73,20 +73,103 @@
             <Component class="javax.swing.JTable" name="jTable1">
               <Properties>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                  <Table columnCount="3" rowCount="4">
+                  <Table columnCount="3" rowCount="30">
                     <Column editable="true" title="TYPE" type="java.lang.Object">
-                      <Data value="Metals"/>
-                      <Data value="Non Metals"/>
-                      <Data value="Electronics"/>
-                      <Data value="null"/>
+                      <Data value="Aluminium"/>
+                      <Data value="Copper"/>
+                      <Data value="Rubber"/>
+                      <Data value="Plastics"/>
+                      <Data value="Tungsten"/>
+                      <Data value="Gallium"/>
+                      <Data value="Wood"/>
+                      <Data value="Germanium"/>
+                      <Data value="Titanium"/>
+                      <Data value="Indium"/>
+                      <Data value="Bauxite"/>
+                      <Data value="Steel"/>
+                      <Data value="Coal"/>
+                      <Data value="Stainless Steel"/>
+                      <Data value="Nickle"/>
+                      <Data value="Phosphorous"/>
+                      <Data value="Tin"/>
+                      <Data value="Marble"/>
+                      <Data value="Wool"/>
+                      <Data value="Rice"/>
+                      <Data value="Silver"/>
+                      <Data value="Sugar"/>
+                      <Data value="Wheat"/>
+                      <Data value="Zinc"/>
+                      <Data value="Water"/>
+                      <Data value="Tea"/>
+                      <Data value="Sand"/>
+                      <Data value="Cotton"/>
+                      <Data value="Salt"/>
+                      <Data value="Petroleum"/>
                     </Column>
-                    <Column editable="true" title="QUANTITY" type="java.lang.Object">
-                      <Data value="2000"/>
+                    <Column editable="true" title="QUANTITY(in kg)" type="java.lang.Object">
                       <Data value="3000"/>
                       <Data value="10,000"/>
-                      <Data value="null"/>
+                      <Data value="5,000"/>
+                      <Data value="100,00"/>
+                      <Data value="8,000"/>
+                      <Data value="150,000"/>
+                      <Data value="200,000"/>
+                      <Data value="80,000"/>
+                      <Data value="9,000"/>
+                      <Data value="1,000"/>
+                      <Data value="400,000"/>
+                      <Data value="500,000"/>
+                      <Data value="500,000"/>
+                      <Data value="70,00"/>
+                      <Data value="9,000"/>
+                      <Data value="9,000"/>
+                      <Data value="4,000"/>
+                      <Data value="800,00"/>
+                      <Data value="300,000,000"/>
+                      <Data value="600,000,000"/>
+                      <Data value="800,000,000"/>
+                      <Data value="100,000,000"/>
+                      <Data value="600,000,000"/>
+                      <Data value="6000"/>
+                      <Data value="900,000,000"/>
+                      <Data value="800,000"/>
+                      <Data value="100,000,000"/>
+                      <Data value="500,000,000"/>
+                      <Data value="800,000,000"/>
+                      <Data value="700,000,000"/>
                     </Column>
-                    <Column editable="false" title="PRICE(IN USD)" type="java.lang.Object"/>
+                    <Column editable="true" title="PRICE PER KILO(IN USD)" type="java.lang.Object">
+                      <Data value="100"/>
+                      <Data value="300"/>
+                      <Data value="300"/>
+                      <Data value="50"/>
+                      <Data value="100"/>
+                      <Data value="200"/>
+                      <Data value="60"/>
+                      <Data value="50"/>
+                      <Data value="500"/>
+                      <Data value="600"/>
+                      <Data value="700"/>
+                      <Data value="400"/>
+                      <Data value="20"/>
+                      <Data value="500"/>
+                      <Data value="70"/>
+                      <Data value="80"/>
+                      <Data value="90"/>
+                      <Data value="900"/>
+                      <Data value="80"/>
+                      <Data value="20"/>
+                      <Data value="50"/>
+                      <Data value="10"/>
+                      <Data value="10"/>
+                      <Data value="90"/>
+                      <Data value="10"/>
+                      <Data value="80"/>
+                      <Data value="80"/>
+                      <Data value="100"/>
+                      <Data value="60"/>
+                      <Data value="20"/>
+                    </Column>
                   </Table>
                 </Property>
                 <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
