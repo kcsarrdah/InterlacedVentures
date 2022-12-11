@@ -11,6 +11,7 @@ package models;
 public class ApplicationBusiness extends business{
     private String appStatus;
 
+
     public ApplicationBusiness(String Password,
             String name,
             String email, 
@@ -20,6 +21,7 @@ public class ApplicationBusiness extends business{
             String ownerName, 
             String licensePath,
             String appStatus) {
+
         super(Password, name, email, number, address, website, ownerName, licensePath);
     }
 
