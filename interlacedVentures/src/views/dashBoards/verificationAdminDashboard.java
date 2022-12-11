@@ -154,7 +154,7 @@ public class verificationAdminDashboard extends javax.swing.JFrame {
         ViewItemsVerificationAdminForm vf = new ViewItemsVerificationAdminForm();
         vf.lblName.setText("FreeLancers");
         
-        String[][] rows = new String[StorageDirectory.getInstance().getStorageDir().size()][6];
+        String[][] rows = new String[ApplicationFreelancerDirectory.getInstance().getApplicationFreelancerDir().size()][6];
         String[] columnNames = {"UserName", "FirstName", "LastName", "Skill", "Resume", "ID"};
         int j = 0;
         for(int i=0; i < ApplicationFreelancerDirectory.getInstance().getApplicationFreelancerDir().size(); i++){
@@ -186,7 +186,7 @@ public class verificationAdminDashboard extends javax.swing.JFrame {
         ViewItemsVerificationAdminForm vf = new ViewItemsVerificationAdminForm();
         vf.lblName.setText("Employee");
         
-        String[][] rows = new String[StorageDirectory.getInstance().getStorageDir().size()][6];
+        String[][] rows = new String[ApplicationDirectory.getInstance().getApplicationDir().size()][6];
         String[] columnNames = {"UserName", "FirstName", "LastName", "Skill", "Resume", "ID"};
         int j = 0;
         for(int i=0; i < ApplicationDirectory.getInstance().getApplicationDir().size(); i++){
