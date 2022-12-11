@@ -20,7 +20,7 @@ public class RentalOrder {
     private float Amount;
     private String orderID;
 
-    public RentalOrder(String OrderedBy, String RequestTo, String Item, Date date, int ItemId, String Status, float Amount) {
+    public RentalOrder(String orderID, String OrderedBy, String RequestTo, String Item, Date date, int ItemId, String Status, float Amount) {
         this.OrderedBy = OrderedBy;
         this.RequestTo = RequestTo;
         this.Item = Item;
@@ -28,6 +28,15 @@ public class RentalOrder {
         this.ItemId = ItemId;
         this.Status = Status;
         this.Amount = Amount;
+        this.orderID = orderID;
+    }
+
+    public String getOrderID() {
+        return orderID;
+    }
+
+    public void setOrderID(String orderID) {
+        this.orderID = orderID;
     }
 
     public String getOrderedBy() {

@@ -633,7 +633,10 @@ public class ServiceDashboard extends javax.swing.JFrame {
             
             for(int i = 0; i < StorageDirectory.getInstance().getStorageDir().size(); i++){ 
                 if(StorageDirectory.getInstance().getStorageDir().get(i).getStorageID() == ItemID){
+                    int no = (int)Math.floor(Math.random()*(999999 - 100000 + 1) + 100000);
+                    
                        RentalOrder ro = new RentalOrder(
+                               Integer.toString(no),
                                labelName.getText(),
                                "Operations",
                                jcService.getSelectedItem().toString(),
@@ -654,7 +657,9 @@ public class ServiceDashboard extends javax.swing.JFrame {
             
             for(int i = 0; i < TransportDirectory.getInstance().getTransportDir().size(); i++){ 
                 if(TransportDirectory.getInstance().getTransportDir().get(i).getVehicleNumber().equals(id)){
+                    int no = (int)Math.floor(Math.random()*(999999 - 100000 + 1) + 100000);
                        RentalOrder ro = new RentalOrder(
+                               Integer.toString(no),
                                labelName.getText(),
                                "Operations",
                                jcService.getSelectedItem().toString(),

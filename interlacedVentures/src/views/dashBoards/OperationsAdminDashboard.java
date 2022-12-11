@@ -182,9 +182,9 @@ public class OperationsAdminDashboard extends javax.swing.JFrame {
         this.hide();
         ViewItemsOperation vio = new ViewItemsOperation();
         vio.lblReqOp.setText("Services");
-        String[] columnNames = {"Order From", "Organisation", "Service Requested", "Status", "ItemId", "Requested By"};
+        String[] columnNames = {"Order From", "Organisation", "Service Requested", "Status", "ItemId", "Requested By", "OrderID"};
         int n = OrdersDirectory.getInstance().getOrdersDir().size() + RentalOrderDirectory.getInstance().getRentalOrdersDir().size();
-        String[][] rows = new String[n][6];
+        String[][] rows = new String[n][7];
         int j=0;
         
         for(int i = 0; i < RentalOrderDirectory.getInstance().getRentalOrdersDir().size(); i++){
@@ -195,6 +195,7 @@ public class OperationsAdminDashboard extends javax.swing.JFrame {
                 rows[j][3] = RentalOrderDirectory.getInstance().getRentalOrdersDir().get(i).getStatus();
                 rows[j][4] = Integer.toString(RentalOrderDirectory.getInstance().getRentalOrdersDir().get(i).getItemId());
                 rows[j][5] = RentalOrderDirectory.getInstance().getRentalOrdersDir().get(i).getOrderedBy();
+                rows[j][6] = RentalOrderDirectory.getInstance().getRentalOrdersDir().get(i).getOrderID();
                 j++;
             }
         }

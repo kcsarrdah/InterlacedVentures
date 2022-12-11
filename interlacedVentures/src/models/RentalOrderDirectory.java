@@ -32,7 +32,7 @@ public class RentalOrderDirectory {
         Statement stmt;
         try {
             stmt = DatabaseConnectionClass.getInstance().getCon().createStatement();
-            String query1 = "INSERT INTO RentalOrders" + " VALUES(?,?,?,?,?,?,?)";
+            String query1 = "INSERT INTO RentalOrders" + " VALUES(?,?,?,?,?,?,?,?)";
             java.sql.Date sqlDate = new java.sql.Date(RentalOrder.getDate().getTime());
             PreparedStatement pst = DatabaseConnectionClass.getInstance().getCon().prepareStatement(query1);
             pst.setString(1, RentalOrder.getOrderedBy());
@@ -42,6 +42,7 @@ public class RentalOrderDirectory {
             pst.setInt(5, RentalOrder.getItemId());
             pst.setString(6, RentalOrder.getStatus());
             pst.setFloat(7, RentalOrder.getAmount());
+            pst.setString(8, RentalOrder.getOrderID());
             
 
             int rs = pst.executeUpdate();
@@ -62,6 +63,7 @@ public class RentalOrderDirectory {
             ResultSet rs = stmt.executeQuery(str);
             while(rs.next()) {
                RentalOrder ro = new RentalOrder(
+                       rs.getString("OrderID"),
                        rs.getString("OrderedBy"),
                        rs.getString("RequestTo"),
                        rs.getString("Item"),
