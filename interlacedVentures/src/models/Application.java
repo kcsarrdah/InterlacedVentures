@@ -4,38 +4,27 @@
  */
 package models;
 
+import java.util.Date;
+
 /**
  *
  * @author kcsar
  */
-public class Application {
-    private String PathResume;
-    private String PatheID;
-    private String PathImage;
+public class Application extends employee{
+    private String appStatus;
+
+    public Application(String Organisation, String location, Date DateOfJoining, String Password, String Role, int WorkEx, int salary, String LatestWork, String education, String skills, String Username, String firstName, String lastName, int age, String gender, String phoneNumber, String Email, String imagePath, String resPath, String idPath, boolean status) {
+        super(Organisation, location, DateOfJoining, Password, Role, WorkEx, salary, LatestWork, education, skills, Username, firstName, lastName, age, gender, phoneNumber, Email, imagePath, resPath, idPath, status);
+    }
+
+    public String getAppStatus() {
+        return appStatus;
+    }
+
+    public void setAppStatus(String appStatus) {
+        this.appStatus = appStatus;
+    }
     
-
-    public String getPathResume() {
-        return PathResume;
-    }
-
-    public void setPathResume(String PathResume) {
-        this.PathResume = PathResume;
-    }
-
-    public String getPatheID() {
-        return PatheID;
-    }
-
-    public void setPatheID(String PatheID) {
-        this.PatheID = PatheID;
-    }
-
-    public String getPathImage() {
-        return PathImage;
-    }
-
-    public void setPathImage(String PathImage) {
-        this.PathImage = PathImage;
-    }
+    
 
 }

@@ -5,6 +5,7 @@
 package interlacedventures;
 
 //import java.util.HashMap;
+import models.AuditOrderDirectory;
 import models.BillsDirectory;
 import models.BusinessUsersDirectory;
 import models.EmployeeDirectory;
@@ -57,6 +58,7 @@ public class InterlacedVentures {
         StorageDirectory.getInstance().getStorageData();
         TransportDirectory.getInstance().getTransportData();
         RentalOrderDirectory.getInstance().getRentalOrdersData();
+        AuditOrderDirectory.getInstance().getAuditOrderData();
 //        HospitalAdminDirectory.getInstance().getHospAdminData();
 //        HospitalDirectory.getInstance().getHospitalData();
 //        AmbulanceDirectory.getInstance().getAmbulance();
