@@ -18,6 +18,7 @@ public class RentalOrder {
     private int ItemId;
     private String Status;
     private float Amount;
+    private String orderID;
 
     public RentalOrder(String OrderedBy, String RequestTo, String Item, Date date, int ItemId, String Status, float Amount) {
         this.OrderedBy = OrderedBy;

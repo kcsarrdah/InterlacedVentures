@@ -81,26 +81,26 @@ public class StorageDirectory {
         }
     }
     
-//    public void updateStorage(Storage storage,int i) {
-//        storageDir.set(i,storage);
-//        Statement stmt;
-//        try {
-//            stmt = DatabaseConnectionClass.getInstance().getCon().createStatement();
-//            String query1 = "Update Storage" + " set Availability=?,`Rate`=? where Description=?";
-//            PreparedStatement pst = DatabaseConnectionClass.getInstance().getCon().prepareStatement(query1);
-//            pst.setString(1, storage.getStatus());
-//            pst.setString(2,storage.getAppliedBy());
-//            pst.setString(3, storage.getDescription());
-//            int rs = pst.executeUpdate();
-//            if(rs>0)
-//            {
-//                JOptionPane.showMessageDialog(null,"Inserted Successfully!");
-//            }
-//        } catch (SQLException ex) {
-//            System.out.println(ex);
-//            JOptionPane.showMessageDialog(null,"Cannot be Inserted");
-//        }
-//    }
+    public void updateStorage(Storage storage,int i) {
+        storageDir.set(i,storage);
+        Statement stmt;
+        try {
+            stmt = DatabaseConnectionClass.getInstance().getCon().createStatement();
+            String query1 = "Update Storage" + " set Availability=?,RentedBy=? where StorageId=?";
+            PreparedStatement pst = DatabaseConnectionClass.getInstance().getCon().prepareStatement(query1);
+            pst.setBoolean(1, storage.isAvailability());
+            pst.setString(2,storage.getRentedBy());
+            pst.setInt(3, storage.getStorageID());
+            int rs = pst.executeUpdate();
+            if(rs>0)
+            {
+                JOptionPane.showMessageDialog(null,"Inserted Successfully!");
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex);
+            JOptionPane.showMessageDialog(null,"Cannot be Inserted");
+        }
+    }
     
     public static StorageDirectory getInstance() {
         if(mInstance == null)

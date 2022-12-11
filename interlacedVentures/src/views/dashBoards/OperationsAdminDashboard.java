@@ -181,10 +181,10 @@ public class OperationsAdminDashboard extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.hide();
         ViewItemsOperation vio = new ViewItemsOperation();
-        vio.lblReqOp.setText(btnService.getText());
-        String[] columnNames = {"Order From", "Organisation", "Service Requested", "Status", "ItemId"};
+        vio.lblReqOp.setText("Services");
+        String[] columnNames = {"Order From", "Organisation", "Service Requested", "Status", "ItemId", "Requested By"};
         int n = OrdersDirectory.getInstance().getOrdersDir().size() + RentalOrderDirectory.getInstance().getRentalOrdersDir().size();
-        String[][] rows = new String[n][5];
+        String[][] rows = new String[n][6];
         int j=0;
         
         for(int i = 0; i < RentalOrderDirectory.getInstance().getRentalOrdersDir().size(); i++){
@@ -193,11 +193,11 @@ public class OperationsAdminDashboard extends javax.swing.JFrame {
                 rows[j][1] = RentalOrderDirectory.getInstance().getRentalOrdersDir().get(i).getRequestTo();
                 rows[j][2] = RentalOrderDirectory.getInstance().getRentalOrdersDir().get(i).getItem();
                 rows[j][3] = RentalOrderDirectory.getInstance().getRentalOrdersDir().get(i).getStatus();
-                rows[j][4] = Integer.toString(RentalOrderDirectory.getInstance().getRentalOrdersDir().get(i).getItemId());                
+                rows[j][4] = Integer.toString(RentalOrderDirectory.getInstance().getRentalOrdersDir().get(i).getItemId());
+                rows[j][5] = RentalOrderDirectory.getInstance().getRentalOrdersDir().get(i).getOrderedBy();
                 j++;
             }
         }
-        
         
         DefaultTableModel dtm = new DefaultTableModel (rows, columnNames);
         vio.tblOpReq.setModel(dtm);
