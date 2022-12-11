@@ -45,8 +45,15 @@ public class postAJobFormBusiness extends javax.swing.JFrame {
             }
         });
 
+        jcRole.setFont(new java.awt.Font("InaiMathi", 1, 14)); // NOI18N
         jcRole.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cloud", "Hardware", "Software", "Storage", "Transport", "RawMaterials", "Auditing", "Taxation", "Creative" }));
+        jcRole.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcRoleActionPerformed(evt);
+            }
+        });
 
+        jButton1.setFont(new java.awt.Font("InaiMathi", 1, 16)); // NOI18N
         jButton1.setText("Post");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -83,7 +90,7 @@ public class postAJobFormBusiness extends javax.swing.JFrame {
                 .addComponent(tstDescription, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(59, 59, 59)
                 .addComponent(jcRole, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 118, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 117, Short.MAX_VALUE)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(40, 40, 40))
         );
@@ -113,6 +120,10 @@ public class postAJobFormBusiness extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(this, "Job Posted Successfully! A Freelancer Should Contact You Soon");
         this.hide();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jcRoleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcRoleActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jcRoleActionPerformed
 
     /**
      * @param args the command line arguments
