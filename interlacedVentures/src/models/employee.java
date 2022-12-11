@@ -26,7 +26,7 @@ public class employee extends person{
     private String imagePath;
     private String resPath;
     private String idPath;
-
+    private boolean status;
 
     public employee(
             String Organisation, 
@@ -48,7 +48,8 @@ public class employee extends person{
             String Email,
             String imagePath,
             String resPath,
-            String idPath) {
+            String idPath,
+            boolean status) {
         super(firstName, lastName, age, gender, phoneNumber, Email);
         this.Role = Role;
         this.WorkEx = WorkEx;
@@ -64,6 +65,15 @@ public class employee extends person{
         this.imagePath = imagePath;
         this.resPath = resPath;
         this.idPath = idPath;
+        this.status = status;
+    }
+
+    public boolean isStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
     }
 
     public String getImagePath() {

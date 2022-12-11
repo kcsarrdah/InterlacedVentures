@@ -505,9 +505,7 @@ public class freelancerRegistrationForm extends javax.swing.JFrame {
             fdb.labelFreelancer.setText(txtFName.getText());
             fdb.show();
         }
-        
-        
-        
+      
         else if(txtLatestWork.getText().length() > 1){
         this.hide();
         ViewItemsBusinessUser vibu = new ViewItemsBusinessUser();
