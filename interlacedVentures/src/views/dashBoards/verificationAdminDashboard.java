@@ -193,9 +193,9 @@ public class verificationAdminDashboard extends javax.swing.JFrame {
                 rows[j][0] = ApplicationDirectory.getInstance().getApplicationDir().get(i).getUsername();
                 rows[j][1] = ApplicationDirectory.getInstance().getApplicationDir().get(i).getFirstName();
                 rows[j][2] = ApplicationDirectory.getInstance().getApplicationDir().get(i).getLastName();
-                rows[j][3] = ApplicationDirectory.getInstance().getApplicationDir().get(i).getSkills()getSkill();           
-                rows[j][4] = ApplicationDirectory.getInstance().getApplicationDir().get(i).getPathResume();
-                rows[j][5] = ApplicatioFreelancerDirectory.getInstance().getStorageDir().get(i).getPathID();
+                rows[j][3] = ApplicationDirectory.getInstance().getApplicationDir().get(i).getSkills();           
+                rows[j][4] = ApplicationDirectory.getInstance().getApplicationDir().get(i).getResPath();
+                rows[j][5] = ApplicationDirectory.getInstance().getApplicationDir().get(i).getIdPath();
                 j++;
             
         }
