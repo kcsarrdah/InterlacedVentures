@@ -4,6 +4,8 @@
  */
 package views.dashBoards;
 
+import javax.swing.table.DefaultTableModel;
+import models.StorageDirectory;
 import views.loginPage;
 
 /**
@@ -30,7 +32,6 @@ public class verificationAdminDashboard extends javax.swing.JFrame {
 
         jBackPage = new javax.swing.JPanel();
         backButton = new javax.swing.JButton();
-        regisIssue = new javax.swing.JButton();
         veriBusin = new javax.swing.JButton();
         veriFreelan = new javax.swing.JButton();
         veriEmployers = new javax.swing.JButton();
@@ -52,20 +53,15 @@ public class verificationAdminDashboard extends javax.swing.JFrame {
             }
         });
 
-        regisIssue.setBackground(new java.awt.Color(255, 255, 248));
-        regisIssue.setFont(new java.awt.Font("Kailasa", 1, 14)); // NOI18N
-        regisIssue.setText("Register Issue");
-        regisIssue.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        regisIssue.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                regisIssueActionPerformed(evt);
-            }
-        });
-
         veriBusin.setBackground(new java.awt.Color(242, 240, 240));
         veriBusin.setFont(new java.awt.Font("InaiMathi", 1, 18)); // NOI18N
         veriBusin.setText("Verify Businesses");
         veriBusin.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        veriBusin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                veriBusinActionPerformed(evt);
+            }
+        });
 
         veriFreelan.setBackground(new java.awt.Color(242, 240, 240));
         veriFreelan.setFont(new java.awt.Font("InaiMathi", 1, 18)); // NOI18N
@@ -98,8 +94,6 @@ public class verificationAdminDashboard extends javax.swing.JFrame {
             jBackPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jBackPageLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(regisIssue, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(64, 64, 64)
                 .addComponent(backButton, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(86, 86, 86))
             .addGroup(jBackPageLayout.createSequentialGroup()
@@ -134,10 +128,8 @@ public class verificationAdminDashboard extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 130, Short.MAX_VALUE)
-                        .addGroup(jBackPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(backButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(regisIssue, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(43, 43, 43))))
+                        .addComponent(backButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(44, 44, 44))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -156,11 +148,28 @@ public class verificationAdminDashboard extends javax.swing.JFrame {
 
     private void veriFreelanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_veriFreelanActionPerformed
         // TODO add your handling code here:
+        this.hide();
+        ViewItemsVerificationAdminForm vf = new ViewItemsVerificationAdminForm();
+        vf.lblName.setText("FreeLancers");
+        
+        String[][] rows = new String[StorageDirectory.getInstance().getStorageDir().size()][6];
+        String[] columnNames = {"UserName", "FirstName", "LastName", "Skill", "Resume", "ID"};
+        int j = 0;
+//        for(int i=0; i < ApplicatioFreelancerDirectory.getInstance().getFreelancerAppDir().size(); i++){
+//                rows[j][0] = ApplicatioFreelancerDirectory.getInstance().getStorageDir().get(i).getUsername();
+//                rows[j][1] = ApplicatioFreelancerDirectory.getInstance().getStorageDir().get(i).getFirstName();
+//                rows[j][2] = ApplicatioFreelancerDirectory.getInstance().getStorageDir().get(i).getLastName());
+//                rows[j][3] = ApplicatioFreelancerDirectory.getInstance().getStorageDir().get(i).getSkill();           
+//                rows[j][4] = ApplicatioFreelancerDirectory.getInstance().getStorageDir().get(i).getPathResume();
+//                rows[j][5] = ApplicatioFreelancerDirectory.getInstance().getStorageDir().get(i).getPathID();
+//                j++;
+//            
+//        }
+        DefaultTableModel model = new DefaultTableModel (rows, columnNames);
+        vf.tblDisplay.setModel(model);
+        
+        vf.show();
     }//GEN-LAST:event_veriFreelanActionPerformed
-
-    private void regisIssueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regisIssueActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_regisIssueActionPerformed
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
         // TODO add your handling code here:
@@ -171,7 +180,53 @@ public class verificationAdminDashboard extends javax.swing.JFrame {
 
     private void veriEmployersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_veriEmployersActionPerformed
         // TODO add your handling code here:
+        this.hide();
+        ViewItemsVerificationAdminForm vf = new ViewItemsVerificationAdminForm();
+        vf.lblName.setText("Employee");
+        
+        String[][] rows = new String[StorageDirectory.getInstance().getStorageDir().size()][6];
+        String[] columnNames = {"UserName", "FirstName", "LastName", "Skill", "Resume", "ID"};
+        int j = 0;
+//        for(int i=0; i < ApplicatioFreelancerDirectory.getInstance().getFreelancerAppDir().size(); i++){
+//                rows[j][0] = ApplicatioFreelancerDirectory.getInstance().getStorageDir().get(i).getUsername();
+//                rows[j][1] = ApplicatioFreelancerDirectory.getInstance().getStorageDir().get(i).getFirstName();
+//                rows[j][2] = ApplicatioFreelancerDirectory.getInstance().getStorageDir().get(i).getLastName());
+//                rows[j][3] = ApplicatioFreelancerDirectory.getInstance().getStorageDir().get(i).getSkill();           
+//                rows[j][4] = ApplicatioFreelancerDirectory.getInstance().getStorageDir().get(i).getPathResume();
+//                rows[j][5] = ApplicatioFreelancerDirectory.getInstance().getStorageDir().get(i).getPathID();
+//                j++;
+//            
+//        }
+        DefaultTableModel model = new DefaultTableModel (rows, columnNames);
+        vf.tblDisplay.setModel(model);
+        
+        vf.show();
     }//GEN-LAST:event_veriEmployersActionPerformed
+
+    private void veriBusinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_veriBusinActionPerformed
+        // TODO add your handling code here:
+        this.hide();
+ViewItemsVerificationAdminForm vf = new ViewItemsVerificationAdminForm();
+        vf.lblName.setText("Business");
+        
+        String[][] rows = new String[StorageDirectory.getInstance().getStorageDir().size()][6];
+        String[] columnNames = {"UserName", "FirstName", "LastName", "Skill", "Resume", "ID"};
+        int j = 0;
+//        for(int i=0; i < ApplicatioFreelancerDirectory.getInstance().getFreelancerAppDir().size(); i++){
+//                rows[j][0] = ApplicatioFreelancerDirectory.getInstance().getStorageDir().get(i).getUsername();
+//                rows[j][1] = ApplicatioFreelancerDirectory.getInstance().getStorageDir().get(i).getFirstName();
+//                rows[j][2] = ApplicatioFreelancerDirectory.getInstance().getStorageDir().get(i).getLastName());
+//                rows[j][3] = ApplicatioFreelancerDirectory.getInstance().getStorageDir().get(i).getSkill();           
+//                rows[j][4] = ApplicatioFreelancerDirectory.getInstance().getStorageDir().get(i).getPathResume();
+//                rows[j][5] = ApplicatioFreelancerDirectory.getInstance().getStorageDir().get(i).getPathID();
+//                j++;
+//            
+//        }
+        DefaultTableModel model = new DefaultTableModel (rows, columnNames);
+        vf.tblDisplay.setModel(model);
+        
+        vf.show();
+    }//GEN-LAST:event_veriBusinActionPerformed
 
     /**
      * @param args the command line arguments
@@ -212,7 +267,6 @@ public class verificationAdminDashboard extends javax.swing.JFrame {
     private javax.swing.JButton backButton;
     private javax.swing.JPanel jBackPage;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JButton regisIssue;
     private javax.swing.JButton veriBusin;
     private javax.swing.JButton veriEmployers;
     private javax.swing.JButton veriFreelan;
