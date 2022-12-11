@@ -370,9 +370,36 @@ public class ServiceDashboard extends javax.swing.JFrame {
             jcService.addItem("Fragile Items Transport");
         }
         else if(jcOrg.getSelectedItem().toString().equals("Raw Material")){
-            jcService.addItem("Metals");
-            jcService.addItem("Non Metals");
-            jcService.addItem("Electronics");
+            jcService.addItem("Aluminium");
+            jcService.addItem("Copper");
+            jcService.addItem("Rubber");
+            jcService.addItem("Plastics");
+            jcService.addItem("Tungsten");
+            jcService.addItem("Gallium");
+            jcService.addItem("Wood");
+            jcService.addItem("Germanium");
+            jcService.addItem("Titanium");
+            jcService.addItem("Indium");
+            jcService.addItem("Bauxite");
+            jcService.addItem("Steel");
+            jcService.addItem("Coal");
+            jcService.addItem("Stainless Steel");
+            jcService.addItem("Nickle");
+            jcService.addItem("Phosphorous");
+            jcService.addItem("Tin");
+            jcService.addItem("Marble");
+            jcService.addItem("Wool");
+            jcService.addItem("Rice");
+            jcService.addItem("Silver");
+            jcService.addItem("Sugar");
+            jcService.addItem("Wheat");
+            jcService.addItem("Zinc");
+            jcService.addItem("Water");
+            jcService.addItem("Tea");
+            jcService.addItem("Sand");
+            jcService.addItem("Cotton");
+            jcService.addItem("Salt");
+            jcService.addItem("Petroleum");
         }
         else if(jcOrg.getSelectedItem().toString().equals("Consultancy")){
             jcService.addItem("Auditing");

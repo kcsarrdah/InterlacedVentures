@@ -37,23 +37,41 @@ public class RawMatDash extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"Metals", "2000", null},
-                {"Non Metals", "3000", null},
-                {"Electronics", "10,000", null},
-                {null, null, null}
+                {"Aluminium", "3000", "100"},
+                {"Copper", "10,000", "300"},
+                {"Rubber", "5,000", "300"},
+                {"Plastics", "100,00", "50"},
+                {"Tungsten", "8,000", "100"},
+                {"Gallium", "150,000", "200"},
+                {"Wood", "200,000", "60"},
+                {"Germanium", "80,000", "50"},
+                {"Titanium", "9,000", "500"},
+                {"Indium", "1,000", "600"},
+                {"Bauxite", "400,000", "700"},
+                {"Steel", "500,000", "400"},
+                {"Coal", "500,000", "20"},
+                {"Stainless Steel", "70,00", "500"},
+                {"Nickle", "9,000", "70"},
+                {"Phosphorous", "9,000", "80"},
+                {"Tin", "4,000", "90"},
+                {"Marble", "800,00", "900"},
+                {"Wool", "300,000,000", "80"},
+                {"Rice", "600,000,000", "20"},
+                {"Silver", "800,000,000", "50"},
+                {"Sugar", "100,000,000", "10"},
+                {"Wheat", "600,000,000", "10"},
+                {"Zinc", "6000", "90"},
+                {"Water", "900,000,000", "10"},
+                {"Tea", "800,000", "80"},
+                {"Sand", "100,000,000", "80"},
+                {"Cotton", "500,000,000", "100"},
+                {"Salt", "800,000,000", "60"},
+                {"Petroleum", "700,000,000", "20"}
             },
             new String [] {
-                "TYPE", "QUANTITY", "PRICE(IN USD)"
+                "TYPE", "QUANTITY(in kg)", "PRICE PER KILO(IN USD)"
             }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                true, true, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
+        ));
         jScrollPane1.setViewportView(jTable1);
 
         btnBack.setText("BACK");
