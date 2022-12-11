@@ -119,15 +119,14 @@ public class TransportDash extends javax.swing.JFrame {
         AddItemsPopUp ap = new AddItemsPopUp();
         
         ap.jLabel2.setText("Transport Facility");
+        ap.carClassDropDown.setVisible(false);
         
         //ap.jComboBox1.removeAllItems();
         //ap.jComboBox2.removeAllItems();
         
         ap.jComboBox1.addItem("Cars");
         ap.jComboBox1.addItem("Trucks");
-        ap.jComboBox1.addItem("Refridgeration Transport vehicle");
-        
-        
+        //ap.jComboBox1.addItem("Refridgeration Transport vehicle");       
         //ap.jComboBox3.hide();
         
         ap.show();

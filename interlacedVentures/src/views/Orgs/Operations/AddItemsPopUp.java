@@ -40,6 +40,7 @@ public class AddItemsPopUp extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         btnAdd = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        carClassDropDown = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -73,6 +74,8 @@ public class AddItemsPopUp extends javax.swing.JFrame {
             }
         });
 
+        carClassDropDown.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Fragile Items Transport", "Refridgeration Transport vehicle" }));
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -87,6 +90,8 @@ public class AddItemsPopUp extends javax.swing.JFrame {
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGap(128, 128, 128)
+                .addComponent(carClassDropDown, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(235, Short.MAX_VALUE)
@@ -102,9 +107,14 @@ public class AddItemsPopUp extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(32, 32, 32)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(58, 58, 58)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(32, 32, 32)
+                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(41, 41, 41)
+                        .addComponent(carClassDropDown, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(49, 49, 49)
                 .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(59, 59, 59)
                 .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -139,6 +149,7 @@ public class AddItemsPopUp extends javax.swing.JFrame {
         }
         else if(jComboBox1.getSelectedItem().toString().equals("Trucks")){
             jComboBox2.removeAllItems();
+            carClassDropDown.setVisible(true);
             jComboBox2.addItem("Box truck");
             jComboBox2.addItem("Cab over");
             jComboBox2.addItem("Chassis cab");
@@ -158,7 +169,9 @@ public class AddItemsPopUp extends javax.swing.JFrame {
         
         if(jLabel2.getText().equals("Storage Space")){
             if(jComboBox2.getSelectedItem().toString().equals("Small")){
+                int no = (int)Math.floor(Math.random()*(999999 - 100000 + 1) + 100000);
                 Storage storage = new Storage(
+                        no,
                         jComboBox2.getSelectedItem().toString(),
                     jComboBox1.getSelectedItem().toString(),
                     120,
@@ -170,7 +183,9 @@ public class AddItemsPopUp extends javax.swing.JFrame {
                 StorageDirectory.getInstance().addStorage(storage);
             }
             else if(jComboBox2.getSelectedItem().toString().equals("Medium")){
+                int no = (int)Math.floor(Math.random()*(999999 - 100000 + 1) + 100000);
                 Storage storage = new Storage(
+                        no,
                     jComboBox2.getSelectedItem().toString(),
                     jComboBox1.getSelectedItem().toString(),
                     200,
@@ -183,7 +198,9 @@ public class AddItemsPopUp extends javax.swing.JFrame {
             }
             
             else if(jComboBox2.getSelectedItem().toString().equals("Large")){
+                int no = (int)Math.floor(Math.random()*(999999 - 100000 + 1) + 100000);
                 Storage storage = new Storage(
+                        no,
                     jComboBox2.getSelectedItem().toString(),
                     jComboBox1.getSelectedItem().toString(),
                     250,
@@ -199,7 +216,7 @@ public class AddItemsPopUp extends javax.swing.JFrame {
                 int no = (int)Math.floor(Math.random()*(99999 - 10000 + 1) + 10000);
                 String number = Integer.toString(no);
                 Transport transport = new Transport(
-                        jComboBox1.getSelectedItem().toString(),
+                        carClassDropDown.getSelectedItem().toString(),
                         jComboBox2.getSelectedItem().toString(),
                         jComboBox3.getSelectedItem().toString(),
                         jComboBox1.getSelectedItem().toString(),
@@ -299,6 +316,7 @@ public class AddItemsPopUp extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdd;
+    public javax.swing.JComboBox<String> carClassDropDown;
     private javax.swing.JButton jButton2;
     public javax.swing.JComboBox<String> jComboBox1;
     public javax.swing.JComboBox<String> jComboBox2;

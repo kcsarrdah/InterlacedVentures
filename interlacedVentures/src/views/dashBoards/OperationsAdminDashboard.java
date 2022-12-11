@@ -158,14 +158,15 @@ public class OperationsAdminDashboard extends javax.swing.JFrame {
         this.hide();
         StorageDash sd = new StorageDash();
         
-        String[][] rows = new String[StorageDirectory.getInstance().getStorageDir().size()][4];
-        String[] columnNames = {"Type", "Price", "availability", "Rented By"};
+        String[][] rows = new String[StorageDirectory.getInstance().getStorageDir().size()][5];
+        String[] columnNames = {"StorageId", "Type", "Price", "availability", "Rented By"};
         int j = 0;
         for(int i=0; i < StorageDirectory.getInstance().getStorageDir().size(); i++){
-                rows[j][0] = StorageDirectory.getInstance().getStorageDir().get(i).getType();
-                rows[j][1] = Float.toString((StorageDirectory.getInstance().getStorageDir().get(i).getPrice()));
-                rows[j][2] = Boolean.toString(StorageDirectory.getInstance().getStorageDir().get(i).isAvailability());           
-                rows[j][3] = StorageDirectory.getInstance().getStorageDir().get(i).getRentedBy();
+                rows[j][0] = Integer.toString(StorageDirectory.getInstance().getStorageDir().get(i).getStorageID());
+                rows[j][1] = StorageDirectory.getInstance().getStorageDir().get(i).getType();
+                rows[j][2] = Float.toString((StorageDirectory.getInstance().getStorageDir().get(i).getPrice()));
+                rows[j][3] = Boolean.toString(StorageDirectory.getInstance().getStorageDir().get(i).isAvailability());           
+                rows[j][4] = StorageDirectory.getInstance().getStorageDir().get(i).getRentedBy();
                 j++;
             
         }

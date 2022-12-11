@@ -32,7 +32,7 @@ public class StorageDirectory {
         Statement stmt;
         try {
             stmt = DatabaseConnectionClass.getInstance().getCon().createStatement();
-            String query1 = "INSERT INTO Storage" + " VALUES(?,?,?,?,?,?,?)";
+            String query1 = "INSERT INTO Storage" + " VALUES(?,?,?,?,?,?,?,?)";
             java.sql.Date sqlDate = new java.sql.Date(storage.getDateOfAvailability().getTime());
             PreparedStatement pst = DatabaseConnectionClass.getInstance().getCon().prepareStatement(query1);
             pst.setString(1, storage.getType());
@@ -42,6 +42,8 @@ public class StorageDirectory {
             pst.setString(5, storage.getRentedBy());
             pst.setFloat(6, storage.getPrice());
             pst.setString(7, storage.getType());
+           
+            pst.setInt(8, storage.getStorageID());
 
             int rs = pst.executeUpdate();
             if(rs>0)
@@ -50,6 +52,7 @@ public class StorageDirectory {
             }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null,"Cannot be Inserted");
+            System.out.println(ex);
         }
     }
     
@@ -61,6 +64,7 @@ public class StorageDirectory {
             ResultSet rs = stmt.executeQuery(str);
             while(rs.next()) {
                Storage storage = new Storage(
+                       rs.getInt("StorageId"),
                        rs.getString("Size"),
                        rs.getString("Type"),
                        rs.getFloat("Rate"),

@@ -15,6 +15,7 @@ import javax.swing.table.TableModel;
 import models.EmployeeDirectory;
 import models.OrdersDirectory;
 import models.StorageDirectory;
+import models.TransportDirectory;
 import models.orders;
 import views.forms.FileComplainForm;
 import views.forms.postAJobFormBusiness;
@@ -355,8 +356,7 @@ public class ServiceDashboard extends javax.swing.JFrame {
         else if(jcOrg.getSelectedItem().toString().equals("Consultancy")){
             jcService.addItem("Auditing");
             jcService.addItem("Taxation");
-        }
-        
+        } 
         
     }//GEN-LAST:event_jcOrgActionPerformed
 
@@ -425,16 +425,17 @@ public class ServiceDashboard extends javax.swing.JFrame {
 
     private void btnViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewActionPerformed
         // TODO add your handling code here:
-        
-        if(jcService.getSelectedItem().toString().equals("Lockers")){
-        String[][] rows = new String[StorageDirectory.getInstance().getStorageDir().size()][2];
-        String[] columnNames = {"Type", "Rate"};
+        if(jcOrg.getSelectedItem().toString().equals("Storage")){
+            if(jcService.getSelectedItem().toString().equals("Lockers")){
+        String[][] rows = new String[StorageDirectory.getInstance().getStorageDir().size()][3];
+        String[] columnNames = {"Type", "Rate", "StorageID"};
         int j = 0;
         
         for(int i=0; i < StorageDirectory.getInstance().getStorageDir().size(); i++){
             if(StorageDirectory.getInstance().getStorageDir().get(i).isAvailability() && StorageDirectory.getInstance().getStorageDir().get(i).getType().equals("Locker")) {
                 rows[j][0] = StorageDirectory.getInstance().getStorageDir().get(i).getType();
                 rows[j][1] = Float.toString(StorageDirectory.getInstance().getStorageDir().get(i).getRate()); 
+                rows[j][2] = Integer.toString(StorageDirectory.getInstance().getStorageDir().get(i).getStorageID());
                 j++;
             }
         }
@@ -443,13 +444,15 @@ public class ServiceDashboard extends javax.swing.JFrame {
         }
         
         else if(jcService.getSelectedItem().toString().equals("WareHouse")){
-        String[][] rows = new String[StorageDirectory.getInstance().getStorageDir().size()][2];
-        String[] columnNames = {"Type", "Rate"};
+        String[][] rows = new String[StorageDirectory.getInstance().getStorageDir().size()][3];
+        String[] columnNames = {"Type", "Rate", "StorageID"};
         int j = 0;
         for(int i=0; i < StorageDirectory.getInstance().getStorageDir().size(); i++){
             if(StorageDirectory.getInstance().getStorageDir().get(i).isAvailability() && StorageDirectory.getInstance().getStorageDir().get(i).getType().equals("WareHouse")) {
                 rows[j][0] = StorageDirectory.getInstance().getStorageDir().get(i).getType();
                 rows[j][1] = Float.toString(StorageDirectory.getInstance().getStorageDir().get(i).getRate()); 
+                rows[j][2] = Integer.toString(StorageDirectory.getInstance().getStorageDir().get(i).getStorageID());
+                
                 j++;
             }
         }
@@ -460,13 +463,13 @@ public class ServiceDashboard extends javax.swing.JFrame {
         
         else if(jcService.getSelectedItem().toString().equals("Cold Storage")){
         String[][] rows = new String[StorageDirectory.getInstance().getStorageDir().size()][3];
-        String[] columnNames = {"Type", "Size", "Rate"};
+        String[] columnNames = {"Type", "Size", "StorageId"};
         int j = 0;
         for(int i=0; i < StorageDirectory.getInstance().getStorageDir().size(); i++){
             if(StorageDirectory.getInstance().getStorageDir().get(i).isAvailability() && StorageDirectory.getInstance().getStorageDir().get(i).getType().equals("ColdStorage")) {
                 rows[j][0] = StorageDirectory.getInstance().getStorageDir().get(i).getType();
-                rows[j][1] = StorageDirectory.getInstance().getStorageDir().get(i).getSize();; 
-                rows[j][2] = Float.toString(StorageDirectory.getInstance().getStorageDir().get(i).getRate()); 
+                rows[j][1] = StorageDirectory.getInstance().getStorageDir().get(i).getSize();
+                rows[j][2] = Integer.toString(StorageDirectory.getInstance().getStorageDir().get(i).getStorageID()); 
                 j++;
             }
         }
@@ -475,19 +478,106 @@ public class ServiceDashboard extends javax.swing.JFrame {
         }
         
         else if(jcService.getSelectedItem().toString().equals("Fragile Items Storage")){
-        String[][] rows = new String[StorageDirectory.getInstance().getStorageDir().size()][2];
-        String[] columnNames = {"Type", "Rate"};
+        String[][] rows = new String[StorageDirectory.getInstance().getStorageDir().size()][4];
+        String[] columnNames = {"Type", "Rate", "StorageId"};
         int j = 0;
         for(int i=0; i < StorageDirectory.getInstance().getStorageDir().size(); i++){
             if(StorageDirectory.getInstance().getStorageDir().get(i).isAvailability() && StorageDirectory.getInstance().getStorageDir().get(i).getType().equals("Fragile Storage")) {
                 rows[j][0] = StorageDirectory.getInstance().getStorageDir().get(i).getType();
                 rows[j][1] = Float.toString(StorageDirectory.getInstance().getStorageDir().get(i).getRate()); 
+                rows[j][2] = Integer.toString(StorageDirectory.getInstance().getStorageDir().get(i).getStorageID()); 
                 j++;
             }
         }
         DefaultTableModel model = new DefaultTableModel (rows, columnNames);
         tblDisplay.setModel(model);
+            }
         }
+        
+        else if(jcOrg.getSelectedItem().toString().equals("Transport")){
+            if(jcService.getSelectedItem().toString().equals("Cars")){
+            String[][] rows = new String[TransportDirectory.getInstance().getTransportDir().size()][5];
+            String[] columnNames = {"Type", "Vehicle Number", "Category", "Model", "Rate"};
+            int j = 0;
+            for(int i=0; i < TransportDirectory.getInstance().getTransportDir().size(); i++){
+                if(TransportDirectory.getInstance().getTransportDir().get(i).isAvailability() && TransportDirectory.getInstance().getTransportDir().get(i).getType().equals("Cars")) {
+                    rows[j][0] = TransportDirectory.getInstance().getTransportDir().get(i).getType();
+                    rows[j][1] = TransportDirectory.getInstance().getTransportDir().get(i).getVehicleNumber(); 
+                    rows[j][2] = TransportDirectory.getInstance().getTransportDir().get(i).getCategory();
+                    rows[j][3] = TransportDirectory.getInstance().getTransportDir().get(i).getModel();
+                    rows[j][4] = Float.toString(TransportDirectory.getInstance().getTransportDir().get(i).getRate()); 
+                    j++;
+                }
+        }
+        DefaultTableModel model = new DefaultTableModel (rows, columnNames);
+        tblDisplay.setModel(model);
+            }
+            
+            else if(jcService.getSelectedItem().toString().equals("Trucks")){
+            String[][] rows = new String[TransportDirectory.getInstance().getTransportDir().size()][5];
+            String[] columnNames = {"Type", "Vehicle Number", "Category", "Model", "Rate"};
+            int j = 0;
+            for(int i=0; i < TransportDirectory.getInstance().getTransportDir().size(); i++){
+                if(TransportDirectory.getInstance().getTransportDir().get(i).isAvailability() && TransportDirectory.getInstance().getTransportDir().get(i).getType().equals("Trucks")) {
+                    rows[j][0] = TransportDirectory.getInstance().getTransportDir().get(i).getType();
+                    rows[j][1] = TransportDirectory.getInstance().getTransportDir().get(i).getVehicleNumber(); 
+                    rows[j][2] = TransportDirectory.getInstance().getTransportDir().get(i).getCategory();
+                    rows[j][3] = TransportDirectory.getInstance().getTransportDir().get(i).getModel();
+                    rows[j][4] = Float.toString(TransportDirectory.getInstance().getTransportDir().get(i).getRate()); 
+                    j++;
+                }
+        }
+        DefaultTableModel model = new DefaultTableModel (rows, columnNames);
+        tblDisplay.setModel(model);
+            }
+            else if(jcService.getSelectedItem().toString().equals("Refridgeration Transport vehicle")){
+            String[][] rows = new String[TransportDirectory.getInstance().getTransportDir().size()][5];
+            String[] columnNames = {"Type", "Vehicle Number", "Category", "Model", "Rate"};
+            int j = 0;
+            for(int i=0; i < TransportDirectory.getInstance().getTransportDir().size(); i++){
+                if(TransportDirectory.getInstance().getTransportDir().get(i).isAvailability() && TransportDirectory.getInstance().getTransportDir().get(i).getCarClass().equals("Refridgeration Transport vehicle")) {
+                    rows[j][0] = TransportDirectory.getInstance().getTransportDir().get(i).getType();
+                    rows[j][1] = TransportDirectory.getInstance().getTransportDir().get(i).getVehicleNumber(); 
+                    rows[j][2] = TransportDirectory.getInstance().getTransportDir().get(i).getCategory();
+                    rows[j][3] = TransportDirectory.getInstance().getTransportDir().get(i).getModel();
+                    rows[j][4] = Float.toString(TransportDirectory.getInstance().getTransportDir().get(i).getRate()); 
+                    j++;
+                }
+        }
+        DefaultTableModel model = new DefaultTableModel (rows, columnNames);
+        tblDisplay.setModel(model);
+            }
+            
+        else if(jcService.getSelectedItem().toString().equals("Fragile Items Transport")){
+            String[][] rows = new String[TransportDirectory.getInstance().getTransportDir().size()][5];
+            String[] columnNames = {"Type", "Vehicle Number", "Category", "Model", "Rate"};
+            int j = 0;
+            for(int i=0; i < TransportDirectory.getInstance().getTransportDir().size(); i++){
+                if(TransportDirectory.getInstance().getTransportDir().get(i).isAvailability() && TransportDirectory.getInstance().getTransportDir().get(i).getCarClass().equals("Fragile Items Transport")) {
+                    rows[j][0] = TransportDirectory.getInstance().getTransportDir().get(i).getType();
+                    rows[j][1] = TransportDirectory.getInstance().getTransportDir().get(i).getVehicleNumber(); 
+                    rows[j][2] = TransportDirectory.getInstance().getTransportDir().get(i).getCategory();
+                    rows[j][3] = TransportDirectory.getInstance().getTransportDir().get(i).getModel();
+                    rows[j][4] = Float.toString(TransportDirectory.getInstance().getTransportDir().get(i).getRate()); 
+                    j++;
+                }
+        }
+        DefaultTableModel model = new DefaultTableModel (rows, columnNames);
+        tblDisplay.setModel(model);
+            }
+        
+            
+        }
+        
+//        else if(jcOrg.getSelectedItem().toString().equals("")){
+//            
+//            
+//        }
+//        else if(jcOrg.getSelectedItem().toString().equals("")){
+//            
+//            
+//        }
+        
     }//GEN-LAST:event_btnViewActionPerformed
 
     /**

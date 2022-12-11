@@ -18,6 +18,15 @@ public class Storage {
     private float price;
     private Date dateOfAvailability;
     private String Size;
+    private int StorageID;
+
+    public int getStorageID() {
+        return StorageID;
+    }
+
+    public void setStorageID(int StorageID) {
+        this.StorageID = StorageID;
+    }
 
     public String getSize() {
         return Size;
@@ -27,7 +36,7 @@ public class Storage {
         this.Size = Size;
     }
 
-    public Storage(String Size, String type, float rate, boolean availability, String rentedBy, float price, Date dateOfAvailability) {
+    public Storage(int StorageID, String Size, String type, float rate, boolean availability, String rentedBy, float price, Date dateOfAvailability) {
         this.type = type;
         this.rate = rate;
         this.availability = availability;
@@ -35,6 +44,7 @@ public class Storage {
         this.price = price;
         this.dateOfAvailability = dateOfAvailability;
         this.Size = Size;
+        this.StorageID = StorageID;
     }
     
 
