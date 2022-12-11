@@ -4,11 +4,14 @@
  */
 package views.forms;
 
+import java.awt.Desktop;
 import java.awt.event.KeyEvent;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.text.Format;
 import java.text.SimpleDateFormat;
 import java.util.regex.Pattern;
+import javax.imageio.ImageIO;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import models.EmployeeDirectory;
@@ -45,6 +48,7 @@ public class employeeRegistrationForm extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
         txtAge = new javax.swing.JTextField();
         txtPhone = new javax.swing.JTextField();
         txtEmail = new javax.swing.JTextField();
@@ -87,15 +91,17 @@ public class employeeRegistrationForm extends javax.swing.JFrame {
         pwdField = new javax.swing.JPasswordField();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        txtImage = new javax.swing.JTextField();
         btnImage = new javax.swing.JButton();
-        txtRes = new javax.swing.JTextField();
         btnRes = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
-        txtID = new javax.swing.JTextField();
         btnID = new javax.swing.JButton();
+        btnViewImg = new javax.swing.JButton();
+        btnViewRes = new javax.swing.JButton();
+        btnViewId = new javax.swing.JButton();
 
         jLabel1.setText("jLabel1");
+
+        jButton2.setText("jButton2");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -249,16 +255,12 @@ public class employeeRegistrationForm extends javax.swing.JFrame {
 
         jLabel4.setText("UPLOAD RESUME");
 
-        txtImage.setText("jTextField1");
-
         btnImage.setText("upload");
         btnImage.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnImageActionPerformed(evt);
             }
         });
-
-        txtRes.setText("jTextField2");
 
         btnRes.setText("upload");
         btnRes.addActionListener(new java.awt.event.ActionListener() {
@@ -269,12 +271,31 @@ public class employeeRegistrationForm extends javax.swing.JFrame {
 
         jLabel5.setText("UPLOAD ID");
 
-        txtID.setText("jTextField3");
-
         btnID.setText("upload");
         btnID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnIDActionPerformed(evt);
+            }
+        });
+
+        btnViewImg.setText("view image");
+        btnViewImg.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnViewImgActionPerformed(evt);
+            }
+        });
+
+        btnViewRes.setText("view resume");
+        btnViewRes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnViewResActionPerformed(evt);
+            }
+        });
+
+        btnViewId.setText("view id");
+        btnViewId.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnViewIdActionPerformed(evt);
             }
         });
 
@@ -289,110 +310,96 @@ public class employeeRegistrationForm extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(40, 40, 40)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel5)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(499, 499, 499)
-                            .addComponent(comboRole, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(btnRemove, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(btnSave)
-                                    .addGap(49, 49, 49)
-                                    .addComponent(btnReg))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(txtWorkExp, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                            .addGap(146, 146, 146)
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                .addComponent(comboGender, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(txtUName)
-                                                .addComponent(txtEmail, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE)))
-                                        .addComponent(comboEducation, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(dateField, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(pwdField, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(txtFName, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(jLabel3)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                    .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addComponent(jLabel20)
-                                                        .addComponent(jLabel22, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                                .addComponent(jLabel18))
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addGroup(layout.createSequentialGroup()
-                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                    .addComponent(txtSalary, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                .addGroup(layout.createSequentialGroup()
-                                                    .addGap(51, 51, 51)
-                                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                        .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addComponent(txtImage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                        .addGroup(layout.createSequentialGroup()
-                                                            .addGap(27, 27, 27)
-                                                            .addComponent(btnImage))
-                                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                            .addComponent(btnID)))))))
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addGap(62, 62, 62)
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(jLabel23)))
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addGap(61, 61, 61)
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(jLabel19)
-                                                .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(jLabel32)
-                                                .addComponent(jLabel33))
-                                            .addGap(39, 39, 39)
-                                            .addComponent(btnEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addComponent(jLabel26)
-                                        .addComponent(jLabel28)
-                                        .addComponent(jLabel30))
-                                    .addGap(0, 0, Short.MAX_VALUE)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel31)
-                                        .addComponent(jLabel29)
-                                        .addComponent(jLabel27)
-                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel4)
-                                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addGap(33, 33, 33)))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnRemove, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnSave)
+                        .addGap(49, 49, 49)
+                        .addComponent(btnReg))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(txtWorkExp, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addGap(146, 146, 146)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtAge)
-                                    .addComponent(txtPhone)
-                                    .addComponent(txtLatestWork)
-                                    .addComponent(txtSkills, javax.swing.GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE)
-                                    .addComponent(txtLoc)
-                                    .addComponent(txtLName))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(comboGender, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(txtUName)
+                                    .addComponent(txtEmail, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE)))
+                            .addComponent(comboEducation, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(dateField, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtFName, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel3)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                                .addComponent(jButton1)
-                                                .addGap(16, 16, 16))
-                                            .addComponent(comboOrg, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(txtRes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGap(38, 38, 38)
-                                            .addComponent(btnRes))))))))
-                .addContainerGap(63, Short.MAX_VALUE))
+                                            .addComponent(jLabel20)
+                                            .addComponent(jLabel22, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(jLabel18))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(btnImage)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(btnViewImg))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(btnID)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(btnViewId))
+                                    .addComponent(txtSalary, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(41, 41, 41)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel33)
+                            .addComponent(jLabel23)
+                            .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel19))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel26)
+                            .addComponent(jLabel28)
+                            .addComponent(jLabel30)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel32)
+                                    .addComponent(jLabel5))
+                                .addGap(64, 64, 64)
+                                .addComponent(btnEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel31)
+                            .addComponent(jLabel29)
+                            .addComponent(jLabel27)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel4)
+                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(33, 33, 33)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(txtAge)
+                        .addComponent(txtPhone)
+                        .addComponent(txtLatestWork)
+                        .addComponent(txtSkills, javax.swing.GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE)
+                        .addComponent(txtLoc)
+                        .addComponent(txtLName))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(comboOrg, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(pwdField, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jButton1))
+                                    .addGap(16, 16, 16))
+                                .addComponent(comboRole, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnRes)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnViewRes)))))
+                .addContainerGap(84, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -448,24 +455,22 @@ public class employeeRegistrationForm extends javax.swing.JFrame {
                     .addComponent(txtSalary, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2)
                     .addComponent(comboRole, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(27, 27, 27)
+                .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(jLabel4)
-                    .addComponent(txtImage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnImage)
-                    .addComponent(txtRes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnRes))
+                    .addComponent(btnRes)
+                    .addComponent(btnViewImg)
+                    .addComponent(btnViewRes))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnID))
-                .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnID)
                     .addComponent(jLabel33)
-                    .addComponent(pwdField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(43, 43, 43)
+                    .addComponent(pwdField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnViewId))
+                .addGap(40, 40, 40)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnReg)
                     .addComponent(btnRemove)
@@ -527,9 +532,9 @@ public class employeeRegistrationForm extends javax.swing.JFrame {
             comboGender.getSelectedItem().toString(),
             txtPhone.getText(),
             txtEmail.getText(),
-            txtImage.getText(),
-            txtRes.getText(),
-            txtID.getText());
+            btnViewImg.getText(),
+            btnViewRes.getText(),
+            btnViewId.getText());
             
         EmployeeDirectory.getInstance().addEmployee(free);
         
@@ -598,7 +603,6 @@ public class employeeRegistrationForm extends javax.swing.JFrame {
         
         String UName = txtUName.getText();
         
-        
             employee free = new employee(
             comboOrg.getSelectedItem().toString(),
             txtLoc.getText(),
@@ -617,9 +621,9 @@ public class employeeRegistrationForm extends javax.swing.JFrame {
             comboGender.getSelectedItem().toString(),
             txtPhone.getText(),
             txtEmail.getText(),
-            txtImage.getText(),
-            txtRes.getText(),
-            txtID.getText());
+            btnViewImg.getText(),
+            btnViewRes.getText(),
+            btnViewId.getText());
                  
         for(int i = 0; i < EmployeeDirectory.getInstance().getEmployeeDir().size(); i++){
         if(EmployeeDirectory.getInstance().getEmployeeDir().get(i).getUsername().equals(UName)){
@@ -708,7 +712,7 @@ public class employeeRegistrationForm extends javax.swing.JFrame {
             if(selected == JFileChooser.APPROVE_OPTION) {
                 File file = fileChooser.getSelectedFile();
                 filepath2 = file.getAbsolutePath();
-                txtImage.setText(filepath2);
+
             } 
         }
         catch(Exception e) {
@@ -724,7 +728,7 @@ public class employeeRegistrationForm extends javax.swing.JFrame {
             if(selected == JFileChooser.APPROVE_OPTION) {
                 File file = fileChooser.getSelectedFile();
                 filepath1 = file.getAbsolutePath();
-                txtRes.setText(filepath1);
+           
             } 
         }
         catch(Exception e) {
@@ -740,13 +744,73 @@ public class employeeRegistrationForm extends javax.swing.JFrame {
             if(selected == JFileChooser.APPROVE_OPTION) {
                 File file = fileChooser.getSelectedFile();
                 filepath3 = file.getAbsolutePath();
-                txtID.setText(filepath3);
+                
             } 
         }
         catch(Exception e) {
             JOptionPane.showMessageDialog(null, "File Not Uploaded");
         }
     }//GEN-LAST:event_btnIDActionPerformed
+
+    private void btnViewImgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewImgActionPerformed
+        // TODO add your handling code here:
+        try{
+            File pdf1 = new File(filepath2);
+            if(pdf1.exists()){
+                if(Desktop.isDesktopSupported()){
+                    Desktop.getDesktop().open(pdf1);
+                }
+                else{
+                    JOptionPane.showMessageDialog(null, "Desktop is not supported");
+                }
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "FIle does not exist");
+            }
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }//GEN-LAST:event_btnViewImgActionPerformed
+
+    private void btnViewResActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewResActionPerformed
+        // TODO add your handling code here:
+        try{
+            File pdf1 = new File(filepath1);
+            if(pdf1.exists()){
+                if(Desktop.isDesktopSupported()){
+                    Desktop.getDesktop().open(pdf1);
+                }
+                else{
+                    JOptionPane.showMessageDialog(null, "Desktop is not supported");
+                }
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "FIle does not exist");
+            }
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }//GEN-LAST:event_btnViewResActionPerformed
+
+    private void btnViewIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewIdActionPerformed
+        // TODO add your handling code here:
+        try{
+            File pdf1 = new File(filepath3);
+            if(pdf1.exists()){
+                if(Desktop.isDesktopSupported()){
+                    Desktop.getDesktop().open(pdf1);
+                }
+                else{
+                    JOptionPane.showMessageDialog(null, "Desktop is not supported");
+                }
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "FIle does not exist");
+            }
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }//GEN-LAST:event_btnViewIdActionPerformed
 
     /**
      * @param args the command line arguments
@@ -791,12 +855,16 @@ public class employeeRegistrationForm extends javax.swing.JFrame {
     public javax.swing.JButton btnRemove;
     private javax.swing.JButton btnRes;
     public javax.swing.JButton btnSave;
+    private javax.swing.JButton btnViewId;
+    private javax.swing.JButton btnViewImg;
+    private javax.swing.JButton btnViewRes;
     public javax.swing.JComboBox<String> comboEducation;
     public javax.swing.JComboBox<String> comboGender;
     public javax.swing.JComboBox<String> comboOrg;
     public javax.swing.JComboBox<String> comboRole;
     public com.toedter.calendar.JDateChooser dateField;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
@@ -823,13 +891,10 @@ public class employeeRegistrationForm extends javax.swing.JFrame {
     public javax.swing.JTextField txtAge;
     public javax.swing.JTextField txtEmail;
     public javax.swing.JTextField txtFName;
-    private javax.swing.JTextField txtID;
-    private javax.swing.JTextField txtImage;
     public javax.swing.JTextField txtLName;
     public javax.swing.JTextField txtLatestWork;
     public javax.swing.JTextField txtLoc;
     public javax.swing.JTextField txtPhone;
-    private javax.swing.JTextField txtRes;
     public javax.swing.JTextField txtSalary;
     public javax.swing.JTextField txtSkills;
     public javax.swing.JTextField txtUName;
