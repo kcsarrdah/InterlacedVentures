@@ -215,7 +215,7 @@ public class employeeRegistrationForm extends javax.swing.JFrame {
 
         jLabel2.setText("ROLE");
 
-        comboRole.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cloud", "Hardware", "Software", "Storage", "Transport", "RawMaterials", "Auditing", "Taxation", "Creative" }));
+        comboRole.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Front-end Developer", "Game Developer", "Security Engineer", "Software Engineer", "Mobile Developer", "DevOps Engineer", "Data Analyst", "Databse Administrator", "Data Scientist", "Machine Learning Engineer", "Hardware engineer", "Cloud Software Engineer", "Cloud Consultant", "Server Manager", "Chartered Accountant", " " }));
         comboRole.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboRoleActionPerformed(evt);
@@ -534,7 +534,8 @@ public class employeeRegistrationForm extends javax.swing.JFrame {
             txtEmail.getText(),
             btnViewImg.getText(),
             btnViewRes.getText(),
-            btnViewId.getText());
+            btnViewId.getText(),
+            true);
             
         EmployeeDirectory.getInstance().addEmployee(free);
         
@@ -623,7 +624,8 @@ public class employeeRegistrationForm extends javax.swing.JFrame {
             txtEmail.getText(),
             btnViewImg.getText(),
             btnViewRes.getText(),
-            btnViewId.getText());
+            btnViewId.getText(),
+            true);
                  
         for(int i = 0; i < EmployeeDirectory.getInstance().getEmployeeDir().size(); i++){
         if(EmployeeDirectory.getInstance().getEmployeeDir().get(i).getUsername().equals(UName)){
