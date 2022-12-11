@@ -317,6 +317,12 @@ public class ServiceDashboard extends javax.swing.JFrame {
         }
         else if(jcEnterprise.getSelectedItem().toString().equals("Finances and Legal")){
                 jcOrg.addItem("Consultancy");
+            tblDisplay.hide();
+            btnFile.show();
+            btnViewFile.show();
+            
+        
+                
         }
         
     }//GEN-LAST:event_jcEnterpriseActionPerformed
@@ -588,13 +594,7 @@ public class ServiceDashboard extends javax.swing.JFrame {
             }   
         }
         
-        else if(jcOrg.getSelectedItem().toString().equals("Finances and Legal")){
-            if(jcService.getSelectedItem().toString().equals("Auditing")){
-            tblDisplay.hide();
-            btnFile.show();
-            btnViewFile.show();
-            }
-        }
+
             
 //            
 //            else if(jcService.getSelectedItem().toString().equals("Taxation")){
