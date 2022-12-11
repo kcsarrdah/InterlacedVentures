@@ -4,6 +4,7 @@
  */
 package views.dashBoards;
 
+import java.awt.Desktop;
 import java.io.File;
 import java.util.Date;
 import java.util.HashMap;
@@ -12,6 +13,7 @@ import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
+import models.AuditOrderDirectory;
 import models.EmployeeDirectory;
 import models.OrdersDirectory;
 import models.RentalOrder;
@@ -61,12 +63,12 @@ public class ServiceDashboard extends javax.swing.JFrame {
         btnComplain = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         btnFile = new javax.swing.JButton();
-        txtFile = new javax.swing.JTextField();
         pnlTableDisplay = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblDisplay = new javax.swing.JTable();
         btnView = new javax.swing.JButton();
         btnRent = new javax.swing.JButton();
+        btnViewFile = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -187,6 +189,13 @@ public class ServiceDashboard extends javax.swing.JFrame {
             }
         });
 
+        btnViewFile.setText("View Fiile");
+        btnViewFile.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnViewFileActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -213,8 +222,8 @@ public class ServiceDashboard extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addComponent(btnFile)
-                            .addGap(42, 42, 42)
-                            .addComponent(txtFile, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGap(51, 51, 51)
+                            .addComponent(btnViewFile, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addComponent(pnlTableDisplay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(btnRent, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -243,7 +252,7 @@ public class ServiceDashboard extends javax.swing.JFrame {
                         .addGap(78, 78, 78)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnFile)
-                            .addComponent(txtFile, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(btnViewFile)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(1, 1, 1)
                         .addComponent(jcOrg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -427,7 +436,7 @@ public class ServiceDashboard extends javax.swing.JFrame {
             if(selected == JFileChooser.APPROVE_OPTION) {
                 File file = fileChooser.getSelectedFile();
                 filepath1 = file.getAbsolutePath();
-                txtFile.setText(filepath1);
+                //txtFile.setText(filepath1);
             } 
         }
         catch(Exception e) {
@@ -576,14 +585,37 @@ public class ServiceDashboard extends javax.swing.JFrame {
         }
         DefaultTableModel model = new DefaultTableModel (rows, columnNames);
         tblDisplay.setModel(model);
-            }
-        
-            
+            }   
         }
         
-//        else if(jcOrg.getSelectedItem().toString().equals("")){
+        else if(jcOrg.getSelectedItem().toString().equals("Finances and Legal")){
+            if(jcService.getSelectedItem().toString().equals("Auditing")){
+            tblDisplay.hide();
+            btnFile.show();
+            btnViewFile.show();
+            }
+        }
+            
 //            
-//            
+//            else if(jcService.getSelectedItem().toString().equals("Taxation")){
+//            String[][] rows = new String[TransportDirectory.getInstance().getTransportDir().size()][5];
+//            String[] columnNames = {"Type", "Vehicle Number", "Category", "Model", "Rate"};
+//            int j = 0;
+//            for(int i=0; i < TransportDirectory.getInstance().getTransportDir().size(); i++){
+//                if(TransportDirectory.getInstance().getTransportDir().get(i).isAvailability() && TransportDirectory.getInstance().getTransportDir().get(i).getType().equals("Trucks")) {
+//                    rows[j][0] = TransportDirectory.getInstance().getTransportDir().get(i).getType();
+//                    rows[j][1] = TransportDirectory.getInstance().getTransportDir().get(i).getVehicleNumber(); 
+//                    rows[j][2] = TransportDirectory.getInstance().getTransportDir().get(i).getCategory();
+//                    rows[j][3] = TransportDirectory.getInstance().getTransportDir().get(i).getModel();
+//                    rows[j][4] = Float.toString(TransportDirectory.getInstance().getTransportDir().get(i).getRate()); 
+//                    j++;
+//                }
+//        }
+//        DefaultTableModel model = new DefaultTableModel (rows, columnNames);
+//        tblDisplay.setModel(model);
+//            }
+//        }
+           
 //        }
 //        else if(jcOrg.getSelectedItem().toString().equals("")){
 //            
@@ -641,6 +673,26 @@ public class ServiceDashboard extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnRentActionPerformed
 
+    private void btnViewFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewFileActionPerformed
+        // TODO add your handling code here:
+        try{
+            File pdf1 = new File(filepath1);
+            if(pdf1.exists()){
+                if(Desktop.isDesktopSupported()){
+                    Desktop.getDesktop().open(pdf1);
+                }
+                else{
+                    JOptionPane.showMessageDialog(null, "Desktop is not supported");
+                }
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "FIle does not exist");
+            }
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }//GEN-LAST:event_btnViewFileActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -682,6 +734,7 @@ public class ServiceDashboard extends javax.swing.JFrame {
     public javax.swing.JButton btnHFL;
     public javax.swing.JButton btnRent;
     public javax.swing.JButton btnView;
+    public javax.swing.JButton btnViewFile;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
@@ -697,7 +750,6 @@ public class ServiceDashboard extends javax.swing.JFrame {
     public javax.swing.JTable tblDisplay;
     public javax.swing.JTextField tfDetails;
     public javax.swing.JTextField tfPrice;
-    public javax.swing.JTextField txtFile;
     // End of variables declaration//GEN-END:variables
 }
 

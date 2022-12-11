@@ -199,7 +199,7 @@ public class businessUserDashBoard extends javax.swing.JFrame {
         sd.labelName.setText(this.businessUser.getText());
         sd.pnlTableDisplay.hide();
         sd.btnFile.hide();
-        sd.txtFile.hide();
+        sd.btnViewFile.hide();
         sd.btnView.hide();
         sd.show();
     }//GEN-LAST:event_servicesbusinessActionPerformed
