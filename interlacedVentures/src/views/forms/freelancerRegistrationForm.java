@@ -4,6 +4,7 @@
  */
 package views.forms;
 
+import java.awt.Desktop;
 import java.io.File;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -91,14 +92,14 @@ public class freelancerRegistrationForm extends javax.swing.JFrame {
         btnEdit = new javax.swing.JButton();
         btnSave = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        txtImage = new javax.swing.JTextField();
         btnUp = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
-        txtRes = new javax.swing.JTextField();
         btnRes = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        txtID = new javax.swing.JTextField();
         btnID = new javax.swing.JButton();
+        btnViewImg = new javax.swing.JButton();
+        btnVIewRes = new javax.swing.JButton();
+        btnViewId = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -210,8 +211,6 @@ public class freelancerRegistrationForm extends javax.swing.JFrame {
 
         jLabel1.setText("UPLOAD IMAGE ");
 
-        txtImage.setText("jTextField1");
-
         btnUp.setText("upload");
         btnUp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -219,9 +218,7 @@ public class freelancerRegistrationForm extends javax.swing.JFrame {
             }
         });
 
-        jLabel3.setText("jLabel3");
-
-        txtRes.setText("jTextField1");
+        jLabel3.setText("UPLOAD RESUME");
 
         btnRes.setText("upload");
         btnRes.addActionListener(new java.awt.event.ActionListener() {
@@ -230,14 +227,33 @@ public class freelancerRegistrationForm extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setText("jLabel2");
-
-        txtID.setText("jTextField1");
+        jLabel2.setText("UPLOAD ID");
 
         btnID.setText("upload");
         btnID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnIDActionPerformed(evt);
+            }
+        });
+
+        btnViewImg.setText("view image");
+        btnViewImg.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnViewImgActionPerformed(evt);
+            }
+        });
+
+        btnVIewRes.setText("view resume");
+        btnVIewRes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVIewResActionPerformed(evt);
+            }
+        });
+
+        btnViewId.setText("view id");
+        btnViewId.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnViewIdActionPerformed(evt);
             }
         });
 
@@ -248,12 +264,6 @@ public class freelancerRegistrationForm extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(46, 46, 46)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(135, 135, 135)
-                        .addComponent(txtWorkExp, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(txtLoc, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(65, 65, 65))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
@@ -270,44 +280,27 @@ public class freelancerRegistrationForm extends javax.swing.JFrame {
                                                 .addComponent(jLabel2)))
                                         .addGap(27, 27, 27)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(txtHourlyRate, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(comboEducation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(dateField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addGroup(layout.createSequentialGroup()
-                                                .addComponent(txtImage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(33, 33, 33)
-                                                .addComponent(btnUp))
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(33, 33, 33)
-                                                .addComponent(btnID)))))
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(btnUp)
+                                                    .addComponent(btnID))
+                                                .addGap(34, 34, 34)
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(btnViewId)
+                                                    .addComponent(btnViewImg)))
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                                .addComponent(txtHourlyRate, javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(dateField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)))))
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 174, Short.MAX_VALUE)
+                                        .addComponent(btnRes)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(btnVIewRes))
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(74, 74, 74)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(jLabel33)
-                                                    .addComponent(jLabel31)
-                                                    .addComponent(jLabel29)
-                                                    .addComponent(jLabel27))
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addGroup(layout.createSequentialGroup()
-                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                            .addComponent(txtLatestWork, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                            .addComponent(jcSkills, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                        .addGap(57, 57, 57))
-                                                    .addGroup(layout.createSequentialGroup()
-                                                        .addGap(56, 56, 56)
-                                                        .addComponent(pwdField))))
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(jLabel3)
-                                                .addGap(33, 33, 33)
-                                                .addComponent(txtRes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(btnRes)
-                                                .addGap(26, 26, 26))))
+                                        .addComponent(jLabel3)
+                                        .addGap(26, 192, Short.MAX_VALUE))
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(18, 18, 18)
                                         .addComponent(btnReg)
@@ -335,28 +328,42 @@ public class freelancerRegistrationForm extends javax.swing.JFrame {
                                                     .addComponent(comboGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)))
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addGap(0, 0, Short.MAX_VALUE)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(txtAge, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(txtLName, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(jLabel19)
+                                        .addComponent(jLabel23)
+                                        .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel25))
                                     .addGroup(layout.createSequentialGroup()
+                                        .addGap(29, 29, 29)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel25)
+                                            .addComponent(jLabel33)
                                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                .addComponent(jLabel19)
-                                                .addComponent(jLabel23)
-                                                .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                        .addGap(45, 45, 45)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(txtPhone)
-                                            .addComponent(txtPortfolio)))))
+                                                .addComponent(jLabel29)
+                                                .addComponent(jLabel27)
+                                                .addComponent(jLabel31)))))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(txtPhone)
+                                        .addComponent(txtLName, javax.swing.GroupLayout.DEFAULT_SIZE, 197, Short.MAX_VALUE)
+                                        .addComponent(txtAge, javax.swing.GroupLayout.DEFAULT_SIZE, 197, Short.MAX_VALUE)
+                                        .addComponent(txtPortfolio, javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(jcSkills, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(txtLatestWork))
+                                    .addComponent(txtLoc, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(pwdField)))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addGap(150, 150, 150)
                                 .addComponent(btnSave)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(btnBack)))
-                        .addGap(57, 57, 57))))
+                        .addGap(57, 57, 57))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(122, 122, 122)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(comboEducation, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtWorkExp, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(65, 485, Short.MAX_VALUE))))
             .addGroup(layout.createSequentialGroup()
                 .addGap(224, 224, 224)
                 .addComponent(tfName)
@@ -399,7 +406,7 @@ public class freelancerRegistrationForm extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel26)
                     .addComponent(jLabel27)
-                    .addComponent(txtLatestWork, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtLatestWork, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtWorkExp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -407,33 +414,33 @@ public class freelancerRegistrationForm extends javax.swing.JFrame {
                     .addComponent(jLabel29)
                     .addComponent(comboEducation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jcSkills, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(34, 34, 34)
+                .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel30)
                         .addComponent(jLabel31)
                         .addComponent(txtLoc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(dateField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(24, 24, 24)
+                .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel32)
                     .addComponent(jLabel33)
                     .addComponent(txtHourlyRate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(pwdField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(33, 33, 33)
+                .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(txtImage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnUp)
                     .addComponent(jLabel3)
-                    .addComponent(txtRes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnRes))
+                    .addComponent(btnRes)
+                    .addComponent(btnViewImg)
+                    .addComponent(btnVIewRes))
                 .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnID))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
+                    .addComponent(btnID)
+                    .addComponent(btnViewId))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnReg)
                     .addComponent(btnBack)
@@ -472,9 +479,9 @@ public class freelancerRegistrationForm extends javax.swing.JFrame {
                 comboGender.getSelectedItem().toString(),
                 txtPhone.getText(),
                 txtEmail.getText(),
-                txtImage.getText(),
-                txtRes.getText(),
-                txtID.getText());
+                btnViewImg.getText(),
+                btnVIewRes.getText(),
+                btnViewId.getText());
         
         FreelanceDirectory.getInstance().addFreelancer(free);
         users login = new users(txtUName.getText(),pwdField.getText(),"Freelancer");
@@ -595,9 +602,9 @@ public class freelancerRegistrationForm extends javax.swing.JFrame {
                 comboGender.getSelectedItem().toString(),
                 txtPhone.getText(),
                 txtEmail.getText(),
-                txtImage.getText(),
-                txtRes.getText(),
-                 txtID.getText());
+                btnViewImg.getText(),
+                btnVIewRes.getText(),
+                btnViewId.getText());
         for(int i = 0; i < FreelanceDirectory.getInstance().getFreeLancerDir().size(); i++){
         if(FreelanceDirectory.getInstance().getFreeLancerDir().get(i).getUsername().equals(UName)){
             FreelanceDirectory.getInstance().updateFreelancer(free, i);
@@ -618,7 +625,7 @@ public class freelancerRegistrationForm extends javax.swing.JFrame {
             if(selected == JFileChooser.APPROVE_OPTION) {
                 File file = fileChooser.getSelectedFile();
                 filepath2 = file.getAbsolutePath();
-                txtImage.setText(filepath2);
+                //txtImage.setText(filepath2);
             } 
         }
         catch(Exception e) {
@@ -634,7 +641,7 @@ public class freelancerRegistrationForm extends javax.swing.JFrame {
             if(selected == JFileChooser.APPROVE_OPTION) {
                 File file = fileChooser.getSelectedFile();
                 filepath1 = file.getAbsolutePath();
-                txtRes.setText(filepath1);
+                //txtRes.setText(filepath1);
             } 
         }
         catch(Exception e) {
@@ -650,13 +657,73 @@ public class freelancerRegistrationForm extends javax.swing.JFrame {
             if(selected == JFileChooser.APPROVE_OPTION) {
                 File file = fileChooser.getSelectedFile();
                 filepath3 = file.getAbsolutePath();
-                txtID.setText(filepath3);
+                //txtID.setText(filepath3);
             } 
         }
         catch(Exception e) {
             JOptionPane.showMessageDialog(null, "File Not Uploaded");
         }
     }//GEN-LAST:event_btnIDActionPerformed
+
+    private void btnViewImgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewImgActionPerformed
+        // TODO add your handling code here:
+        try{
+            File pdf1 = new File(filepath2);
+            if(pdf1.exists()){
+                if(Desktop.isDesktopSupported()){
+                    Desktop.getDesktop().open(pdf1);
+                }
+                else{
+                    JOptionPane.showMessageDialog(null, "Desktop is not supported");
+                }
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "FIle does not exist");
+            }
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }//GEN-LAST:event_btnViewImgActionPerformed
+
+    private void btnVIewResActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVIewResActionPerformed
+        // TODO add your handling code here:
+        try{
+            File pdf1 = new File(filepath1);
+            if(pdf1.exists()){
+                if(Desktop.isDesktopSupported()){
+                    Desktop.getDesktop().open(pdf1);
+                }
+                else{
+                    JOptionPane.showMessageDialog(null, "Desktop is not supported");
+                }
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "FIle does not exist");
+            }
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }//GEN-LAST:event_btnVIewResActionPerformed
+
+    private void btnViewIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewIdActionPerformed
+        // TODO add your handling code here:
+        try{
+            File pdf1 = new File(filepath3);
+            if(pdf1.exists()){
+                if(Desktop.isDesktopSupported()){
+                    Desktop.getDesktop().open(pdf1);
+                }
+                else{
+                    JOptionPane.showMessageDialog(null, "Desktop is not supported");
+                }
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "FIle does not exist");
+            }
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }//GEN-LAST:event_btnViewIdActionPerformed
 
     /**
      * @param args the command line arguments
@@ -701,6 +768,9 @@ public class freelancerRegistrationForm extends javax.swing.JFrame {
     private javax.swing.JButton btnRes;
     public javax.swing.JButton btnSave;
     private javax.swing.JButton btnUp;
+    private javax.swing.JButton btnVIewRes;
+    private javax.swing.JButton btnViewId;
+    private javax.swing.JButton btnViewImg;
     public javax.swing.JComboBox<String> comboEducation;
     public javax.swing.JComboBox<String> comboGender;
     public com.toedter.calendar.JDateChooser dateField;
@@ -731,14 +801,11 @@ public class freelancerRegistrationForm extends javax.swing.JFrame {
     public javax.swing.JTextField txtEmail;
     public javax.swing.JTextField txtFName;
     public javax.swing.JTextField txtHourlyRate;
-    private javax.swing.JTextField txtID;
-    public javax.swing.JTextField txtImage;
     public javax.swing.JTextField txtLName;
     public javax.swing.JTextField txtLatestWork;
     public javax.swing.JTextField txtLoc;
     public javax.swing.JTextField txtPhone;
     public javax.swing.JTextField txtPortfolio;
-    private javax.swing.JTextField txtRes;
     public javax.swing.JTextField txtUName;
     public javax.swing.JTextField txtWorkExp;
     // End of variables declaration//GEN-END:variables
