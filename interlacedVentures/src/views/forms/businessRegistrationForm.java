@@ -4,6 +4,10 @@
  */
 package views.forms;
 
+import java.awt.Desktop;
+import java.io.File;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 import models.BusinessUsersDirectory;
 import models.business;
 import models.userDirectory;
@@ -22,6 +26,8 @@ public class businessRegistrationForm extends javax.swing.JFrame {
     public businessRegistrationForm() {
         initComponents();
     }
+    
+    private String filepath1 = "";
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -50,7 +56,10 @@ public class businessRegistrationForm extends javax.swing.JFrame {
         txtOwner = new javax.swing.JTextField();
         pwdField = new javax.swing.JPasswordField();
         btnReg = new javax.swing.JButton();
-        txtLicense = new javax.swing.JLabel();
+        btnViewBusi = new javax.swing.JButton();
+        btnUpload = new javax.swing.JButton();
+        jLabUploadLic = new javax.swing.JLabel();
+        lblLicense = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
 
         jToggleButton1.setText("jToggleButton1");
@@ -58,26 +67,27 @@ public class businessRegistrationForm extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 204));
 
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(null);
 
-        label_businessForm.setFont(new java.awt.Font("Baloo Bhaijaan", 1, 24)); // NOI18N
+        label_businessForm.setFont(new java.awt.Font("Baloo Bhaijaan", 1, 30)); // NOI18N
         label_businessForm.setText("REGISTER YOUR BUSINESS");
         jPanel2.add(label_businessForm);
-        label_businessForm.setBounds(180, 50, 380, 60);
+        label_businessForm.setBounds(170, 20, 380, 60);
 
         Labelname.setBackground(new java.awt.Color(255, 204, 255));
         Labelname.setFont(new java.awt.Font("InaiMathi", 1, 14)); // NOI18N
         Labelname.setText("NAME");
         jPanel2.add(Labelname);
-        Labelname.setBounds(160, 160, 74, 32);
+        Labelname.setBounds(130, 110, 74, 32);
 
         LabelEmail.setBackground(new java.awt.Color(255, 204, 255));
         LabelEmail.setFont(new java.awt.Font("InaiMathi", 1, 14)); // NOI18N
         LabelEmail.setText("EMAIL");
         jPanel2.add(LabelEmail);
-        LabelEmail.setBounds(160, 220, 37, 18);
+        LabelEmail.setBounds(130, 170, 37, 18);
         jPanel2.add(txtPhNo);
-        txtPhNo.setBounds(300, 270, 223, 23);
+        txtPhNo.setBounds(270, 220, 223, 23);
 
         txtName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -85,63 +95,93 @@ public class businessRegistrationForm extends javax.swing.JFrame {
             }
         });
         jPanel2.add(txtName);
-        txtName.setBounds(300, 160, 223, 23);
+        txtName.setBounds(270, 110, 223, 23);
 
         LabelPhNo.setBackground(new java.awt.Color(255, 204, 255));
         LabelPhNo.setFont(new java.awt.Font("InaiMathi", 1, 14)); // NOI18N
         LabelPhNo.setText("PHONE NUMBER");
         jPanel2.add(LabelPhNo);
-        LabelPhNo.setBounds(160, 280, 100, 18);
+        LabelPhNo.setBounds(130, 230, 100, 18);
         jPanel2.add(txtEmail);
-        txtEmail.setBounds(300, 220, 223, 23);
+        txtEmail.setBounds(270, 160, 223, 23);
 
         labelLocation.setBackground(new java.awt.Color(255, 204, 255));
         labelLocation.setFont(new java.awt.Font("InaiMathi", 1, 14)); // NOI18N
         labelLocation.setText("LOCATION");
         jPanel2.add(labelLocation);
-        labelLocation.setBounds(160, 330, 88, 18);
+        labelLocation.setBounds(130, 280, 88, 18);
         jPanel2.add(txtLoc);
-        txtLoc.setBounds(300, 320, 223, 23);
+        txtLoc.setBounds(270, 270, 223, 23);
 
         ownerNameLabel.setBackground(new java.awt.Color(255, 204, 255));
         ownerNameLabel.setFont(new java.awt.Font("InaiMathi", 1, 14)); // NOI18N
         ownerNameLabel.setText("OWNER NAME");
         jPanel2.add(ownerNameLabel);
-        ownerNameLabel.setBounds(160, 440, 87, 18);
+        ownerNameLabel.setBounds(130, 390, 87, 18);
 
         webLabel.setBackground(new java.awt.Color(255, 204, 255));
         webLabel.setFont(new java.awt.Font("InaiMathi", 1, 14)); // NOI18N
         webLabel.setText("WEBSITE");
         jPanel2.add(webLabel);
-        webLabel.setBounds(160, 380, 88, 18);
+        webLabel.setBounds(130, 330, 88, 18);
 
         setPasswordLabel.setBackground(new java.awt.Color(255, 204, 255));
         setPasswordLabel.setFont(new java.awt.Font("InaiMathi", 1, 14)); // NOI18N
         setPasswordLabel.setText("SET PASSWORD");
         jPanel2.add(setPasswordLabel);
-        setPasswordLabel.setBounds(160, 490, 100, 18);
+        setPasswordLabel.setBounds(130, 440, 100, 18);
         jPanel2.add(txtWebsite);
-        txtWebsite.setBounds(300, 380, 223, 23);
+        txtWebsite.setBounds(270, 330, 223, 23);
         jPanel2.add(txtOwner);
-        txtOwner.setBounds(300, 430, 223, 23);
+        txtOwner.setBounds(270, 380, 223, 23);
 
         pwdField.setText("jPasswordField1");
         jPanel2.add(pwdField);
-        pwdField.setBounds(300, 490, 223, 23);
+        pwdField.setBounds(270, 440, 223, 23);
 
+        btnReg.setBackground(new java.awt.Color(255, 255, 204));
         btnReg.setFont(new java.awt.Font("InaiMathi", 1, 14)); // NOI18N
         btnReg.setText("REGISTER");
+        btnReg.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnReg.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRegActionPerformed(evt);
             }
         });
         jPanel2.add(btnReg);
-        btnReg.setBounds(300, 580, 120, 30);
+        btnReg.setBounds(270, 550, 170, 60);
 
-        txtLicense.setIcon(new javax.swing.ImageIcon(getClass().getResource("/views/Images/charming-bearded-business-man-character-cartoon-modern-flat-design-charming-bearded-business-man-character-cartoon-modern-flat-130073628.jpeg"))); // NOI18N
-        jPanel2.add(txtLicense);
-        txtLicense.setBounds(-180, 0, 950, 1300);
+        btnViewBusi.setBackground(new java.awt.Color(255, 255, 204));
+        btnViewBusi.setText("VIEW");
+        btnViewBusi.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnViewBusi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnViewBusiActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btnViewBusi);
+        btnViewBusi.setBounds(410, 490, 110, 30);
+
+        btnUpload.setBackground(new java.awt.Color(255, 255, 204));
+        btnUpload.setFont(new java.awt.Font("InaiMathi", 1, 12)); // NOI18N
+        btnUpload.setText("UPLOAD");
+        btnUpload.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnUpload.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUploadActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btnUpload);
+        btnUpload.setBounds(280, 490, 120, 30);
+
+        jLabUploadLic.setFont(new java.awt.Font("InaiMathi", 1, 13)); // NOI18N
+        jLabUploadLic.setText("UPLOAD YOUR LICENSE");
+        jPanel2.add(jLabUploadLic);
+        jLabUploadLic.setBounds(130, 480, 140, 40);
+
+        lblLicense.setIcon(new javax.swing.ImageIcon(getClass().getResource("/views/Images/charming-bearded-business-man-character-cartoon-modern-flat-design-charming-bearded-business-man-character-cartoon-modern-flat-130073628.jpeg"))); // NOI18N
+        jPanel2.add(lblLicense);
+        lblLicense.setBounds(-180, 90, 950, 1300);
 
         jTextField2.setText("jTextField2");
         jPanel2.add(jTextField2);
@@ -178,7 +218,7 @@ public class businessRegistrationForm extends javax.swing.JFrame {
                 txtLoc.getText(),
                 txtWebsite.getText(),
                 txtOwner.getText(),
-                txtLicense.getText());
+                btnViewBusi.getText());
                 
         BusinessUsersDirectory.getInstance().addBusinessUser(bus);
         users login = new users(txtName.getText(),pwdField.getText(),"Business User");
@@ -188,6 +228,42 @@ public class businessRegistrationForm extends javax.swing.JFrame {
         loginPage lp = new loginPage();
         lp.show();
     }//GEN-LAST:event_btnRegActionPerformed
+
+    private void btnUploadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUploadActionPerformed
+        // TODO add your handling code here:
+        JFileChooser fileChooser = new JFileChooser();
+        int selected = fileChooser.showOpenDialog(this);
+        try{
+            if(selected == JFileChooser.APPROVE_OPTION) {
+                File file = fileChooser.getSelectedFile();
+                filepath1 = file.getAbsolutePath();
+           
+            } 
+        }
+        catch(Exception e) {
+            JOptionPane.showMessageDialog(null, "File Not Uploaded");
+        }
+    }//GEN-LAST:event_btnUploadActionPerformed
+
+    private void btnViewBusiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewBusiActionPerformed
+        // TODO add your handling code here:
+        try{
+            File pdf1 = new File(filepath1);
+            if(pdf1.exists()){
+                if(Desktop.isDesktopSupported()){
+                    Desktop.getDesktop().open(pdf1);
+                }
+                else{
+                    JOptionPane.showMessageDialog(null, "Desktop is not supported");
+                }
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "FIle does not exist");
+            }
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }//GEN-LAST:event_btnViewBusiActionPerformed
 
     /**
      * @param args the command line arguments
@@ -229,16 +305,19 @@ public class businessRegistrationForm extends javax.swing.JFrame {
     private javax.swing.JLabel LabelPhNo;
     private javax.swing.JLabel Labelname;
     private javax.swing.JButton btnReg;
+    private javax.swing.JButton btnUpload;
+    private javax.swing.JButton btnViewBusi;
+    private javax.swing.JLabel jLabUploadLic;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JLabel labelLocation;
     private javax.swing.JLabel label_businessForm;
+    private javax.swing.JLabel lblLicense;
     private javax.swing.JLabel ownerNameLabel;
     private javax.swing.JPasswordField pwdField;
     private javax.swing.JLabel setPasswordLabel;
     private javax.swing.JTextField txtEmail;
-    private javax.swing.JLabel txtLicense;
     private javax.swing.JTextField txtLoc;
     private javax.swing.JTextField txtName;
     private javax.swing.JTextField txtOwner;
