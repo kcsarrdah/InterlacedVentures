@@ -6,6 +6,8 @@ package views.dashBoards;
 
 import java.util.Date;
 import javax.swing.table.DefaultTableModel;
+import models.AuditOrderDirectory;
+import models.AuditingOrder;
 import models.BillsDirectory;
 import models.OrdersDirectory;
 import models.bills;
@@ -73,6 +75,11 @@ public class ViewItemsFinAndLegal extends javax.swing.JFrame {
         });
 
         jButton3.setText("DISAPPROVE");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButton4.setText("VIEW DETAILS");
 
@@ -164,6 +171,37 @@ public class ViewItemsFinAndLegal extends javax.swing.JFrame {
             BillsDirectory.getInstance().addBill(bill);
         }
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        DefaultTableModel tableModel = (DefaultTableModel) tabelFinReq.getModel();
+        String description = tableModel.getValueAt(tabelFinReq.getSelectedRow(), 4).toString();
+        
+        //for loop to find the relevant selected order in tfrom the given table.
+        for(int i = 0; i < AuditOrderDirectory.getInstance().getAuditOrderDir().size(); i++){
+            
+            if(AuditOrderDirectory.getInstance().getAuditOrderDir().get(i).getDetails().equals(description)){
+                String name = AuditOrderDirectory.getInstance().getAuditOrderDir().get(i).getRequestTo();
+                
+                //for loop to find a relevant employee and add him on the job order object is updated here.
+                        AuditingOrder audit = new AuditingOrder(
+                                AuditOrderDirectory.getInstance().getAuditOrderDir().get(i).getAuditPath(),
+                                AuditOrderDirectory.getInstance().getAuditOrderDir().get(i).getRole(),
+                                AuditOrderDirectory.getInstance().getAuditOrderDir().get(i).getAssignedTo(),
+                                AuditOrderDirectory.getInstance().getAuditOrderDir().get(i).getService(),
+                                AuditOrderDirectory.getInstance().getAuditOrderDir().get(i).getOrderedBy(),
+                                AuditOrderDirectory.getInstance().getAuditOrderDir().get(i).getRequestTo(),
+                                "Rejected",
+                                AuditOrderDirectory.getInstance().getAuditOrderDir().get(i).getDate(),
+                                AuditOrderDirectory.getInstance().getAuditOrderDir().get(i).getAmount(),
+                                AuditOrderDirectory.getInstance().getAuditOrderDir().get(i).getDetails()
+                        );
+                        AuditOrderDirectory.getInstance().updateAuditOrder(audit, i);
+                        tableModel.removeRow(tabelFinReq.getSelectedRow());
+                break;
+            }
+        }
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
