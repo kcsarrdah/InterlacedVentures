@@ -15,6 +15,9 @@ import models.employee;
 import models.freelancer;
 import models.userDirectory;
 import models.users;
+import views.dashBoards.FinAndLegalDashBoard;
+import views.dashBoards.OperationsAdminDashboard;
+import views.dashBoards.TechAdminDashboard;
 
 /**
  *
@@ -148,6 +151,21 @@ public class ViewInterViewRequestsForm extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
+        if(lblName.getText().equals("TechAdmin")){
+            TechAdminDashboard ta = new TechAdminDashboard();
+            ta.show();
+            dispose();
+        }
+        else if(lblName.getText().equals("Operations Admin")){
+            OperationsAdminDashboard oa = new OperationsAdminDashboard();
+            oa.show();
+            dispose();
+        }
+        else if(lblName.getText().equals("Financial Admin")){
+            FinAndLegalDashBoard fd = new FinAndLegalDashBoard();
+            fd.show();
+            dispose();
+        }
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed

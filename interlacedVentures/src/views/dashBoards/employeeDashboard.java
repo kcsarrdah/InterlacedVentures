@@ -4,13 +4,20 @@
  */
 package views.dashBoards;
 
+import java.awt.Desktop;
+import java.io.File;
 import java.util.Date;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import models.AuditOrderDirectory;
+import models.AuditingOrder;
 import models.BillsDirectory;
 import models.EmployeeDirectory;
 import models.OrdersDirectory;
 import models.bills;
 import models.orders;
+import models.taxationFormDirectory;
+import views.forms.CATaxationForm;
 import views.forms.FileComplainForm;
 import views.forms.employeeRegistrationForm;
 import views.loginPage;
@@ -99,6 +106,11 @@ public class employeeDashboard extends javax.swing.JFrame {
         labelRole.setText("Role");
 
         jButton4.setText("View Documents");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -108,15 +120,16 @@ public class employeeDashboard extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(23, 23, 23)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblEmpName, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnViewProf, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnViewProf, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
+                            .addComponent(lblEmpName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 162, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(labelRole, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 162, Short.MAX_VALUE)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(labelRole, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(51, 51, 51)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addGroup(jPanel1Layout.createSequentialGroup()
@@ -177,15 +190,58 @@ public class employeeDashboard extends javax.swing.JFrame {
         DefaultTableModel tableModel = (DefaultTableModel) WorkTable.getModel();
         String description = tableModel.getValueAt(WorkTable.getSelectedRow(), 0).toString();
         
-        //for loop to find the relevant selected order in tfrom the given table.
-        for(int i = 0; i < OrdersDirectory.getInstance().getOrdersDir().size(); i++){
+        
+        
+        if(labelRole.getText().equals("Chartered Accountant")){
+            String Service = tableModel.getValueAt(WorkTable.getSelectedRow(), 2).toString();
+            if(!Service.equals("Taxation")){
+                for(int i = 0; i < AuditOrderDirectory.getInstance().getAuditOrderDir().size(); i++){
+            
+                    if(AuditOrderDirectory.getInstance().getAuditOrderDir().get(i).getDetails().equals(description)){
+                        String name = AuditOrderDirectory.getInstance().getAuditOrderDir().get(i).getRequestTo();
+                        amt = AuditOrderDirectory.getInstance().getAuditOrderDir().get(i).getAmount();
+                        rctno = i+2500;
+
+
+                                AuditingOrder order = new AuditingOrder(
+                                        AuditOrderDirectory.getInstance().getAuditOrderDir().get(i).getAuditPath(),
+                                        AuditOrderDirectory.getInstance().getAuditOrderDir().get(i).getRole(),
+                                        AuditOrderDirectory.getInstance().getAuditOrderDir().get(i).getAssignedTo(),
+                                        AuditOrderDirectory.getInstance().getAuditOrderDir().get(i).getService(),
+                                        AuditOrderDirectory.getInstance().getAuditOrderDir().get(i).getOrderedBy(),
+                                       AuditOrderDirectory.getInstance().getAuditOrderDir().get(i).getRequestTo(),
+                                        "Completed",
+                                        AuditOrderDirectory.getInstance().getAuditOrderDir().get(i).getDate(),
+                                        AuditOrderDirectory.getInstance().getAuditOrderDir().get(i).getAmount(),
+                                        AuditOrderDirectory.getInstance().getAuditOrderDir().get(i).getDetails()
+                                );
+                                AuditOrderDirectory.getInstance().updateAuditOrder(order, i);
+
+                                tableModel.removeRow(WorkTable.getSelectedRow());
+
+                            bills bill = new bills (
+                            AuditOrderDirectory.getInstance().getAuditOrderDir().get(i).getOrderedBy(),
+                            new Date(), 
+                            amt, 
+                            AuditOrderDirectory.getInstance().getAuditOrderDir().get(i).getService(), 
+                            name, 
+                            rctno);
+                            BillsDirectory.getInstance().addBill(bill);
+                            break;
+                    }
+                }
+            }
+            
+            else{
+                for(int i = 0; i < OrdersDirectory.getInstance().getOrdersDir().size(); i++){
+                
+                //System.out.println("Inside IFF");
             
             if(OrdersDirectory.getInstance().getOrdersDir().get(i).getDetails().equals(description)){
                 String name = OrdersDirectory.getInstance().getOrdersDir().get(i).getRequestTo();
                 amt = OrdersDirectory.getInstance().getOrdersDir().get(i).getAmount();
-                rctno = i+2500;
+                rctno = i+25055;
                 
-                //for loop to find a relevant employee and add him on the job order object is updated here.
                         orders order = new orders(
                                 OrdersDirectory.getInstance().getOrdersDir().get(i).getRole(),
                                 OrdersDirectory.getInstance().getOrdersDir().get(i).getAssignedTo(),
@@ -201,7 +257,7 @@ public class employeeDashboard extends javax.swing.JFrame {
                         tableModel.removeRow(WorkTable.getSelectedRow());
                         
                         bills bill = new bills (
-                    name,
+                    OrdersDirectory.getInstance().getOrdersDir().get(i).getOrderedBy(),
                     new Date(), 
                     amt, 
                     OrdersDirectory.getInstance().getOrdersDir().get(i).getService(), 
@@ -209,8 +265,53 @@ public class employeeDashboard extends javax.swing.JFrame {
                     rctno);
                     BillsDirectory.getInstance().addBill(bill);
                 break;
+                }
+            }
+                
+            }
+            
+
+        }
+        
+        
+        else{
+            for(int i = 0; i < OrdersDirectory.getInstance().getOrdersDir().size(); i++){
+                
+                //System.out.println("Inside IFF");
+            
+            if(OrdersDirectory.getInstance().getOrdersDir().get(i).getDetails().equals(description)){
+                String name = OrdersDirectory.getInstance().getOrdersDir().get(i).getRequestTo();
+                amt = OrdersDirectory.getInstance().getOrdersDir().get(i).getAmount();
+                rctno = i+25055;
+                
+                        orders order = new orders(
+                                OrdersDirectory.getInstance().getOrdersDir().get(i).getRole(),
+                                OrdersDirectory.getInstance().getOrdersDir().get(i).getAssignedTo(),
+                                OrdersDirectory.getInstance().getOrdersDir().get(i).getService(),
+                                OrdersDirectory.getInstance().getOrdersDir().get(i).getOrderedBy(),
+                                OrdersDirectory.getInstance().getOrdersDir().get(i).getRequestTo(),
+                                "Completed",
+                                OrdersDirectory.getInstance().getOrdersDir().get(i).getDate(),
+                                OrdersDirectory.getInstance().getOrdersDir().get(i).getAmount(),
+                                OrdersDirectory.getInstance().getOrdersDir().get(i).getDetails()
+                        );
+                        OrdersDirectory.getInstance().updateOrder(order, i);
+                        tableModel.removeRow(WorkTable.getSelectedRow());
+                        
+                        bills bill = new bills (
+                    OrdersDirectory.getInstance().getOrdersDir().get(i).getOrderedBy(),
+                    new Date(), 
+                    amt, 
+                    OrdersDirectory.getInstance().getOrdersDir().get(i).getService(), 
+                    name, 
+                    rctno);
+                    BillsDirectory.getInstance().addBill(bill);
+                break;
+                }
             }
         }
+        
+        
         
         
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -281,6 +382,55 @@ public class employeeDashboard extends javax.swing.JFrame {
         fcf.jcDept.addItem("FreeLancers");
         fcf.show();
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        String service = WorkTable.getValueAt(WorkTable.getSelectedRow(), 2).toString();
+        
+        if(!service.equals("Taxation")){
+        String filePath = WorkTable.getValueAt(WorkTable.getSelectedRow(), 2).toString();
+ 
+        try{
+            File pdf1 = new File(filePath);
+            if(pdf1.exists()){
+                if(Desktop.isDesktopSupported()){
+                    Desktop.getDesktop().open(pdf1);
+                }
+                else{
+                    JOptionPane.showMessageDialog(null, "Desktop is not supported");
+                }
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "FIle does not exist");
+            }
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, e);
+            }
+        
+        }//end of if
+        
+        else{
+            
+            int frmNo =  Integer.parseInt(WorkTable.getValueAt(WorkTable.getSelectedRow(), 0).toString());
+            System.out.println(frmNo);
+            for(int i = 0; i < taxationFormDirectory.getInstance().getTaxationFormDir().size(); i++){
+                if(taxationFormDirectory.getInstance().getTaxationFormDir().get(i).getFormNo() == frmNo){
+                    CATaxationForm ctf = new CATaxationForm();
+                    ctf.tfAssets.setText(taxationFormDirectory.getInstance().getTaxationFormDir().get(i).getAssets());
+                    ctf.tfExpense.setText(Integer.toString(taxationFormDirectory.getInstance().getTaxationFormDir().get(i).getAnnualExpense()));
+                    ctf.tfIncome.setText(Integer.toString(taxationFormDirectory.getInstance().getTaxationFormDir().get(i).getAnnualInc()));
+                    ctf.tfProfit.setText(Integer.toString(taxationFormDirectory.getInstance().getTaxationFormDir().get(i).getAnnualProfit()));
+                    ctf.lblFormNo.setText(Integer.toString(frmNo));
+                    
+                    ctf.show();
+                }
+            }
+            
+            
+        }
+
+        
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments

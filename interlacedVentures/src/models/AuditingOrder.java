@@ -11,7 +11,10 @@ package models;
 public class AuditingOrder extends orders{
     private String auditPath;
 
-    public AuditingOrder(String auditPath, String role, String assignedTo, String Service, String OrderedBy, String RequestTo, String Status, java.util.Date Date, float Amount, String Details) {
+    public AuditingOrder(String auditPath,
+            String role,
+            String assignedTo,
+            String Service, String OrderedBy, String RequestTo, String Status, java.util.Date Date, float Amount, String Details) {
         super(role, assignedTo, Service, OrderedBy, RequestTo, Status, Date, Amount, Details);
         this.auditPath = auditPath;
     }

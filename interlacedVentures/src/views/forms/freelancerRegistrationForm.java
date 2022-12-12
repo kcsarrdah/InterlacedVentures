@@ -790,7 +790,7 @@ public class freelancerRegistrationForm extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btnBack;
-    private javax.swing.JButton btnEdit;
+    public javax.swing.JButton btnEdit;
     private javax.swing.JButton btnID;
     public javax.swing.JButton btnReg;
     private javax.swing.JButton btnRes;

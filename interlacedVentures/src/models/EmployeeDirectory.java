@@ -113,7 +113,7 @@ public class EmployeeDirectory {
         Statement stmt;
         try {
             stmt = DatabaseConnectionClass.getInstance().getCon().createStatement();
-            String query1 = "Update Employees " + "set LastName=?,FirstName=?,Email=?,Gender=?,PhoneNumber=?,Location=?,Salary=? where UserName=?";
+            String query1 = "Update Employees " + "set LastName=?,FirstName=?,Email=?,Gender=?,PhoneNumber=?,Location=?,Salary=?,Status=? where UserName=?";
             PreparedStatement pst = DatabaseConnectionClass.getInstance().getCon().prepareStatement(query1);
             pst.setString(1, emp.getLastName());
             
@@ -129,7 +129,9 @@ public class EmployeeDirectory {
             
             pst.setInt(7,emp.getSalary());
             
-            pst.setString(8, emp.getUsername());
+            pst.setBoolean(8, emp.isStatus());
+            
+            pst.setString(9, emp.getUsername());
             
             int rs = pst.executeUpdate();
             if(rs>0)

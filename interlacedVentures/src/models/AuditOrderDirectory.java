@@ -55,6 +55,7 @@ public class  AuditOrderDirectory{
             }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null,"Cannot be Inserted");
+            System.out.println(ex);
         }
     }
     

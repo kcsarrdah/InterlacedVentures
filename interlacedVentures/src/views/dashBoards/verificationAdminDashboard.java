@@ -195,7 +195,8 @@ public class verificationAdminDashboard extends javax.swing.JFrame {
         String[] columnNames = {"UserName", "FirstName", "LastName", "Skill", "Resume", "ID"};
         int j = 0;
         for(int i=0; i < ApplicationDirectory.getInstance().getApplicationDir().size(); i++){
-            if(!ApplicationDirectory.getInstance().getApplicationDir().get(i).getAppStatus().equals("Completed")){
+            if(!ApplicationDirectory.getInstance().getApplicationDir().get(i).getAppStatus().equals("Completed") && 
+                    !ApplicationDirectory.getInstance().getApplicationDir().get(i).getAppStatus().equals("STA")){
                 rows[j][0] = ApplicationDirectory.getInstance().getApplicationDir().get(i).getUsername();
                 rows[j][1] = ApplicationDirectory.getInstance().getApplicationDir().get(i).getFirstName();
                 rows[j][2] = ApplicationDirectory.getInstance().getApplicationDir().get(i).getLastName();

@@ -218,7 +218,7 @@ public class employeeRegistrationForm extends javax.swing.JFrame {
 
         jLabel2.setText("ROLE");
 
-        comboRole.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Front-end Developer", "Game Developer", "Security Engineer", "Software Engineer", "Mobile Developer", "DevOps Engineer", "Data Analyst", "Databse Administrator", "Data Scientist", "Machine Learning Engineer", "Hardware engineer", "Cloud Software Engineer", "Cloud Consultant", "Server Manager", "Driver", "Storage Manager", "Chartered Accountant", " " }));
+        comboRole.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Web Design", "Video Game", "Cyber-Security", "Software Developement", "Mobile Developement", "Version Control", "Data Analysis", "Data Management", "Business Intelligence", "Machine Learning", "Aurdino UNO", "BeagleBoard X1", "featherboards", "Aurdino naro", "Seeduino", "Pocketbeagle", "SaaS", "PaaS", "Faas", "Servers", "Driver", "Storage", "Chartered Accountant", " " }));
         comboRole.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboRoleActionPerformed(evt);
@@ -611,12 +611,12 @@ public class employeeRegistrationForm extends javax.swing.JFrame {
         // TODO add your handling code here:
         
         String UName = txtUName.getText();
-        
+        String string = new String(pwdField.getPassword());
             employee free = new employee(
             comboOrg.getSelectedItem().toString(),
             txtLoc.getText(),
             dateField.getDate(),
-            pwdField.getText(),
+            string,
             comboRole.getSelectedItem().toString(),
             Integer.parseInt(txtWorkExp.getText()),
             Integer.parseInt(txtSalary.getText()),

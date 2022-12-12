@@ -7,11 +7,13 @@ package views.dashBoards;
 import java.text.Format;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import models.BillsDirectory;
 import models.EmployeeDirectory;
 import models.OrdersDirectory;
 import models.bills;
+import models.employee;
 import models.orders;
 
 /**
@@ -159,17 +161,26 @@ public class ViewItemsTech extends javax.swing.JFrame {
         // TODO add your handling code here:
         
         DefaultTableModel tableModel = (DefaultTableModel) tblTechReq.getModel();
-        String role = tableModel.getValueAt(tblTechReq.getSelectedRow(), 2).toString();
+        String role = tableModel.getValueAt(tblTechReq.getSelectedRow(), 3).toString();
         System.out.println(role);
         String name = tblTechReq.getValueAt(tblTechReq.getSelectedRow(), 0).toString();
         String Desc = tblTechReq.getValueAt(tblTechReq.getSelectedRow(), 4).toString();
         
+        int flag = 0;
+        
           for(int i = 0; i < OrdersDirectory.getInstance().getOrdersDir().size(); i++){
+              
             if(OrdersDirectory.getInstance().getOrdersDir().get(i).getDetails().equals(Desc))
+                
                 //for loop to find a relevant employee and add him on the job order object is updated here.
+                
                 for(int j = 0;  j < EmployeeDirectory.getInstance().getEmployeeDir().size(); j++){
                     
-                    if(EmployeeDirectory.getInstance().getEmployeeDir().get(j).getRole().equals(role)){
+                    System.out.println(EmployeeDirectory.getInstance().getEmployeeDir().get(i).getRole());
+                    
+                    if(EmployeeDirectory.getInstance().getEmployeeDir().get(j).getRole().equals(role) && 
+                            EmployeeDirectory.getInstance().getEmployeeDir().get(j).isStatus()){
+                        
                         orders order = new orders(
                                 role,
                                 EmployeeDirectory.getInstance().getEmployeeDir().get(j).getFirstName(),
@@ -182,12 +193,42 @@ public class ViewItemsTech extends javax.swing.JFrame {
                                 Desc
                         );
                         OrdersDirectory.getInstance().updateOrder(order, i);
-
-                    }
                         
+                        employee emp = new employee(
+                        EmployeeDirectory.getInstance().getEmployeeDir().get(i).getOrganisation(),
+                                EmployeeDirectory.getInstance().getEmployeeDir().get(i).getLocation(),
+                               EmployeeDirectory.getInstance().getEmployeeDir().get(i).getDateOfJoining(),
+                                EmployeeDirectory.getInstance().getEmployeeDir().get(i).getPassword(),
+                                EmployeeDirectory.getInstance().getEmployeeDir().get(i).getRole(),
+                                EmployeeDirectory.getInstance().getEmployeeDir().get(i).getWorkEx(),
+                                EmployeeDirectory.getInstance().getEmployeeDir().get(i).getSalary(),
+                                EmployeeDirectory.getInstance().getEmployeeDir().get(i).getLatestWork(),
+                                EmployeeDirectory.getInstance().getEmployeeDir().get(i).getEducation(),
+                                EmployeeDirectory.getInstance().getEmployeeDir().get(i).getSkills(),
+                                EmployeeDirectory.getInstance().getEmployeeDir().get(i).getUsername(),
+                                EmployeeDirectory.getInstance().getEmployeeDir().get(i).getFirstName(),
+                                EmployeeDirectory.getInstance().getEmployeeDir().get(i).getLastName(),
+                                EmployeeDirectory.getInstance().getEmployeeDir().get(i).getAge(),
+                                EmployeeDirectory.getInstance().getEmployeeDir().get(i).getGender(),
+                                EmployeeDirectory.getInstance().getEmployeeDir().get(i).getPhoneNumber(),
+                                EmployeeDirectory.getInstance().getEmployeeDir().get(i).getEmail(),
+                                EmployeeDirectory.getInstance().getEmployeeDir().get(i).getImagePath(),
+                                EmployeeDirectory.getInstance().getEmployeeDir().get(i).getResPath(),
+                                EmployeeDirectory.getInstance().getEmployeeDir().get(i).getIdPath(),
+                                false);
+                        System.out.println(emp.isStatus());
+                        
+                        EmployeeDirectory.getInstance().updateEmployee(emp, j);
+                        flag ++;
+
+                    }   
                         //tableModel.removeRow(tblTechReq.getSelectedRow());
                 
                 }
+
+            }
+            if(flag == 0){
+                JOptionPane.showMessageDialog(this, "You dont have Employess left for this role");
             }
         
 

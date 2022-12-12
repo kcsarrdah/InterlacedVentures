@@ -6,6 +6,7 @@ package views.dashBoards;
 
 import javax.swing.table.DefaultTableModel;
 import models.ApplicationDirectory;
+import models.AuditOrderDirectory;
 import models.EmployeeDirectory;
 import models.OrdersDirectory;
 import views.Orgs.FinanceAndLegal.Consultancy;
@@ -147,18 +148,33 @@ public class FinAndLegalDashBoard extends javax.swing.JFrame {
         this.hide();
         ViewItemsFinAndLegal vifl = new ViewItemsFinAndLegal();
         vifl.labelRequest.setText(bttnServReq.getText());
-        String[] columnNames = {"Order From", "Organisation", "Service Requested"};
-        int n = OrdersDirectory.getInstance().getOrdersDir().size();
-        String[][] rows = new String[n][3];
+        
+        String[] columnNames = {"Order From", "Organisation", "Details", "Service Requested"};
+        int n = OrdersDirectory.getInstance().getOrdersDir().size() + AuditOrderDirectory.getInstance().getAuditOrderDir().size();
+        String[][] rows = new String[n][4];
         int j=0;
-        for(int i = 0;  i<n ; i++){
+        for(int i = 0;  i<OrdersDirectory.getInstance().getOrdersDir().size(); i++){
             if(!OrdersDirectory.getInstance().getOrdersDir().get(i).getStatus().equals("Completed")){
                 rows[j][0] = OrdersDirectory.getInstance().getOrdersDir().get(i).getOrderedBy();
                 rows[j][1] = OrdersDirectory.getInstance().getOrdersDir().get(i).getRequestTo();
-                rows[j][2] = OrdersDirectory.getInstance().getOrdersDir().get(i).getService();           
+                rows[j][2] = OrdersDirectory.getInstance().getOrdersDir().get(i).getDetails();
+                rows[j][3] = OrdersDirectory.getInstance().getOrdersDir().get(i).getService();           
                 j++;
             }
         }
+        j = 0;
+        for(int i = 0;  i<AuditOrderDirectory.getInstance().getAuditOrderDir().size(); i++){
+            if(!AuditOrderDirectory.getInstance().getAuditOrderDir().get(i).getStatus().equals("Completed")){
+                rows[j][0] = AuditOrderDirectory.getInstance().getAuditOrderDir().get(i).getOrderedBy();
+                rows[j][1] = AuditOrderDirectory.getInstance().getAuditOrderDir().get(i).getRequestTo();
+                rows[j][2] = AuditOrderDirectory.getInstance().getAuditOrderDir().get(i).getDetails();
+                rows[j][3] = AuditOrderDirectory.getInstance().getAuditOrderDir().get(i).getService();           
+                j++;
+            }
+        }
+        
+        
+        
         DefaultTableModel dtm = new DefaultTableModel (rows, columnNames);
         vifl.tabelFinReq.setModel(dtm);
         vifl.show();
@@ -214,7 +230,7 @@ public class FinAndLegalDashBoard extends javax.swing.JFrame {
     private void bttnInterReqActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttnInterReqActionPerformed
         // TODO add your handling code here:
         ViewInterViewRequestsForm vf = new ViewInterViewRequestsForm();
-        vf.lblName.setText("Operations Admin");
+        vf.lblName.setText("Financial Admin");
         
         String[][] rows = new String[ApplicationDirectory.getInstance().getApplicationDir().size()][4];
         String[] columnNames = {"First Name", "Last Name", "UserName", "Role"};

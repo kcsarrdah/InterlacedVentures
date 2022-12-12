@@ -494,25 +494,31 @@
     <Component class="javax.swing.JComboBox" name="comboRole">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="18">
-            <StringItem index="0" value="Front-end Developer"/>
-            <StringItem index="1" value="Game Developer"/>
-            <StringItem index="2" value="Security Engineer"/>
-            <StringItem index="3" value="Software Engineer"/>
-            <StringItem index="4" value="Mobile Developer"/>
-            <StringItem index="5" value="DevOps Engineer"/>
-            <StringItem index="6" value="Data Analyst"/>
-            <StringItem index="7" value="Databse Administrator"/>
-            <StringItem index="8" value="Data Scientist"/>
-            <StringItem index="9" value="Machine Learning Engineer"/>
-            <StringItem index="10" value="Hardware engineer"/>
-            <StringItem index="11" value="Cloud Software Engineer"/>
-            <StringItem index="12" value="Cloud Consultant"/>
-            <StringItem index="13" value="Server Manager"/>
-            <StringItem index="14" value="Driver"/>
-            <StringItem index="15" value="Storage Manager"/>
-            <StringItem index="16" value="Chartered Accountant"/>
-            <StringItem index="17" value=" "/>
+          <StringArray count="24">
+            <StringItem index="0" value="Web Design"/>
+            <StringItem index="1" value="Video Game"/>
+            <StringItem index="2" value="Cyber-Security"/>
+            <StringItem index="3" value="Software Developement"/>
+            <StringItem index="4" value="Mobile Developement"/>
+            <StringItem index="5" value="Version Control"/>
+            <StringItem index="6" value="Data Analysis"/>
+            <StringItem index="7" value="Data Management"/>
+            <StringItem index="8" value="Business Intelligence"/>
+            <StringItem index="9" value="Machine Learning"/>
+            <StringItem index="10" value="Aurdino UNO"/>
+            <StringItem index="11" value="BeagleBoard X1"/>
+            <StringItem index="12" value="featherboards"/>
+            <StringItem index="13" value="Aurdino naro"/>
+            <StringItem index="14" value="Seeduino"/>
+            <StringItem index="15" value="Pocketbeagle"/>
+            <StringItem index="16" value="SaaS"/>
+            <StringItem index="17" value="PaaS"/>
+            <StringItem index="18" value="Faas"/>
+            <StringItem index="19" value="Servers"/>
+            <StringItem index="20" value="Driver"/>
+            <StringItem index="21" value="Storage"/>
+            <StringItem index="22" value="Chartered Accountant"/>
+            <StringItem index="23" value=" "/>
           </StringArray>
         </Property>
       </Properties>

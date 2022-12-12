@@ -4,6 +4,7 @@
  */
 package views.dashBoards;
 
+import static interlacedventures.InterlacedVentures.ServicePrices;
 import java.awt.Desktop;
 import java.io.File;
 import java.util.Date;
@@ -15,13 +16,17 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import models.AuditOrderDirectory;
 import models.AuditingOrder;
+import models.BillsDirectory;
 import models.EmployeeDirectory;
 import models.OrdersDirectory;
+import models.RawMaterialDirectory;
 import models.RentalOrder;
 import models.RentalOrderDirectory;
 import models.StorageDirectory;
 import models.TransportDirectory;
+import models.bills;
 import models.orders;
+import views.forms.CATaxationForm;
 import views.forms.FileComplainForm;
 import views.forms.postAJobFormBusiness;
 
@@ -72,6 +77,7 @@ public class ServiceDashboard extends javax.swing.JFrame {
         btnViewFile = new javax.swing.JButton();
         btnFile = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        btnBuy = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -186,6 +192,11 @@ public class ServiceDashboard extends javax.swing.JFrame {
         });
 
         btnBookApt.setText("Book An Appointment");
+        btnBookApt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBookAptActionPerformed(evt);
+            }
+        });
 
         btnViewFile.setText("View File");
         btnViewFile.addActionListener(new java.awt.event.ActionListener() {
@@ -205,6 +216,13 @@ public class ServiceDashboard extends javax.swing.JFrame {
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
+            }
+        });
+
+        btnBuy.setText("Buy");
+        btnBuy.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuyActionPerformed(evt);
             }
         });
 
@@ -236,16 +254,17 @@ public class ServiceDashboard extends javax.swing.JFrame {
                                         .addComponent(btnFile, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGap(42, 42, 42)
                                     .addComponent(btnBookApt, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(btnRent, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                         .addComponent(btnPlaceOrder, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE)
                                         .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                    .addGap(57, 57, 57)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(btnHFL, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 186, Short.MAX_VALUE)
-                                        .addComponent(btnComplain, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
+                                    .addComponent(btnRent, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(57, 57, 57)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(btnHFL, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 186, Short.MAX_VALUE)
+                                    .addComponent(btnComplain, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btnBuy, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addComponent(jcService, javax.swing.GroupLayout.Alignment.LEADING, 0, 179, Short.MAX_VALUE)
                         .addComponent(jcOrg, javax.swing.GroupLayout.Alignment.LEADING, 0, 179, Short.MAX_VALUE)
@@ -295,7 +314,9 @@ public class ServiceDashboard extends javax.swing.JFrame {
                             .addComponent(jButton2)
                             .addComponent(btnViewFile))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnRent)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnRent)
+                            .addComponent(btnBuy))
                         .addGap(41, 41, 41)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButton1)
@@ -359,6 +380,13 @@ public class ServiceDashboard extends javax.swing.JFrame {
     private void jcServiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcServiceActionPerformed
         // TODO add your handling code here:
         
+        if(!jcService.getSelectedItem().toString().isEmpty()){
+            tfPrice.setText(ServicePrices.get(jcService.getSelectedItem().toString()).toString());
+            tfPrice.setEditable(false);
+        }
+
+        
+        
     }//GEN-LAST:event_jcServiceActionPerformed
 
     private void jcOrgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcOrgActionPerformed
@@ -375,6 +403,7 @@ public class ServiceDashboard extends javax.swing.JFrame {
                 jcService.addItem("Data Management");
                 jcService.addItem("Business Intelligence");
                 jcService.addItem("Machine Learning");
+                tfPrice.setVisible(true);
             }
         else if(jcOrg.getSelectedItem().toString().equals("Hardware")){
                 jcService.addItem("Aurdino UNO");
@@ -383,12 +412,14 @@ public class ServiceDashboard extends javax.swing.JFrame {
                 jcService.addItem("Aurdino naro");
                 jcService.addItem("Seeduino");
                 jcService.addItem("Pocketbeagle");
+                tfPrice.setVisible(true);
         }
         else if(jcOrg.getSelectedItem().toString().equals("Cloud")){
                 jcService.addItem("Saas");
                 jcService.addItem("PaaS");
                 jcService.addItem("FaaS");
                 jcService.addItem("Servers");
+                tfPrice.setVisible(true);
         }
         
         else if(jcOrg.getSelectedItem().toString().equals("Storage")){
@@ -396,14 +427,18 @@ public class ServiceDashboard extends javax.swing.JFrame {
             jcService.addItem("WareHouse");
             jcService.addItem("Cold Storage");
             jcService.addItem("Fragile Items Storage");
+            tfPrice.setVisible(false);
         }
         else if(jcOrg.getSelectedItem().toString().equals("Transport")){
             jcService.addItem("Cars");
             jcService.addItem("Trucks");
             jcService.addItem("Refridgeration Transport vehicle");
             jcService.addItem("Fragile Items Transport");
+            tfPrice.setVisible(false);
         }
-        else if(jcOrg.getSelectedItem().toString().equals("Raw Material")){
+        else if(jcOrg.getSelectedItem().toString().equals("Raw Materials")){
+            jcService.setVisible(false);
+            tfPrice.setVisible(false);
             jcService.addItem("Aluminium");
             jcService.addItem("Copper");
             jcService.addItem("Rubber");
@@ -434,11 +469,17 @@ public class ServiceDashboard extends javax.swing.JFrame {
             jcService.addItem("Cotton");
             jcService.addItem("Salt");
             jcService.addItem("Petroleum");
+            
+            
         }
         else if(jcOrg.getSelectedItem().toString().equals("Consultancy")){
             jcService.addItem("Auditing");
             jcService.addItem("Taxation");
+            tfPrice.setVisible(true);
         } 
+        
+        
+        
         
     }//GEN-LAST:event_jcOrgActionPerformed
 
@@ -646,9 +687,25 @@ public class ServiceDashboard extends javax.swing.JFrame {
         }
         DefaultTableModel model = new DefaultTableModel (rows, columnNames);
         tblDisplay.setModel(model);
-            }   
+            }
+            
         }
         
+        else if(jcOrg.getSelectedItem().toString().equals("Raw Materials")) {
+            System.out.println("heree");
+            String[][] rows = new String[RawMaterialDirectory.getInstance().getRawMaterialDir().size()][3];
+            String[] columnNames = {"Type", "Quantity", "Price"};
+            int j = 0;
+            for(int i=0; i < RawMaterialDirectory.getInstance().getRawMaterialDir().size(); i++){
+                rows[j][0] = RawMaterialDirectory.getInstance().getRawMaterialDir().get(i).getType();
+                rows[j][1] = "100";
+                rows[j][2] = Float.toString(RawMaterialDirectory.getInstance().getRawMaterialDir().get(i).getPrice());
+                j++;
+        }
+        DefaultTableModel model = new DefaultTableModel (rows, columnNames);
+        tblDisplay.setModel(model);
+
+        } 
 
             
 //            
@@ -756,9 +813,9 @@ public class ServiceDashboard extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         AuditingOrder au = new AuditingOrder(
-                btnViewFile.getText(),
-                "CA",
-                "", 
+                filepath1,
+                "",
+                jcOrg.getSelectedItem().toString(), 
                 jcService.getSelectedItem().toString(),
                 this.labelName.getText(),
                 this.jcEnterprise.getSelectedItem().toString(),
@@ -771,6 +828,31 @@ public class ServiceDashboard extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null, "Order Placed");
         
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void btnBookAptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBookAptActionPerformed
+        // TODO add your handling code here:
+        CATaxationForm ctf = new CATaxationForm();
+        ctf.lblName.setText(labelName.getText());
+        ctf.tfNotes.setVisible(false);
+        ctf.lblNotes.setVisible(false);
+        ctf.show();
+    }//GEN-LAST:event_btnBookAptActionPerformed
+
+    private void btnBuyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuyActionPerformed
+        // TODO add your handling code here:
+        DefaultTableModel tableModel = (DefaultTableModel) tblDisplay.getModel();
+        String Price = tableModel.getValueAt(tblDisplay.getSelectedRow(), 2).toString();
+        int no = (int)Math.floor(Math.random()*(999999 - 100000 + 1) + 100000);
+        bills bill = new bills(
+        labelName.getText(),
+                            new Date(), 
+                            Float.parseFloat(Price), 
+                            "Storage", 
+                            "Raw Materials", 
+                            no);
+        
+                            BillsDirectory.getInstance().addBill(bill);
+    }//GEN-LAST:event_btnBuyActionPerformed
 
     /**
      * @param args the command line arguments
@@ -809,6 +891,7 @@ public class ServiceDashboard extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btnBookApt;
+    public javax.swing.JButton btnBuy;
     private javax.swing.JButton btnComplain;
     public javax.swing.JButton btnFile;
     public javax.swing.JButton btnHFL;

@@ -5,12 +5,15 @@
 package views.dashBoards;
 
 import java.util.Date;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import models.AuditOrderDirectory;
 import models.AuditingOrder;
 import models.BillsDirectory;
+import models.EmployeeDirectory;
 import models.OrdersDirectory;
 import models.bills;
+import models.orders;
 
 /**
  *
@@ -39,7 +42,7 @@ public class ViewItemsFinAndLegal extends javax.swing.JFrame {
         tabelFinReq = new javax.swing.JTable();
         labelRequest = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnAssign = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
 
@@ -67,10 +70,10 @@ public class ViewItemsFinAndLegal extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setText("APPROVE");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnAssign.setText("Assign To CA");
+        btnAssign.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnAssignActionPerformed(evt);
             }
         });
 
@@ -82,6 +85,11 @@ public class ViewItemsFinAndLegal extends javax.swing.JFrame {
         });
 
         jButton4.setText("VIEW DETAILS");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -92,8 +100,8 @@ public class ViewItemsFinAndLegal extends javax.swing.JFrame {
                 .addComponent(jButton4)
                 .addGap(68, 68, 68)
                 .addComponent(jButton3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 92, Short.MAX_VALUE)
-                .addComponent(jButton2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 73, Short.MAX_VALUE)
+                .addComponent(btnAssign)
                 .addGap(110, 110, 110)
                 .addComponent(jButton1)
                 .addGap(95, 95, 95))
@@ -117,7 +125,7 @@ public class ViewItemsFinAndLegal extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
-                    .addComponent(jButton2)
+                    .addComponent(btnAssign)
                     .addComponent(jButton3)
                     .addComponent(jButton4))
                 .addGap(43, 43, 43))
@@ -144,33 +152,85 @@ public class ViewItemsFinAndLegal extends javax.swing.JFrame {
         fldb.show();
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnAssignActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignActionPerformed
         // TODO add your handling code here:
+        
         float amt = 0;
         int rctno = 0;
         DefaultTableModel tableModel = (DefaultTableModel) tabelFinReq.getModel();
-        String service = tableModel.getValueAt(tabelFinReq.getSelectedRow(), 2).toString();
+        String service = tableModel.getValueAt(tabelFinReq.getSelectedRow(), 3).toString();
         String name = tabelFinReq.getValueAt(tabelFinReq.getSelectedRow(), 0).toString();
-        for(int i = 0; i < OrdersDirectory.getInstance().getOrdersDir().size(); i++){
-            if(OrdersDirectory.getInstance().getOrdersDir().get(i).getOrderedBy().equals(name)){
-                amt = OrdersDirectory.getInstance().getOrdersDir().get(i).getAmount();
-                rctno = i+2500;
-                OrdersDirectory.getInstance().getOrdersDir().get(i).setStatus("Completed");
-                break;
+        String Desc = tabelFinReq.getValueAt(tabelFinReq.getSelectedRow(), 2).toString();
+        int flag = 0;
+
+        
+        
+        if(service.equals("Auditing")){
+          
+          for(int i = 0; i < AuditOrderDirectory.getInstance().getAuditOrderDir().size(); i++){
+            if(AuditOrderDirectory.getInstance().getAuditOrderDir().get(i).getDetails().equals(Desc))
+                
+                //for loop to find a relevant employee and add him on the job order object is updated here.
+                for(int j = 0;  j < EmployeeDirectory.getInstance().getEmployeeDir().size(); j++){
+                   
+                    if(EmployeeDirectory.getInstance().getEmployeeDir().get(j).getRole().equals("Chartered Accountant") && 
+                            EmployeeDirectory.getInstance().getEmployeeDir().get(j).isStatus()){
+                    
+                    
+                        AuditingOrder order = new AuditingOrder(
+                                AuditOrderDirectory.getInstance().getAuditOrderDir().get(i).getAuditPath(),
+                                AuditOrderDirectory.getInstance().getAuditOrderDir().get(i).getRole(),
+                                EmployeeDirectory.getInstance().getEmployeeDir().get(j).getUsername(),
+                                AuditOrderDirectory.getInstance().getAuditOrderDir().get(i).getService(),
+                                name,
+                                tabelFinReq.getValueAt(tabelFinReq.getSelectedRow(), 1).toString(),
+                                "Assigned",
+                                new Date(), 
+                                AuditOrderDirectory.getInstance().getAuditOrderDir().get(i).getAmount(),
+                                Desc);
+                        AuditOrderDirectory.getInstance().updateAuditOrder(order, i);
+                        flag++;
+                    }
+                
+                }
             }
         }
         
-        if(tabelFinReq.getSelectedRowCount() == 1){  
-            bills bill = new bills (
-                    name,
-                    new Date(), 
-                    amt, 
-                    service, 
-                    name, 
-                    rctno);
-            BillsDirectory.getInstance().addBill(bill);
+        
+        else{
+            
+        for(int j = 0;  j < EmployeeDirectory.getInstance().getEmployeeDir().size(); j++){
+                   
+        if(EmployeeDirectory.getInstance().getEmployeeDir().get(j).getRole().equals("Chartered Accountant") && 
+                EmployeeDirectory.getInstance().getEmployeeDir().get(j).isStatus()){
+                    
+        for(int i = 0; i < OrdersDirectory.getInstance().getOrdersDir().size(); i++){
+            if(OrdersDirectory.getInstance().getOrdersDir().get(i).getDetails().equals(Desc)){
+                
+                orders order = new orders(
+                                OrdersDirectory.getInstance().getOrdersDir().get(i).getRole(),
+                                EmployeeDirectory.getInstance().getEmployeeDir().get(j).getUsername(),
+                                OrdersDirectory.getInstance().getOrdersDir().get(i).getService(),
+                                OrdersDirectory.getInstance().getOrdersDir().get(i).getOrderedBy(),
+                                OrdersDirectory.getInstance().getOrdersDir().get(i).getRequestTo(),
+                                "Assigned",
+                                OrdersDirectory.getInstance().getOrdersDir().get(i).getDate(),
+                                OrdersDirectory.getInstance().getOrdersDir().get(i).getAmount(),
+                                OrdersDirectory.getInstance().getOrdersDir().get(i).getDetails()
+                        );
+                        OrdersDirectory.getInstance().updateOrder(order, i);
+                        flag++;
+                break;
+                    }
+                 }
+                }
+            }
         }
-    }//GEN-LAST:event_jButton2ActionPerformed
+        
+                if(flag == 0){
+                JOptionPane.showMessageDialog(this, "You dont have Employess left for this role");
+            }
+    }//GEN-LAST:event_btnAssignActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
@@ -202,6 +262,10 @@ public class ViewItemsFinAndLegal extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -239,8 +303,8 @@ public class ViewItemsFinAndLegal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAssign;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JPanel jPanel1;

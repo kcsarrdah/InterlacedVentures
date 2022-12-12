@@ -16,6 +16,7 @@ import java.sql.Connection;
 import java.text.Format;
 import java.text.SimpleDateFormat;
 import javax.swing.table.DefaultTableModel;
+import models.AuditOrderDirectory;
 import views.dashBoards.SystemAdmin;
 import views.dashBoards.TechAdminDashboard;
 import views.dashBoards.employeeDashboard;
@@ -145,13 +146,16 @@ public class loginPage extends javax.swing.JFrame {
         
         String userName = tfUsername.getText();
         String password = pfPassword.getText();
+        int flag = 0;
         
         if(userName.equals(Admins[0][0]) && password.equals(Admins[0][1])){
+            flag++;
             this.hide();
             SystemAdmin sa = new SystemAdmin();
             sa.show();
         }
         else if(userName.equals(Admins[1][0]) && password.equals(Admins[1][1])){
+            flag++;
             this.hide();
             TechAdminDashboard td = new TechAdminDashboard();
             td.show();
@@ -160,12 +164,14 @@ public class loginPage extends javax.swing.JFrame {
         
         
         else if(userName.equals(Admins[2][0]) && password.equals(Admins[2][1])){
+            flag++;
             this.hide();
             FinAndLegalDashBoard fldb = new FinAndLegalDashBoard();
             fldb.show();
         }
         
         else if(userName.equals(Admins[3][0]) && password.equals(Admins[3][1])){
+            flag++;
             this.hide();
             OperationsAdminDashboard fldb = new OperationsAdminDashboard();
             fldb.show();
@@ -173,6 +179,7 @@ public class loginPage extends javax.swing.JFrame {
         
         
         else if(userName.equals(Admins[4][0]) && password.equals(Admins[4][1])){
+            flag++;
         this.hide();
         customerSalesRepDashboard fldb = new customerSalesRepDashboard();
         String[] columnNames = {"Objection", "From", "Against", "Date", "Status"};
@@ -196,6 +203,7 @@ public class loginPage extends javax.swing.JFrame {
         }
         
         else if(userName.equals(Admins[5][0]) && password.equals(Admins[5][1])){
+            flag++;
             this.hide();
             verificationAdminDashboard va = new verificationAdminDashboard();
             va.show();
@@ -211,6 +219,7 @@ public class loginPage extends javax.swing.JFrame {
             checkPassword = password.equals(userDirectory.getInstance().getUserDir().get(i).getPassword());
             
             if((userDirectory.getInstance().getUserDir().get(i).getUsername().equals(userName)) && checkPassword) {
+                flag++;
                 try{
                     if(userDirectory.getInstance().getUserDir().get(i).getType().equals("Employee")) {
                         this.hide();
@@ -228,6 +237,45 @@ public class loginPage extends javax.swing.JFrame {
                         edb.lblEmpName.setText(empName);
                         edb.labelRole.setText(role);
                         
+                        
+                        //loop to populate CA Tables
+                        if(role.equals("Chartered Accountant")){
+                            
+                            String[] columnNames = {"Description", "Date of Posting", "File"};
+                                int n = AuditOrderDirectory.getInstance().getAuditOrderDir().size() + OrdersDirectory.getInstance().getOrdersDir().size();
+                                String[][] rows = new String[n][3];
+                                int j=0;
+                                for(int k = 0;  k < AuditOrderDirectory.getInstance().getAuditOrderDir().size(); k++){
+                                    if(AuditOrderDirectory.getInstance().getAuditOrderDir().get(k).getAssignedTo().equals(userName) && !AuditOrderDirectory.getInstance().getAuditOrderDir().get(k).getStatus().equals("Completed")){
+                                    rows[j][0] = AuditOrderDirectory.getInstance().getAuditOrderDir().get(k).getDetails();
+                                    Format formatter = new SimpleDateFormat("yyyy-MM-dd");
+                                    String s = formatter.format(AuditOrderDirectory.getInstance().getAuditOrderDir().get(k).getDate());
+                                    rows[j][1] = s;  
+                                    rows[j][2] = AuditOrderDirectory.getInstance().getAuditOrderDir().get(k).getAuditPath();
+                                    j++;
+                                    }
+                                }
+                                
+                                for(int k = 0;  k < OrdersDirectory.getInstance().getOrdersDir().size(); k++){
+                                    if(OrdersDirectory.getInstance().getOrdersDir().get(k).getAssignedTo().equals(userName) && !OrdersDirectory.getInstance().getOrdersDir().get(k).getStatus().equals("Completed")){
+                                    rows[j][0] = OrdersDirectory.getInstance().getOrdersDir().get(k).getDetails();
+                                    Format formatter = new SimpleDateFormat("yyyy-MM-dd");
+                                    String s = formatter.format(OrdersDirectory.getInstance().getOrdersDir().get(k).getDate());
+                                    rows[j][1] = s;  
+                                    rows[j][2] = OrdersDirectory.getInstance().getOrdersDir().get(k).getService();
+                                    j++;
+                                    }
+                                }
+                                
+                                
+                                
+                                DefaultTableModel dtm = new DefaultTableModel (rows, columnNames);
+                                edb.WorkTable.setModel(dtm);
+                                edb.show();
+                                break;
+                        }
+                        
+                        else{
                         //for loop to populate table
                                 String[] columnNames = {"Description", "Date of Posting"};
                                 int n = OrdersDirectory.getInstance().getOrdersDir().size();
@@ -246,6 +294,7 @@ public class loginPage extends javax.swing.JFrame {
                                 edb.WorkTable.setModel(dtm);
                         
                         edb.show();
+                        }
                     }
                     
                 else if(userDirectory.getInstance().getUserDir().get(i).getType().equals("Freelancer")) {
@@ -284,12 +333,12 @@ public class loginPage extends javax.swing.JFrame {
                     System.out.println(e);
                 }
             }
-//            else{
-//                    JOptionPane.showMessageDialog(this, "Please Enter Correct Details");
-//                    tfUsername.setText("");
-//                    pfPassword.setText("");
-//                    break;
-//                        }
+
+        }
+        if(flag == 0){
+            JOptionPane.showMessageDialog(this, "Please Enter Correct Details");
+            tfUsername.setText("");
+            pfPassword.setText("");
         }
     }//GEN-LAST:event_btnLoginActionPerformed
 

@@ -56,6 +56,12 @@ public class AddItemsPopUp extends javax.swing.JFrame {
             }
         });
 
+        jComboBox3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox3ActionPerformed(evt);
+            }
+        });
+
         jLabel1.setText("Add ");
 
         jLabel2.setText("Item");
@@ -278,6 +284,10 @@ public class AddItemsPopUp extends javax.swing.JFrame {
 
         
     }//GEN-LAST:event_jComboBox2ActionPerformed
+
+    private void jComboBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox3ActionPerformed
 
     /**
      * @param args the command line arguments
