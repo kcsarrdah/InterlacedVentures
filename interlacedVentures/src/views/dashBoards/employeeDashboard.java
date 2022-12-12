@@ -265,7 +265,7 @@ public class employeeDashboard extends javax.swing.JFrame {
                
                 erf.pwdField.setText(EmployeeDirectory.getInstance().getEmployeeDir().get(i).getPassword());
                 erf.pwdField.setEditable(false);
-                erf.btnReg.setVisible(false);
+                erf.btnApply.setVisible(false);
                 
                         erf.show();
             }

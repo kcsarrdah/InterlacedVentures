@@ -10,10 +10,13 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.text.Format;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.regex.Pattern;
 import javax.imageio.ImageIO;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import models.Application;
+import models.ApplicationDirectory;
 import models.EmployeeDirectory;
 import models.employee;
 import models.userDirectory;
@@ -61,7 +64,7 @@ public class employeeRegistrationForm extends javax.swing.JFrame {
         jLabel25 = new javax.swing.JLabel();
         comboEducation = new javax.swing.JComboBox<>();
         jLabel26 = new javax.swing.JLabel();
-        btnReg = new javax.swing.JButton();
+        btnApply = new javax.swing.JButton();
         jLabel27 = new javax.swing.JLabel();
         jLabel28 = new javax.swing.JLabel();
         dateField = new com.toedter.calendar.JDateChooser();
@@ -157,10 +160,10 @@ public class employeeRegistrationForm extends javax.swing.JFrame {
 
         jLabel26.setText("WORK EXPERIENCE");
 
-        btnReg.setText("Register");
-        btnReg.addActionListener(new java.awt.event.ActionListener() {
+        btnApply.setText("Apply");
+        btnApply.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRegActionPerformed(evt);
+                btnApplyActionPerformed(evt);
             }
         });
 
@@ -315,7 +318,7 @@ public class employeeRegistrationForm extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnSave)
                         .addGap(49, 49, 49)
-                        .addComponent(btnReg))
+                        .addComponent(btnApply))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(txtWorkExp, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -472,7 +475,7 @@ public class employeeRegistrationForm extends javax.swing.JFrame {
                     .addComponent(btnViewId))
                 .addGap(40, 40, 40)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnReg)
+                    .addComponent(btnApply)
                     .addComponent(btnRemove)
                     .addComponent(btnEdit)
                     .addComponent(jButton1)
@@ -487,7 +490,7 @@ public class employeeRegistrationForm extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtLocActionPerformed
 
-    private void btnRegActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegActionPerformed
+    private void btnApplyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnApplyActionPerformed
         // TODO add your handling code here:
         if(comboOrg.getSelectedItem().toString().equals("") ||
                 txtLoc.getText().equals("") ||
@@ -514,40 +517,69 @@ public class employeeRegistrationForm extends javax.swing.JFrame {
         }
         else
         {
-        employee free = new employee(
-            comboOrg.getSelectedItem().toString(),
-            txtLoc.getText(),
-            dateField.getDate(),
-            pwdField.getText(),
-            comboRole.getSelectedItem().toString(),
-            Integer.parseInt(txtWorkExp.getText()),
-            Integer.parseInt(txtSalary.getText()),
-            txtLatestWork.getText(),
-            comboEducation.getSelectedItem().toString(),
-            txtSkills.getText(),
-            txtUName.getText(),
-            txtFName.getText(),
-            txtLName.getText(),
-            Integer.parseInt(txtAge.getText()),
-            comboGender.getSelectedItem().toString(),
-            txtPhone.getText(),
-            txtEmail.getText(),
-            btnViewImg.getText(),
-            btnViewRes.getText(),
-            btnViewId.getText(),
-            true);
             
-        EmployeeDirectory.getInstance().addEmployee(free);
-        
-        users login = new users(txtUName.getText(),pwdField.getText(),"Employee");
-        
-        userDirectory.getInstance().addUser(login);
-        
-        this.hide();
-        loginPage lp = new loginPage();
-        lp.show();
+            Application app = new Application(
+                    comboOrg.getSelectedItem().toString(),
+                    txtLoc.getText(),
+                    dateField.getDate(),
+                    pwdField.getText(),
+                    comboRole.getSelectedItem().toString(),
+                    Integer.parseInt(txtWorkExp.getText()),
+                    Integer.parseInt(txtSalary.getText()),
+                    txtLatestWork.getText(),
+                    comboEducation.getSelectedItem().toString(),
+                    txtSkills.getText(),
+                    txtUName.getText(),
+                    txtFName.getText(),
+                    txtLName.getText(),
+                    Integer.parseInt(txtAge.getText()),
+                    comboGender.getSelectedItem().toString(),
+                    txtPhone.getText(),
+                    txtEmail.getText(),
+                    filepath2,
+                    filepath1,
+                    filepath3,
+                    true,
+                    "Applied"
+            );
+            System.out.println(app.getAppStatus());
+            
+            ApplicationDirectory.getInstance().addApplication(app);
+            
+//        employee free = new employee(
+//            comboOrg.getSelectedItem().toString(),
+//            txtLoc.getText(),
+//            dateField.getDate(),
+//            pwdField.getText(),
+//            comboRole.getSelectedItem().toString(),
+//            Integer.parseInt(txtWorkExp.getText()),
+//            Integer.parseInt(txtSalary.getText()),
+//            txtLatestWork.getText(),
+//            comboEducation.getSelectedItem().toString(),
+//            txtSkills.getText(),
+//            txtUName.getText(),
+//            txtFName.getText(),
+//            txtLName.getText(),
+//            Integer.parseInt(txtAge.getText()),
+//            comboGender.getSelectedItem().toString(),
+//            txtPhone.getText(),
+//            txtEmail.getText(),
+//            btnViewImg.getText(),
+//            btnViewRes.getText(),
+//            btnViewId.getText(),
+//            true);
+//            
+//        EmployeeDirectory.getInstance().addEmployee(free);
+//        
+//        users login = new users(txtUName.getText(),pwdField.getText(),"Employee");
+//        
+//        userDirectory.getInstance().addUser(login);
+//        
+//        this.hide();
+//        loginPage lp = new loginPage();
+//        lp.show();
         }
-    }//GEN-LAST:event_btnRegActionPerformed
+    }//GEN-LAST:event_btnApplyActionPerformed
 
     private void txtFNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFNameActionPerformed
         // TODO add your handling code here:
@@ -850,10 +882,10 @@ public class employeeRegistrationForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JButton btnApply;
     public javax.swing.JButton btnEdit;
     private javax.swing.JButton btnID;
     private javax.swing.JButton btnImage;
-    public javax.swing.JButton btnReg;
     public javax.swing.JButton btnRemove;
     private javax.swing.JButton btnRes;
     public javax.swing.JButton btnSave;
