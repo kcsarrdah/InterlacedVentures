@@ -185,7 +185,7 @@ public class Software extends javax.swing.JFrame {
                     //erf.txtLatestWork.setText(EmployeeDirectory.getInstance().getEmployeeDir().get(i).getLatestWork());
                     
                           
-                    erf.btnReg.setVisible(false);
+                    erf.btnApply.setVisible(false);
                   }
                 }
             erf.show();

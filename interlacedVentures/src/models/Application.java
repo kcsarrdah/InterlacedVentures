@@ -36,6 +36,7 @@ public class Application extends employee{
             boolean status,
             String appStatus) {
         super(Organisation, location, DateOfJoining, Password, Role, WorkEx, salary, LatestWork, education, skills, Username, firstName, lastName, age, gender, phoneNumber, Email, imagePath, resPath, idPath, status);
+        this.appStatus = appStatus;
     }
 
     public String getAppStatus() {
