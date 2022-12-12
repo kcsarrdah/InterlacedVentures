@@ -79,6 +79,27 @@ public class ApplicationBusinessDirectory {
             JOptionPane.showMessageDialog(null,"Cannot be loaded");
         }
     }
+        
+        public void updateApplicationBusiness(ApplicationBusiness ab,int i) {
+        applicationBusinessDir.set(i,ab);
+        Statement stmt;
+        try {
+            stmt = DatabaseConnectionClass.getInstance().getCon().createStatement();
+            String query1 = "Update BusinessApplication" + " set AppStatus=? where Name=?";
+            PreparedStatement pst = DatabaseConnectionClass.getInstance().getCon().prepareStatement(query1);
+            pst.setString(1, ab.getAppStatus());
+            pst.setString(2, ab.getName());
+            int rs = pst.executeUpdate();
+            if(rs>0)
+            {
+                JOptionPane.showMessageDialog(null,"Inserted Successfully!");
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex);
+            JOptionPane.showMessageDialog(null,"Cannot be Inserted");
+        }
+    }
+        
         public static ApplicationBusinessDirectory getInstance() {
         if(mInstance == null)
             mInstance = new ApplicationBusinessDirectory();

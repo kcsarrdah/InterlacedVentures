@@ -110,23 +110,10 @@ public class ApplicationFreelancerDirectory {
         Statement stmt;
         try {
             stmt = DatabaseConnectionClass.getInstance().getCon().createStatement();
-            String query1 = "Update FreelancerApplication " + "set LastName=?,FirstName=?,Email=?,Gender=?,PhoneNumber=?,Location=?,Salary=? where UserName=?";
+            String query1 = "Update FreelancerApplication " + "set AppStatus=? where UserName=?";
             PreparedStatement pst = DatabaseConnectionClass.getInstance().getCon().prepareStatement(query1);
-            pst.setString(1, af.getLastName());
-            
-            pst.setString(2,af.getFirstName());
-            
-            pst.setString(3, af.getEmail());
-            
-            pst.setString(4, af.getGender());
-            
-            pst.setString(5, af.getPhoneNumber());
-            
-            pst.setString(6, af.getLocation());
-            
-            pst.setInt(7,af.getHourlyRate());
-            
-            pst.setString(8, af.getUsername());
+           
+            pst.setString(1, af.getAppStatus());
             
             int rs = pst.executeUpdate();
             if(rs>0)
@@ -139,15 +126,6 @@ public class ApplicationFreelancerDirectory {
         }
     }
     
-//    public void docData(int stateID) {
-//        for(int j=0;j<doctorDir.size();j++) {
-//            System.out.println("sdj");
-//            DoctorMainFrame doc = new DoctorMainFrame();
-//            if(LoginDirectory.getInstance().getLoginDir().get(j).getStateID() == DoctorDirectory.getInstance().getDoctorDir().get(j).getStateID()) {
-//                doc.getDoc(DoctorDirectory.getInstance().getDoctorDir().get(j));
-//            }
-//        }
-//    }
     
     public static ApplicationFreelancerDirectory getInstance() {
         if(mInstance == null)
