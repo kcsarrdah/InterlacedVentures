@@ -48,7 +48,7 @@ public class InterlacedVentures {
         Admins[5][0] = "VA";
         Admins[5][1] = "123";
         
-        
+        System.out.println("testing");
         
         
         // TODO code application logic here
