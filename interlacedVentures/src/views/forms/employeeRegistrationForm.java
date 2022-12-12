@@ -545,6 +545,9 @@ public class employeeRegistrationForm extends javax.swing.JFrame {
             System.out.println(app.getAppStatus());
             
             ApplicationDirectory.getInstance().addApplication(app);
+            this.hide();
+            loginPage lp = new loginPage();
+            lp.show();
             
 //        employee free = new employee(
 //            comboOrg.getSelectedItem().toString(),
@@ -575,9 +578,7 @@ public class employeeRegistrationForm extends javax.swing.JFrame {
 //        
 //        userDirectory.getInstance().addUser(login);
 //        
-//        this.hide();
-//        loginPage lp = new loginPage();
-//        lp.show();
+//        
         }
     }//GEN-LAST:event_btnApplyActionPerformed
 

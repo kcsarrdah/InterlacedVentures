@@ -34,6 +34,7 @@ public class ApplicationFreelancer extends freelancer {
             String idPath, 
             String appStatus) {
         super(location, password, dateOfJoining, HourlyRate, Portfolio, WorkEx, LatestWork, education, skills, Username, firstName, lastName, age, gender, phoneNumber, Email, imagePath, resPath, idPath);
+    this.appStatus = appStatus;
     }
 
     public String getAppStatus() {

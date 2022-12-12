@@ -23,6 +23,8 @@ public class ApplicationBusiness extends business{
             String appStatus) {
 
         super(Password, name, email, number, address, website, ownerName, licensePath);
+        this.appStatus = appStatus;
+        
     }
 
     public String getAppStatus() {

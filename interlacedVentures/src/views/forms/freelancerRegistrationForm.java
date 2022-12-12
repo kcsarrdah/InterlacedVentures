@@ -16,6 +16,7 @@ import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import models.ApplicationFreelancer;
+import models.ApplicationFreelancerDirectory;
 import models.freelancer;
 import models.users;
 import models.FreelanceDirectory;
@@ -464,7 +465,31 @@ public class freelancerRegistrationForm extends javax.swing.JFrame {
     private void btnRegActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegActionPerformed
         // TODO add your handling code here:
         
-        ApplicationFreelancer ap = new ApplicationFreelancer(filepath2, filepath2, dateOfJoining, NORMAL, filepath2, NORMAL, filepath2, filepath2, filepath2, filepath2, filepath2, filepath2, ABORT, filepath2, filepath2, filepath2, filepath2, filepath2, filepath2, filepath2)
+        ApplicationFreelancer ap = new ApplicationFreelancer(txtLoc.getText(),
+                pwdField.getText(),
+                dateField.getDate(),
+                Integer.parseInt(txtHourlyRate.getText()),
+                txtPortfolio.getText(),
+                Integer.parseInt(txtWorkExp.getText()),
+                txtLatestWork.getText(),
+                comboEducation.getSelectedItem().toString(),
+                jcSkills.getSelectedItem().toString(),
+                txtUName.getText(),
+                txtFName.getText(),
+                txtLName.getText(),
+                Integer.parseInt(txtAge.getText()),
+                comboGender.getSelectedItem().toString(),
+                txtPhone.getText(),
+                txtEmail.getText(),
+                filepath2,
+                filepath1,
+                filepath3,
+                "Applied");
+        
+        ApplicationFreelancerDirectory.getInstance().addApplicationFreelancer(ap);
+        this.hide();
+        loginPage lp = new loginPage();
+        lp.show();
         
         
 //        freelancer free = new freelancer(txtLoc.getText(),
@@ -490,9 +515,7 @@ public class freelancerRegistrationForm extends javax.swing.JFrame {
 //        FreelanceDirectory.getInstance().addFreelancer(free);
 //        users login = new users(txtUName.getText(),pwdField.getText(),"Freelancer");
 //        userDirectory.getInstance().addUser(login);
-//        this.hide();
-//        loginPage lp = new loginPage();
-//        lp.show();
+//        
     }//GEN-LAST:event_btnRegActionPerformed
 
     private void txtLocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLocActionPerformed

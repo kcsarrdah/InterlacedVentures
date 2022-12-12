@@ -8,6 +8,8 @@ import java.awt.Desktop;
 import java.io.File;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import models.ApplicationBusiness;
+import models.ApplicationBusinessDirectory;
 import models.BusinessUsersDirectory;
 import models.business;
 import models.userDirectory;
@@ -141,7 +143,7 @@ public class businessRegistrationForm extends javax.swing.JFrame {
 
         btnReg.setBackground(new java.awt.Color(255, 255, 204));
         btnReg.setFont(new java.awt.Font("InaiMathi", 1, 14)); // NOI18N
-        btnReg.setText("REGISTER");
+        btnReg.setText("Apply For Registration");
         btnReg.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnReg.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -211,19 +213,34 @@ public class businessRegistrationForm extends javax.swing.JFrame {
 
     private void btnRegActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegActionPerformed
         // TODO add your handling code here:
-        business bus= new business(pwdField.getText(),
+        
+        
+        ApplicationBusiness ab = new ApplicationBusiness(pwdField.getText(),
                 txtName.getText(),
                 txtEmail.getText(),
                 txtPhNo.getText(),
                 txtLoc.getText(),
                 txtWebsite.getText(),
                 txtOwner.getText(),
-                btnViewBusi.getText());
-                
-        BusinessUsersDirectory.getInstance().addBusinessUser(bus);
-        users login = new users(txtName.getText(),pwdField.getText(),"Business User");
-        userDirectory.getInstance().addUser(login);
+                filepath1,
+                "Applied");
         
+        ApplicationBusinessDirectory.getInstance().addApplicationBusiness(ab);
+        
+        
+//        business bus= new business(pwdField.getText(),
+//                txtName.getText(),
+//                txtEmail.getText(),
+//                txtPhNo.getText(),
+//                txtLoc.getText(),
+//                txtWebsite.getText(),
+//                txtOwner.getText(),
+//                btnViewBusi.getText());
+//                
+//        BusinessUsersDirectory.getInstance().addBusinessUser(bus);
+//        users login = new users(txtName.getText(),pwdField.getText(),"Business User");
+//        userDirectory.getInstance().addUser(login);
+//        
         this.hide();
         loginPage lp = new loginPage();
         lp.show();

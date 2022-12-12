@@ -32,7 +32,7 @@ public class ApplicationFreelancerDirectory {
         Statement stmt;
         try {
             stmt = DatabaseConnectionClass.getInstance().getCon().createStatement();
-            String query1 = "INSERT INTO FreelancerApplication" + " VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+            String query1 = "INSERT INTO FreelancerApplication" + " VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
             java.sql.Date sqlDate = new java.sql.Date(af.getDateOfJoining().getTime());
             PreparedStatement pst = DatabaseConnectionClass.getInstance().getCon().prepareStatement(query1);
             
@@ -54,8 +54,8 @@ public class ApplicationFreelancerDirectory {
             pst.setString(16, af.getImagePath());
             pst.setString(17, af.getResPath());
             pst.setString(18, af.getIdPath());
-            pst.setString(20, af.getPortfolio());
-            pst.setString(19, af.getAppStatus());
+            pst.setString(19, af.getPortfolio());
+            pst.setString(20, af.getAppStatus());
                                   
 
             int rs = pst.executeUpdate();
