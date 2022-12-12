@@ -15,6 +15,7 @@ import java.text.SimpleDateFormat;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import models.ApplicationFreelancer;
 import models.freelancer;
 import models.users;
 import models.FreelanceDirectory;
@@ -171,7 +172,7 @@ public class freelancerRegistrationForm extends javax.swing.JFrame {
 
         comboEducation.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Diploma", "UnderGraduate", "Graduate", "PhD" }));
 
-        btnReg.setText("REGISTER");
+        btnReg.setText("Apply");
         btnReg.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRegActionPerformed(evt);
@@ -463,32 +464,35 @@ public class freelancerRegistrationForm extends javax.swing.JFrame {
     private void btnRegActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegActionPerformed
         // TODO add your handling code here:
         
-        freelancer free = new freelancer(txtLoc.getText(),
-                pwdField.getText(),
-                dateField.getDate(),
-                Integer.parseInt(txtHourlyRate.getText()),
-                txtPortfolio.getText(),
-                Integer.parseInt(txtWorkExp.getText()),
-                txtLatestWork.getText(),
-                comboEducation.getSelectedItem().toString(),
-                jcSkills.getSelectedItem().toString(),
-                txtUName.getText(),
-                txtFName.getText(),
-                txtLName.getText(),
-                Integer.parseInt(txtAge.getText()),
-                comboGender.getSelectedItem().toString(),
-                txtPhone.getText(),
-                txtEmail.getText(),
-                btnViewImg.getText(),
-                btnVIewRes.getText(),
-                btnViewId.getText());
+        ApplicationFreelancer ap = new ApplicationFreelancer(filepath2, filepath2, dateOfJoining, NORMAL, filepath2, NORMAL, filepath2, filepath2, filepath2, filepath2, filepath2, filepath2, ABORT, filepath2, filepath2, filepath2, filepath2, filepath2, filepath2, filepath2)
         
-        FreelanceDirectory.getInstance().addFreelancer(free);
-        users login = new users(txtUName.getText(),pwdField.getText(),"Freelancer");
-        userDirectory.getInstance().addUser(login);
-        this.hide();
-        loginPage lp = new loginPage();
-        lp.show();
+        
+//        freelancer free = new freelancer(txtLoc.getText(),
+//                pwdField.getText(),
+//                dateField.getDate(),
+//                Integer.parseInt(txtHourlyRate.getText()),
+//                txtPortfolio.getText(),
+//                Integer.parseInt(txtWorkExp.getText()),
+//                txtLatestWork.getText(),
+//                comboEducation.getSelectedItem().toString(),
+//                jcSkills.getSelectedItem().toString(),
+//                txtUName.getText(),
+//                txtFName.getText(),
+//                txtLName.getText(),
+//                Integer.parseInt(txtAge.getText()),
+//                comboGender.getSelectedItem().toString(),
+//                txtPhone.getText(),
+//                txtEmail.getText(),
+//                btnViewImg.getText(),
+//                btnVIewRes.getText(),
+//                btnViewId.getText());
+//        
+//        FreelanceDirectory.getInstance().addFreelancer(free);
+//        users login = new users(txtUName.getText(),pwdField.getText(),"Freelancer");
+//        userDirectory.getInstance().addUser(login);
+//        this.hide();
+//        loginPage lp = new loginPage();
+//        lp.show();
     }//GEN-LAST:event_btnRegActionPerformed
 
     private void txtLocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLocActionPerformed
