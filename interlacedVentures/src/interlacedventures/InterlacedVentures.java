@@ -5,6 +5,7 @@
 package interlacedventures;
 
 //import java.util.HashMap;
+import models.ApplicationDirectory;
 import models.AuditOrderDirectory;
 import models.BillsDirectory;
 import models.BusinessUsersDirectory;
@@ -25,7 +26,7 @@ import views.loginPage;
  */
 public class InterlacedVentures {
 
-    public static String[][] Admins = new String[5][2];
+    public static String[][] Admins = new String[8][2];
     /**
      * @param args the command line arguments
      */
@@ -42,6 +43,8 @@ public class InterlacedVentures {
         Admins[3][1] = "123";
         Admins[4][0] = "CSR";
         Admins[4][1] = "123";
+        Admins[5][0] = "VA";
+        Admins[5][1] = "123";
         
         
         
@@ -59,6 +62,7 @@ public class InterlacedVentures {
         TransportDirectory.getInstance().getTransportData();
         RentalOrderDirectory.getInstance().getRentalOrdersData();
         AuditOrderDirectory.getInstance().getAuditOrderData();
+        ApplicationDirectory.getInstance().getApplicationData();
 //        HospitalAdminDirectory.getInstance().getHospAdminData();
 //        HospitalDirectory.getInstance().getHospitalData();
 //        AmbulanceDirectory.getInstance().getAmbulance();
