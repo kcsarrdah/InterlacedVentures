@@ -86,7 +86,7 @@ public class verificationAdminDashboard extends javax.swing.JFrame {
             }
         });
 
-        verifAdmin.setFont(new java.awt.Font("Bai Jamjuree", 1, 36)); // NOI18N
+        verifAdmin.setFont(new java.awt.Font("Courier New", 1, 36)); // NOI18N
         verifAdmin.setText("         VERIFIER");
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/views/Images/accmanager.jpeg"))); // NOI18N
@@ -102,23 +102,24 @@ public class verificationAdminDashboard extends javax.swing.JFrame {
             .addGroup(jBackPageLayout.createSequentialGroup()
                 .addGroup(jBackPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jBackPageLayout.createSequentialGroup()
-                        .addGap(328, 328, 328)
-                        .addComponent(verifAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jBackPageLayout.createSequentialGroup()
                         .addGap(107, 107, 107)
                         .addGroup(jBackPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(veriFreelan, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(veriEmployers, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(veriBusin, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(50, 50, 50)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 573, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 573, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jBackPageLayout.createSequentialGroup()
+                        .addGap(227, 227, 227)
+                        .addComponent(verifAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 496, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(53, Short.MAX_VALUE))
         );
         jBackPageLayout.setVerticalGroup(
             jBackPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jBackPageLayout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addComponent(verifAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addComponent(verifAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(jBackPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jBackPageLayout.createSequentialGroup()
                         .addGap(28, 28, 28)
@@ -129,7 +130,6 @@ public class verificationAdminDashboard extends javax.swing.JFrame {
                         .addComponent(veriBusin, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jBackPageLayout.createSequentialGroup()
-                        .addGap(18, 18, 18)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 371, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
                         .addComponent(backButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)

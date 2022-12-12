@@ -8,6 +8,7 @@ import java.util.Date;
 import java.util.HashMap;
 import javax.swing.JOptionPane;
 import models.BillsDirectory;
+import models.EmployeeDirectory;
 import models.FreelanceDirectory;
 import models.OrdersDirectory;
 import models.complains;
@@ -45,11 +46,12 @@ public class FileComplainForm extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        labelImg = new javax.swing.JLabel();
         labelFromName = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 204));
+        jPanel1.setBackground(new java.awt.Color(234, 240, 250));
 
         tfDescription.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -71,7 +73,6 @@ public class FileComplainForm extends javax.swing.JFrame {
         jLabel2.setText("Department Against");
 
         jcService.setFont(new java.awt.Font("InaiMathi", 1, 14)); // NOI18N
-        jcService.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jcService.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jcServiceActionPerformed(evt);
@@ -101,7 +102,7 @@ public class FileComplainForm extends javax.swing.JFrame {
             }
         });
 
-        labelFromName.setIcon(new javax.swing.ImageIcon(getClass().getResource("/views/Images/images.jpeg"))); // NOI18N
+        labelImg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/views/Images/images.jpeg"))); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -125,22 +126,26 @@ public class FileComplainForm extends javax.swing.JFrame {
                         .addGap(96, 96, 96)
                         .addComponent(jcDept, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(labelFromName, javax.swing.GroupLayout.PREFERRED_SIZE, 466, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(labelImg, javax.swing.GroupLayout.PREFERRED_SIZE, 466, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(3, 3, 3)
                         .addComponent(jButton2))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(207, 207, 207)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(138, 138, 138)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap()
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 409, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(labelFromName, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(29, 29, 29))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(17, 17, 17)
-                .addComponent(jLabel4)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(labelFromName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(54, 54, 54)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -166,7 +171,7 @@ public class FileComplainForm extends javax.swing.JFrame {
                         .addComponent(jButton1))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(72, 72, 72)
-                        .addComponent(labelFromName, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(labelImg, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
 
@@ -188,9 +193,19 @@ public class FileComplainForm extends javax.swing.JFrame {
         // TODO add your handling code here:
         
         
-        complains complain = new complains(tfDescription.getText(), jcDept.getSelectedItem().toString(), "Filed", labelFromName.getText(), jcService.getSelectedItem().toString(), new Date());
+        complains complain = new complains(
+                tfDescription.getText(),
+                jcDept.getSelectedItem().toString(),
+                "Filed", 
+                labelFromName.getText(),
+                jcService.getSelectedItem().toString(),
+                new Date());
         complainsDirectory.getInstance().addComplain(complain);
         JOptionPane.showMessageDialog(this, "Sorry for the troubles, Your complain has been registered with us, an we will try to resolve it at our earliest");
+        
+        
+        
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jcDeptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcDeptActionPerformed
@@ -220,8 +235,30 @@ public class FileComplainForm extends javax.swing.JFrame {
             jcService.removeAllItems();
             for(int i = 0; i < FreelanceDirectory.getInstance().getFreeLancerDir().size(); i++){
                 jcService.addItem((FreelanceDirectory.getInstance().getFreeLancerDir().get(i).getFirstName()));
-            }
+            }    
         }
+        
+        else if (jcDept.getSelectedItem().toString().equals("Admin")){
+            jcService.removeAllItems();
+                    jcService.addItem("Admin");
+            }
+        else if (jcDept.getSelectedItem().toString().equals("Work")){
+                    jcService.removeAllItems();
+            for(int j = 0; j < OrdersDirectory.getInstance().getOrdersDir().size(); j++){
+                if(OrdersDirectory.getInstance().getOrdersDir().get(j).getAssignedTo().equals(labelImg.getText())){
+                    jcService.addItem(OrdersDirectory.getInstance().getOrdersDir().get(j).getDetails());
+                }
+            }
+                    
+                    
+            }
+        else if (jcDept.getSelectedItem().toString().equals("Other Employees")){
+              jcService.removeAllItems();
+              for(int i = 0; i < EmployeeDirectory.getInstance().getEmployeeDir().size(); i++){
+                  jcService.addItem(EmployeeDirectory.getInstance().getEmployeeDir().get(i).getFirstName());
+              }
+                
+            }
         
     }//GEN-LAST:event_jcDeptActionPerformed
 
@@ -277,13 +314,14 @@ public class FileComplainForm extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    public javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     public javax.swing.JComboBox<String> jcDept;
     public javax.swing.JComboBox<String> jcService;
     public javax.swing.JLabel labelFromName;
+    public javax.swing.JLabel labelImg;
     public javax.swing.JTextField tfDescription;
     // End of variables declaration//GEN-END:variables
 }

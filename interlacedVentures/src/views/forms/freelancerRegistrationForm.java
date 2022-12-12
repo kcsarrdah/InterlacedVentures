@@ -4,7 +4,9 @@
  */
 package views.forms;
 
+import static interlacedventures.InterlacedVentures.checkUserName;
 import java.awt.Desktop;
+import java.awt.event.KeyEvent;
 import java.io.File;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -12,6 +14,7 @@ import java.sql.PreparedStatement;
 import java.sql.*;
 import java.text.Format;
 import java.text.SimpleDateFormat;
+import java.util.regex.Pattern;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -105,7 +108,8 @@ public class freelancerRegistrationForm extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        tfName.setText("FREELANCER REGISTRATION");
+        tfName.setFont(new java.awt.Font("Courier New", 1, 30)); // NOI18N
+        tfName.setText("FREELANCER DETAILS");
 
         jLabel18.setText("FIRST NAME");
 
@@ -145,9 +149,31 @@ public class freelancerRegistrationForm extends javax.swing.JFrame {
             }
         });
 
+        txtUName.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                txtUNameMouseExited(evt);
+            }
+        });
         txtUName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtUNameActionPerformed(evt);
+            }
+        });
+
+        txtAge.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtAgeKeyPressed(evt);
+            }
+        });
+
+        txtPhone.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPhoneActionPerformed(evt);
+            }
+        });
+        txtPhone.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtPhoneKeyPressed(evt);
             }
         });
 
@@ -160,6 +186,11 @@ public class freelancerRegistrationForm extends javax.swing.JFrame {
         txtWorkExp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtWorkExpActionPerformed(evt);
+            }
+        });
+        txtWorkExp.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtWorkExpKeyPressed(evt);
             }
         });
 
@@ -272,14 +303,15 @@ public class freelancerRegistrationForm extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel26)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(btnEdit)
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(jLabel28)
-                                                .addComponent(jLabel30)
-                                                .addComponent(jLabel32)
-                                                .addComponent(jLabel1)
-                                                .addComponent(jLabel2)))
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel28)
+                                            .addComponent(jLabel30)
+                                            .addComponent(jLabel32)
+                                            .addComponent(jLabel1)
+                                            .addComponent(jLabel2)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(8, 8, 8)
+                                                .addComponent(btnEdit)))
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addGroup(layout.createSequentialGroup()
                                                 .addGap(27, 27, 27)
@@ -294,22 +326,14 @@ public class freelancerRegistrationForm extends javax.swing.JFrame {
                                                             .addComponent(btnViewImg)))
                                                     .addComponent(txtHourlyRate, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                             .addGroup(layout.createSequentialGroup()
-                                                .addGap(35, 35, 35)
-                                                .addComponent(dateField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 174, Short.MAX_VALUE)
-                                        .addComponent(btnRes)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(btnVIewRes))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(74, 74, 74)
-                                        .addComponent(jLabel3)
-                                        .addGap(26, 192, Short.MAX_VALUE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(18, 18, 18)
-                                        .addComponent(btnReg)
-                                        .addGap(0, 0, Short.MAX_VALUE))))
+                                                .addGap(41, 41, 41)
+                                                .addComponent(btnSave)
+                                                .addGap(124, 124, 124)
+                                                .addComponent(jlTemp)))))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 142, Short.MAX_VALUE)
+                                .addComponent(btnRes)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnVIewRes))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(layout.createSequentialGroup()
@@ -332,57 +356,54 @@ public class freelancerRegistrationForm extends javax.swing.JFrame {
                                                     .addComponent(txtUName, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                     .addComponent(comboGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)))
+                                .addGap(81, 81, 81)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(jLabel19)
-                                        .addComponent(jLabel23)
-                                        .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jLabel25))
+                                        .addComponent(jLabel29)
+                                        .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jLabel23)
+                                    .addComponent(jLabel19)
+                                    .addComponent(jLabel25)
+                                    .addComponent(jLabel27)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addGap(29, 29, 29)
+                                        .addGap(3, 3, 3)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jLabel33)
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                .addComponent(jLabel29)
-                                                .addComponent(jLabel27)
-                                                .addComponent(jLabel31)))))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(txtPhone)
-                                        .addComponent(txtLName, javax.swing.GroupLayout.DEFAULT_SIZE, 197, Short.MAX_VALUE)
-                                        .addComponent(txtAge, javax.swing.GroupLayout.DEFAULT_SIZE, 197, Short.MAX_VALUE)
-                                        .addComponent(txtPortfolio, javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(jcSkills, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(txtLatestWork))
-                                    .addComponent(txtLoc, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(pwdField)))
+                                            .addComponent(jLabel31)
+                                            .addComponent(jLabel3))))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(pwdField)
+                                    .addComponent(txtPhone)
+                                    .addComponent(txtLName, javax.swing.GroupLayout.DEFAULT_SIZE, 197, Short.MAX_VALUE)
+                                    .addComponent(txtAge, javax.swing.GroupLayout.DEFAULT_SIZE, 197, Short.MAX_VALUE)
+                                    .addComponent(txtPortfolio, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(txtLatestWork)
+                                    .addComponent(jcSkills, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(txtLoc)))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addGap(150, 150, 150)
-                                .addComponent(btnSave)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(150, 482, Short.MAX_VALUE)
+                                .addComponent(btnReg)
+                                .addGap(85, 85, 85)
                                 .addComponent(btnBack)))
                         .addGap(57, 57, 57))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(122, 122, 122)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(comboEducation, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtWorkExp, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(65, 485, Short.MAX_VALUE))))
+                            .addComponent(comboEducation, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtWorkExp, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(dateField, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
             .addGroup(layout.createSequentialGroup()
-                .addGap(224, 224, 224)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(tfName)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jlTemp, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(44, 44, 44))
+                .addGap(233, 233, 233))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(24, 24, 24)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tfName)
-                    .addComponent(jlTemp, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(tfName)
                 .addGap(39, 39, 39)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel18)
@@ -420,11 +441,10 @@ public class freelancerRegistrationForm extends javax.swing.JFrame {
                     .addComponent(comboEducation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jcSkills, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel30)
-                        .addComponent(jLabel31)
-                        .addComponent(txtLoc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel30)
+                    .addComponent(jLabel31)
+                    .addComponent(txtLoc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(dateField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -440,18 +460,23 @@ public class freelancerRegistrationForm extends javax.swing.JFrame {
                     .addComponent(btnRes)
                     .addComponent(btnViewImg)
                     .addComponent(btnVIewRes))
-                .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(btnID)
-                    .addComponent(btnViewId))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnReg)
-                    .addComponent(btnBack)
-                    .addComponent(btnEdit)
-                    .addComponent(btnSave))
-                .addGap(27, 27, 27))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2)
+                            .addComponent(btnID)
+                            .addComponent(btnViewId))
+                        .addGap(49, 49, 49)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnEdit, javax.swing.GroupLayout.DEFAULT_SIZE, 44, Short.MAX_VALUE)
+                            .addComponent(btnSave, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnReg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnBack, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jlTemp, javax.swing.GroupLayout.PREFERRED_SIZE, 7, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
 
         pack();
@@ -467,7 +492,37 @@ public class freelancerRegistrationForm extends javax.swing.JFrame {
 
     private void btnRegActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegActionPerformed
         // TODO add your handling code here:
-        String string = new String(pwdField.getPassword());
+        
+        if(jcSkills.getSelectedItem().toString().equals("") ||
+                txtLoc.getText().equals("") ||
+                //dateField.getDate().equals("") ||
+                pwdField.getPassword().equals("") ||
+                txtHourlyRate.getText().equals("")||
+                //Integer.parseInt(txtWorkExp.getText().equals("")) ||
+                //Integer.parseInt(txtSalary.getText().equals("")) ||
+                txtLatestWork.getText().equals("") ||
+                comboEducation.getSelectedItem().toString().equals("") ||
+                //txtSkills.getText().equals("") ||
+                txtUName.getText().equals("") ||
+                txtFName.getText().equals("") ||
+                txtLName.getText().equals("") ||
+                comboGender.getSelectedItem().toString().equals("") ||
+                txtPhone.getText().equals("") ||
+                filepath2.equals("")||
+                filepath1.equals("")||
+                filepath3.equals("")||
+                txtEmail.getText().equals(""))
+        {
+            JOptionPane.showMessageDialog(this, "Do Not Leave Any Field Blank");
+        }
+        else if(!(Pattern.matches("^[a-zA-Z0-9]+[@]+[a-zA-Z0-9]+[.]+[a-zA-Z0-9]+$", txtEmail.getText()))) 
+        {
+            JOptionPane.showMessageDialog(null, "Please enter a valid email", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+        
+        else{
+        
+            String string = new String(pwdField.getPassword());
         ApplicationFreelancer ap = new ApplicationFreelancer(txtLoc.getText(),
                 string,
                 dateField.getDate(),
@@ -493,6 +548,7 @@ public class freelancerRegistrationForm extends javax.swing.JFrame {
         this.hide();
         loginPage lp = new loginPage();
         lp.show();
+        }
         
         
 //        freelancer free = new freelancer(txtLoc.getText(),
@@ -752,6 +808,75 @@ public class freelancerRegistrationForm extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, e);
         }
     }//GEN-LAST:event_btnViewIdActionPerformed
+
+    private void txtUNameMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtUNameMouseExited
+        // TODO add your handling code here:
+            if(!checkUserName(txtUName.getText())){
+                    JOptionPane.showMessageDialog(this, "This userName is already taken, please choose a new one");
+                    txtUName.setText("");
+                }
+    }//GEN-LAST:event_txtUNameMouseExited
+
+    private void txtPhoneKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPhoneKeyPressed
+        // TODO add your handling code here:
+        String phoneNumber = txtPhone.getText();
+        int len = phoneNumber.length();
+        
+        char phoneChar = evt.getKeyChar();
+        if(evt.getKeyChar()>='0' && evt.getKeyChar()<='9')
+        {
+            if(len<10)
+            {
+                txtPhone.setEditable(true);    
+            }
+            else
+            {
+                txtPhone.setEditable(false);
+            }  
+        }
+        else
+        {
+            if(evt.getExtendedKeyCode() == KeyEvent.VK_BACK_SPACE || evt.getExtendedKeyCode() == KeyEvent.VK_DELETE)
+            {
+                txtPhone.setEditable(true);
+            }
+            else
+            {
+                txtPhone.setEditable(false);
+            }
+        }
+        
+    }//GEN-LAST:event_txtPhoneKeyPressed
+
+    private void txtAgeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAgeKeyPressed
+        // TODO add your handling code here:
+        char ageChar = evt.getKeyChar();
+        if(Character.isLetter(ageChar))
+        {
+            txtAge.setEditable(false);    
+        }
+        else
+        {
+            txtAge.setEditable(true);
+        }
+    }//GEN-LAST:event_txtAgeKeyPressed
+
+    private void txtWorkExpKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtWorkExpKeyPressed
+        // TODO add your handling code here:
+        char workChar = evt.getKeyChar();
+        if(Character.isLetter(workChar))
+        {
+            txtWorkExp.setEditable(false);    
+        }
+        else
+        {
+            txtWorkExp.setEditable(true);
+        }
+    }//GEN-LAST:event_txtWorkExpKeyPressed
+
+    private void txtPhoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPhoneActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPhoneActionPerformed
 
     /**
      * @param args the command line arguments

@@ -36,7 +36,7 @@
     <Container class="javax.swing.JPanel" name="jPanAcctMgr">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="cc" red="cc" type="rgb"/>
+          <Color blue="fa" green="e5" red="e5" type="rgb"/>
         </Property>
       </Properties>
 

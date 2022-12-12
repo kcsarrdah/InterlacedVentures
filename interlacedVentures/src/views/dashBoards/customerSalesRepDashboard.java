@@ -4,6 +4,12 @@
  */
 package views.dashBoards;
 
+import java.util.Date;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import models.complains;
+import models.complainsDirectory;
+
 /**
  *
  * @author kcsar
@@ -103,6 +109,26 @@ public class customerSalesRepDashboard extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+        DefaultTableModel tableModel = (DefaultTableModel) tableComplains.getModel();
+        String desc = tableComplains.getValueAt(tableComplains.getSelectedRow(), 0).toString();
+        
+        for(int i = 0; i < complainsDirectory.getInstance().getComplainsDir().size(); i++){
+            if(complainsDirectory.getInstance().getComplainsDir().get(i).getDescription().equals(desc)){
+                complains complain = new complains(
+                        desc,
+                        complainsDirectory.getInstance().getComplainsDir().get(i).getDept(),
+                        "resolved",
+                        complainsDirectory.getInstance().getComplainsDir().get(i).getFrom(),
+                        complainsDirectory.getInstance().getComplainsDir().get(i).getAgainst(),
+                        new Date()
+                );
+                complainsDirectory.getInstance().updateComplain(complain, i);
+                JOptionPane.showMessageDialog(this, "Issue Resolved");
+                
+            }
+        }
+        
+        
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**

@@ -78,7 +78,7 @@ public class complainsDirectory {
         Statement stmt;
         try {
             stmt = DatabaseConnectionClass.getInstance().getCon().createStatement();
-            String query1 = "Update Complains" + "set Status=?, where Description=?";
+            String query1 = "Update Complains" + " set Status=? where Description=?";
             PreparedStatement pst = DatabaseConnectionClass.getInstance().getCon().prepareStatement(query1);
             pst.setString(1, complain.getStatus());
             pst.setString(2, complain.getDescription());

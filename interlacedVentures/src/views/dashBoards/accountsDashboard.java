@@ -40,7 +40,7 @@ public class accountsDashboard extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanAcctMgr.setBackground(new java.awt.Color(204, 204, 255));
+        jPanAcctMgr.setBackground(new java.awt.Color(229, 229, 250));
         jPanAcctMgr.setLayout(null);
 
         labAccntsMan.setFont(new java.awt.Font("Baloo Bhaijaan", 1, 18)); // NOI18N
@@ -120,7 +120,7 @@ public class accountsDashboard extends javax.swing.JFrame {
     private void btnRegIssActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegIssActionPerformed
         // TODO add your handling code here:
         FileComplainForm fcf = new FileComplainForm();
-        fcf.labelFromName.setText(labAccntsMan.getText());
+        fcf.labelImg.setText(labAccntsMan.getText());
         fcf.jcDept.addItem("Orders");
         fcf.jcDept.addItem("Bills");
         fcf.jcDept.addItem("FreeLancers");

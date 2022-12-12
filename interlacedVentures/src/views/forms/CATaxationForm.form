@@ -76,7 +76,7 @@
                           <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
                           <Component id="jLabel1" min="-2" pref="135" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
-                          <Component id="lblName" min="-2" pref="75" max="-2" attributes="0"/>
+                          <Component id="lblName" min="-2" pref="124" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace pref="66" max="32767" attributes="0"/>

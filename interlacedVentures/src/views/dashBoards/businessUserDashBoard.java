@@ -177,6 +177,7 @@ public class businessUserDashBoard extends javax.swing.JFrame {
         String[][] rows = new String[n][5];
         int j=0;
         for(int i = 0;  i<n ; i++){
+            if(BillsDirectory.getInstance().getBillsDir().get(i).getBillFor().equals(businessUser.getText())){
                 rows[j][0] = BillsDirectory.getInstance().getBillsDir().get(i).getSevices();
                 rows[j][1] = BillsDirectory.getInstance().getBillsDir().get(i).getOrgName();
                 rows[j][2] = Integer.toString(BillsDirectory.getInstance().getBillsDir().get(i).getReceiptNo());     
@@ -185,7 +186,8 @@ public class businessUserDashBoard extends javax.swing.JFrame {
                 Format formatter = new SimpleDateFormat("yyyy-MM-dd");
                 String s = formatter.format(BillsDirectory.getInstance().getBillsDir().get(i).getDate());
                 rows[j][4] = s;
-                j++;      
+                j++;
+            }      
         }
         
         DefaultTableModel dtm = new DefaultTableModel (rows, columnNames);
@@ -201,8 +203,14 @@ public class businessUserDashBoard extends javax.swing.JFrame {
        
         sd.btnFile.hide();
         sd.btnViewFile.hide();
+        sd.btnPlaceReq.hide();
+        sd.btnBookApt.hide();
+        
+        
         sd.btnView.hide();
         sd.btnRent.hide();
+        sd.btnBuyRawMats.hide();
+        
         sd.show();
     }//GEN-LAST:event_servicesbusinessActionPerformed
 

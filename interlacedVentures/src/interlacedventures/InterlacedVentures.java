@@ -5,7 +5,15 @@
 package interlacedventures;
 
 //import java.util.HashMap;
+import javax.mail.Transport;
+import java.util.Date;
 import java.util.HashMap;
+import java.util.Properties;
+import javax.mail.Message;
+import javax.mail.Session;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
+import javax.swing.JOptionPane;
 import models.ApplicationBusinessDirectory;
 import models.ApplicationDirectory;
 import models.ApplicationFreelancerDirectory;
@@ -33,6 +41,45 @@ public class InterlacedVentures {
 
     public static String[][] Admins = new String[8][2];
     public static HashMap<String, Integer> ServicePrices = new HashMap<String, Integer>();
+    
+    public static boolean checkUserName(String s){
+        for(int i = 0; i < userDirectory.getInstance().getUserDir().size(); i++){
+            if(userDirectory.getInstance().getUserDir().get(i).getUsername().equals(s)) return false;
+        }
+        return true;
+    }
+    
+    public static void SendEmail(String s){
+        try{
+        Properties properties = new Properties();
+            properties.put("mail.smtp.auth","true");
+            properties.put("mail.smtp.starttls.enable","true");
+            properties.put("mail.smtp.host","smtp.gmail.com");
+            properties.put("mail.smtp.port","587");
+            Session session=Session.getDefaultInstance(properties,new javax.mail.Authenticator() {
+                @Override
+                protected javax.mail.PasswordAuthentication getPasswordAuthentication() {
+                    return new javax.mail.PasswordAuthentication("aedproject50@gmail.com","soeyqgtfpukeiady");  // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
+                }
+            
+
+            });
+            Message message = new MimeMessage(session);
+            message.setSubject("Account Confirmation Mail");
+            String str = "Your Account has been Activated. Kindly log in to your account with your credentials and edit your profile.";
+            message.setContent(str,"text/plain");
+            message.setFrom(new InternetAddress("aedproject50@gmail.com"));
+            message.setRecipient(Message.RecipientType.TO, new InternetAddress(s));
+            message.setSentDate(new Date());
+            Transport.send(message);
+            JOptionPane.showMessageDialog(null,"Email Sent");
+        }
+        catch(Exception e){
+        }
+        
+}
+    
+    
     /**
      * @param args the command line arguments
      */
@@ -81,11 +128,9 @@ public class InterlacedVentures {
         ServicePrices.put("Auditing", 350);
         ServicePrices.put("Taxation", 600);
         ServicePrices.put("Servers", 200);
-//        ServicePrices.put("Servers", 500);
-//        ServicePrices.put("Servers", 500);
-//        ServicePrices.put("Servers", 500);
-//        ServicePrices.put("Servers", 500);
         
+        
+
         
         
         

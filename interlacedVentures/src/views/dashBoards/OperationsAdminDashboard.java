@@ -53,7 +53,7 @@ public class OperationsAdminDashboard extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(250, 215, 73));
+        jPanel1.setBackground(new java.awt.Color(212, 233, 255));
 
         jLabel1.setFont(new java.awt.Font("Bai Jamjuree", 1, 30)); // NOI18N
         jLabel1.setText("OPERATIONS ADMIN DASHBOARD");
@@ -111,8 +111,6 @@ public class OperationsAdminDashboard extends javax.swing.JFrame {
                 btnServiceActionPerformed(evt);
             }
         });
-
-        jLabel2.setText("jLabel2");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);

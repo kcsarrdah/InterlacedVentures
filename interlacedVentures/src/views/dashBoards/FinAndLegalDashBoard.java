@@ -231,6 +231,7 @@ public class FinAndLegalDashBoard extends javax.swing.JFrame {
         // TODO add your handling code here:
         ViewInterViewRequestsForm vf = new ViewInterViewRequestsForm();
         vf.lblName.setText("Financial Admin");
+        System.out.println(vf.lblName.getText());
         
         String[][] rows = new String[ApplicationDirectory.getInstance().getApplicationDir().size()][4];
         String[] columnNames = {"First Name", "Last Name", "UserName", "Role"};

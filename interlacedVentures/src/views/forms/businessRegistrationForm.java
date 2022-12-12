@@ -4,8 +4,11 @@
  */
 package views.forms;
 
+import static interlacedventures.InterlacedVentures.checkUserName;
 import java.awt.Desktop;
+import java.awt.event.KeyEvent;
 import java.io.File;
+import java.util.regex.Pattern;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import models.ApplicationBusiness;
@@ -75,7 +78,7 @@ public class businessRegistrationForm extends javax.swing.JFrame {
         label_businessForm.setFont(new java.awt.Font("Baloo Bhaijaan", 1, 30)); // NOI18N
         label_businessForm.setText("REGISTER YOUR BUSINESS");
         jPanel2.add(label_businessForm);
-        label_businessForm.setBounds(170, 20, 380, 60);
+        label_businessForm.setBounds(120, 20, 460, 60);
 
         Labelname.setBackground(new java.awt.Color(255, 204, 255));
         Labelname.setFont(new java.awt.Font("InaiMathi", 1, 14)); // NOI18N
@@ -88,9 +91,25 @@ public class businessRegistrationForm extends javax.swing.JFrame {
         LabelEmail.setText("EMAIL");
         jPanel2.add(LabelEmail);
         LabelEmail.setBounds(130, 170, 37, 18);
+
+        txtPhNo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPhNoActionPerformed(evt);
+            }
+        });
+        txtPhNo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtPhNoKeyPressed(evt);
+            }
+        });
         jPanel2.add(txtPhNo);
         txtPhNo.setBounds(270, 220, 223, 23);
 
+        txtName.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                txtNameMouseExited(evt);
+            }
+        });
         txtName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNameActionPerformed(evt);
@@ -112,6 +131,12 @@ public class businessRegistrationForm extends javax.swing.JFrame {
         labelLocation.setText("LOCATION");
         jPanel2.add(labelLocation);
         labelLocation.setBounds(130, 280, 88, 18);
+
+        txtLoc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtLocActionPerformed(evt);
+            }
+        });
         jPanel2.add(txtLoc);
         txtLoc.setBounds(270, 270, 223, 23);
 
@@ -211,8 +236,24 @@ public class businessRegistrationForm extends javax.swing.JFrame {
 
     private void btnRegActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegActionPerformed
         // TODO add your handling code here:
-        
-       
+        if(txtLoc.getText().equals("") ||
+                //dateField.getDate().equals("") ||
+                pwField.getPassword().equals("") ||
+                txtName.getText().equals("")||
+                txtPhNo.getText().equals("")|| 
+                txtOwner.getText().equals("")||
+                //Integer.parseInt(txtWorkExp.getText().equals("")) ||
+                //Integer.parseInt(txtSalary.getText().equals("")) ||
+                filepath1.equals("")||
+                txtEmail.getText().equals(""))
+        {
+            JOptionPane.showMessageDialog(this, "Do Not Leave Any Field Blank");
+        }
+        else if(!(Pattern.matches("^[a-zA-Z0-9]+[@]+[a-zA-Z0-9]+[.]+[a-zA-Z0-9]+$", txtEmail.getText()))) 
+        {
+            JOptionPane.showMessageDialog(null, "Please enter a valid email", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+        else{
         String string = new String(pwField.getPassword());
         
         ApplicationBusiness ab = new ApplicationBusiness(
@@ -228,6 +269,8 @@ public class businessRegistrationForm extends javax.swing.JFrame {
         
         
         ApplicationBusinessDirectory.getInstance().addApplicationBusiness(ab);
+        
+        }
         
         
 //        business bus= new business(pwdField.getText(),
@@ -284,6 +327,52 @@ public class businessRegistrationForm extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnViewBusiActionPerformed
 
+    private void txtNameMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtNameMouseExited
+        // TODO add your handling code here:
+                        if(!checkUserName(txtName.getText())){
+                    JOptionPane.showMessageDialog(this, "This userName is already taken, please choose a new one");
+                    txtName.setText("");
+                }
+    }//GEN-LAST:event_txtNameMouseExited
+
+    private void txtLocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLocActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtLocActionPerformed
+
+    private void txtPhNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPhNoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPhNoActionPerformed
+
+    private void txtPhNoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPhNoKeyPressed
+        // TODO add your handling code here:
+        String phoneNumber = txtPhNo.getText();
+        int len = phoneNumber.length();
+        
+        char phoneChar = evt.getKeyChar();
+        if(evt.getKeyChar()>='0' && evt.getKeyChar()<='9')
+        {
+            if(len<10)
+            {
+                txtPhNo.setEditable(true);    
+            }
+            else
+            {
+                txtPhNo.setEditable(false);
+            }  
+        }
+        else
+        {
+            if(evt.getExtendedKeyCode() == KeyEvent.VK_BACK_SPACE || evt.getExtendedKeyCode() == KeyEvent.VK_DELETE)
+            {
+                txtPhNo.setEditable(true);
+            }
+            else
+            {
+                txtPhNo.setEditable(false);
+            }
+        }
+    }//GEN-LAST:event_txtPhNoKeyPressed
+
     /**
      * @param args the command line arguments
      */
@@ -336,12 +425,12 @@ public class businessRegistrationForm extends javax.swing.JFrame {
     private javax.swing.JLabel ownerNameLabel;
     public javax.swing.JPasswordField pwField;
     private javax.swing.JLabel setPasswordLabel;
-    private javax.swing.JTextField txtEmail;
-    private javax.swing.JTextField txtLoc;
-    private javax.swing.JTextField txtName;
-    private javax.swing.JTextField txtOwner;
-    private javax.swing.JTextField txtPhNo;
-    private javax.swing.JTextField txtWebsite;
+    public javax.swing.JTextField txtEmail;
+    public javax.swing.JTextField txtLoc;
+    public javax.swing.JTextField txtName;
+    public javax.swing.JTextField txtOwner;
+    public javax.swing.JTextField txtPhNo;
+    public javax.swing.JTextField txtWebsite;
     private javax.swing.JLabel webLabel;
     // End of variables declaration//GEN-END:variables
 }

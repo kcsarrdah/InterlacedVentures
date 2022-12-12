@@ -53,7 +53,7 @@ public class ViewItemsBusinessUser extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(204, 204, 255));
+        jPanel1.setBackground(new java.awt.Color(222, 237, 252));
 
         tableBills.setBackground(new java.awt.Color(255, 255, 204));
         tableBills.setModel(new javax.swing.table.DefaultTableModel(

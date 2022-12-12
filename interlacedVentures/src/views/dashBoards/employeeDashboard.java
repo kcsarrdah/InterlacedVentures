@@ -325,9 +325,10 @@ public class employeeDashboard extends javax.swing.JFrame {
 
     private void btnViewProfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewProfActionPerformed
         // TODO add your handling code here:
-        this.hide();
-        employeeRegistrationForm erf = new employeeRegistrationForm();
         
+        employeeRegistrationForm erf = new employeeRegistrationForm();
+        erf.btnEdit.setVisible(false);
+        erf.btnSave.setVisible(false);
         String UserName = lblEmpName.getText();
         
         for(int i = 0; i < EmployeeDirectory.getInstance().getEmployeeDir().size(); i++){
@@ -377,9 +378,11 @@ public class employeeDashboard extends javax.swing.JFrame {
         // TODO add your handling code here:
         FileComplainForm fcf = new FileComplainForm();
         fcf.labelFromName.setText(lblEmpName.getText());
-        fcf.jcDept.addItem("Orders");
-        fcf.jcDept.addItem("Bills");
-        fcf.jcDept.addItem("FreeLancers");
+        fcf.jcService.removeAllItems();
+        //fcf.jcDept.removeAllItems();
+        fcf.jcDept.addItem("Admin");
+        fcf.jcDept.addItem("Work");
+        fcf.jcDept.addItem("Other Employees");
         fcf.show();
     }//GEN-LAST:event_jButton2ActionPerformed
 

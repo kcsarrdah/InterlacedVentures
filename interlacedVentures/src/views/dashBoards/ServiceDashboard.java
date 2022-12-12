@@ -63,7 +63,7 @@ public class ServiceDashboard extends javax.swing.JFrame {
         btnPlaceOrder = new javax.swing.JButton();
         labelName = new javax.swing.JLabel();
         tfPrice = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
+        lblPrice = new javax.swing.JLabel();
         tfDetails = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         btnComplain = new javax.swing.JButton();
@@ -76,11 +76,14 @@ public class ServiceDashboard extends javax.swing.JFrame {
         btnBookApt = new javax.swing.JButton();
         btnViewFile = new javax.swing.JButton();
         btnFile = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        btnBuy = new javax.swing.JButton();
+        btnPlaceReq = new javax.swing.JButton();
+        btnBuyRawMats = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jPanel1.setBackground(new java.awt.Color(225, 238, 250));
+
+        jcEnterprise.setFont(jcEnterprise.getFont().deriveFont(jcEnterprise.getFont().getSize()+5f));
         jcEnterprise.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Technology", "Operations", "Finances and Legal", " " }));
         jcEnterprise.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -100,6 +103,7 @@ public class ServiceDashboard extends javax.swing.JFrame {
             }
         });
 
+        btnHFL.setFont(new java.awt.Font("InaiMathi", 0, 14)); // NOI18N
         btnHFL.setText("Hire A FreeLancer");
         btnHFL.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -107,6 +111,7 @@ public class ServiceDashboard extends javax.swing.JFrame {
             }
         });
 
+        btnPlaceOrder.setFont(new java.awt.Font("InaiMathi", 0, 14)); // NOI18N
         btnPlaceOrder.setText("Place An Order");
         btnPlaceOrder.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -114,8 +119,8 @@ public class ServiceDashboard extends javax.swing.JFrame {
             }
         });
 
-        labelName.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        labelName.setText("jLabel1");
+        labelName.setFont(new java.awt.Font("Beirut", 1, 18)); // NOI18N
+        labelName.setText("Name:");
 
         tfPrice.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -123,7 +128,8 @@ public class ServiceDashboard extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setText("Price");
+        lblPrice.setFont(new java.awt.Font("InaiMathi", 1, 18)); // NOI18N
+        lblPrice.setText("Price");
 
         tfDetails.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -131,8 +137,10 @@ public class ServiceDashboard extends javax.swing.JFrame {
             }
         });
 
+        jLabel2.setFont(new java.awt.Font("InaiMathi", 1, 18)); // NOI18N
         jLabel2.setText("Details");
 
+        btnComplain.setFont(new java.awt.Font("InaiMathi", 0, 18)); // NOI18N
         btnComplain.setText("File A Complain");
         btnComplain.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -140,6 +148,7 @@ public class ServiceDashboard extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setFont(new java.awt.Font("InaiMathi", 0, 18)); // NOI18N
         jButton1.setText("Back");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -147,6 +156,7 @@ public class ServiceDashboard extends javax.swing.JFrame {
             }
         });
 
+        tblDisplay.setFont(new java.awt.Font("InaiMathi", 1, 14)); // NOI18N
         tblDisplay.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
@@ -166,17 +176,15 @@ public class ServiceDashboard extends javax.swing.JFrame {
             pnlTableDisplayLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlTableDisplayLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 432, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 492, Short.MAX_VALUE)
                 .addContainerGap())
         );
         pnlTableDisplayLayout.setVerticalGroup(
             pnlTableDisplayLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlTableDisplayLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 144, Short.MAX_VALUE)
         );
 
+        btnView.setFont(new java.awt.Font("InaiMathi", 0, 18)); // NOI18N
         btnView.setText("View ");
         btnView.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -184,6 +192,7 @@ public class ServiceDashboard extends javax.swing.JFrame {
             }
         });
 
+        btnRent.setFont(new java.awt.Font("InaiMathi", 0, 18)); // NOI18N
         btnRent.setText("Rent");
         btnRent.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -191,6 +200,7 @@ public class ServiceDashboard extends javax.swing.JFrame {
             }
         });
 
+        btnBookApt.setFont(new java.awt.Font("InaiMathi", 0, 18)); // NOI18N
         btnBookApt.setText("Book An Appointment");
         btnBookApt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -198,6 +208,7 @@ public class ServiceDashboard extends javax.swing.JFrame {
             }
         });
 
+        btnViewFile.setFont(new java.awt.Font("InaiMathi", 0, 18)); // NOI18N
         btnViewFile.setText("View File");
         btnViewFile.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -205,6 +216,7 @@ public class ServiceDashboard extends javax.swing.JFrame {
             }
         });
 
+        btnFile.setFont(new java.awt.Font("InaiMathi", 0, 18)); // NOI18N
         btnFile.setText("Upload Your File for Auditing");
         btnFile.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -212,17 +224,19 @@ public class ServiceDashboard extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setText("Place Request");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnPlaceReq.setFont(new java.awt.Font("InaiMathi", 0, 18)); // NOI18N
+        btnPlaceReq.setText("Place Request");
+        btnPlaceReq.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnPlaceReqActionPerformed(evt);
             }
         });
 
-        btnBuy.setText("Buy");
-        btnBuy.addActionListener(new java.awt.event.ActionListener() {
+        btnBuyRawMats.setFont(new java.awt.Font("InaiMathi", 0, 18)); // NOI18N
+        btnBuyRawMats.setText("Buy");
+        btnBuyRawMats.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBuyActionPerformed(evt);
+                btnBuyRawMatsActionPerformed(evt);
             }
         });
 
@@ -231,99 +245,118 @@ public class ServiceDashboard extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(48, 48, 48)
+                .addGap(31, 31, 31)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(labelName, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(tfDetails, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(btnView))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 111, Short.MAX_VALUE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(lblPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(36, 36, 36)
+                                .addComponent(tfPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnRent, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(35, 35, 35)
+                        .addComponent(btnBuyRawMats, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(pnlTableDisplay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                            .addComponent(btnViewFile)
-                                            .addGap(18, 18, 18)
-                                            .addComponent(jButton2))
-                                        .addComponent(btnFile, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGap(42, 42, 42)
-                                    .addComponent(btnBookApt, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(btnPlaceOrder, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE)
-                                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                    .addComponent(btnRent, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(57, 57, 57)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(btnHFL, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 186, Short.MAX_VALUE)
-                                    .addComponent(btnComplain, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(btnBuy, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(jcService, javax.swing.GroupLayout.Alignment.LEADING, 0, 179, Short.MAX_VALUE)
-                        .addComponent(jcOrg, javax.swing.GroupLayout.Alignment.LEADING, 0, 179, Short.MAX_VALUE)
-                        .addComponent(jcEnterprise, javax.swing.GroupLayout.Alignment.LEADING, 0, 179, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(27, 27, 27)
-                            .addComponent(tfPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(labelName, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jcEnterprise, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(pnlTableDisplay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(jcOrg, 0, 179, Short.MAX_VALUE)
+                                            .addComponent(jcService, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addGap(315, 315, 315)
+                                                .addComponent(btnFile, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
+                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                                .addComponent(btnViewFile, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(94, 94, 94))))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                        .addGap(0, 0, Short.MAX_VALUE)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(44, 44, 44))
+                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                                .addComponent(btnPlaceOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(74, 74, 74)))))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(btnComplain, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnHFL, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnBookApt, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(34, 34, 34)
+                                        .addComponent(btnPlaceReq)))))
+                        .addGap(7, 7, 7))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(38, 38, 38)
+                        .addComponent(btnView, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(28, 28, 28)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(pnlTableDisplay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(labelName, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(28, 28, 28)
-                        .addComponent(jcEnterprise, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(pnlTableDisplay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jcEnterprise, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(32, 32, 32)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(78, 78, 78)
-                                .addComponent(btnBookApt))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(1, 1, 1)
-                                .addComponent(jcOrg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(41, 41, 41)
-                                .addComponent(jcService, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(18, 18, 18)
-                        .addComponent(btnView, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addGap(2, 2, 2)
+                        .addComponent(jcOrg, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(35, 35, 35)
+                        .addComponent(jcService, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(55, 55, 55)
+                        .addComponent(btnView)
+                        .addGap(73, 73, 73)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(tfPrice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(38, 38, 38)
+                            .addComponent(lblPrice, javax.swing.GroupLayout.DEFAULT_SIZE, 85, Short.MAX_VALUE))
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tfDetails, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(38, 38, 38)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(tfDetails, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnComplain, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(53, 53, 53))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(40, 40, 40)
-                        .addComponent(btnFile)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(12, 12, 12)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton2)
+                            .addComponent(btnBookApt)
+                            .addComponent(btnFile))
+                        .addGap(62, 62, 62)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnPlaceReq)
                             .addComponent(btnViewFile))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnRent)
-                            .addComponent(btnBuy))
-                        .addGap(41, 41, 41)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton1)
-                            .addComponent(btnComplain, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
+                            .addComponent(btnBuyRawMats))
+                        .addGap(82, 82, 82)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnHFL, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnHFL)
                             .addComponent(btnPlaceOrder))))
                 .addGap(22, 22, 22))
         );
@@ -332,7 +365,7 @@ public class ServiceDashboard extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1027, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -344,7 +377,9 @@ public class ServiceDashboard extends javax.swing.JFrame {
 
     private void jcEnterpriseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcEnterpriseActionPerformed
         // TODO add your handling code here:
-        jcOrg.removeAllItems();
+        
+        try{
+            jcOrg.removeAllItems();
         
         if(jcEnterprise.getSelectedItem().toString().equals("Technology")){
                 jcOrg.addItem("Software");
@@ -352,7 +387,17 @@ public class ServiceDashboard extends javax.swing.JFrame {
                 jcOrg.addItem("Hardware");
                 
                 btnPlaceOrder.show();
-                pnlTableDisplay.hide();
+                lblPrice.setVisible(true);
+                pnlTableDisplay.setVisible(false);
+                btnBookApt.hide();
+                btnBuyRawMats.hide();
+                btnRent.hide();
+                btnPlaceReq.hide();
+                btnViewFile.hide();
+                jcService.setVisible(true);
+                btnView.setVisible(false);
+                btnFile.setVisible(false);
+               
                 
             }
         else if(jcEnterprise.getSelectedItem().toString().equals("Operations")){
@@ -361,19 +406,33 @@ public class ServiceDashboard extends javax.swing.JFrame {
                 jcOrg.addItem("Raw Materials");
                 
                 btnRent.show();
-                pnlTableDisplay.show();
-                btnView.show();
+                btnFile.setVisible(false);
+                pnlTableDisplay.setVisible(true);
+                btnBookApt.setVisible(false);
+                btnViewFile.setVisible(false);
+                btnView.setVisible(true);
                 btnPlaceOrder.hide();
+                lblPrice.setVisible(false);
+                tfPrice.setVisible(false);
+                jcService.setVisible(true);
         }
         else if(jcEnterprise.getSelectedItem().toString().equals("Finances and Legal")){
             jcOrg.addItem("Consultancy");
+            
             pnlTableDisplay.hide();
             btnRent.hide();
             btnPlaceOrder.hide();
             btnFile.show();
             btnViewFile.show();
+            jcService.setVisible(true);
+            btnView.setVisible(false);
                 
+            }
         }
+        catch(Exception e){
+            
+        }
+
         
     }//GEN-LAST:event_jcEnterpriseActionPerformed
 
@@ -391,7 +450,9 @@ public class ServiceDashboard extends javax.swing.JFrame {
 
     private void jcOrgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcOrgActionPerformed
         // TODO add your handling code here:
-        jcService.removeAllItems();
+        
+        try{
+            jcService.removeAllItems();
         if(jcOrg.getSelectedItem().toString().equals("Software")){
                 jcService.addItem("Web Design");
                 jcService.addItem("Video Game");
@@ -404,6 +465,7 @@ public class ServiceDashboard extends javax.swing.JFrame {
                 jcService.addItem("Business Intelligence");
                 jcService.addItem("Machine Learning");
                 tfPrice.setVisible(true);
+                jcService.setVisible(true);
             }
         else if(jcOrg.getSelectedItem().toString().equals("Hardware")){
                 jcService.addItem("Aurdino UNO");
@@ -413,6 +475,7 @@ public class ServiceDashboard extends javax.swing.JFrame {
                 jcService.addItem("Seeduino");
                 jcService.addItem("Pocketbeagle");
                 tfPrice.setVisible(true);
+                jcService.setVisible(true);
         }
         else if(jcOrg.getSelectedItem().toString().equals("Cloud")){
                 jcService.addItem("Saas");
@@ -420,6 +483,7 @@ public class ServiceDashboard extends javax.swing.JFrame {
                 jcService.addItem("FaaS");
                 jcService.addItem("Servers");
                 tfPrice.setVisible(true);
+                jcService.setVisible(true);
         }
         
         else if(jcOrg.getSelectedItem().toString().equals("Storage")){
@@ -428,6 +492,7 @@ public class ServiceDashboard extends javax.swing.JFrame {
             jcService.addItem("Cold Storage");
             jcService.addItem("Fragile Items Storage");
             tfPrice.setVisible(false);
+            jcService.setVisible(true);
         }
         else if(jcOrg.getSelectedItem().toString().equals("Transport")){
             jcService.addItem("Cars");
@@ -435,10 +500,14 @@ public class ServiceDashboard extends javax.swing.JFrame {
             jcService.addItem("Refridgeration Transport vehicle");
             jcService.addItem("Fragile Items Transport");
             tfPrice.setVisible(false);
+            jcService.setVisible(true);
         }
         else if(jcOrg.getSelectedItem().toString().equals("Raw Materials")){
             jcService.setVisible(false);
             tfPrice.setVisible(false);
+            btnBuyRawMats.setVisible(true);
+            btnFile.setVisible(false);
+            btnViewFile.setVisible(false);
             jcService.addItem("Aluminium");
             jcService.addItem("Copper");
             jcService.addItem("Rubber");
@@ -476,10 +545,14 @@ public class ServiceDashboard extends javax.swing.JFrame {
             jcService.addItem("Auditing");
             jcService.addItem("Taxation");
             tfPrice.setVisible(true);
-        } 
-        
-        
-        
+            lblPrice.setVisible(true);
+            btnBookApt.setVisible(true);
+            btnPlaceReq.setVisible(true);
+            jcService.setVisible(true);
+            } 
+        }
+        catch(Exception e){
+        }
         
     }//GEN-LAST:event_jcOrgActionPerformed
 
@@ -810,7 +883,7 @@ public class ServiceDashboard extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnViewFileActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnPlaceReqActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlaceReqActionPerformed
         // TODO add your handling code here:
         AuditingOrder au = new AuditingOrder(
                 filepath1,
@@ -827,7 +900,7 @@ public class ServiceDashboard extends javax.swing.JFrame {
         AuditOrderDirectory.getInstance().addAuditOrder(au);
         JOptionPane.showMessageDialog(null, "Order Placed");
         
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btnPlaceReqActionPerformed
 
     private void btnBookAptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBookAptActionPerformed
         // TODO add your handling code here:
@@ -835,10 +908,11 @@ public class ServiceDashboard extends javax.swing.JFrame {
         ctf.lblName.setText(labelName.getText());
         ctf.tfNotes.setVisible(false);
         ctf.lblNotes.setVisible(false);
+        ctf.btnComplete.setVisible(false);
         ctf.show();
     }//GEN-LAST:event_btnBookAptActionPerformed
 
-    private void btnBuyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuyActionPerformed
+    private void btnBuyRawMatsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuyRawMatsActionPerformed
         // TODO add your handling code here:
         DefaultTableModel tableModel = (DefaultTableModel) tblDisplay.getModel();
         String Price = tableModel.getValueAt(tblDisplay.getSelectedRow(), 2).toString();
@@ -852,7 +926,7 @@ public class ServiceDashboard extends javax.swing.JFrame {
                             no);
         
                             BillsDirectory.getInstance().addBill(bill);
-    }//GEN-LAST:event_btnBuyActionPerformed
+    }//GEN-LAST:event_btnBuyRawMatsActionPerformed
 
     /**
      * @param args the command line arguments
@@ -891,17 +965,16 @@ public class ServiceDashboard extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btnBookApt;
-    public javax.swing.JButton btnBuy;
+    public javax.swing.JButton btnBuyRawMats;
     private javax.swing.JButton btnComplain;
     public javax.swing.JButton btnFile;
     public javax.swing.JButton btnHFL;
     public javax.swing.JButton btnPlaceOrder;
+    public javax.swing.JButton btnPlaceReq;
     public javax.swing.JButton btnRent;
     public javax.swing.JButton btnView;
     public javax.swing.JButton btnViewFile;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
@@ -910,6 +983,7 @@ public class ServiceDashboard extends javax.swing.JFrame {
     public javax.swing.JComboBox<String> jcOrg;
     public javax.swing.JComboBox<String> jcService;
     public javax.swing.JLabel labelName;
+    public javax.swing.JLabel lblPrice;
     public javax.swing.JPanel pnlTableDisplay;
     public javax.swing.JTable tblDisplay;
     public javax.swing.JTextField tfDetails;

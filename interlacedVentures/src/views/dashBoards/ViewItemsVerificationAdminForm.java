@@ -4,6 +4,7 @@
  */
 package views.dashBoards;
 
+import interlacedventures.InterlacedVentures;
 import java.awt.Desktop;
 import java.io.File;
 import javax.swing.JOptionPane;
@@ -128,6 +129,7 @@ public static String filePath2 = "";
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(24, 24, 24)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblName, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
@@ -137,8 +139,7 @@ public static String filePath2 = "";
                                 .addGap(18, 18, 18)
                                 .addComponent(btnViewRes)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnVLis, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(lblName, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(btnVLis, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(110, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -215,6 +216,8 @@ public static String filePath2 = "";
                 "Business User");
                 userDirectory.getInstance().addUser(login);
                 
+                InterlacedVentures.SendEmail(bus.getEmail());
+                
                 
                 }
             }
@@ -275,6 +278,7 @@ public static String filePath2 = "";
                 "Completed");
                 
                 ApplicationFreelancerDirectory.getInstance().updateApplicationFreelancer(pL, i);
+                InterlacedVentures.SendEmail(fl.getEmail());
                 
                 
         users login = new users(UName,
@@ -329,7 +333,7 @@ public static String filePath2 = "";
 
     private void btnViewResActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewResActionPerformed
         // TODO add your handling code here:
-        if(lblName.getText().equals("FreeLancers")){
+        if(!lblName.getText().equals("Business")){
             DefaultTableModel tableModel = (DefaultTableModel) tblDisplay.getModel();
                 filePath1 = tableModel.getValueAt(tblDisplay.getSelectedRow(), 4).toString();
             try{
@@ -350,10 +354,8 @@ public static String filePath2 = "";
             catch(Exception e){
             JOptionPane.showMessageDialog(null, e);
         }
-            
-  
-                
-            }
+      
+      }
     }//GEN-LAST:event_btnViewResActionPerformed
 
     private void btnVLisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVLisActionPerformed
@@ -480,6 +482,43 @@ public static String filePath2 = "";
             }
         }
     else{
+        DefaultTableModel tableModel = (DefaultTableModel) tblDisplay.getModel();
+        String UName = tableModel.getValueAt(tblDisplay.getSelectedRow(), 0).toString();
+                    for(int  i = 0; i < ApplicationDirectory.getInstance().getApplicationDir().size(); i++){
+                
+                if(ApplicationDirectory.getInstance().getApplicationDir().get(i).getUsername().equals(UName)){
+                
+               
+                
+                Application pL = new Application(
+                        ApplicationDirectory.getInstance().getApplicationDir().get(i).getOrganisation(),
+                        ApplicationDirectory.getInstance().getApplicationDir().get(i).getLocation(),
+                        ApplicationDirectory.getInstance().getApplicationDir().get(i).getDateOfJoining(),
+                        ApplicationDirectory.getInstance().getApplicationDir().get(i).getPassword(),
+                        ApplicationDirectory.getInstance().getApplicationDir().get(i).getRole(),
+                        ApplicationDirectory.getInstance().getApplicationDir().get(i).getWorkEx(),
+                        ApplicationDirectory.getInstance().getApplicationDir().get(i).getSalary(),
+                        ApplicationDirectory.getInstance().getApplicationDir().get(i).getLatestWork(),
+                        ApplicationDirectory.getInstance().getApplicationDir().get(i).getEducation(),
+                        ApplicationDirectory.getInstance().getApplicationDir().get(i).getSkills(),
+                        ApplicationDirectory.getInstance().getApplicationDir().get(i).getUsername(),
+                        
+                        ApplicationDirectory.getInstance().getApplicationDir().get(i).getFirstName(),
+                        ApplicationDirectory.getInstance().getApplicationDir().get(i).getLastName(),
+                        ApplicationDirectory.getInstance().getApplicationDir().get(i).getAge(),
+                        ApplicationDirectory.getInstance().getApplicationDir().get(i).getGender(),
+                        ApplicationDirectory.getInstance().getApplicationDir().get(i).getPhoneNumber(),
+                        ApplicationDirectory.getInstance().getApplicationDir().get(i).getEmail(),
+                        ApplicationDirectory.getInstance().getApplicationDir().get(i).getImagePath(),
+                        ApplicationDirectory.getInstance().getApplicationDir().get(i).getResPath(),
+                        ApplicationDirectory.getInstance().getApplicationDir().get(i).getIdPath(),
+                        true,
+                "Completed");
+                
+                ApplicationDirectory.getInstance().updateApplication(pL, i);
+                
+                }
+            }
         
     }
         
