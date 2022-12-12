@@ -30,6 +30,7 @@ import models.userDirectory;
 import views.dashBoards.FinAndLegalDashBoard;
 import views.dashBoards.OperationsAdminDashboard;
 import views.dashBoards.customerSalesRepDashboard;
+import views.dashBoards.verificationAdminDashboard;
 
 /**
  *
@@ -175,7 +176,6 @@ public class loginPage extends javax.swing.JFrame {
         }
         
         
-        
         else if(userName.equals(Admins[4][0]) && password.equals(Admins[4][1])){
         this.hide();
         customerSalesRepDashboard fldb = new customerSalesRepDashboard();
@@ -198,6 +198,13 @@ public class loginPage extends javax.swing.JFrame {
         fldb.tableComplains.setModel(dtm);
         fldb.show();
         }
+        
+        else if(userName.equals(Admins[5][0]) && password.equals(Admins[5][1])){
+            this.hide();
+            verificationAdminDashboard va = new verificationAdminDashboard();
+            va.show();
+        }
+        
           
         
         
