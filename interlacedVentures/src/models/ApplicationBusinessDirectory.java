@@ -32,7 +32,7 @@ public class ApplicationBusinessDirectory {
         Statement stmt;
         try {
             stmt = DatabaseConnectionClass.getInstance().getCon().createStatement();
-            String query1 = "INSERT INTO BusinessApplication" + " VALUES(?,?,?,?,?,?,?,?)";
+            String query1 = "INSERT INTO BusinessApplication" + " VALUES(?,?,?,?,?,?,?,?,?)";
            // java.sql.Date sqlDate = new java.sql.Date(ab.getDateOfJoining().getTime());
             PreparedStatement pst = DatabaseConnectionClass.getInstance().getCon().prepareStatement(query1);
             
@@ -44,6 +44,7 @@ public class ApplicationBusinessDirectory {
             pst.setString(6, ab.getOwnerName());
             pst.setString(7, ab.getLicensePath());
             pst.setString(8, ab.getAppStatus());
+            pst.setString(9, ab.getPassword());
 
             int rs = pst.executeUpdate();
             if(rs>0)

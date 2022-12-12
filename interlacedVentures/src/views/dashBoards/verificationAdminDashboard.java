@@ -5,6 +5,7 @@
 package views.dashBoards;
 
 import javax.swing.table.DefaultTableModel;
+import models.ApplicationBusinessDirectory;
 import models.ApplicationDirectory;
 import models.ApplicationFreelancerDirectory;
 import models.StorageDirectory;
@@ -209,22 +210,19 @@ public class verificationAdminDashboard extends javax.swing.JFrame {
     private void veriBusinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_veriBusinActionPerformed
         // TODO add your handling code here:
         this.hide();
-ViewItemsVerificationAdminForm vf = new ViewItemsVerificationAdminForm();
+        ViewItemsVerificationAdminForm vf = new ViewItemsVerificationAdminForm();
         vf.lblName.setText("Business");
         
-        String[][] rows = new String[StorageDirectory.getInstance().getStorageDir().size()][6];
-        String[] columnNames = {"UserName", "FirstName", "LastName", "Skill", "Resume", "ID"};
+        String[][] rows = new String[ApplicationDirectory.getInstance().getApplicationDir().size()][3];
+        String[] columnNames = {"Name", "Website", "Business Liscence"};
         int j = 0;
-//        for(int i=0; i < ApplicatioFreelancerDirectory.getInstance().getFreelancerAppDir().size(); i++){
-//                rows[j][0] = ApplicatioFreelancerDirectory.getInstance().getStorageDir().get(i).getUsername();
-//                rows[j][1] = ApplicatioFreelancerDirectory.getInstance().getStorageDir().get(i).getFirstName();
-//                rows[j][2] = ApplicatioFreelancerDirectory.getInstance().getStorageDir().get(i).getLastName());
-//                rows[j][3] = ApplicatioFreelancerDirectory.getInstance().getStorageDir().get(i).getSkill();           
-//                rows[j][4] = ApplicatioFreelancerDirectory.getInstance().getStorageDir().get(i).getPathResume();
-//                rows[j][5] = ApplicatioFreelancerDirectory.getInstance().getStorageDir().get(i).getPathID();
-//                j++;
-//            
-//        }
+        for(int i=0; i < ApplicationBusinessDirectory.getInstance().getApplicationBusinessDir().size(); i++){
+                rows[j][0] = ApplicationBusinessDirectory.getInstance().getApplicationBusinessDir().get(i).getName();
+                rows[j][1] = ApplicationBusinessDirectory.getInstance().getApplicationBusinessDir().get(i).getWebsite();
+                rows[j][2] = ApplicationBusinessDirectory.getInstance().getApplicationBusinessDir().get(i).getLicensePath();
+                j++;
+            
+        }
         DefaultTableModel model = new DefaultTableModel (rows, columnNames);
         vf.tblDisplay.setModel(model);
         

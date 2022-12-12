@@ -29,7 +29,7 @@ public class businessRegistrationForm extends javax.swing.JFrame {
         initComponents();
     }
     
-    private String filepath1 = "";
+    private static String filepath1 = "";
 
     /**
      * This method is called from within the constructor to initialize the form.

@@ -4,6 +4,16 @@
  */
 package views.dashBoards;
 
+import java.awt.Desktop;
+import java.io.File;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import models.ApplicationBusinessDirectory;
+import models.BusinessUsersDirectory;
+import models.business;
+import models.userDirectory;
+import models.users;
+
 /**
  *
  * @author kcsar
@@ -16,7 +26,7 @@ public class ViewItemsVerificationAdminForm extends javax.swing.JFrame {
     public ViewItemsVerificationAdminForm() {
         initComponents();
     }
-
+public static String filePath1 = "";
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -35,6 +45,7 @@ public class ViewItemsVerificationAdminForm extends javax.swing.JFrame {
         lblName = new javax.swing.JLabel();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
+        btnVLis = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -64,6 +75,18 @@ public class ViewItemsVerificationAdminForm extends javax.swing.JFrame {
         jButton4.setText("View ID");
 
         jButton5.setText("View Resume");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+
+        btnVLis.setText("View License");
+        btnVLis.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVLisActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -88,9 +111,11 @@ public class ViewItemsVerificationAdminForm extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(jButton5))
+                                .addComponent(jButton5)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnVLis, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(lblName, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(140, Short.MAX_VALUE))
+                .addContainerGap(110, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -105,7 +130,8 @@ public class ViewItemsVerificationAdminForm extends javax.swing.JFrame {
                     .addComponent(jButton2)
                     .addComponent(jButton3)
                     .addComponent(jButton4)
-                    .addComponent(jButton5))
+                    .addComponent(jButton5)
+                    .addComponent(btnVLis))
                 .addGap(20, 20, 20))
         );
 
@@ -125,9 +151,33 @@ public class ViewItemsVerificationAdminForm extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        
         if(lblName.getText().equals("Business")){
             
-            //for()
+        DefaultTableModel tableModel = (DefaultTableModel) tblDisplay.getModel();
+        String Name = tableModel.getValueAt(tblDisplay.getSelectedRow(), 0).toString();
+            
+            for(int  i = 0; i < ApplicationBusinessDirectory.getInstance().getApplicationBusinessDir().size(); i++){
+                if(ApplicationBusinessDirectory.getInstance().getApplicationBusinessDir().get(i).getName().equals(Name)){
+                business bus= new business(
+                  ApplicationBusinessDirectory.getInstance().getApplicationBusinessDir().get(i).getPassword(),
+                Name,
+                ApplicationBusinessDirectory.getInstance().getApplicationBusinessDir().get(i).getEmail(),
+                ApplicationBusinessDirectory.getInstance().getApplicationBusinessDir().get(i).getNumber(),
+                ApplicationBusinessDirectory.getInstance().getApplicationBusinessDir().get(i).getAddress(),
+                ApplicationBusinessDirectory.getInstance().getApplicationBusinessDir().get(i).getWebsite(),
+                ApplicationBusinessDirectory.getInstance().getApplicationBusinessDir().get(i).getOwnerName(),
+                ApplicationBusinessDirectory.getInstance().getApplicationBusinessDir().get(i).getLicensePath());
+                
+                 filePath1 = ApplicationBusinessDirectory.getInstance().getApplicationBusinessDir().get(i).getLicensePath().toString();
+                
+        BusinessUsersDirectory.getInstance().addBusinessUser(bus);
+        users login = new users(Name,
+                ApplicationBusinessDirectory.getInstance().getApplicationBusinessDir().get(i).getPassword(),
+                "Business User");
+                userDirectory.getInstance().addUser(login);
+                }
+            }
             
         }
         else if(lblName.getText().equals("FreeLancers")){
@@ -139,6 +189,32 @@ public class ViewItemsVerificationAdminForm extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void btnVLisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVLisActionPerformed
+        // TODO add your handling code here:
+        
+        try{
+            File pdf1 = new File(filePath1);
+            if(pdf1.exists()){
+                if(Desktop.isDesktopSupported()){
+                    Desktop.getDesktop().open(pdf1);
+                }
+                else{
+                    JOptionPane.showMessageDialog(null, "Desktop is not supported");
+                }
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "FIle does not exist");
+            }
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, e);
+        }
+        
+    }//GEN-LAST:event_btnVLisActionPerformed
 
     /**
      * @param args the command line arguments
@@ -176,6 +252,7 @@ public class ViewItemsVerificationAdminForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JButton btnVLis;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
