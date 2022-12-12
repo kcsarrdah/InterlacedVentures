@@ -19,8 +19,9 @@ public class ApplicationBusiness extends business{
             String address,
             String website, 
             String ownerName, 
-            String licensePath
-            ) {
+            String licensePath,
+            String appStatus) {
+
         super(Password, name, email, number, address, website, ownerName, licensePath);
     }
 

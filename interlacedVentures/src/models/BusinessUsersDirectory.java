@@ -77,15 +77,7 @@ public class BusinessUsersDirectory {
         }
     }
     
-//    public void docData(int stateID) {
-//        for(int j=0;j<doctorDir.size();j++) {
-//            System.out.println("sdj");
-//            DoctorMainFrame doc = new DoctorMainFrame();
-//            if(LoginDirectory.getInstance().getLoginDir().get(j).getStateID() == DoctorDirectory.getInstance().getDoctorDir().get(j).getStateID()) {
-//                doc.getDoc(DoctorDirectory.getInstance().getDoctorDir().get(j));
-//            }
-//        }
-//    }
+
     
     public static BusinessUsersDirectory getInstance() {
         if(mInstance == null)
