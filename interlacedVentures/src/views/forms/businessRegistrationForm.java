@@ -56,7 +56,7 @@ public class businessRegistrationForm extends javax.swing.JFrame {
         setPasswordLabel = new javax.swing.JLabel();
         txtWebsite = new javax.swing.JTextField();
         txtOwner = new javax.swing.JTextField();
-        pwdField = new javax.swing.JPasswordField();
+        pwField = new javax.swing.JPasswordField();
         btnReg = new javax.swing.JButton();
         btnViewBusi = new javax.swing.JButton();
         btnUpload = new javax.swing.JButton();
@@ -136,10 +136,8 @@ public class businessRegistrationForm extends javax.swing.JFrame {
         txtWebsite.setBounds(270, 330, 223, 23);
         jPanel2.add(txtOwner);
         txtOwner.setBounds(270, 380, 223, 23);
-
-        pwdField.setText("jPasswordField1");
-        jPanel2.add(pwdField);
-        pwdField.setBounds(270, 440, 223, 23);
+        jPanel2.add(pwField);
+        pwField.setBounds(270, 440, 223, 23);
 
         btnReg.setBackground(new java.awt.Color(255, 255, 204));
         btnReg.setFont(new java.awt.Font("InaiMathi", 1, 14)); // NOI18N
@@ -214,8 +212,11 @@ public class businessRegistrationForm extends javax.swing.JFrame {
     private void btnRegActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegActionPerformed
         // TODO add your handling code here:
         
+       
+        String string = new String(pwField.getPassword());
         
-        ApplicationBusiness ab = new ApplicationBusiness(pwdField.getText(),
+        ApplicationBusiness ab = new ApplicationBusiness(
+                string,
                 txtName.getText(),
                 txtEmail.getText(),
                 txtPhNo.getText(),
@@ -224,6 +225,7 @@ public class businessRegistrationForm extends javax.swing.JFrame {
                 txtOwner.getText(),
                 filepath1,
                 "Applied");
+        
         
         ApplicationBusinessDirectory.getInstance().addApplicationBusiness(ab);
         
@@ -332,7 +334,7 @@ public class businessRegistrationForm extends javax.swing.JFrame {
     private javax.swing.JLabel label_businessForm;
     private javax.swing.JLabel lblLicense;
     private javax.swing.JLabel ownerNameLabel;
-    private javax.swing.JPasswordField pwdField;
+    public javax.swing.JPasswordField pwField;
     private javax.swing.JLabel setPasswordLabel;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtLoc;

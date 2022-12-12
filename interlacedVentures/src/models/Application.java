@@ -10,6 +10,7 @@ import java.util.Date;
  *
  * @author kcsar
  */
+
 public class Application extends employee{
     private String appStatus;
 

@@ -25,7 +25,7 @@ public class business {
         this.address = address;
         this.website = website;
         this.ownerName = ownerName;
-        this.password = password;
+        this.password = Password;
         this.licensePath = licensePath;
     }
 

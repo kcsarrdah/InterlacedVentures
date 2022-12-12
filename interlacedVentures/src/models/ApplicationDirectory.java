@@ -78,6 +78,7 @@ public class ApplicationDirectory {
             String str = "Select * from EmployeeApplication";
             ResultSet rs = stmt.executeQuery(str);
             while(rs.next()) {
+                
                Application app = new Application(
                         rs.getString("Organisation"),
                         rs.getString("Location"),
@@ -119,6 +120,7 @@ public class ApplicationDirectory {
             
             
             pst.setString(1, app.getAppStatus());
+            pst.setString(2, app.getUsername());
             
             int rs = pst.executeUpdate();
             if(rs>0)

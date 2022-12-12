@@ -65,6 +65,7 @@ public class ApplicationBusinessDirectory {
             ResultSet rs = stmt.executeQuery(str);
             while(rs.next()) {
                ApplicationBusiness bs = new ApplicationBusiness(
+                        rs.getString("Password"),
                         rs.getString("Name"),
                         rs.getString("Email"),
                         rs.getString("Number"),
@@ -72,8 +73,7 @@ public class ApplicationBusinessDirectory {
                         rs.getString("Website"),
                         rs.getString("OwnerName"),
                         rs.getString("LicensePath"),
-                        rs.getString("AppStatus"),
-                       rs.getString("Password"));
+                        rs.getString("AppStatus"));
                 applicationBusinessDir.add(bs);
             }
         } catch (SQLException ex) {

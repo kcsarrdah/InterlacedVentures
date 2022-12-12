@@ -5,9 +5,11 @@
 package views.dashBoards;
 
 import javax.swing.table.DefaultTableModel;
+import models.ApplicationDirectory;
 import models.EmployeeDirectory;
 import models.OrdersDirectory;
 import views.Orgs.FinanceAndLegal.Consultancy;
+import views.forms.ViewInterViewRequestsForm;
 import views.loginPage;
 
 /**
@@ -50,6 +52,11 @@ public class FinAndLegalDashBoard extends javax.swing.JFrame {
 
         bttnInterReq.setFont(new java.awt.Font("InaiMathi", 1, 14)); // NOI18N
         bttnInterReq.setText("INTERVIEW REQUESTS");
+        bttnInterReq.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bttnInterReqActionPerformed(evt);
+            }
+        });
 
         bttnServReq.setFont(new java.awt.Font("InaiMathi", 1, 14)); // NOI18N
         bttnServReq.setText("SERVICE REQUESTS");
@@ -203,6 +210,34 @@ public class FinAndLegalDashBoard extends javax.swing.JFrame {
         c.tableRequests.setModel(dtm);
         c.show();
     }//GEN-LAST:event_btnConsultancyActionPerformed
+
+    private void bttnInterReqActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttnInterReqActionPerformed
+        // TODO add your handling code here:
+        ViewInterViewRequestsForm vf = new ViewInterViewRequestsForm();
+        vf.lblName.setText("Operations Admin");
+        
+        String[][] rows = new String[ApplicationDirectory.getInstance().getApplicationDir().size()][4];
+        String[] columnNames = {"First Name", "Last Name", "UserName", "Role"};
+        int j = 0;
+        for(int i=0; i < ApplicationDirectory.getInstance().getApplicationDir().size(); i++){
+            if(ApplicationDirectory.getInstance().getApplicationDir().get(i).getAppStatus().equals("STA") && 
+                    ApplicationDirectory.getInstance().getApplicationDir().get(i).getOrganisation().equals("Consultancy")){
+                
+                
+                rows[j][0] = ApplicationDirectory.getInstance().getApplicationDir().get(i).getFirstName();
+                rows[j][1] = ApplicationDirectory.getInstance().getApplicationDir().get(i).getLastName();
+                rows[j][2] = ApplicationDirectory.getInstance().getApplicationDir().get(i).getUsername();           
+                rows[j][3] = ApplicationDirectory.getInstance().getApplicationDir().get(i).getRole();
+                j++;
+            }
+        }
+        DefaultTableModel model = new DefaultTableModel (rows, columnNames);
+        vf.tbDisplay.setModel(model);
+        
+        
+        
+        vf.show();
+    }//GEN-LAST:event_bttnInterReqActionPerformed
 
     /**
      * @param args the command line arguments

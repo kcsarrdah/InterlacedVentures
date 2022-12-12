@@ -467,9 +467,9 @@ public class freelancerRegistrationForm extends javax.swing.JFrame {
 
     private void btnRegActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegActionPerformed
         // TODO add your handling code here:
-        
+        String string = new String(pwdField.getPassword());
         ApplicationFreelancer ap = new ApplicationFreelancer(txtLoc.getText(),
-                pwdField.getText(),
+                string,
                 dateField.getDate(),
                 Integer.parseInt(txtHourlyRate.getText()),
                 txtPortfolio.getText(),

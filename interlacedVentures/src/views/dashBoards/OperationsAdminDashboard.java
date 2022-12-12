@@ -5,6 +5,7 @@
 package views.dashBoards;
 
 import javax.swing.table.DefaultTableModel;
+import models.ApplicationDirectory;
 import models.EmployeeDirectory;
 import models.OrdersDirectory;
 import models.RentalOrderDirectory;
@@ -14,6 +15,7 @@ import views.Orgs.Operations.RawMatDash;
 import views.Orgs.Operations.StorageDash;
 import views.Orgs.Operations.TransportDash;
 import views.Orgs.Tech.Software;
+import views.forms.ViewInterViewRequestsForm;
 
 import views.loginPage;
 
@@ -95,6 +97,11 @@ public class OperationsAdminDashboard extends javax.swing.JFrame {
         btnInterview.setFont(new java.awt.Font("InaiMathi", 1, 14)); // NOI18N
         btnInterview.setText("INTERVIEW REQUESTS");
         btnInterview.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnInterview.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInterviewActionPerformed(evt);
+            }
+        });
 
         btnService.setFont(new java.awt.Font("InaiMathi", 1, 14)); // NOI18N
         btnService.setText("SERVICE REQUESTS");
@@ -257,6 +264,36 @@ public class OperationsAdminDashboard extends javax.swing.JFrame {
         RawMatDash rmd = new RawMatDash();
         rmd.show();
     }//GEN-LAST:event_btnRawMatActionPerformed
+
+    private void btnInterviewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInterviewActionPerformed
+        // TODO add your handling code here:
+        ViewInterViewRequestsForm vf = new ViewInterViewRequestsForm();
+        vf.lblName.setText("Operations Admin");
+        
+        String[][] rows = new String[ApplicationDirectory.getInstance().getApplicationDir().size()][4];
+        String[] columnNames = {"First Name", "Last Name", "UserName", "Role"};
+        int j = 0;
+        for(int i=0; i < ApplicationDirectory.getInstance().getApplicationDir().size(); i++){
+            if(ApplicationDirectory.getInstance().getApplicationDir().get(i).getAppStatus().equals("STA") && (
+                    ApplicationDirectory.getInstance().getApplicationDir().get(i).getOrganisation().equals("Storage") ||
+                    ApplicationDirectory.getInstance().getApplicationDir().get(i).getOrganisation().equals("Transport") || 
+                    ApplicationDirectory.getInstance().getApplicationDir().get(i).getOrganisation().equals("Raw Materials"))) {
+                
+                
+                rows[j][0] = ApplicationDirectory.getInstance().getApplicationDir().get(i).getFirstName();
+                rows[j][1] = ApplicationDirectory.getInstance().getApplicationDir().get(i).getLastName();
+                rows[j][2] = ApplicationDirectory.getInstance().getApplicationDir().get(i).getUsername();           
+                rows[j][3] = ApplicationDirectory.getInstance().getApplicationDir().get(i).getRole();
+                j++;
+            }
+        }
+        DefaultTableModel model = new DefaultTableModel (rows, columnNames);
+        vf.tbDisplay.setModel(model);
+        
+        
+        
+        vf.show();
+    }//GEN-LAST:event_btnInterviewActionPerformed
 
     /**
      * @param args the command line arguments

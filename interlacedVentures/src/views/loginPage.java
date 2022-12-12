@@ -147,13 +147,11 @@ public class loginPage extends javax.swing.JFrame {
         String password = pfPassword.getText();
         
         if(userName.equals(Admins[0][0]) && password.equals(Admins[0][1])){
-            System.out.println("here");
             this.hide();
             SystemAdmin sa = new SystemAdmin();
             sa.show();
         }
         else if(userName.equals(Admins[1][0]) && password.equals(Admins[1][1])){
-            System.out.println("hereee");
             this.hide();
             TechAdminDashboard td = new TechAdminDashboard();
             td.show();
@@ -162,14 +160,12 @@ public class loginPage extends javax.swing.JFrame {
         
         
         else if(userName.equals(Admins[2][0]) && password.equals(Admins[2][1])){
-            System.out.println("hereee");
             this.hide();
             FinAndLegalDashBoard fldb = new FinAndLegalDashBoard();
             fldb.show();
         }
         
         else if(userName.equals(Admins[3][0]) && password.equals(Admins[3][1])){
-            System.out.println("hereee");
             this.hide();
             OperationsAdminDashboard fldb = new OperationsAdminDashboard();
             fldb.show();

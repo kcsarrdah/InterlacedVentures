@@ -58,7 +58,7 @@ public class employee extends person{
         this.education = education;
         this.skills = skills;
         this.Username = Username;
-        this.password = password;
+        this.password = Password;
         this.DateOfJoining = DateOfJoining;
         this.location = location;
         this.Organisation = Organisation;

@@ -5,6 +5,7 @@
 package views.dashBoards;
 
 import javax.swing.table.DefaultTableModel;
+import models.ApplicationDirectory;
 import models.EmployeeDirectory;
 import models.OrdersDirectory;
 import views.Orgs.Tech.Cloud;
@@ -12,6 +13,7 @@ import views.Orgs.Tech.Hardware;
 import views.Orgs.Tech.Software;
 import views.loginPage;
 import models.OrdersDirectory;
+import views.forms.ViewInterViewRequestsForm;
 
 /**
  *
@@ -236,6 +238,34 @@ public class TechAdminDashboard extends javax.swing.JFrame {
 
     private void bttnInterReqActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttnInterReqActionPerformed
         // TODO add your handling code here:
+        
+        ViewInterViewRequestsForm vf = new ViewInterViewRequestsForm();
+        vf.lblName.setText("TechAdmin");
+        
+        String[][] rows = new String[ApplicationDirectory.getInstance().getApplicationDir().size()][4];
+        String[] columnNames = {"First Name", "Last Name", "UserName", "Role"};
+        int j = 0;
+        for(int i=0; i < ApplicationDirectory.getInstance().getApplicationDir().size(); i++){
+            if(ApplicationDirectory.getInstance().getApplicationDir().get(i).getAppStatus().equals("STA") && (
+                    ApplicationDirectory.getInstance().getApplicationDir().get(i).getOrganisation().equals("Software") ||
+                    ApplicationDirectory.getInstance().getApplicationDir().get(i).getOrganisation().equals("Cloud") || 
+                    ApplicationDirectory.getInstance().getApplicationDir().get(i).getOrganisation().equals("Hardware"))) {
+                
+                
+                rows[j][0] = ApplicationDirectory.getInstance().getApplicationDir().get(i).getFirstName();
+                rows[j][1] = ApplicationDirectory.getInstance().getApplicationDir().get(i).getLastName();
+                rows[j][2] = ApplicationDirectory.getInstance().getApplicationDir().get(i).getUsername();           
+                rows[j][3] = ApplicationDirectory.getInstance().getApplicationDir().get(i).getRole();
+                j++;
+            }
+        }
+        DefaultTableModel model = new DefaultTableModel (rows, columnNames);
+        vf.tbDisplay.setModel(model);
+        
+        
+        
+        vf.show();
+        
     }//GEN-LAST:event_bttnInterReqActionPerformed
 
     /**

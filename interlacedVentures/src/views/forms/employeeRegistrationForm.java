@@ -218,7 +218,7 @@ public class employeeRegistrationForm extends javax.swing.JFrame {
 
         jLabel2.setText("ROLE");
 
-        comboRole.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Front-end Developer", "Game Developer", "Security Engineer", "Software Engineer", "Mobile Developer", "DevOps Engineer", "Data Analyst", "Databse Administrator", "Data Scientist", "Machine Learning Engineer", "Hardware engineer", "Cloud Software Engineer", "Cloud Consultant", "Server Manager", "Chartered Accountant", " " }));
+        comboRole.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Front-end Developer", "Game Developer", "Security Engineer", "Software Engineer", "Mobile Developer", "DevOps Engineer", "Data Analyst", "Databse Administrator", "Data Scientist", "Machine Learning Engineer", "Hardware engineer", "Cloud Software Engineer", "Cloud Consultant", "Server Manager", "Driver", "Storage Manager", "Chartered Accountant", " " }));
         comboRole.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboRoleActionPerformed(evt);
@@ -226,6 +226,11 @@ public class employeeRegistrationForm extends javax.swing.JFrame {
         });
 
         comboOrg.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Software", "Hardware", "Cloud", "Storage", "Transport", "Raw Material", "Consultancy" }));
+        comboOrg.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboOrgActionPerformed(evt);
+            }
+        });
 
         btnRemove.setText("Remove");
         btnRemove.addActionListener(new java.awt.event.ActionListener() {
@@ -495,7 +500,7 @@ public class employeeRegistrationForm extends javax.swing.JFrame {
         if(comboOrg.getSelectedItem().toString().equals("") ||
                 txtLoc.getText().equals("") ||
                 //dateField.getDate().equals("") ||
-                pwdField.getText().equals("") ||
+                pwdField.getPassword().equals("") ||
                 comboRole.getSelectedItem().toString().equals("") ||
                 //Integer.parseInt(txtWorkExp.getText().equals("")) ||
                 //Integer.parseInt(txtSalary.getText().equals("")) ||
@@ -517,12 +522,12 @@ public class employeeRegistrationForm extends javax.swing.JFrame {
         }
         else
         {
-            
+            String string = new String(pwdField.getPassword());
             Application app = new Application(
                     comboOrg.getSelectedItem().toString(),
                     txtLoc.getText(),
                     dateField.getDate(),
-                    pwdField.getText(),
+                    string,
                     comboRole.getSelectedItem().toString(),
                     Integer.parseInt(txtWorkExp.getText()),
                     Integer.parseInt(txtSalary.getText()),
@@ -542,43 +547,13 @@ public class employeeRegistrationForm extends javax.swing.JFrame {
                     true,
                     "Applied"
             );
-            System.out.println(app.getAppStatus());
+            
             
             ApplicationDirectory.getInstance().addApplication(app);
+            
             this.hide();
             loginPage lp = new loginPage();
-            lp.show();
-            
-//        employee free = new employee(
-//            comboOrg.getSelectedItem().toString(),
-//            txtLoc.getText(),
-//            dateField.getDate(),
-//            pwdField.getText(),
-//            comboRole.getSelectedItem().toString(),
-//            Integer.parseInt(txtWorkExp.getText()),
-//            Integer.parseInt(txtSalary.getText()),
-//            txtLatestWork.getText(),
-//            comboEducation.getSelectedItem().toString(),
-//            txtSkills.getText(),
-//            txtUName.getText(),
-//            txtFName.getText(),
-//            txtLName.getText(),
-//            Integer.parseInt(txtAge.getText()),
-//            comboGender.getSelectedItem().toString(),
-//            txtPhone.getText(),
-//            txtEmail.getText(),
-//            btnViewImg.getText(),
-//            btnViewRes.getText(),
-//            btnViewId.getText(),
-//            true);
-//            
-//        EmployeeDirectory.getInstance().addEmployee(free);
-//        
-//        users login = new users(txtUName.getText(),pwdField.getText(),"Employee");
-//        
-//        userDirectory.getInstance().addUser(login);
-//        
-//        
+            lp.show();   
         }
     }//GEN-LAST:event_btnApplyActionPerformed
 
@@ -840,12 +815,17 @@ public class employeeRegistrationForm extends javax.swing.JFrame {
                 }
             }
             else{
-                JOptionPane.showMessageDialog(null, "FIle does not exist");
+                JOptionPane.showMessageDialog(null, "File does not exist");
             }
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, e);
         }
     }//GEN-LAST:event_btnViewIdActionPerformed
+
+    private void comboOrgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboOrgActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_comboOrgActionPerformed
 
     /**
      * @param args the command line arguments

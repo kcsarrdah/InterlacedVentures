@@ -8,9 +8,16 @@ import java.awt.Desktop;
 import java.io.File;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import models.Application;
+import models.ApplicationBusiness;
 import models.ApplicationBusinessDirectory;
+import models.ApplicationDirectory;
+import models.ApplicationFreelancer;
+import models.ApplicationFreelancerDirectory;
 import models.BusinessUsersDirectory;
+import models.FreelanceDirectory;
 import models.business;
+import models.freelancer;
 import models.userDirectory;
 import models.users;
 
@@ -27,6 +34,8 @@ public class ViewItemsVerificationAdminForm extends javax.swing.JFrame {
         initComponents();
     }
 public static String filePath1 = "";
+public static String filePath2 = "";
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -43,8 +52,8 @@ public static String filePath1 = "";
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         lblName = new javax.swing.JLabel();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        btnViwId = new javax.swing.JButton();
+        btnViewRes = new javax.swing.JButton();
         btnVLis = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -67,17 +76,32 @@ public static String filePath1 = "";
         });
 
         jButton2.setText("Disapprove");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Back");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         lblName.setText("Name");
 
-        jButton4.setText("View ID");
-
-        jButton5.setText("View Resume");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        btnViwId.setText("View ID");
+        btnViwId.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                btnViwIdActionPerformed(evt);
+            }
+        });
+
+        btnViewRes.setText("View Resume");
+        btnViewRes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnViewResActionPerformed(evt);
             }
         });
 
@@ -109,9 +133,9 @@ public static String filePath1 = "";
                                 .addGap(18, 18, 18)
                                 .addComponent(jButton2)
                                 .addGap(18, 18, 18)
-                                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnViwId, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(jButton5)
+                                .addComponent(btnViewRes)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(btnVLis, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(lblName, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))))
@@ -129,8 +153,8 @@ public static String filePath1 = "";
                     .addComponent(jButton1)
                     .addComponent(jButton2)
                     .addComponent(jButton3)
-                    .addComponent(jButton4)
-                    .addComponent(jButton5)
+                    .addComponent(btnViwId)
+                    .addComponent(btnViewRes)
                     .addComponent(btnVLis))
                 .addGap(20, 20, 20))
         );
@@ -156,9 +180,12 @@ public static String filePath1 = "";
             
         DefaultTableModel tableModel = (DefaultTableModel) tblDisplay.getModel();
         String Name = tableModel.getValueAt(tblDisplay.getSelectedRow(), 0).toString();
+        
             
             for(int  i = 0; i < ApplicationBusinessDirectory.getInstance().getApplicationBusinessDir().size(); i++){
                 if(ApplicationBusinessDirectory.getInstance().getApplicationBusinessDir().get(i).getName().equals(Name)){
+                    
+                    
                 business bus= new business(
                   ApplicationBusinessDirectory.getInstance().getApplicationBusinessDir().get(i).getPassword(),
                 Name,
@@ -169,35 +196,174 @@ public static String filePath1 = "";
                 ApplicationBusinessDirectory.getInstance().getApplicationBusinessDir().get(i).getOwnerName(),
                 ApplicationBusinessDirectory.getInstance().getApplicationBusinessDir().get(i).getLicensePath());
                 
-                 filePath1 = ApplicationBusinessDirectory.getInstance().getApplicationBusinessDir().get(i).getLicensePath().toString();
                 
-        BusinessUsersDirectory.getInstance().addBusinessUser(bus);
-        users login = new users(Name,
+                ApplicationBusiness app = new ApplicationBusiness(ApplicationBusinessDirectory.getInstance().getApplicationBusinessDir().get(i).getPassword(),
+                        Name,
+                        ApplicationBusinessDirectory.getInstance().getApplicationBusinessDir().get(i).getEmail(),
+                        ApplicationBusinessDirectory.getInstance().getApplicationBusinessDir().get(i).getNumber(),
+                        ApplicationBusinessDirectory.getInstance().getApplicationBusinessDir().get(i).getAddress(),
+                        ApplicationBusinessDirectory.getInstance().getApplicationBusinessDir().get(i).getWebsite(),
+                        ApplicationBusinessDirectory.getInstance().getApplicationBusinessDir().get(i).getOwnerName(),
+                        ApplicationBusinessDirectory.getInstance().getApplicationBusinessDir().get(i).getLicensePath(),
+                        "Completed");
+                
+                ApplicationBusinessDirectory.getInstance().updateApplicationBusiness(app, i);
+                
+                BusinessUsersDirectory.getInstance().addBusinessUser(bus);
+                users login = new users(Name,
                 ApplicationBusinessDirectory.getInstance().getApplicationBusinessDir().get(i).getPassword(),
                 "Business User");
                 userDirectory.getInstance().addUser(login);
+                
+                
                 }
             }
             
         }
+        
         else if(lblName.getText().equals("FreeLancers")){
+        DefaultTableModel tableModel = (DefaultTableModel) tblDisplay.getModel();
+        String UName = tableModel.getValueAt(tblDisplay.getSelectedRow(), 0).toString();
             
+            for(int  i = 0; i < ApplicationFreelancerDirectory.getInstance().getApplicationFreelancerDir().size(); i++){
+                
+                if(ApplicationFreelancerDirectory.getInstance().getApplicationFreelancerDir().get(i).getUsername().equals(UName)){
+                
+                freelancer fl= new freelancer(
+                        ApplicationFreelancerDirectory.getInstance().getApplicationFreelancerDir().get(i).getLocation(),
+                        ApplicationFreelancerDirectory.getInstance().getApplicationFreelancerDir().get(i).getPassword(),
+                        ApplicationFreelancerDirectory.getInstance().getApplicationFreelancerDir().get(i).getDateOfJoining(),
+                        ApplicationFreelancerDirectory.getInstance().getApplicationFreelancerDir().get(i).getHourlyRate(),
+                        ApplicationFreelancerDirectory.getInstance().getApplicationFreelancerDir().get(i).getPortfolio(),
+                        ApplicationFreelancerDirectory.getInstance().getApplicationFreelancerDir().get(i).getWorkEx(),
+                        ApplicationFreelancerDirectory.getInstance().getApplicationFreelancerDir().get(i).getLatestWork(),
+                        ApplicationFreelancerDirectory.getInstance().getApplicationFreelancerDir().get(i).getEducation(),
+                        ApplicationFreelancerDirectory.getInstance().getApplicationFreelancerDir().get(i).getSkills(),
+                        ApplicationFreelancerDirectory.getInstance().getApplicationFreelancerDir().get(i).getUsername(),
+                        ApplicationFreelancerDirectory.getInstance().getApplicationFreelancerDir().get(i).getFirstName(),
+                        ApplicationFreelancerDirectory.getInstance().getApplicationFreelancerDir().get(i).getLastName(),
+                        ApplicationFreelancerDirectory.getInstance().getApplicationFreelancerDir().get(i).getAge(),
+                        ApplicationFreelancerDirectory.getInstance().getApplicationFreelancerDir().get(i).getGender(),
+                        ApplicationFreelancerDirectory.getInstance().getApplicationFreelancerDir().get(i).getPhoneNumber(),
+                        ApplicationFreelancerDirectory.getInstance().getApplicationFreelancerDir().get(i).getEmail(),
+                        ApplicationFreelancerDirectory.getInstance().getApplicationFreelancerDir().get(i).getImagePath(),
+                        ApplicationFreelancerDirectory.getInstance().getApplicationFreelancerDir().get(i).getResPath(),
+                        ApplicationFreelancerDirectory.getInstance().getApplicationFreelancerDir().get(i).getIdPath()
+                );
+                
+                FreelanceDirectory.getInstance().addFreelancer(fl);
+                
+                ApplicationFreelancer pL = new ApplicationFreelancer(ApplicationFreelancerDirectory.getInstance().getApplicationFreelancerDir().get(i).getLocation(),
+                        ApplicationFreelancerDirectory.getInstance().getApplicationFreelancerDir().get(i).getPassword(),
+                        ApplicationFreelancerDirectory.getInstance().getApplicationFreelancerDir().get(i).getDateOfJoining(),
+                        ApplicationFreelancerDirectory.getInstance().getApplicationFreelancerDir().get(i).getHourlyRate(),
+                        ApplicationFreelancerDirectory.getInstance().getApplicationFreelancerDir().get(i).getPortfolio(),
+                        ApplicationFreelancerDirectory.getInstance().getApplicationFreelancerDir().get(i).getWorkEx(),
+                        ApplicationFreelancerDirectory.getInstance().getApplicationFreelancerDir().get(i).getLatestWork(),
+                        ApplicationFreelancerDirectory.getInstance().getApplicationFreelancerDir().get(i).getEducation(),
+                        ApplicationFreelancerDirectory.getInstance().getApplicationFreelancerDir().get(i).getSkills(),
+                        ApplicationFreelancerDirectory.getInstance().getApplicationFreelancerDir().get(i).getUsername(),
+                        ApplicationFreelancerDirectory.getInstance().getApplicationFreelancerDir().get(i).getFirstName(),
+                        ApplicationFreelancerDirectory.getInstance().getApplicationFreelancerDir().get(i).getLastName(),
+                        ApplicationFreelancerDirectory.getInstance().getApplicationFreelancerDir().get(i).getAge(),
+                        ApplicationFreelancerDirectory.getInstance().getApplicationFreelancerDir().get(i).getGender(),
+                        ApplicationFreelancerDirectory.getInstance().getApplicationFreelancerDir().get(i).getPhoneNumber(),
+                        ApplicationFreelancerDirectory.getInstance().getApplicationFreelancerDir().get(i).getEmail(),
+                        ApplicationFreelancerDirectory.getInstance().getApplicationFreelancerDir().get(i).getImagePath(),
+                        ApplicationFreelancerDirectory.getInstance().getApplicationFreelancerDir().get(i).getResPath(),
+                        ApplicationFreelancerDirectory.getInstance().getApplicationFreelancerDir().get(i).getIdPath(),
+                "Completed");
+                
+                ApplicationFreelancerDirectory.getInstance().updateApplicationFreelancer(pL, i);
+                
+                
+        users login = new users(UName,
+                ApplicationFreelancerDirectory.getInstance().getApplicationFreelancerDir().get(i).getPassword(),
+                "Freelancer");
+        
+                userDirectory.getInstance().addUser(login);
+                }
+            }
         }
+        
         else{
+        DefaultTableModel tableModel = (DefaultTableModel) tblDisplay.getModel();
+        String UName = tableModel.getValueAt(tblDisplay.getSelectedRow(), 0).toString();
             
+            for(int  i = 0; i < ApplicationDirectory.getInstance().getApplicationDir().size(); i++){
+                
+                if(ApplicationDirectory.getInstance().getApplicationDir().get(i).getUsername().equals(UName)){
+                
+               
+                
+                Application apL = new Application(
+                        ApplicationDirectory.getInstance().getApplicationDir().get(i).getOrganisation(),
+                        ApplicationDirectory.getInstance().getApplicationDir().get(i).getLocation(),  
+                        ApplicationDirectory.getInstance().getApplicationDir().get(i).getDateOfJoining(),                       
+                        ApplicationDirectory.getInstance().getApplicationDir().get(i).getPassword(),                       
+                        ApplicationDirectory.getInstance().getApplicationDir().get(i).getRole(),                       
+                        ApplicationDirectory.getInstance().getApplicationDir().get(i).getWorkEx(),                       
+                        ApplicationDirectory.getInstance().getApplicationDir().get(i).getSalary(),                      
+                        ApplicationDirectory.getInstance().getApplicationDir().get(i).getLatestWork(),                     
+                        ApplicationDirectory.getInstance().getApplicationDir().get(i).getEducation(),
+                        ApplicationDirectory.getInstance().getApplicationDir().get(i).getSkills(),          
+                        ApplicationDirectory.getInstance().getApplicationDir().get(i).getUsername(),
+                        ApplicationDirectory.getInstance().getApplicationDir().get(i).getFirstName(),
+                        ApplicationDirectory.getInstance().getApplicationDir().get(i).getLastName(),
+                        ApplicationDirectory.getInstance().getApplicationDir().get(i).getAge(),
+                        ApplicationDirectory.getInstance().getApplicationDir().get(i).getGender(),
+                        ApplicationDirectory.getInstance().getApplicationDir().get(i).getPhoneNumber(),
+                        ApplicationDirectory.getInstance().getApplicationDir().get(i).getEmail(),
+                        ApplicationDirectory.getInstance().getApplicationDir().get(i).getImagePath(),
+                        ApplicationDirectory.getInstance().getApplicationDir().get(i).getResPath(),
+                        ApplicationDirectory.getInstance().getApplicationDir().get(i).getIdPath(),
+                        ApplicationDirectory.getInstance().getApplicationDir().get(i).isStatus(),
+                        "STA");
+                //STA = sent to admin
+                ApplicationDirectory.getInstance().updateApplication(apL, i);
+                }
+            }
+                
         }
-        
-        
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void btnViewResActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewResActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton5ActionPerformed
+        if(lblName.getText().equals("FreeLancers")){
+            DefaultTableModel tableModel = (DefaultTableModel) tblDisplay.getModel();
+                filePath1 = tableModel.getValueAt(tblDisplay.getSelectedRow(), 4).toString();
+            try{
+            File pdf1 = new File(filePath1);
+            if(pdf1.exists()){
+                if(Desktop.isDesktopSupported()){
+                    Desktop.getDesktop().open(pdf1);
+                }
+                else{
+                    JOptionPane.showMessageDialog(null, "Desktop is not supported");
+                }
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "FIle does not exist");
+            }
+
+            }
+            catch(Exception e){
+            JOptionPane.showMessageDialog(null, e);
+        }
+            
+  
+                
+            }
+    }//GEN-LAST:event_btnViewResActionPerformed
 
     private void btnVLisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVLisActionPerformed
         // TODO add your handling code here:
         
         try{
+            if(lblName.getText().equals("Business")){
+                DefaultTableModel tableModel = (DefaultTableModel) tblDisplay.getModel();
+                filePath1 = tableModel.getValueAt(tblDisplay.getSelectedRow(), 2).toString();
+            }
             File pdf1 = new File(filePath1);
             if(pdf1.exists()){
                 if(Desktop.isDesktopSupported()){
@@ -215,6 +381,111 @@ public static String filePath1 = "";
         }
         
     }//GEN-LAST:event_btnVLisActionPerformed
+
+    private void btnViwIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViwIdActionPerformed
+        // TODO add your handling code here:
+        try{
+            if(lblName.getText().equals("Business")){
+                DefaultTableModel tableModel = (DefaultTableModel) tblDisplay.getModel();
+                filePath1 = tableModel.getValueAt(tblDisplay.getSelectedRow(), 3).toString();
+            }
+            File pdf1 = new File(filePath1);
+            if(pdf1.exists()){
+                if(Desktop.isDesktopSupported()){
+                    Desktop.getDesktop().open(pdf1);
+                }
+                else{
+                    JOptionPane.showMessageDialog(null, "Desktop is not supported");
+                }
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "FIle does not exist");
+            }
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }//GEN-LAST:event_btnViwIdActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        this.hide();
+        verificationAdminDashboard va = new verificationAdminDashboard();
+        va.show();
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    if(lblName.getText().equals("Business")){
+            
+        DefaultTableModel tableModel = (DefaultTableModel) tblDisplay.getModel();
+        String Name = tableModel.getValueAt(tblDisplay.getSelectedRow(), 0).toString();
+        
+            
+            for(int  i = 0; i < ApplicationBusinessDirectory.getInstance().getApplicationBusinessDir().size(); i++){
+                if(ApplicationBusinessDirectory.getInstance().getApplicationBusinessDir().get(i).getName().equals(Name)){
+                    
+                
+                ApplicationBusiness app = new ApplicationBusiness(ApplicationBusinessDirectory.getInstance().getApplicationBusinessDir().get(i).getPassword(),
+                        Name,
+                        ApplicationBusinessDirectory.getInstance().getApplicationBusinessDir().get(i).getEmail(),
+                        ApplicationBusinessDirectory.getInstance().getApplicationBusinessDir().get(i).getNumber(),
+                        ApplicationBusinessDirectory.getInstance().getApplicationBusinessDir().get(i).getAddress(),
+                        ApplicationBusinessDirectory.getInstance().getApplicationBusinessDir().get(i).getWebsite(),
+                        ApplicationBusinessDirectory.getInstance().getApplicationBusinessDir().get(i).getOwnerName(),
+                        ApplicationBusinessDirectory.getInstance().getApplicationBusinessDir().get(i).getLicensePath(),
+                        "Completed");
+                
+                ApplicationBusinessDirectory.getInstance().updateApplicationBusiness(app, i);
+                
+                
+                }
+            }
+            
+        }
+    
+    else if(lblName.getText().equals("FreeLancers")){
+        DefaultTableModel tableModel = (DefaultTableModel) tblDisplay.getModel();
+        String UName = tableModel.getValueAt(tblDisplay.getSelectedRow(), 0).toString();
+            
+            for(int  i = 0; i < ApplicationFreelancerDirectory.getInstance().getApplicationFreelancerDir().size(); i++){
+                
+                if(ApplicationFreelancerDirectory.getInstance().getApplicationFreelancerDir().get(i).getUsername().equals(UName)){
+                
+               
+                
+                ApplicationFreelancer pL = new ApplicationFreelancer(ApplicationFreelancerDirectory.getInstance().getApplicationFreelancerDir().get(i).getLocation(),
+                        ApplicationFreelancerDirectory.getInstance().getApplicationFreelancerDir().get(i).getPassword(),
+                        ApplicationFreelancerDirectory.getInstance().getApplicationFreelancerDir().get(i).getDateOfJoining(),
+                        ApplicationFreelancerDirectory.getInstance().getApplicationFreelancerDir().get(i).getHourlyRate(),
+                        ApplicationFreelancerDirectory.getInstance().getApplicationFreelancerDir().get(i).getPortfolio(),
+                        ApplicationFreelancerDirectory.getInstance().getApplicationFreelancerDir().get(i).getWorkEx(),
+                        ApplicationFreelancerDirectory.getInstance().getApplicationFreelancerDir().get(i).getLatestWork(),
+                        ApplicationFreelancerDirectory.getInstance().getApplicationFreelancerDir().get(i).getEducation(),
+                        ApplicationFreelancerDirectory.getInstance().getApplicationFreelancerDir().get(i).getSkills(),
+                        ApplicationFreelancerDirectory.getInstance().getApplicationFreelancerDir().get(i).getUsername(),
+                        ApplicationFreelancerDirectory.getInstance().getApplicationFreelancerDir().get(i).getFirstName(),
+                        ApplicationFreelancerDirectory.getInstance().getApplicationFreelancerDir().get(i).getLastName(),
+                        ApplicationFreelancerDirectory.getInstance().getApplicationFreelancerDir().get(i).getAge(),
+                        ApplicationFreelancerDirectory.getInstance().getApplicationFreelancerDir().get(i).getGender(),
+                        ApplicationFreelancerDirectory.getInstance().getApplicationFreelancerDir().get(i).getPhoneNumber(),
+                        ApplicationFreelancerDirectory.getInstance().getApplicationFreelancerDir().get(i).getEmail(),
+                        ApplicationFreelancerDirectory.getInstance().getApplicationFreelancerDir().get(i).getImagePath(),
+                        ApplicationFreelancerDirectory.getInstance().getApplicationFreelancerDir().get(i).getResPath(),
+                        ApplicationFreelancerDirectory.getInstance().getApplicationFreelancerDir().get(i).getIdPath(),
+                "Completed");
+                
+                ApplicationFreelancerDirectory.getInstance().updateApplicationFreelancer(pL, i);
+                
+                }
+            }
+        }
+    else{
+        
+    }
+        
+        
+        
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -253,11 +524,11 @@ public static String filePath1 = "";
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btnVLis;
+    public javax.swing.JButton btnViewRes;
+    public javax.swing.JButton btnViwId;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     public javax.swing.JLabel lblName;

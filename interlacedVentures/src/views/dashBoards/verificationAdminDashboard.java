@@ -154,12 +154,15 @@ public class verificationAdminDashboard extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.hide();
         ViewItemsVerificationAdminForm vf = new ViewItemsVerificationAdminForm();
+        vf.btnVLis.setVisible(false);
         vf.lblName.setText("FreeLancers");
         
         String[][] rows = new String[ApplicationFreelancerDirectory.getInstance().getApplicationFreelancerDir().size()][6];
         String[] columnNames = {"UserName", "FirstName", "LastName", "Skill", "Resume", "ID"};
         int j = 0;
+        
         for(int i=0; i < ApplicationFreelancerDirectory.getInstance().getApplicationFreelancerDir().size(); i++){
+            if(!ApplicationFreelancerDirectory.getInstance().getApplicationFreelancerDir().get(i).getAppStatus().equals("Completed")){
                 rows[j][0] = ApplicationFreelancerDirectory.getInstance().getApplicationFreelancerDir().get(i).getUsername();
                 rows[j][1] = ApplicationFreelancerDirectory.getInstance().getApplicationFreelancerDir().get(i).getFirstName();
                 rows[j][2] = ApplicationFreelancerDirectory.getInstance().getApplicationFreelancerDir().get(i).getLastName();
@@ -167,7 +170,7 @@ public class verificationAdminDashboard extends javax.swing.JFrame {
                 rows[j][4] = ApplicationFreelancerDirectory.getInstance().getApplicationFreelancerDir().get(i).getResPath();
                 rows[j][5] = ApplicationFreelancerDirectory.getInstance().getApplicationFreelancerDir().get(i).getIdPath();
                 j++;
-            
+            }
         }
         DefaultTableModel model = new DefaultTableModel (rows, columnNames);
         vf.tblDisplay.setModel(model);
@@ -192,6 +195,7 @@ public class verificationAdminDashboard extends javax.swing.JFrame {
         String[] columnNames = {"UserName", "FirstName", "LastName", "Skill", "Resume", "ID"};
         int j = 0;
         for(int i=0; i < ApplicationDirectory.getInstance().getApplicationDir().size(); i++){
+            if(!ApplicationDirectory.getInstance().getApplicationDir().get(i).getAppStatus().equals("Completed")){
                 rows[j][0] = ApplicationDirectory.getInstance().getApplicationDir().get(i).getUsername();
                 rows[j][1] = ApplicationDirectory.getInstance().getApplicationDir().get(i).getFirstName();
                 rows[j][2] = ApplicationDirectory.getInstance().getApplicationDir().get(i).getLastName();
@@ -199,11 +203,12 @@ public class verificationAdminDashboard extends javax.swing.JFrame {
                 rows[j][4] = ApplicationDirectory.getInstance().getApplicationDir().get(i).getResPath();
                 rows[j][5] = ApplicationDirectory.getInstance().getApplicationDir().get(i).getIdPath();
                 j++;
+            }
+
             
         }
         DefaultTableModel model = new DefaultTableModel (rows, columnNames);
         vf.tblDisplay.setModel(model);
-        
         vf.show();
     }//GEN-LAST:event_veriEmployersActionPerformed
 
@@ -211,21 +216,30 @@ public class verificationAdminDashboard extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.hide();
         ViewItemsVerificationAdminForm vf = new ViewItemsVerificationAdminForm();
+        vf.btnViewRes.setVisible(false);
+        vf.btnViwId.setVisible(false);
         vf.lblName.setText("Business");
         
-        String[][] rows = new String[ApplicationDirectory.getInstance().getApplicationDir().size()][3];
+        System.out.println();
+        
+        String[][] rows = new String[ApplicationBusinessDirectory.getInstance().getApplicationBusinessDir().size()][3];
         String[] columnNames = {"Name", "Website", "Business Liscence"};
         int j = 0;
-        for(int i=0; i < ApplicationBusinessDirectory.getInstance().getApplicationBusinessDir().size(); i++){
+        
+        for(int i = 0; i < ApplicationBusinessDirectory.getInstance().getApplicationBusinessDir().size(); i++){
+            if(!ApplicationBusinessDirectory.getInstance().getApplicationBusinessDir().get(i).getAppStatus().equals("Completed")){
+                
                 rows[j][0] = ApplicationBusinessDirectory.getInstance().getApplicationBusinessDir().get(i).getName();
-                rows[j][1] = ApplicationBusinessDirectory.getInstance().getApplicationBusinessDir().get(i).getWebsite();
+                
+                rows[j][1] = ApplicationBusinessDirectory.getInstance().getApplicationBusinessDir().get(i).getWebsite();         
                 rows[j][2] = ApplicationBusinessDirectory.getInstance().getApplicationBusinessDir().get(i).getLicensePath();
                 j++;
+            }
+
             
         }
         DefaultTableModel model = new DefaultTableModel (rows, columnNames);
         vf.tblDisplay.setModel(model);
-        
         vf.show();
     }//GEN-LAST:event_veriBusinActionPerformed
 

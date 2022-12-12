@@ -494,7 +494,7 @@
     <Component class="javax.swing.JComboBox" name="comboRole">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="16">
+          <StringArray count="18">
             <StringItem index="0" value="Front-end Developer"/>
             <StringItem index="1" value="Game Developer"/>
             <StringItem index="2" value="Security Engineer"/>
@@ -509,8 +509,10 @@
             <StringItem index="11" value="Cloud Software Engineer"/>
             <StringItem index="12" value="Cloud Consultant"/>
             <StringItem index="13" value="Server Manager"/>
-            <StringItem index="14" value="Chartered Accountant"/>
-            <StringItem index="15" value=" "/>
+            <StringItem index="14" value="Driver"/>
+            <StringItem index="15" value="Storage Manager"/>
+            <StringItem index="16" value="Chartered Accountant"/>
+            <StringItem index="17" value=" "/>
           </StringArray>
         </Property>
       </Properties>
@@ -536,6 +538,9 @@
           </StringArray>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="comboOrgActionPerformed"/>
+      </Events>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>

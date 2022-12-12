@@ -114,6 +114,7 @@ public class ApplicationFreelancerDirectory {
             PreparedStatement pst = DatabaseConnectionClass.getInstance().getCon().prepareStatement(query1);
            
             pst.setString(1, af.getAppStatus());
+            pst.setString(2, af.getUsername());
             
             int rs = pst.executeUpdate();
             if(rs>0)
